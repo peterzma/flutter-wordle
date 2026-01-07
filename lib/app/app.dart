@@ -9,6 +9,7 @@ class App extends StatelessWidget {
       title: 'flutter-wordle',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: Colors.black),
+      // home: const WordScreen(),
     );
   }
 }
