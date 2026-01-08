@@ -64,4 +64,10 @@ class _WordleScreenState extends State<WordleScreen> {
       setState(() => _currentWord?.addLetter(val));
     }
   }
+
+    void _onDeleteTapped() {
+    if (_gameStatus == GameStatus.playing) {
+      setState(() => _currentWord?.removeLetter());
+    }
+  }
 }
