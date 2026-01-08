@@ -28,7 +28,20 @@ class Keyboard extends StatelessWidget {
           .map(
             (keyRow) => Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children:
+              children: keyRow.map(
+                (letter) {
+                  if (letter == 'DEL') {
+                    return _KeyboardButton.delete(onTap: OnDeleteTapped);
+                  } else if (letter == 'ENTER') {
+                    return _KeyboardButton.enter(onTap: onEnterTapped);
+                  }
+                  return _KeyboardButton.letter(
+                    onTap: () => onKeyTapped(letter),
+                    letter: letter,
+                    backgroundColor: Colors.grey,
+                  );
+                },
+              ).toList(),
             ),
           )
           .toList(),
