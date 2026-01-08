@@ -93,7 +93,8 @@ class _WordleScreenState extends State<WordleScreen> {
         } else {
           _currentWord!.letters[i] =  
               currentWordLetter.copyWith(status: LetterStatus.notInWord);
-        });
-      }
+        }
+      });
     }
+}
 }
