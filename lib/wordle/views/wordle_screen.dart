@@ -126,7 +126,7 @@ class _WordleScreenState extends State<WordleScreen> {
           dismissDirection: DismissDirection.none,
           duration: const Duration(days: 1),
           backgroundColor: Colors.redAccent[200],
-          content: const Text (
+          content: Text (
             'You Lost! Solution: ${_solution.wordString}',
             style: TextStyle(color: Colors.white),
           ),
