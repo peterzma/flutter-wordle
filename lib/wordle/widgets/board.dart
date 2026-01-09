@@ -17,24 +17,24 @@ class Board extends StatelessWidget {
     // six rows and column
     return Column(
       children: board
-            .asMap()
-            .map(
-              (i, word) => MapEntry(
-                i,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: word.letters
-                      .asMap()
-                      .map(
-                        (j, letter) => MapEntry(j, BoardTile(letter: letter)),
-                        )
-                        .values
-                        .toList(),
-                  ),
-                ),
-              )
-              .values
-              .toList(),
+          .asMap()
+          .map(
+            (i, word) => MapEntry(
+              i,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: word.letters
+                    .asMap()
+                    .map(
+                      (j, letter) => MapEntry(j, BoardTile(letter: letter)),
+                    )
+                    .values
+                    .toList(),
+              ),
+            ),
+          )
+          .values
+          .toList(),
     );
   }
 }
