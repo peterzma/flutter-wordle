@@ -1,3 +1,4 @@
+import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_wordle/wordle/wordle.dart';
 
@@ -26,7 +27,21 @@ class Board extends StatelessWidget {
                 children: word.letters
                     .asMap()
                     .map(
-                      (j, letter) => MapEntry(j, BoardTile(letter: letter)),
+                      (j, letter) => MapEntry(
+                        j, 
+                        FlipCard(
+                          key: flipCardKeys[i][j],
+                          flipOnTouch: false,
+                          direction: FlipDirection.VERTICAL,
+                          front: BoardTile(
+                            letter: Letter(
+                              val: letter.val,
+                              status: LetterStatus.initial,
+                            ),
+                          ),
+                          back: BoardTile(letter: letter),
+                        ),
+                      ),
                     )
                     .values
                     .toList(),
