@@ -2,7 +2,7 @@
 
 ## Overview
 
-Flutter Wordle is a Wordle-style word puzzle game built with Flutter and Dart. You guess a hidden word within a limited number of attempts, using colour feedback to guide each guess. The project was built as a learning exercise and released on GitHub with web and Windows builds.
+Flutter Wordle is a Wordle-style word puzzle game built with Flutter and Dart. You guess a hidden word within a limited number of attempts, using colour feedback to guide each guess.
 
 ## Features
 
@@ -11,8 +11,6 @@ Flutter Wordle is a Wordle-style word puzzle game built with Flutter and Dart. Y
 * Limited guesses per round
 * Valid word checking
 * Clean, minimal UI
-* Keyboard and mouse input support
-* Web and Windows builds from one codebase
 
 ## Getting Started
 
@@ -72,34 +70,10 @@ Windows:
 flutter build windows
 ```
 
-### Playing the Web Build
-
-Flutter web builds must be served over HTTP.
-
-Steps:
-
-1. Open a terminal
-2. Navigate to:
-
-   ```bash
-   cd build/web
-   ```
-3. Run:
-
-   ```bash
-   python -m http.server
-   ```
-4. Open:
-
-   ```
-   http://localhost:8000
-   ```
-
 ## Releases
 
 You can download prebuilt versions from GitHub Releases:
 
-* Web build: unzip and serve with a local web server
 * Windows build: download and run the `.exe`
 
 Latest release:
