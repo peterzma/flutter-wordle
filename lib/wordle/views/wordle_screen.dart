@@ -124,50 +124,49 @@ class _WordleScreenState extends State<WordleScreen> {
     }
   }
 
-void _checkIfWinOrLoss() {
-  if (_currentWord!.wordString == _solution.wordString) {
-    _gameStatus = GameStatus.won;
-    _showEndDialog(
-      title: 'YOU WON',
-      message: 'NUMBER OF ATTEMPTS: ${_currentWordIndex + 1}',
-    );
-  } else if (_currentWordIndex + 1 >= _board.length) {
-    _gameStatus = GameStatus.lost;
-    _showEndDialog(
-      title: 'YOU LOST',
-      message: 'CORRECT WORD: ${_solution.wordString}',
-    );
-  } else {
-    _gameStatus = GameStatus.playing;
-    _currentWordIndex += 1;
-  }
-}
-
-void _showEndDialog({
-  required String title,
-  required String message,
-}) {
-  showDialog(
-    context: context,
-    barrierDismissible: false,
-    builder: (context) {
-      return AlertDialog(
-        title: Text(title),
-        content: Text(message),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-              _restart();
-            },
-            child: const Text('NEW GAME'),
-          ),
-        ],
+  void _checkIfWinOrLoss() {
+    if (_currentWord!.wordString == _solution.wordString) {
+      _gameStatus = GameStatus.won;
+      _showEndDialog(
+        title: 'YOU WON',
+        message: 'NUMBER OF ATTEMPTS: ${_currentWordIndex + 1}',
       );
-    },
-  );
-}
+    } else if (_currentWordIndex + 1 >= _board.length) {
+      _gameStatus = GameStatus.lost;
+      _showEndDialog(
+        title: 'YOU LOST',
+        message: 'CORRECT WORD: ${_solution.wordString}',
+      );
+    } else {
+      _gameStatus = GameStatus.playing;
+      _currentWordIndex += 1;
+    }
+  }
 
+  void _showEndDialog({
+    required String title,
+    required String message,
+  }) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(title),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                _restart();
+              },
+              child: const Text('NEW GAME'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   void _restart() {
     setState(() {
