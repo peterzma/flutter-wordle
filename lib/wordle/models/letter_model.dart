@@ -16,7 +16,7 @@ class Letter extends Equatable {
 
   final LetterStatus status;
 
-    // background colour based on letter status
+  // background colour based on letter status
   Color get backgroundColor {
     switch (status) {
       case LetterStatus.initial:
