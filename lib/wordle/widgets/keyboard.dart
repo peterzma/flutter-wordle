@@ -94,10 +94,13 @@ class _KeyboardButton extends StatefulWidget {
         width: 65.41,
         onTap: onTap,
         backgroundColor: Color(0xFF818384),
-        child: const Icon(
-          Icons.backspace_outlined, 
-          color: Colors.white, 
-          size: 20
+        child: Transform.translate(
+          offset: const Offset(0, -2),
+          child: const Icon(
+            Icons.backspace_outlined, 
+            color: Colors.white, 
+            size: 20
+          ),
         ),
       );
 
@@ -110,12 +113,15 @@ class _KeyboardButton extends StatefulWidget {
         onTap: onTap,
         backgroundColor: Color(0xFF818384),
         letter: 'ENTER',
-        child: Text(
-          'ENTER',
-          style: TextStyle(
-            fontSize: 12,  // Change this to your desired size
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
+        child: Transform.translate(
+          offset: const Offset(0, -2),
+          child: const Text(
+            'ENTER',
+            style: TextStyle(
+              fontSize: 12,  // Change this to your desired size
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
           ),
         ),
       );
@@ -146,18 +152,21 @@ class _KeyboardButtonState extends State<_KeyboardButton> {
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: _isPressed
-                  ? Color.alphaBlend(Colors.black.withValues(alpha: 0.4), widget.backgroundColor)
+                  ? Color.alphaBlend(Colors.black.withValues(alpha: 0.5), widget.backgroundColor)
                   : widget.backgroundColor,
               borderRadius: BorderRadius.circular(4),
             ),
-          child: widget.child ?? Text(
-            widget.letter ?? '',
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 20,
-              fontFamily: 'franklin',
-              fontWeight: FontWeight.w700,
-              color: Colors.white,
+          child: widget.child ?? Transform.translate(
+            offset: const Offset(0, -2),
+            child: widget.child ?? Text(
+              widget.letter ?? '',
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 20,
+                fontFamily: 'franklin',
+                fontWeight: FontWeight.w700,
+                color: Colors.white,
+              ),
             ),
           ),
         ),
