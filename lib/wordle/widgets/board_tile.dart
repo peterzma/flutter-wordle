@@ -13,8 +13,8 @@ class BoardTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(4),
-      height: 48,
-      width: 48,
+      height: 64,
+      width: 64,
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: letter.backgroundColor,
