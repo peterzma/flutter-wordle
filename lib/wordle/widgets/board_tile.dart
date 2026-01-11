@@ -22,11 +22,15 @@ class BoardTile extends StatelessWidget {
         borderRadius: BorderRadius.zero,
       ),
       // display letter values
-      child: Text(
-        letter.val,
-        style: const TextStyle(
-          fontSize: 32,
-          fontWeight: FontWeight.bold,
+      child: Center(
+        child: Text(
+          letter.val,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+            height: -0.15, // ensures vertical centering
+          ),
         ),
       ),
     );
