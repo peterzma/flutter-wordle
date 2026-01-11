@@ -15,8 +15,8 @@ const _numpad = [
 ];
 
 const double _keyboardTextOffset = -2.0;
-
-const double _darkenIntensity = 0.4;
+const double _darkenIntensity = 0.3;
+const double _darkenSpeed = 10;
 
 class Keyboard extends StatelessWidget {
   
@@ -96,7 +96,7 @@ class _KeyboardButton extends StatefulWidget {
       required VoidCallback onTap 
     }) =>
       _KeyboardButton(
-        width: 65.41,
+        width: 65,
         onTap: onTap,
         backgroundColor: Color(0xFF818384),
         child: Transform.translate(
@@ -113,7 +113,7 @@ class _KeyboardButton extends StatefulWidget {
       required VoidCallback onTap,
     }) =>
       _KeyboardButton(
-        width: 65.41,
+        width: 65,
 
         onTap: onTap,
         backgroundColor: Color(0xFF818384),
@@ -151,7 +151,7 @@ class _KeyboardButtonState extends State<_KeyboardButton> {
         onTapCancel: () => setState(() => _isPressed = false),
         onTap: widget.onTap,
           child: AnimatedContainer(
-            duration: const Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: _darkenSpeed),
             height: widget.height,
             width: widget.width,
             alignment: Alignment.center,
