@@ -90,8 +90,15 @@ flutter:
         weight: 900
   - family: franklin
     fonts:
-      - asset: assets/fonts/franklin/FranklinGothicMedium.ttf
+      - asset: assets/fonts/franklin/franklin-normal-300.ttf
+        weight: 300
+      - asset: assets/fonts/franklin/franklin-normal-500.ttf
         weight: 500
-      - asset: assets/fonts/franklin/FranklinGothicBold.ttf
+      - asset: assets/fonts/franklin/franklin-normal-600.ttf
+        weight: 600
+      - asset: assets/fonts/franklin/franklin-normal-700.ttf
         weight: 700
-
+      - asset: assets/fonts/franklin/franklin-normal-800.ttf
+        weight: 800
+      - asset: assets/fonts/franklin/franklin-normal-900.ttf
+        weight: 900
