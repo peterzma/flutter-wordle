@@ -31,7 +31,7 @@ Uniordle is a Wordle-style word puzzle game built with Flutter and Dart. You gue
 Clone the repository:
 
 ```bash
-git clone https://github.com/peterzma/flutter-wordle.git
+git clone https://github.com/peterzma/uniordle.git
 ```
 
 Install dependencies:
@@ -77,7 +77,7 @@ You can download prebuilt versions from GitHub Releases:
 * Windows build: download and run the `.exe`
 
 Latest release:
-**[v1.0.0](https://github.com/peterzma/flutter-wordle/releases/tag/v1.0.0)**
+**[v1.0.0](https://github.com/peterzma/uniordle/releases/tag/v1.0.0)**
 
 ## How to Play
 

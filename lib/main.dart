@@ -6,11 +6,11 @@ void main() {
   runApp(const App()); 
 
   
-  // doWhenWindowReady(() {
-  //   appWindow.size = const Size(400, 750);
-  //   appWindow.minSize = const Size(400, 750);
-  //   appWindow.maxSize = const Size(400, 750);
-  //   appWindow.alignment = Alignment.center;
-  //   appWindow.show();
-  // });
+  doWhenWindowReady(() {
+    appWindow.size = const Size(500, 783);
+    appWindow.minSize = const Size(500, 783);
+    appWindow.maxSize = const Size(500, 783);
+    appWindow.alignment = Alignment.center;
+    appWindow.show();
+  });
 }
