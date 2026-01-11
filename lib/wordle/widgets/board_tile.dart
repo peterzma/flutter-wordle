@@ -5,20 +5,25 @@ class BoardTile extends StatelessWidget {
   const BoardTile({
     Key? key,
     required this.letter,
+    this.initialBorderColor = const Color(0xFF3A3A3C), 
   }) : super (key: key);
 
   final Letter letter;
+  final Color initialBorderColor;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(4),
-      height: 64,
-      width: 64,
+      margin: const EdgeInsets.all(3),
+      height: 62,
+      width: 62,
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: letter.backgroundColor,
-        border: Border.all(color: letter.borderColor),
+        border: Border.all(
+          color: letter.val.isEmpty ? initialBorderColor : letter.borderColor,
+          width: 2,
+        ),
         borderRadius: BorderRadius.zero,
       ),
       // display letter values
