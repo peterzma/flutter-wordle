@@ -71,8 +71,8 @@ class Keyboard extends StatelessWidget {
 class _KeyboardButton extends StatelessWidget {
   const _KeyboardButton({ 
     Key? key, 
-    this.height = 46,
-    this.width = 30,
+    this.height = 58,
+    this.width = 44,
     required this.onTap,
     required this.backgroundColor,
     this.letter,
@@ -84,13 +84,13 @@ class _KeyboardButton extends StatelessWidget {
       required VoidCallback onTap 
     }) =>
       _KeyboardButton(
-        width: 56,
+        width: 66,
         onTap: onTap,
         backgroundColor: Color(0xFF818384),
         child: const Icon(
-          Icons.backspace, 
+          Icons.backspace_outlined, 
           color: Colors.white, 
-          size: 20
+          size: 16
         ),
       );
 
@@ -98,7 +98,7 @@ class _KeyboardButton extends StatelessWidget {
       required VoidCallback onTap,
     }) =>
       _KeyboardButton(
-        width: 56,
+        width: 66,
         onTap: onTap,
         backgroundColor: Color(0xFF818384),
         letter: 'ENTER',
@@ -120,8 +120,8 @@ class _KeyboardButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        vertical: 3.0,
-        horizontal: 2.0,
+        vertical: 4.0,
+        horizontal: 3.0,
       ),
       child: Material(
         color: backgroundColor,
