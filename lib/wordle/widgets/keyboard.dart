@@ -130,8 +130,8 @@ class _KeyboardButton extends StatelessWidget {
               letter ?? '',
               style: const TextStyle(
                 fontSize: 12,
-                fontFamily: 'FranklinGothic',
-                fontWeight: FontWeight.w200,
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.w500,
                 color: Colors.white,
               ),
             ),
