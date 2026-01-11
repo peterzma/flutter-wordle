@@ -68,7 +68,7 @@ class Keyboard extends StatelessWidget {
   }
 }
 
-class _KeyboardButton extends StatelessWidget {
+class _KeyboardButton extends StatefulWidget {
   const _KeyboardButton({ 
     Key? key, 
     this.height = 58,
@@ -78,6 +78,13 @@ class _KeyboardButton extends StatelessWidget {
     this.letter,
     this.child,
     }): super(key: key);
+
+    final double height;
+    final double width;
+    final VoidCallback onTap;
+    final Color backgroundColor;
+    final String? letter;
+    final Widget? child;
 
     // del and enter keys are special sizes
     factory _KeyboardButton.delete({ 
@@ -113,43 +120,41 @@ class _KeyboardButton extends StatelessWidget {
         ),
       );
 
-    final double height;
+  @override
+  State<_KeyboardButton> createState() => _KeyboardButtonState();
+}
 
-    final double width;
-
-    final VoidCallback onTap;
-
-    final Color backgroundColor;
-
-    final String? letter;
-
-    final Widget? child;
+class _KeyboardButtonState extends State<_KeyboardButton> {
+  bool _isPressed = false;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(
-        2.5
-      ),
-      child: Material(
-        color: backgroundColor,
-        borderRadius: BorderRadius.circular(4),
-        child: InkWell(
-          // bloom effect on button click
-          onTap: onTap,
-          child: Container(
-            height: height,
-            width: width,
+      padding: const EdgeInsets.all(2.5),
+      child: GestureDetector(
+        onTapDown: (_) => setState(() => _isPressed = true),
+        onTapUp: (_) => setState(() => _isPressed = false),
+        onTapCancel: () => setState(() => _isPressed = false),
+        onTap: widget.onTap,
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 300),
+            height: widget.height,
+            width: widget.width,
             alignment: Alignment.center,
-            child: child ?? Text(
-              letter ?? '',
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 20,
-                fontFamily: 'franklin',
-                fontWeight: FontWeight.w700,
-                color: Colors.white,
-              ),
+            decoration: BoxDecoration(
+              color: _isPressed
+                  ? Color.alphaBlend(Colors.black.withValues(alpha: 0.4), widget.backgroundColor)
+                  : widget.backgroundColor,
+              borderRadius: BorderRadius.circular(4),
+            ),
+          child: widget.child ?? Text(
+            widget.letter ?? '',
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontSize: 20,
+              fontFamily: 'franklin',
+              fontWeight: FontWeight.w700,
+              color: Colors.white,
             ),
           ),
         ),
