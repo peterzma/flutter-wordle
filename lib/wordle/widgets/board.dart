@@ -15,10 +15,11 @@ class Board extends StatelessWidget {
 
   final List<List<GlobalKey<FlipCardState>>> flipCardKeys;
 
-  @override
-  Widget build(BuildContext context) {
-    // six rows and column
-    return Column(
+@override
+Widget build(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.only(top: 50),
+    child: Column(
       children: board
           .asMap()
           .map(
@@ -30,7 +31,7 @@ class Board extends StatelessWidget {
                     .asMap()
                     .map(
                       (j, letter) => MapEntry(
-                        j, 
+                        j,
                         FlipCard(
                           key: flipCardKeys[i][j],
                           flipOnTouch: false,
@@ -53,6 +54,7 @@ class Board extends StatelessWidget {
           )
           .values
           .toList(),
+      ),
     );
   }
 }
