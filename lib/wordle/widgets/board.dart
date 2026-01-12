@@ -19,7 +19,7 @@ class Board extends StatelessWidget {
 Widget build(BuildContext context) {
   return Padding(
     // distance between title and board
-    padding: const EdgeInsets.only(top: 20),
+    padding: const EdgeInsets.only(top: 15),
     child: Column(
       children: board
           .asMap()

@@ -6,7 +6,7 @@ import 'package:flutter_wordle/wordle/wordle.dart';
 import 'dart:math';
 
 const Duration _flipDelay = Duration(milliseconds: 100);
-const Duration _flipDuration = Duration(milliseconds: 5000);
+const Duration _flipDuration = Duration(milliseconds: 100);
 
 enum GameStatus { playing, submitting, won, lost }
 
@@ -64,7 +64,8 @@ class _WordleScreenState extends State<WordleScreen> {
         ),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min, // shrink to fit content
         children: [
           Board(board: _board, flipCardKeys: _flipCardKeys),
           // distance between boxs and keyboard
