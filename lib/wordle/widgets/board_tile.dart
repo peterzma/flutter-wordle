@@ -25,12 +25,12 @@ class _BoardTileState extends State<BoardTile> with SingleTickerProviderStateMix
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 160),
+      duration: const Duration(milliseconds: 120),
       vsync: this,
     );
 
     // scale up animation
-    _animation = Tween<double>(begin: 1.0, end: 1.1).animate(
+    _animation = Tween<double>(begin: 1.0, end: 1.05).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeOut)
     );
 
@@ -72,9 +72,7 @@ class _BoardTileState extends State<BoardTile> with SingleTickerProviderStateMix
           ? tileBackground
           : widget.letter.backgroundColor,
           border: Border.all(
-            color: widget.letter.val.isEmpty 
-            ? widget.initialBorderColor 
-            : widget.letter.borderColor,
+            color: widget.letter.backgroundColor,
             width: 2,
           ),
           borderRadius: BorderRadius.circular(5),

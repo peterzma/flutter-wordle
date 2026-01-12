@@ -9,13 +9,6 @@ const _qwerty = [
   ['ENTER', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'DEL'],
 ];
 
-const _numpad = [
-  ['7', '8', '9'],
-  ['4', '5', '6'],
-  ['1', '2', '3'],
-  ['0', '.', 'DEL'],
-];
-
 const double _keyboardTextOffset = -2.0;
 const double _darkenIntensity = 0.3;
 const int _darkenSpeed = 10;
@@ -136,8 +129,39 @@ class _KeyboardButton extends StatefulWidget {
   State<_KeyboardButton> createState() => _KeyboardButtonState();
 }
 
-class _KeyboardButtonState extends State<_KeyboardButton> {
+class _KeyboardButtonState extends State<_KeyboardButton> with SingleTickerProviderStateMixin{
   bool _isPressed = false;
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 120),
+      vsync: this,
+    );
+
+    _animation = Tween<double>(begin: 1.0, end: 0.95).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeOut)
+    );
+    _controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        _controller.reverse();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _handleTap() {
+    _controller.forward(from: 0.0);
+    widget.onTap();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -150,26 +174,35 @@ class _KeyboardButtonState extends State<_KeyboardButton> {
         onTapDown: (_) => setState(() => _isPressed = true),
         onTapUp: (_) => setState(() => _isPressed = false),
         onTapCancel: () => setState(() => _isPressed = false),
-        onTap: widget.onTap,
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: _darkenSpeed),
-            height: widget.height,
-            width: widget.width,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: _isPressed
-                  ? Color.alphaBlend(Colors.black.withValues(alpha: _darkenIntensity), widget.backgroundColor)
-                  : widget.backgroundColor,
-              borderRadius: BorderRadius.circular(4),
-            ),
-          child: widget.child ?? Text(
-            widget.letter ?? '',
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 24,
-              fontFamily: 'dm-sans',
-              fontWeight: FontWeight.w900,
-              color: Colors.white,
+        onTap: _handleTap,
+        child: ScaleTransition(
+          scale: _animation,
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: _darkenSpeed),
+              height: widget.height,
+              width: widget.width,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: _isPressed
+                    ? Color.alphaBlend(
+                      Colors.black.withValues(alpha: _darkenIntensity), 
+                        widget.backgroundColor
+                      )
+                    : widget.backgroundColor,
+                borderRadius: BorderRadius.circular(4),
+              ),
+            child: widget.child ?? Transform.translate(
+              offset: const Offset(0, _keyboardTextOffset),
+              child: widget.child ?? Text(
+                widget.letter ?? '',
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontFamily: 'dm-sans',
+                  fontWeight: FontWeight.w900,
+                  color: Colors.white,
+                ),
+              ),
             ),
           ),
         ),
