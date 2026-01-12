@@ -25,15 +25,18 @@ class _BoardTileState extends State<BoardTile> with SingleTickerProviderStateMix
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 100),
+      duration: const Duration(milliseconds: 180),
       vsync: this,
     );
 
     // pump effect
     _animation = TweenSequence<double>([
-      TweenSequenceItem(tween: Tween(begin: 1.0, end: 1.05), weight: 50),
-      TweenSequenceItem(tween: Tween(begin: 1.05, end: 1.0), weight: 50),
-    ]).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+      TweenSequenceItem(tween: Tween(begin: 1.0, end: 1.03), weight: 50),
+      TweenSequenceItem(tween: Tween(begin: 1.03, end: 1.0), weight: 50),
+    ]).animate(
+      CurvedAnimation(
+        parent: _controller, 
+        curve: Curves.easeOutCubic));
   }
 
   @override

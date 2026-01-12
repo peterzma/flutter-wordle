@@ -20,7 +20,7 @@ class Letter extends Equatable {
   Color get backgroundColor {
     switch (status) {
       case LetterStatus.initial:
-        return Colors.transparent;
+        return tileBackground;
       case LetterStatus.notInWord:
         return notInWordColor;
       case LetterStatus.inWord:
@@ -33,9 +33,9 @@ class Letter extends Equatable {
     Color get borderColor {
     switch (status) {
       case LetterStatus.initial:
-        return const Color(0xFF565758);
+        return tileBackground;
       default:
-      return Colors.transparent;
+      return tileBackground;
     }
   }
 
