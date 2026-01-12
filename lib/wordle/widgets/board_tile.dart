@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_wordle/wordle/wordle.dart';
+import 'package:flutter_wordle/app/app_colors.dart';
+
 
 class BoardTile extends StatefulWidget {
   const BoardTile({
     Key? key,
     required this.letter,
-    this.initialBorderColor = const Color(0xFF3A3A3C), 
+    this.initialBorderColor = tileBackground, 
   }) : super (key: key);
 
   final Letter letter;
@@ -29,8 +31,8 @@ class _BoardTileState extends State<BoardTile> with SingleTickerProviderStateMix
 
     // pump effect
     _animation = TweenSequence<double>([
-      TweenSequenceItem(tween: Tween(begin: 1.0, end: 1.15), weight: 50),
-      TweenSequenceItem(tween: Tween(begin: 1.15, end: 1.0), weight: 50),
+      TweenSequenceItem(tween: Tween(begin: 1.0, end: 1.05), weight: 50),
+      TweenSequenceItem(tween: Tween(begin: 1.05, end: 1.0), weight: 50),
     ]).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
   }
 
@@ -59,9 +61,13 @@ class _BoardTileState extends State<BoardTile> with SingleTickerProviderStateMix
         width: 62,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: widget.letter.backgroundColor,
+          color: widget.letter.val.isEmpty
+          ? tileBackground
+          : widget.letter.backgroundColor,
           border: Border.all(
-            color: widget.letter.val.isEmpty ? widget.initialBorderColor : widget.letter.borderColor,
+            color: widget.letter.val.isEmpty 
+            ? widget.initialBorderColor 
+            : widget.letter.borderColor,
             width: 2,
           ),
           borderRadius: BorderRadius.circular(10),

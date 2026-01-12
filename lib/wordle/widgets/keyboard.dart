@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_wordle/app/app_colors.dart';
 import 'package:flutter_wordle/wordle/wordle.dart';
 
 const _qwerty = [
@@ -63,7 +64,7 @@ class Keyboard extends StatelessWidget {
                     letter: letter,
                     backgroundColor: letterKey != Letter.empty()
                         ? letterKey.backgroundColor
-                        : Color(0xFF818384),
+                        : keyBackground,
                   );
                 },
               ).toList(),
@@ -99,7 +100,7 @@ class _KeyboardButton extends StatefulWidget {
       _KeyboardButton(
         width: 66,
         onTap: onTap,
-        backgroundColor: Color(0xFF818384),
+        backgroundColor: keyBackground,
         child: Transform.translate(
           offset: const Offset(0, _keyboardTextOffset),
           child: const Icon(
@@ -116,7 +117,7 @@ class _KeyboardButton extends StatefulWidget {
       _KeyboardButton(
         width: 66,
         onTap: onTap,
-        backgroundColor: Color(0xFF818384),
+        backgroundColor: keyBackground,
         letter: 'ENTER',
         child: Transform.translate(
           offset: const Offset(0, _keyboardTextOffset),
