@@ -197,57 +197,67 @@ class _WordleScreenState extends State<WordleScreen> {
               ),
 
               // content
-              const SizedBox(height: 24),
-              // inner box for solution word
-              Container(
+              Padding(
                 padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.pink,
-                  borderRadius: BorderRadius.circular(5),
-                ),
                 child: Column(
                   children: [
-                    const Text(
-                      'The word was',
-                      style: TextStyle(
-                        fontSize: 18,
+                    // top left label
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.black26,
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        child: Text(
+                          '${_solution.wordString.length} letters',
+                          style: const TextStyle(
+                            color: Colors.white70,
+                            fontSize: 12,
+                          ),
+                        ),
                       ),
                     ),
-                    const SizedBox(height: 8),
-                    Text(
-                      message.split(': ').last, // solution word
-                      style: const TextStyle(
-                        fontSize: 36,
-                        fontFamily: 'dm-sans',
-                        fontWeight: FontWeight.w900,
-                        letterSpacing: 2,
+
+                    const SizedBox(height: 16),
+
+                    // two boxes
+                    Row(
+                      children: [
+                        Expanded(
+                          child: _StatBox(
+                            title: 'THE WORD WAS',
+                            value: _solution.wordString,
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: _StatBox(
+                            title: 'ATTEMPTS', 
+                            value: '${_currentWordIndex + 1}',
+                          ),
+                        ),
+                      ],
+                    ),
+                    
+                    const SizedBox(height: 20),
+
+                    // button
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                          _restart();
+                        },
+                        child: const Text('NEW GAME'),
                       ),
                     ),
                   ],
-                ),
-              ),
-              const SizedBox(height: 24),
-              SizedBox(
-                width: double.infinity, // button fills box width
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    _restart();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                  ),
-                  child: const Text(
-                    'NEW GAME',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontFamily: 'dm-sans',
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
                 ),
               ),
             ],
@@ -290,8 +300,8 @@ class _StatBox extends StatelessWidget {
   final String value;
 
   const _StatBox({
-    required this.title;
-    required this.value;
+    required this.title,
+    required this.value,
   });
 
   @override
