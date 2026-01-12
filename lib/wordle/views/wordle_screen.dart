@@ -275,3 +275,8 @@ class _WordleScreenState extends State<WordleScreen> {
     });
   }
 }
+
+class _StatBox extends StatelessWidget {
+  final string title;
+  
+}
