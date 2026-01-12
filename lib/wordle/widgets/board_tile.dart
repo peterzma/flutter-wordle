@@ -25,25 +25,25 @@ class _BoardTileState extends State<BoardTile> with SingleTickerProviderStateMix
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 180),
+      duration: const Duration(milliseconds: 320),
       vsync: this,
     );
 
     // pump effect
     _animation = TweenSequence<double>([
-      TweenSequenceItem(tween: Tween(begin: 1.0, end: 1.03), weight: 50),
-      TweenSequenceItem(tween: Tween(begin: 1.03, end: 1.0), weight: 50),
+      TweenSequenceItem(tween: Tween(begin: 1.0, end: 1.02), weight: 60),
+      TweenSequenceItem(tween: Tween(begin: 1.02, end: 1.0), weight: 40),
     ]).animate(
       CurvedAnimation(
         parent: _controller, 
-        curve: Curves.easeOutCubic));
+        curve: Curves.bounceInOut));
   }
 
   @override
   void didUpdateWidget(covariant BoardTile oldWidget) {
     super.didUpdateWidget(oldWidget);
-    // plays pump effect when added letter
-    if (oldWidget.letter.val.isEmpty && widget.letter.val.isNotEmpty) {
+    // plays pump effect when added letter or removed
+    if (oldWidget.letter.val != widget.letter.val) {
       _controller.forward(from: 0.0);
     }
   }
