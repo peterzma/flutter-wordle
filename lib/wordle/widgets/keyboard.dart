@@ -9,11 +9,6 @@ const _qwerty = [
   ['ENTER', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'DEL'],
 ];
 
-const double _keyboardTextOffset = -2.0;
-const double _darkenIntensity = 0.1;
-const int _darkenSpeed = 5;
-const int _pressSpeed = 500;
-
 class Keyboard extends StatelessWidget {
   
   const Keyboard({ 
@@ -96,7 +91,7 @@ class _KeyboardButton extends StatefulWidget {
         onTap: onTap,
         backgroundColor: keyBackground,
         child: Transform.translate(
-          offset: const Offset(0, _keyboardTextOffset),
+          offset: const Offset(0, -3),
           child: const Icon(
             Icons.backspace, 
             color: Colors.white, 
@@ -114,11 +109,11 @@ class _KeyboardButton extends StatefulWidget {
         backgroundColor: keyBackground,
         letter: 'ENTER',
         child: Transform.translate(
-          offset: const Offset(0, _keyboardTextOffset),
+          offset: const Offset(0, -3),
           child: const Text(
             'ENTER',
             style: TextStyle(
-              fontSize: 14,  // Change this to your desired size
+              fontSize: 14,
               fontWeight: FontWeight.bold,
               color: Colors.white,
             ),
@@ -132,41 +127,28 @@ class _KeyboardButton extends StatefulWidget {
 
 class _KeyboardButtonState extends State<_KeyboardButton> with SingleTickerProviderStateMixin{
   bool _isPressed = false;
-  late AnimationController _controller;
-  late Animation<double> _animation;
+  bool _isTapped = false;
 
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      duration: const Duration(milliseconds: 120),
-      vsync: this,
-      lowerBound: 0.95,
-      upperBound: 1.0,
-      value: 1.0,
+  static const int _pressSpeed = 120; // ms
+  static const int _tapSpeed = 120; // ms for full animation
+  static const int _darkenSpeed = 10; // ms
+  static const double _darkenIntensity = 0.3;
+  static const double _keyboardTextOffset = -2.0;
 
-    );
-
-    _animation = _controller.drive(Tween<double>(begin: 1.0, end: 0.95));
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
 
   void _handleTap() {
+    // trigger tap animation
+    setState(() => _isTapped = true);
+    Future.delayed(const Duration(milliseconds: _tapSpeed), () {
+      if (mounted) setState(() => _isTapped = false);
+    });
+
     widget.onTap();
   }
 
-  void _updatePressed(bool pressed) {
-    setState(() => _isPressed = pressed);
-    _controller.animateTo(
-      pressed ? 0.95 : 1.0,
-      duration: const Duration(milliseconds: _pressSpeed),
-      curve: Curves.easeInOut,
-    );
+    double get _currentScale {
+    if (_isTapped) return 0.95; // start of tap animation
+    return _isPressed ? 0.95 : 1.0;
   }
 
   @override
@@ -179,31 +161,34 @@ class _KeyboardButtonState extends State<_KeyboardButton> with SingleTickerProvi
       child: GestureDetector(
         onTapDown: (_) => setState(() => _isPressed = true),
         onTapUp: (_) {
-          _updatePressed(false);
+          setState(() => _isPressed = false);
           _handleTap();
         },
         onTapCancel: () => setState(() => _isPressed = false),
-        child: AnimatedScale(
-          scale: _isPressed ? 0.95 : 1.0,
-          duration: const Duration(milliseconds: 80),
-          curve: Curves.easeOut,
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: _darkenSpeed),
-            height: widget.height,
-            width: widget.width,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: _isPressed
-                  ? Color.alphaBlend(
-                    Colors.black.withValues(alpha: _darkenIntensity), 
-                      widget.backgroundColor
-                    )
-                  : widget.backgroundColor,
-              borderRadius: BorderRadius.circular(4),
-            ),
-            child: widget.child ?? 
-              Transform.translate(
-              offset: const Offset(0, _keyboardTextOffset),
+        child: TweenAnimationBuilder<double>(
+          tween: Tween<double>(begin: 1.0, end: _currentScale),
+          duration: _isTapped
+              ? const Duration(milliseconds: _tapSpeed)
+              : const Duration(milliseconds: _pressSpeed),
+          curve: Curves.easeInOut,
+          builder: (context, scale, child) => Transform.scale(
+            scale: scale,
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: _darkenSpeed),
+              height: widget.height,
+              width: widget.width,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: _isPressed || _isTapped
+                    ? Color.alphaBlend(
+                      Colors.black.withValues(alpha: _darkenIntensity), 
+                        widget.backgroundColor
+                      )
+                    : widget.backgroundColor,
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: widget.child ?? Transform.translate(
+                offset: const Offset(0, _keyboardTextOffset),
                 child: widget.child ?? Text(
                   widget.letter ?? '',
                   textAlign: TextAlign.center,
@@ -215,6 +200,7 @@ class _KeyboardButtonState extends State<_KeyboardButton> with SingleTickerProvi
                   ),
                 ),
               ),
+            ),
           ),
         ),
       ),
