@@ -102,3 +102,7 @@ flutter:
         weight: 800
       - asset: assets/fonts/franklin/franklin-normal-900.ttf
         weight: 900
+  - family: clashdisplay
+    fonts:
+      - asset: assets/fonts/clashdisplay/clashdisplay.ttf
+        weight: 400

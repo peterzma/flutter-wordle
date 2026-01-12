@@ -5,6 +5,7 @@ import 'package:flutter_wordle/wordle/wordle.dart';
 import 'dart:math';
 
 const Duration _flipDelay = Duration(milliseconds: 100);
+const Duration _flipDuration = Duration(milliseconds: 5000);
 
 enum GameStatus { playing, submitting, won, lost }
 
@@ -53,8 +54,8 @@ class _WordleScreenState extends State<WordleScreen> {
             'UNIORDLE',
             style: TextStyle(
               fontSize: 36,
-              fontFamily: 'franklin',
-              fontWeight: FontWeight.w700,
+              fontFamily: 'clashdisplay',
+              fontWeight: FontWeight.w400,
               letterSpacing: 4,
             ),
           ),
@@ -120,11 +121,13 @@ class _WordleScreenState extends State<WordleScreen> {
           _keyboardLetters.add(_currentWord!.letters[i]);
         }
 
-        await Future.delayed(_flipDelay);
         _flipCardKeys[_currentWordIndex][i].currentState?.toggleCard();
+        await Future.delayed(_flipDelay);
       }
+
+      await Future.delayed(_flipDuration);
         
-        _checkIfWinOrLoss();
+      _checkIfWinOrLoss();
     }
   }
 
