@@ -145,14 +145,12 @@ class _WordleScreenState extends State<WordleScreen> {
     if (_currentWord!.wordString == _solution.wordString) {
       _gameStatus = GameStatus.won;
       _showEndDialog(
-        title: 'YOU WON',
-        message: 'NUMBER OF ATTEMPTS: ${_currentWordIndex + 1}',
+        won: true,
       );
     } else if (_currentWordIndex + 1 >= _board.length) {
       _gameStatus = GameStatus.lost;
       _showEndDialog(
-        title: 'YOU LOST',
-        message: 'CORRECT WORD: ${_solution.wordString}',
+        won: false
       );
     } else {
       _gameStatus = GameStatus.playing;
