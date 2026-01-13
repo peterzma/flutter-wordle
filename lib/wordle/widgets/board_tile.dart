@@ -89,7 +89,7 @@ class _BoardTileState extends State<BoardTile> with SingleTickerProviderStateMix
           style: const TextStyle(
             fontSize: _boardTileFontSize,
             fontFamily: 'dm-sans',
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w600,
           ),
         ),
       ),
