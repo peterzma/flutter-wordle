@@ -29,6 +29,7 @@ class EndGameDialog extends StatelessWidget {
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // top bar
           Container(
@@ -55,7 +56,7 @@ class EndGameDialog extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 20, 
-              vertical: 16
+              vertical: 20,
             ), // inner boxes width padding
             child: Column(
               children: [
@@ -70,8 +71,16 @@ class EndGameDialog extends StatelessWidget {
                           vertical: 2,
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.black26,
+                          color: Color(0xFF27282A),
                           borderRadius: BorderRadius.circular(8),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withValues(alpha: 0.3),
+                              offset: const Offset(0, 3),
+                              blurRadius: 6,
+                              spreadRadius: 1,
+                            ),
+                          ],
                         ),
                         child: Text(
                           '${solution.length} Letters',
@@ -84,11 +93,10 @@ class EndGameDialog extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 16) // space between letters container and two stat boxes
                     ],
                   ),
-                const SizedBox(height: 2), // padding between top bar and two boxes
                 // two boxes
+                const SizedBox(height: 16), // space between letters container and two stat boxes
                 Row(
                   children: [
                     Expanded(
@@ -97,7 +105,7 @@ class EndGameDialog extends StatelessWidget {
                         value: solution,
                       ),
                     ),
-                    const SizedBox(width: 18), // padding between two boxes
+                    const SizedBox(width: 16), // padding between two boxes
                     Expanded(
                       child: _StatBox(
                         title: 'ATTEMPTS', 
@@ -106,51 +114,21 @@ class EndGameDialog extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 64), // padding between two boxes to bottom box 
+                const SizedBox(height: 32), // padding between two boxes to bottom box 
                 // button
                 Row(
                   children: [
-                    Expanded(
-                      child: ElevatedButton(
-                        onPressed: () => Navigator.pop(context),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.red,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                          padding: const EdgeInsets.symmetric(vertical: 16),
-                        ),
-                        child: const Text(
-                          'Back',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                            fontFamily: 'clashdisplay',
-                            fontWeight: FontWeight.w400,
-                          ),
-                        )
-                      ),
+                    _ActionButton(
+                      label: 'Back', 
+                      onPressed: () => Navigator.pop(context), 
+                      color: Color(0xFF1E2021),
+                      hasBorder: true,
                     ),
-                    Expanded(
-                      child: ElevatedButton(
-                        onPressed: onRestart,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: _nextGameButtonColour,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                          minimumSize: const Size.fromHeight(48),
-                        ),
-                        child: Text(
-                          'New Game',
-                          style: const TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                            fontFamily: 'clashdisplay',
-                            fontWeight: FontWeight.w400
-                          ),
-                        ),
-                      ),
+                    const SizedBox(width: 16),
+                    _ActionButton(
+                      label: 'New Game',
+                      onPressed: onRestart,
+                      color: _nextGameButtonColour,
                     ),
                   ],
                 ),
@@ -179,18 +157,20 @@ class _StatBox extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 24),
       decoration: BoxDecoration(
         color: const Color(0xFF1E2021),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(8),
         border: Border.all(color: Color(0xFF303436)),
       ),
       child: Column(
         children: [
-          Text(
+          Align(
+            child: Text(
             title,
             style: const TextStyle(
               color: Color(0xFF8E9599),
               fontSize: 16,
               fontFamily: 'dm-sans',
               fontWeight: FontWeight.w500
+              ),
             ),
           ),
           const SizedBox(height: 8),
@@ -206,5 +186,49 @@ class _StatBox extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+// two bottom buttons
+class _ActionButton extends StatelessWidget {
+  final String label;
+  final VoidCallback onPressed;
+  final Color color;
+  final bool hasBorder;
+
+  const _ActionButton({
+    required this.label,
+    required this.onPressed,
+    required this.color,
+    this.hasBorder = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded( 
+      child: ElevatedButton(
+        onPressed: onPressed, 
+        style: ElevatedButton.styleFrom(
+          backgroundColor: color,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+            side: hasBorder
+              ? const BorderSide(color: Color(0xFF303436), width: 1)
+              : BorderSide.none,
+          ),
+          elevation: 0,
+          padding: const EdgeInsets.symmetric(vertical: 20),
+        ),
+        child: Text(
+          label,
+          style: const TextStyle(
+            fontSize: 14,
+            color: Colors.white,
+            fontFamily: 'clashdisplay',
+            fontWeight: FontWeight.w400,
+          ),
+        )
+      ),
+    );  
   }
 }
