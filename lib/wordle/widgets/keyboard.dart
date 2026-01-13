@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_wordle/app/app_colors.dart';
-import 'package:flutter_wordle/wordle/wordle.dart';
+import 'package:uniordle/app/app_colors.dart';
+import 'package:uniordle/wordle/wordle.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_wordle/wordle/widgets/keyboard_button.dart';
+import 'package:uniordle/wordle/widgets/keyboard_button.dart';
 
 const _qwerty = [
   ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],

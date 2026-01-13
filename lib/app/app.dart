@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_wordle/app/home_screen.dart';
+import 'package:uniordle/app/home_screen.dart';
 
 
 class App extends StatelessWidget {

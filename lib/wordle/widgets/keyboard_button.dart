@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_wordle/app/app_colors.dart';
+import 'package:uniordle/app/app_colors.dart';
 
 const double _buttonHeight = 64;
 const double _buttonWidth = 44;
@@ -76,7 +76,7 @@ class _KeyboardButtonState extends State<KeyboardButton> with SingleTickerProvid
   bool _isTapped = false;
 
   static const Duration _pressSpeed = Duration(milliseconds: 80);
-  static const Duration _tapSpeed = Duration(milliseconds: 80); // ms for full animation
+  static const Duration _tapSpeed = Duration(milliseconds: 80);
   static const int _darkenSpeed = 10; // ms
   static const double _darkenIntensity = 0.2;
 

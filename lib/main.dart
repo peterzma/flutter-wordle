@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_wordle/app/app.dart';
+import 'package:uniordle/app/app.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 
 void main() {
