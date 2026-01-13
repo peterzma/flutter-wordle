@@ -11,6 +11,7 @@ void main() {
     appWindow.minSize = const Size(540, 960);
     appWindow.maxSize = const Size(540, 960);
     appWindow.alignment = Alignment.center;
+    appWindow.title = "Uniordle";
     appWindow.show();
   });
 }

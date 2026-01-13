@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_wordle/wordle/wordle.dart';
 
 const int _flipSpeed = 600;
+const double _titleToBoardPadding = 10;
 
 class Board extends StatelessWidget {
   const Board({ 
@@ -18,8 +19,7 @@ class Board extends StatelessWidget {
 @override
 Widget build(BuildContext context) {
   return Padding(
-    // distance between title and board
-    padding: const EdgeInsets.only(top: 15),
+    padding: const EdgeInsets.only(top: _titleToBoardPadding),
     child: Column(
       children: board
           .asMap()
