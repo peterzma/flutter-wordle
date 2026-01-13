@@ -11,6 +11,7 @@ class EndGameDialog extends StatelessWidget {
   final VoidCallback onRestart;
 
   const EndGameDialog({
+    super.key,
     required this.won,
     required this.solution,
     required this.attempts,

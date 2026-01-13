@@ -17,7 +17,9 @@ final int maxAttempts = 2;
 enum GameStatus { playing, submitting, won, lost }
 
 class WordleScreen extends StatefulWidget {
-  const WordleScreen({Key? key}) : super(key: key);
+  const WordleScreen({
+    super.key,
+    });
 
   @override
   _WordleScreenState createState() => _WordleScreenState();

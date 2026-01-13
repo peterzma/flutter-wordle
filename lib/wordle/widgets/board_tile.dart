@@ -14,10 +14,10 @@ const double _pumpEndScale = 1.05;
 
 class BoardTile extends StatefulWidget {
   const BoardTile({
-    Key? key,
+    super.key,
     required this.letter,
     this.initialBorderColor = tileBackground, 
-  }) : super (key: key);
+  });
 
   final Letter letter;
   final Color initialBorderColor;

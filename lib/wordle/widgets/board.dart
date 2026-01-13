@@ -7,10 +7,10 @@ const double _titleToBoardPadding = 38;
 
 class Board extends StatelessWidget {
   const Board({ 
-    Key? key, 
+    super.key,
     required this.board,
     required this.flipCardKeys,
-  }) : super(key: key);
+  });
 
   final List<Word> board;
 
