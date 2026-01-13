@@ -1,18 +1,7 @@
 import 'package:flutter/material.dart';
 
-// outer box
-const double _outerBoxWidth = 232;
-
-// top bar
-const double _topBarHeight = 12;
 const Color _topBarWinColor = Color(0xFF55B725);
 const Color _topBarLoseColor = Color(0xFFC62121);
-
-// stats box
-const double _statsHeight = 24;
-const double _textToStatPadding = 8;
-
-// next game button
 const Color _nextGameButtonColour = _topBarWinColor;
 
 class EndGameDialog extends StatelessWidget {
@@ -32,7 +21,7 @@ class EndGameDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       insetPadding: const EdgeInsets.symmetric(
-        horizontal: _outerBoxWidth,
+        horizontal: 702,
       ),
       backgroundColor: Color(0xFF1E2021),
       shape: RoundedRectangleBorder(
@@ -44,7 +33,7 @@ class EndGameDialog extends StatelessWidget {
           // top bar
           Container(
             width: double.infinity, // expands dialog box width
-            padding: const EdgeInsets.symmetric(vertical: _topBarHeight),
+            padding: const EdgeInsets.symmetric(vertical: 12),
             decoration: BoxDecoration(
               color: won ? _topBarWinColor : _topBarLoseColor,
               borderRadius: const BorderRadius.vertical(
@@ -127,7 +116,7 @@ class EndGameDialog extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.red,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(4),
                           ),
                           padding: const EdgeInsets.symmetric(vertical: 16),
                         ),
@@ -187,7 +176,7 @@ class _StatBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container( 
-      padding: const EdgeInsets.symmetric(vertical: _statsHeight),
+      padding: const EdgeInsets.symmetric(vertical: 24),
       decoration: BoxDecoration(
         color: const Color(0xFF1E2021),
         borderRadius: BorderRadius.circular(12),
@@ -204,7 +193,7 @@ class _StatBox extends StatelessWidget {
               fontWeight: FontWeight.w500
             ),
           ),
-          const SizedBox(height: _textToStatPadding),
+          const SizedBox(height: 8),
           Text(
           value,
             style: const TextStyle(
