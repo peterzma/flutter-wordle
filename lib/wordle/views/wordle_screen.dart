@@ -11,7 +11,7 @@ const double _toolBarToTitlePadding = 100;
 const double _titleFontSize = 64;
 
 final int wordLength = 5;
-final int maxAttempts = 0;
+final int maxAttempts = 1;
 
 enum GameStatus { playing, submitting, won, lost }
 
