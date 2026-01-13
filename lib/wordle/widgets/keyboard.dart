@@ -14,10 +14,8 @@ const double _keyboardButtonWidth = 44;
 const double _keyboardSpecialButtonWidth = 66;
 const double _keyboardButtonPadding = 4;
 const double _keyboardSpecialButtonOffset = -3;
-const double _keyboardIconSize = 22;
 
 class Keyboard extends StatelessWidget {
-  
   const Keyboard({ 
     Key? key,
     required this.onKeyTapped,
@@ -27,12 +25,22 @@ class Keyboard extends StatelessWidget {
   }): super(key: key);
 
   final void Function(String) onKeyTapped;
-
   final VoidCallback onDeleteTapped;
-
   final VoidCallback onEnterTapped;
-
   final Set<Letter> letters;
+
+  void _handlePhysicalKey(String key) {
+    if (key == 'Enter') {
+      onEnterTapped();
+    } else if (key == 'Backspace') {
+      onDeleteTapped();
+    } else {
+      final upper = key.toUpperCase();
+      if (_qwerty.any((row) => row.contains(upper))) {
+        onKeyTapped(upper);
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +110,7 @@ class _KeyboardButton extends StatefulWidget {
           child: const Icon(
             Icons.backspace, 
             color: Colors.white, 
-            size: _keyboardIconSize,
+            size: 22,
           ),
         ),
       );
