@@ -27,9 +27,13 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Center(
         child: GestureDetector(
-          onTap: 
+          onTap: () => _showSettingsDialog(context),
         )
       )
     );
+  }
+
+  void _showSettingsDialog(BuildContext context) {
+    
   }
 }
