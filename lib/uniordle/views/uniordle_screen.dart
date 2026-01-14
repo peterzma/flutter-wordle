@@ -7,6 +7,7 @@ import 'package:uniordle/uniordle/views/end_game_dialog.dart';
 import 'dart:math';
 
 const Duration _tileFlipDuration = Duration(milliseconds: 100);
+const Duration _scrollDuration = Duration(milliseconds: 300);
 const double _bottomKeyboardPadding = 72;
 const double _topTitlePadding = 86;
 const double _titleFontSize = 62;
@@ -168,6 +169,7 @@ class _UniordleScreenState extends State<UniordleScreen> {
 
     await Future.delayed(_tileFlipDuration * 0.3);
       
+    _attempts += 1;
     _checkIfWin();
   }
 
@@ -192,6 +194,11 @@ class _UniordleScreenState extends State<UniordleScreen> {
       }
 
       // Scroll to bottom
+      _scrollController.animateTo(
+        _scrollController.position.maxScrollExtent + 100,
+        duration: _scrollDuration,
+        curve: Curves.easeOut,
+      )
     }
   }
 
@@ -217,6 +224,8 @@ class _UniordleScreenState extends State<UniordleScreen> {
     setState(() {
       _gameStatus = GameStatus.playing;
       _currentWordIndex = 0;
+      _attempts = 0;
+
       _board
         ..clear()
         ..addAll(
@@ -237,6 +246,7 @@ class _UniordleScreenState extends State<UniordleScreen> {
           ),
         );
       _keyboardLetters.clear();
+      _scrollController.jumpTo(0);
     });
   }
 }
