@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:uniordle/wordle/wordle.dart';
+import 'package:uniordle/uniordle/wordle.dart';
 
 class Word extends Equatable {
   const Word({required this.letters});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uniordle/app/app_colors.dart';
-import 'package:uniordle/wordle/views/wordle_screen.dart';
+import 'package:uniordle/uniordle/views/uniordle_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
