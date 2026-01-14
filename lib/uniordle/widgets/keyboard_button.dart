@@ -8,6 +8,9 @@ const double _padding = 4;
 const double _textOffset = -2;
 const double _specialOffset = -3;
 
+/// A single key used on the keyboard
+/// 
+/// Provides press and tap animation with darkening
 class KeyboardButton extends StatefulWidget {
   const KeyboardButton({ 
     super.key,
@@ -26,7 +29,7 @@ class KeyboardButton extends StatefulWidget {
     final String? letter;
     final Widget? child;
 
-    // del and enter keys are special sizes
+    /// Creates a delete key with icon and wider size
     factory KeyboardButton.delete({ 
       required VoidCallback onTap 
     }) =>
@@ -44,6 +47,7 @@ class KeyboardButton extends StatefulWidget {
         ),
       );
 
+    /// Creates an enter key with text label and wider size
     factory KeyboardButton.enter({ 
       required VoidCallback onTap,
     }) =>
@@ -80,8 +84,8 @@ class _KeyboardButtonState extends State<KeyboardButton> with SingleTickerProvid
   static const int _darkenSpeed = 10; // ms
   static const double _darkenIntensity = 0.2;
 
+  /// Handles tap animation and calls [widget.onTap]
   void _handleTap() {
-    // trigger tap animation
     setState(() => _isTapped = true);
     Future.delayed(_tapSpeed, () {
       if (mounted) setState(() => _isTapped = false);
@@ -90,8 +94,11 @@ class _KeyboardButtonState extends State<KeyboardButton> with SingleTickerProvid
     widget.onTap();
   }
 
-    double get _currentScale {
-    if (_isTapped) return 0.95; // start of tap animation
+  /// Current scale based on press and tap state
+  double get _currentScale {
+    if (_isTapped) {
+      return 0.95;
+    }
     return _isPressed ? 0.95 : 1.0;
   }
 
