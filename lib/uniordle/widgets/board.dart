@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:uniordle/uniordle/uniordle.dart';
 
 const int _flipSpeed = 600;
-const double _titleToBoardPadding = 20;
 
 /// Displays the Uniordle game board
 /// 
@@ -24,9 +23,7 @@ class Board extends StatelessWidget {
 
 @override
 Widget build(BuildContext context) {
-  return Padding(
-    padding: const EdgeInsets.only(top: _titleToBoardPadding),
-    child: Column(
+  return Column(
       children: board
           .asMap()
           .map(
@@ -61,7 +58,6 @@ Widget build(BuildContext context) {
           )
           .values
           .toList(),
-      ),
-    );
+      );
   }
 }

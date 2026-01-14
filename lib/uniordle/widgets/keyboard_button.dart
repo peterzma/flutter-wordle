@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:uniordle/app/app_colors.dart';
 
-const double _buttonHeight = 64;
+const double _buttonHeight = 54;
 const double _buttonWidth = 44;
 const double _specialButtonWidth = 66;
-const double _padding = 4;
+const double _padding = 3;
 const double _textOffset = -2;
 const double _specialOffset = -3;
 
