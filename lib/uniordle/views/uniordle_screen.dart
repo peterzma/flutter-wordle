@@ -10,9 +10,10 @@ const Duration _tileFlipDuration = Duration(milliseconds: 100);
 const double _bottomKeyboardPadding = 72;
 const double _topTitlePadding = 86;
 const double _titleFontSize = 62;
+const int _visibleRows = 6;
 
 final int wordLength = 8;
-final int maxAttempts = 2;
+// final int maxAttempts = 1;
 
 enum GameStatus { 
   playing, // player is entering letters
@@ -34,15 +35,17 @@ class UniordleScreen extends StatefulWidget {
 class _UniordleScreenState extends State<UniordleScreen> {
   GameStatus _gameStatus = GameStatus.playing;
 
+  int _attempts = 0;
+
   /// Game board containing all guessed words
   final List<Word> _board = List.generate(
-    maxAttempts,
+    _visibleRows,
     (_) => Word(letters: List.generate(wordLength, (_) => Letter.empty())),
   );
   
   /// Keys used to trigger flip animations for each tile
   final List<List<GlobalKey<FlipCardState>>> _flipCardKeys = List.generate(
-    maxAttempts,
+    _visibleRows,
     (_) => List.generate(wordLength, (_) => GlobalKey<FlipCardState>()),
   );
 
@@ -53,13 +56,15 @@ class _UniordleScreenState extends State<UniordleScreen> {
   Word? get _currentWord =>
       _currentWordIndex < _board.length ? _board[_currentWordIndex] : null;
 
-  /// Correct solutiion word for the game
+  /// Correct solution word for the game
   Word _solution = Word.fromString(
     fiveLetterWords[Random().nextInt(fiveLetterWords.length)].toUpperCase(),
   );
 
   // Letters used to update keyboard colouring
   final Set<Letter> _keyboardLetters = {};
+
+  final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -82,8 +87,16 @@ class _UniordleScreenState extends State<UniordleScreen> {
       body: Column(
         children: [
           Expanded(
-            child: Center(
-              child: Board(board: _board, flipCardKeys: _flipCardKeys),
+            child: Scrollbar(
+              thumbVisibility: true,
+              controller: _scrollController,
+              child: SingleChildScrollView(
+                controller: _scrollController,
+                reverse: true,
+              child: Center(
+                child: Board(board: _board, flipCardKeys: _flipCardKeys),
+                ),
+              ),
             ),
           ),
           Padding(
@@ -155,23 +168,30 @@ class _UniordleScreenState extends State<UniordleScreen> {
 
     await Future.delayed(_tileFlipDuration * 0.3);
       
-    _checkIfWinOrLoss();
+    _checkIfWin();
   }
 
-  void _checkIfWinOrLoss() {
+  void _checkIfWin() {
     if (_currentWord!.wordString == _solution.wordString) {
       _gameStatus = GameStatus.won;
       _showEndDialog(
         won: true,
       );
-    } else if (_currentWordIndex + 1 >= _board.length) {
-      _gameStatus = GameStatus.lost;
-      _showEndDialog(
-        won: false
-      );
     } else {
       _gameStatus = GameStatus.playing;
       _currentWordIndex += 1;
+
+      // Add a new row dynamically if needed
+      if (_currentWordIndex >= _board.length) {
+        _board.add(Word(letters: List.generate(
+          wordLength, (_) => Letter.empty()))
+        );
+        _flipCardKeys.add(List.generate(
+        wordLength, (_) => GlobalKey<FlipCardState>())
+        );
+      }
+
+      // Scroll to bottom
     }
   }
 
@@ -201,7 +221,7 @@ class _UniordleScreenState extends State<UniordleScreen> {
         ..clear()
         ..addAll(
           List.generate(
-            maxAttempts,
+            _visibleRows,
             (_) => Word(letters: List.generate(wordLength, (_) => Letter.empty())),
           ),
         );
@@ -212,7 +232,7 @@ class _UniordleScreenState extends State<UniordleScreen> {
         ..clear()
         ..addAll(
           List.generate(
-            maxAttempts,
+            _visibleRows,
             (_) => List.generate(wordLength, (_) => GlobalKey<FlipCardState>()),
           ),
         );
