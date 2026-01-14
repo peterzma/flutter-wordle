@@ -31,26 +31,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
-                height: 140,
-                width: 140,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(
-                    color: Color(0xFF303436),
-                    width: 4,
-                  ),
-                ),
-                padding: const EdgeInsets.all(8),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(16),
-                    child: Image.asset(
-                      'assets/images/uq_logo.png',
-                      fit: BoxFit.contain,
-                    ),
-                  )
-                ),
+              _buildLogo('assets/images/uq_logo.png'),
               const SizedBox(height: 16),
               
               ElevatedButton(
@@ -70,6 +51,27 @@ class HomeScreen extends StatelessWidget {
               ),
             ],
           ),
+        ),
+      )
+    );
+  }
+
+  Widget _buildLogo(String assetPath) {
+    return Container(
+      height: 140,
+      width: 140,
+      decoration: BoxDecoration(
+        color: Color(0xFF1E2021),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: Color(0xFF303436),
+        ),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16),
+        child: Image.asset(
+          assetPath,
+          fit: BoxFit.contain,
         ),
       )
     );
