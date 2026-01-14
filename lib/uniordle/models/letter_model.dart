@@ -2,19 +2,36 @@ import 'package:equatable/equatable.dart';
 import 'package:uniordle/app/app_colors.dart';
 import 'package:flutter/material.dart';
 
-enum LetterStatus { initial, notInWord, inWord, correct }
+/// Represents a single letter in the game
+/// 
+/// Tracks the letter character and its checked status
+enum LetterStatus { 
+  initial, 
+  notInWord, 
+  inWord, 
+  correct 
+}
 
+/// A letter with its value and status
+/// 
+/// Provides methods for copying with updated values and
+/// getting UI colours based on states
 class Letter extends Equatable {
   const Letter({
     required this.val,
     this.status = LetterStatus.initial,
   });
 
-  factory Letter.empty() => const Letter(val: ''); // populate initial state of board
+  /// Creates an empty letter used for unfilled board positions
+  factory Letter.empty() => const Letter(val: '');
+
+  /// Character value of the letter
   final String val;
+
+  /// Current status of letter
   final LetterStatus status;
 
-  // background colour based on letter status
+  /// Background colour for the tile based on [status]
   Color get backgroundColor {
     switch (status) {
       case LetterStatus.initial:
@@ -28,7 +45,7 @@ class Letter extends Equatable {
     }
   }
 
-    Color get borderColor {
+  Color get borderColor {
     switch (status) {
       case LetterStatus.initial:
         return tileBackground;
@@ -37,7 +54,7 @@ class Letter extends Equatable {
     }
   }
 
-  // creates a new instance with updated values
+  /// Returns a new [Letter] instance with updated values
   Letter copyWith({
     String? val,
     LetterStatus? status,
