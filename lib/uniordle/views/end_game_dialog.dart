@@ -4,6 +4,10 @@ const Color _topBarWinColor = Color(0xFF55B725);
 const Color _topBarLoseColor = Color(0xFFC62121);
 const Color _nextGameButtonColour = _topBarWinColor;
 
+/// Dialog shown when game ends
+/// 
+/// Displays win or loss, solution world, attempt count,
+/// and actions to restart or go back to main menu
 class EndGameDialog extends StatelessWidget {
   final bool won;
   final String solution;

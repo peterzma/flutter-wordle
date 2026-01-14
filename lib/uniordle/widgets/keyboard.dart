@@ -11,6 +11,10 @@ const _qwerty = [
   ['ENTER', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'DEL'],
 ];
 
+/// On-screen keyboard for Uniordle
+/// 
+/// Supports both touch input and physical keyboard input
+/// Updates key colours based on [Letter] states
 class Keyboard extends StatelessWidget {
   const Keyboard({ 
     super.key,
@@ -23,8 +27,10 @@ class Keyboard extends StatelessWidget {
   final void Function(String) onKeyTapped;
   final VoidCallback onDeleteTapped;
   final VoidCallback onEnterTapped;
+  /// Set of letters to colour keyboard keys
   final Set<Letter> letters;
 
+  /// Handles physical keyboard inputs and maps to game actions
   void _handlePhysicalKey(String key) {
     if (key == 'Enter') {
       onEnterTapped();
