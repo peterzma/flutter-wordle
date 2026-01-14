@@ -40,16 +40,21 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Expanded(
-                child: GridView.count(
-                  shrinkWrap: true,
-                  crossAxisCount: 3,
-                  mainAxisSpacing: 16,
-                  crossAxisSpacing: 16,
-                  children: logoPaths.map((path) => _buildLogo(path)).toList(),
-                ),
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  final double maxWidth = constraints.maxWidth.clamp(0, 540);
+                  return SizedBox(
+                    width: maxWidth,
+                    child: GridView.count(
+                      shrinkWrap: true,
+                      crossAxisCount: 3,
+                      mainAxisSpacing: 16,
+                      crossAxisSpacing: 16,
+                      children: logoPaths.map((path) => _buildLogo(path)).toList(),
+                    ),
+                  );
+                }
               ),
-              _buildLogo('assets/images/uq_logo.png'),
               const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
