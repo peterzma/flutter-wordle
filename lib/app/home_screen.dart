@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:uniordle/app/app_colors.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:uniordle/app/app_layout.dart';
+import 'package:uniordle/uniordle/widgets/campus_card.dart';
+import 'package:uniordle/uniordle/data/university_data.dart';
 
 /// The first screen the user sees on opening application
 class HomeScreen extends StatefulWidget {
@@ -138,93 +140,11 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       itemCount: logos.length,
       itemBuilder: (context, index) {
-        return _buildCampusCard(logos[index]);
+        return CampusCard(
+          university: universities[index],
+          onTap: () => _showSettingsDialog(context, universities[index].name),
+        );
       },
-    );
-  }
-
-  Widget _buildCampusCard(Map<String, String> logo) {
-    return GestureDetector(
-      onTap: () => _showSettingsDialog(context, logo['name']!),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: Container(
-          decoration: BoxDecoration(
-            color: const Color(0xFF1A1F2B),
-            border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // fade on image
-              Expanded(
-                flex: 3,
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    ShaderMask(
-                      shaderCallback: (rect) {
-                        return const LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [Colors.black, Colors.transparent],
-                          stops: [0.6, 1.0],
-                        ).createShader(Rect.fromLTRB(0, 0, rect.width, rect.height));
-                      },
-                      blendMode: BlendMode.dstIn,
-                      child: Image.asset(
-                        logo['path']!,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        // takes out last word
-                        logo['name']!.split(' ').last,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Row(
-                        children: [
-                          const Icon(
-                            Icons.circle, 
-                            size: 8, 
-                            color: Colors.blue
-                          ),
-                          const SizedBox(width: 6),
-                          Text(
-                            'NEW CODE',
-                            style: TextStyle(
-                              color: Colors.blue.withValues(alpha: 0.8),
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 0.5,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 

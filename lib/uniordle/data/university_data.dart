@@ -4,7 +4,7 @@ class University {
   final String shortName;
 
   University({required this.path, required this.name}) 
-      : shortName = name.split(' ').last; // Automatically extracts "Adelaide", "UQ", etc.
+      : shortName = name.split(' ').last; // automatically takes out "Adelaide", "UQ", etc.
 }
 
 final List<University> universities = [
