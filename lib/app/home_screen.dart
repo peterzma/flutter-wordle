@@ -32,43 +32,30 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF0A0E17),
-      AppBar(
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        toolbarHeight: 128,
-        title: const Text(
-            'Uniordle',
-            style: TextStyle(
-              fontSize: 72,
-              fontFamily: 'clashdisplay',
-              fontWeight: FontWeight.w600,
+      body: Stack(
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height * 0.4,
+            decoration: BoxDecoration(
+              color: Colors.red,
             ),
-        ),
-      ),
-      body: Center(
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            final double maxWidth = constraints.maxWidth.clamp(400, 444);
-            return SizedBox(
-              width: maxWidth,
-              child: GridView.count(
-                shrinkWrap: true,
-                crossAxisCount: 3,
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                childAspectRatio: 0.75,
-                children: logos.map((logo) {
-                  return _buildLogo(
-                    logo['path'] as String,
-                    logo['name'] as String,
-                    context,
-                  );
-                  }).toList(),
-                ),
-              );
-          }
-        ),
+          ),
+          SafeArea(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Column(
+                children: [
+                  _buildHeader(),
+                  const SizedBox(height: 24),
+                  _buildHeroSection(),
+                  const SizedBox(height: 32),
+                  _buildCampusGrid(),
+                  const SizedBox(height: 120),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: _buildBottomNav(),
     );
@@ -238,44 +225,6 @@ class _HomeScreenState extends State<HomeScreen> {
           }).toList(),
         ),
       )
-    );
-  }
-
-  Widget _buildLogo(String assetPath, String label, BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Material(
-          color: Colors.transparent,
-          borderRadius: BorderRadius.circular(46),
-          child: InkWell (
-            borderRadius: BorderRadius.circular(46),
-            onTap: () => _showSettingsDialog(context, label),
-            child: AspectRatio(
-              aspectRatio: 1,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(46),
-                child: Image.asset(
-                  assetPath,
-                  fit: BoxFit.contain,
-                ),
-              ),
-            ),
-          ),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          label,
-          textAlign: TextAlign.center,
-          maxLines: 2,
-          style: TextStyle(
-            fontSize: 12,
-            fontFamily: 'dm-sans',
-            fontWeight: FontWeight.w500,
-            color: Colors.white,
-          ),
-        ),
-      ],
     );
   }
 
