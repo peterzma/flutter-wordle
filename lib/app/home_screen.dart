@@ -18,19 +18,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   String _activeTab = 'campus';
 
-  final List<Map<String, String>> logos = [
-      {'path': 'assets/images/uq_logo.png', 'name': 'University of Adelaide'}, // University of Adelaide
-      {'path': 'assets/images/uq_logo.png', 'name': 'Australian National University'},
-      {'path': 'assets/images/uq_logo.png', 'name': 'University of Melbourne'},
-      {'path': 'assets/images/uq_logo.png', 'name': 'Monash University'},
-      {'path': 'assets/images/uq_logo.png', 'name': 'UNSW Sydney'},
-      {'path': 'assets/images/uq_logo.png', 'name': 'University of Queensland'},
-      {'path': 'assets/images/uq_logo.png', 'name': 'University of Sydney'},
-      {'path': 'assets/images/uq_logo.png', 'name': 'Queensland University of Technology'},
-      {'path': 'assets/images/uq_logo.png', 'name': 'University of Tasmania'},
-      {'path': 'assets/images/uq_logo.png', 'name': 'Deakin University'},
-    ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -35,7 +35,7 @@ class CampusCard extends StatelessWidget {
   }
 
   Widget _buildImageHeader() {
-    Expanded(
+    return Expanded(
       flex: 3,
       child: ShaderMask(
         shaderCallback: (rect) => const LinearGradient(
