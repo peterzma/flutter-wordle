@@ -48,7 +48,16 @@ class HomeHeader extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(20),
       onTap: onTap,
-      child: Container(width: 40, height: 40, alignment: Alignment.center, child: Icon(icon, size: 24, color: Colors.grey)),
+      child: Container(
+        width: 40, 
+        height: 40, 
+        alignment: Alignment.center, 
+        child: Icon(
+          icon, 
+          size: 24, 
+          color: Colors.grey
+        ),
+      ),
     );
   }
 }
