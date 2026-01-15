@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class _ActionButton extends StatelessWidget {
+class ActionButton extends StatelessWidget {
   final String label;
   final VoidCallback onPressed;
   final Color color;
   final bool hasBorder;
 
-  const _ActionButton({
+  const ActionButton({
     required this.label,
     required this.onPressed,
     required this.color,
