@@ -27,9 +27,9 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 24),
               sliver: SliverList(
                 delegate: SliverChildListDelegate([
-                  _buildHeader(),
+                  _header(),
                   const SizedBox(height: 24),
-                  _buildHeroSection(),
+                  _heroSection(),
                   const SizedBox(height: 32),
                 ]),
               ),
@@ -38,11 +38,11 @@ class _HomeScreenState extends State<HomeScreen> {
           const SliverToBoxAdapter(child: SizedBox(height: 120)),
         ],
       ),
-      bottomNavigationBar: _buildBottomNav(),
+      bottomNavigationBar: _bottomNav(),
     );
   }
 
-  Widget _buildHeader() {
+  Widget _header() {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 16),
       decoration: BoxDecoration(
@@ -121,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildHeroSection() {
+  Widget _heroSection() {
     return const Column(
       children: [
         Text(
@@ -147,46 +147,31 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildBottomNav() {
+  Widget _bottomNav() {
     return Container(
       decoration: BoxDecoration(
         color: const Color(0xFF0A0E17).withValues(alpha: 0.95),
-        border: const Border(top: BorderSide(color: Colors.white10)),
+        border: const Border(
+          top: BorderSide(color: Colors.white10)
+        ),
       ),
       child: SafeArea(
+        top: false,
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 12),
+          padding: const EdgeInsets.fromLTRB(32, 12, 32, 24),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _v
+            ]
           ),
         ),
       ),
     );
   }
 
-  Widget _buildNavItem(Map<String, dynamic> tab) {
-    final bool isActive = _activeTab == tab['id'];
-    final Color color = isActive ? Colors.blue : Colors.grey;
-
-    return InkWell(
-      onTap: () => setState(() => _activeTab = tab['id']),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(tab['icon'], color: color, size: 28),
-          const SizedBox(height: 6),
-          Text(
-            tab['label'],
-            style: TextStyle(
-              color: color,
-              fontSize: 10,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 1.2,
-            ),
-          ),
-        ],
-      ),
-    );
+  Widget _navItem() {
+    
   }
 
   void _showPlayDialog(BuildContext context, String universityName) {
