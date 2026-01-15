@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uniordle/app/app_colors.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:uniordle/uniordle/widgets/campus_card.dart';
-import 'package:uniordle/uniordle/data/university_data.dart';
 
 /// The first screen the user sees on opening application
 class HomeScreen extends StatefulWidget {
@@ -16,12 +14,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   String _activeTab = 'campus';
-
-  final List<Map<String, dynamic>> _navigationTabs = const [
-    {'id': 'campus', 'label': 'CAMPUS', 'icon': LucideIcons.graduationCap},
-    {'id': 'archive', 'label': 'ARCHIVE', 'icon': LucideIcons.library},
-    {'id': 'profile', 'label': 'PROFILE', 'icon': LucideIcons.user},
-  ];
 
 @override
   Widget build(BuildContext context) {
@@ -43,7 +35,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          _buildCampusGrid(),
           const SliverToBoxAdapter(child: SizedBox(height: 120)),
         ],
       ),
@@ -112,30 +103,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildCampusGrid() {
-  return SliverPadding(
-    padding: const EdgeInsets.symmetric(horizontal: 24),
-    sliver: SliverGrid(
-      delegate: SliverChildBuilderDelegate(
-        (context, index) {
-          return CampusCard(
-            university: universities[index],
-            onTap: () =>
-                _showPlayDialog(context, universities[index].name),
-          );
-        },
-        childCount: universities.length,
-      ),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 16,
-        mainAxisSpacing: 16,
-        childAspectRatio: 0.7,
-      ),
-    ),
-  );
-}
-
 
   Widget _buildBottomNav() {
     return Container(
@@ -148,7 +115,6 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.symmetric(vertical: 12),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: _navigationTabs.map((tab) => _buildNavItem(tab)).toList(),
           ),
         ),
       ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uniordle/app/app.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
-import 'package:uniordle/app/responsive_wrapper.dart';
 
 const double appWidth = 540;
 
