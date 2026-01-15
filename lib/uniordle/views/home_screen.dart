@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uniordle/app/app_colors.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:uniordle/app/responsive_wrapper.dart';
 import 'package:uniordle/uniordle/widgets/campus_card.dart';
 import 'package:uniordle/uniordle/data/university_data.dart';
 
@@ -24,33 +23,29 @@ class _HomeScreenState extends State<HomeScreen> {
     {'id': 'profile', 'label': 'PROFILE', 'icon': LucideIcons.user},
   ];
 
-  @override
+@override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.gameBackground,
-      body: Stack(
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height * 0.4,
-            decoration: BoxDecoration(
-              color: AppColors.gameBackground,
-            ),
-          ),
-          SafeArea(
-            child: SingleChildScrollView(
+      body: CustomScrollView(
+        slivers: [
+          _buildTopOverlay(),
+          SliverSafeArea(
+            bottom: false,
+            sliver: SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Column(
-                children: [
+              sliver: SliverList(
+                delegate: SliverChildListDelegate([
                   _buildHeader(),
                   const SizedBox(height: 24),
                   _buildHeroSection(),
                   const SizedBox(height: 32),
-                  _buildCampusGrid(),
-                  const SizedBox(height: 120),
-                ],
+                ]),
               ),
             ),
           ),
+          _buildCampusGrid(),
+          const SliverToBoxAdapter(child: SizedBox(height: 120)),
         ],
       ),
       bottomNavigationBar: _buildBottomNav(),
@@ -141,7 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
       itemBuilder: (context, index) {
         return CampusCard(
           university: universities[index],
-          onTap: () => _showSettingsDialog(context, universities[index].name),
+          onTap: () => _showPlayDialog(context, universities[index].name),
         );
       },
     );
@@ -191,52 +186,49 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void _showSettingsDialog(BuildContext context, String university) {
+  void _showPlayDialog(BuildContext context, String universityName) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text(university),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              children: const [
-                Text('Option 1'),
-                Spacer(),
-                Switch(value: false, onChanged: null),
-              ],
-            ),
-            Row(
-              children: const [
-                Text('Option 2'),
-                Spacer(),
-                Switch(value: true, onChanged: null),
-              ],
-            ),
-          ],
-        ),
+        backgroundColor: const Color(0xFF1A1F2B),
+        title: Text(universityName, style: const TextStyle(color: Colors.white)),
+        content: const _DialogContent(),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('CLOSE'),
+            child: const Text('CLOSE', style: TextStyle(color: Colors.grey)),
           ),
           ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(
-                context, '/uniordle',
-              );
-            },
-            child: const Text(
-              'PLAY',
-              style: TextStyle(
-                fontSize: 12,
-                fontFamily: 'dm-sans',
-                fontWeight: FontWeight.w500,
-              ),
-            ),
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+            onPressed: () => Navigator.pushNamed(context, '/uniordle'),
+            child: const Text('PLAY', style: TextStyle(color: Colors.white)),
           ),
         ],
       ),
+    );
+  }
+}
+class _DialogContent extends StatelessWidget {
+  const _DialogContent();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _buildToggleRow('Option 1', false),
+        _buildToggleRow('Option 2', true),
+      ],
+    );
+  }
+
+  Widget _buildToggleRow(String title, bool value) {
+    return Row(
+      children: [
+        Text(title, style: const TextStyle(color: Colors.white70)),
+        const Spacer(),
+        Switch(value: value, onChanged: (_) {}),
+      ],
     );
   }
 }
