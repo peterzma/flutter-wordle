@@ -10,17 +10,44 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final logoPaths = [
-      'assets/images/uq_logo.png',
-      'assets/images/uq_logo.png',
-      'assets/images/uq_logo.png',
-      'assets/images/uq_logo.png',
-      'assets/images/uq_logo.png',
-      'assets/images/uq_logo.png',
-      'assets/images/uq_logo.png',
-      'assets/images/uq_logo.png',
-      'assets/images/uq_logo.png',
-    ];
+    final logos = [
+      {
+        'path': 'assets/images/uq_logo.png',
+        'name': 'University of Adelaide',
+      },
+      {
+        'path': 'assets/images/uq_logo.png',
+        'name': 'Australian National University',
+      },
+      {
+        'path': 'assets/images/uq_logo.png',
+        'name': 'University of Melbourne',
+      },
+      {
+        'path': 'assets/images/uq_logo.png',
+        'name': 'Monash University',
+      },
+      {
+        'path': 'assets/images/uq_logo.png',
+        'name': 'UNSW Sydney',
+      },
+      {
+        'path': 'assets/images/uq_logo.png',
+        'name': 'University of Queensland',
+      },
+      {
+        'path': 'assets/images/uq_logo.png',
+        'name': 'University of Sydney',
+      },
+      {
+        'path': 'assets/images/uq_logo.png',
+        'name': 'Queensland University of Technology',
+      },
+      {
+        'path': 'assets/images/uq_logo.png',
+        'name': 'University of Tasmania',
+      },
+];
 
     return Scaffold(
       backgroundColor: homeScreenBackground,
@@ -39,57 +66,44 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: GestureDetector(
-          onTap: () => _showSettingsDialog(context),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              LayoutBuilder(
-                builder: (context, constraints) {
-                  final double maxWidth = constraints.maxWidth.clamp(400, 444);
-                  return SizedBox(
-                    width: maxWidth,
-                    child: GridView.count(
-                      shrinkWrap: true,
-                      crossAxisCount: 3,
-                      mainAxisSpacing: 16,
-                      crossAxisSpacing: 16,
-                      childAspectRatio: 0.75,
-                      children: logoPaths.map((path) => _buildLogo(path)).toList(),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final double maxWidth = constraints.maxWidth.clamp(400, 444);
+            return SizedBox(
+              width: maxWidth,
+              child: GridView.count(
+                shrinkWrap: true,
+                crossAxisCount: 3,
+                mainAxisSpacing: 16,
+                crossAxisSpacing: 16,
+                childAspectRatio: 0.75,
+                children: logos.map((logo) {
+                  return InkWell(
+                    borderRadius: BorderRadius.circular(46),
+                    onTap: () => _showSettingsDialog(
+                      context,
+                      logo['name'] as String,
+                    ),
+                    child: _buildLogo(
+                      logo['path'] as String,
+                      logo['name'] as String,
                     ),
                   );
-                }
+                }).toList(),
               ),
-              const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context, '/uniordle',
-                  );
-                },
-                child: const Text(
-                  'PLAY',
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontFamily: 'dm-sans',
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-            ],
-          ),
+            );
+          }
         ),
-      )
+      ),
     );
   }
 
-  Widget _buildLogo(String assetPath) {
+  Widget _buildLogo(String assetPath, String label) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        SizedBox(
-          height: 140,
-          width: 140,
+        AspectRatio(
+          aspectRatio: 1,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(46),
             child: Image.asset(
@@ -99,8 +113,8 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        const Text(
-          'University of Queensland',
+        Text(
+          label,
           textAlign: TextAlign.center,
           maxLines: 2,
           style: TextStyle(
@@ -114,11 +128,11 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  void _showSettingsDialog(BuildContext context) {
+  void _showSettingsDialog(BuildContext context, String university) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Settings'),
+        title: Text(university),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -141,7 +155,22 @@ class HomeScreen extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Close'),
+            child: const Text('CLOSE'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(
+                context, '/uniordle',
+              );
+            },
+            child: const Text(
+              'PLAY',
+              style: TextStyle(
+                fontSize: 12,
+                fontFamily: 'dm-sans',
+                fontWeight: FontWeight.w500,
+              ),
+            ),
           ),
         ],
       ),
