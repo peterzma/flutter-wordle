@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF0A0E17),
-      appBar: AppBar(
+      AppBar(
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -80,15 +80,34 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          IconButton(
-            icon: const Icon(
+          Icon(
               LucideIcons.settings,
               color: Colors.grey,
               size: 24,
-            ),
-            onPressed: () {}, // add functionality later
           ),
-        ],
+          Column(
+            children: [
+              const Text(
+                'Uniordle',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              Container(
+                height: 2,
+                width: 40,
+                margin: const EdgeInsets.only(top: 4), color: Colors.blue
+              ),
+            ]
+          ),
+          Icon(
+            LucideIcons.barChart3,
+            color: Colors.red,
+            size: 24,
+          ),
+        ]
       ),
     );
   }
@@ -152,12 +171,23 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 const SizedBox(height: 12),
-              ]
-            )
-          )
-        )
+                Text(
+                  logo['name']!,
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
       }
-    )
+    );
   }
 
   Widget _buildBottomNav() {
