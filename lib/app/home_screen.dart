@@ -31,13 +31,13 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF0A0E17),
+      backgroundColor: gameBackground,
       body: Stack(
         children: [
           Container(
             height: MediaQuery.of(context).size.height * 0.4,
             decoration: BoxDecoration(
-              color: Colors.red,
+              color: gameBackground,
             ),
           ),
           SafeArea(
@@ -91,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Icon(
             LucideIcons.barChart3,
-            color: Colors.red,
+            color: Colors.grey,
             size: 24,
           ),
         ]
@@ -100,9 +100,9 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildHeroSection() {
-    return Column(
+    return const Column(
       children: [
-        const Text(
+        Text(
           'Campuses',
           style: TextStyle(
             fontSize: 40,
@@ -111,8 +111,8 @@ class _HomeScreenState extends State<HomeScreen> {
             letterSpacing: -1,
           ),
         ),
-        const SizedBox(height: 12),
-        const Text(
+        SizedBox(height: 8),
+        Text(
           'Select a University to begin.',
           textAlign: TextAlign.center,
           style: TextStyle(
@@ -174,6 +174,89 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         );
       }
+    );
+  }
+
+  Widget _buildCampusCard(Map<String, String> logo) {
+    return GestureDetector(
+      onTap: () => _showSettingsDialog(context, logo['name']!),
+      child: ClipRRect(
+        borderRadius: BorderRadiusGeometry.circular(20),
+        child: Container(
+          decoration: BoxDecoration(
+            color: const Color(0xFF1A1F2B),
+            border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // fade on image
+              Expanded(
+                flex: 3,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    ShaderMask(
+                      shaderCallback: (rect) {
+                        return const LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [Colors.black, Colors.transparent],
+                        ).createShader(Rect.fromLTRB(0, 0, rect.width, rect.height));
+                      },
+                      blendMode: BlendMode.dstIn,
+                      child: Image.asset(
+                        logo['path'],
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        logo['name']!.split(' ').last,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.circle, 
+                            size: 8, 
+                            color: Colors.blue
+                          ),
+                          const SizedBox(width: 6),
+                          Text(
+                            'NEW CODE',
+                            style: TextStyle(
+                              color: Colors.blue.withValues(alpha: 0.8),
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 0.5,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
