@@ -52,6 +52,7 @@ class _GameSettingsScreenState extends State<GameSettingsScreen> {
                   WordLengthSelector(value: _wordLength, onChanged: (v) => setState(() => _wordLength = v)),
                   const SizedBox(height: 48),
                   DifficultySelector(value: _difficulty, onChanged: (v) => setState(() => _difficulty = v)),
+                  const Spacer(flex: 3),
                 ],
               ),
             ),
