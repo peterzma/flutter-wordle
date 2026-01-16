@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uniordle/app/app_colors.dart';
 import 'package:uniordle/home/views/home_screen.dart';
 import 'package:uniordle/uniordle/views/uniordle_screen.dart';
 
@@ -13,13 +14,13 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      /// Application title in OS task switcher
       title: 'Uniordle',
       debugShowCheckedModeBanner: true,
-      theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: Colors.black),
-      /// Initial home screen displayed
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: AppColors.homeScreenBackground,
+      ),
+
       initialRoute: '/',
-      /// Named routes for navication
       routes: {
         '/': (context) => const MaxWidthLayout(
           child: HomeScreen(),
