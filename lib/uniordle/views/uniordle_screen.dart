@@ -76,19 +76,25 @@ void didChangeDependencies() {
         children: [
           Expanded(
             child: Center(
-              child: Board(
-                board: _controller.board, 
-                flipCardKeys: _controller.flipCardKeys
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 24.0),
+                child: Board(
+                  board: _controller.board, 
+                  flipCardKeys: _controller.flipCardKeys
+                ),
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 20),
-            child: Keyboard(
-              onKeyTapped: _controller.addLetter,
-              onDeleteTapped: _controller.removeLetter,
-              onEnterTapped: _controller.submitWord,
-              letters: _controller.keyboardLetters,
+          SafeArea(
+            top: false,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: Keyboard(
+                onKeyTapped: _controller.addLetter,
+                onDeleteTapped: _controller.removeLetter,
+                onEnterTapped: _controller.submitWord,
+                letters: _controller.keyboardLetters,
+              ),
             ),
           ),
         ],
