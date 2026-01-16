@@ -22,44 +22,23 @@ class KeyboardButton extends StatelessWidget {
     final String? letter;
     final Widget? child;
 
-    /// Creates a delete key with icon and wider size
-    factory KeyboardButton.delete({ 
-      required VoidCallback onTap 
-    }) =>
+  factory KeyboardButton.delete({required VoidCallback onTap}) =>
       KeyboardButton(
         width: KeyBoardConstants.specialKeyWidth,
         onTap: onTap,
         backgroundColor: KeyBoardConstants.keyBackground,
-        child: Transform.translate(
-          offset: const Offset(0, -2),
-          child: const Icon(
-            Icons.backspace, 
-            color: Colors.white, 
-            size: 22,
-          ),
-        ),
+        child: const Icon(Icons.backspace, color: Colors.white, size: 22),
       );
 
-    /// Creates an enter key with text label and wider size
-    factory KeyboardButton.enter({ 
-      required VoidCallback onTap,
-    }) =>
+  factory KeyboardButton.enter({required VoidCallback onTap}) =>
       KeyboardButton(
         width: KeyBoardConstants.specialKeyWidth,
         onTap: onTap,
         backgroundColor: KeyBoardConstants.keyBackground,
         letter: 'ENTER',
-        child: Transform.translate(
-          offset: const Offset(0, -3),
-          child: const Text(
-            'ENTER',
-            style: TextStyle(
-              // smaller text for enter
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          ),
+        child: const Text(
+          'ENTER',
+          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white),
         ),
       );
 
