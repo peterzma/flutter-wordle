@@ -8,11 +8,13 @@ class UniordleController extends ChangeNotifier {
 
   final int wordLength;
   final int maxAttempts;
+  final String disciplineId;
   final Function(bool won) onGameEnd;
 
   UniordleController({
     required this.wordLength,
     required this.maxAttempts,
+    required this.disciplineId,
     required this.onGameEnd,
   }) {
     _initGame();
@@ -29,8 +31,12 @@ class UniordleController extends ChangeNotifier {
     board = List.generate(maxAttempts, (_) => Word(letters: List.generate(wordLength, (_) => Letter.empty())));
     flipCardKeys = List.generate(maxAttempts, (_) => List.generate(wordLength, (_) => GlobalKey<FlipCardState>()));
     
-    final library = wordLength == 5 ? fiveLetterWords : fiveLetterWords; 
-    solution = Word.fromString(library[Random().nextInt(library.length)].toUpperCase());
+    final disciplineLibrary = categorizedWords[disciplineId.toLowerCase()] ?? categorizedWords['engineering']!;
+    final library = disciplineLibrary[wordLength] ?? disciplineLibrary[5]!;
+
+    solution = Word.fromString(
+      library[Random().nextInt(library.length)].toUpperCase(),
+    );
   }
 
   Word? get currentWord => currentWordIndex < board.length ? board[currentWordIndex] : null;

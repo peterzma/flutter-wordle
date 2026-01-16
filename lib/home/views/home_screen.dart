@@ -21,10 +21,10 @@ class _HomeScreenState extends State<HomeScreen> {
   String _activeTab = 'home';
 
     final List<Discipline> disciplines = [
-    Discipline(id: '1', name: 'Engineering', icon: 'category', color: Colors.blue),
-    Discipline(id: '2', name: 'CS', icon: 'history', color: Colors.red),
-    Discipline(id: '3', name: 'Medicine', icon: 'account_circle', tag: 'DONE'),
-    Discipline(id: '4', name: 'Law', icon: 'category', count: 12),
+    Discipline(id: 'engineering', name: 'Engineering', icon: 'category', color: Colors.blue),
+    Discipline(id: 'cs', name: 'CS', icon: 'history', color: Colors.red),
+    Discipline(id: 'medicine', name: 'Medicine', icon: 'account_circle', tag: 'DONE'),
+    Discipline(id: 'law', name: 'Law', icon: 'category', count: 12),
   ];
 
 void _onSubjectTap(Discipline sub) {

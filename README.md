@@ -2,15 +2,11 @@
 
 ## Overview
 
-Uniordle is a Wordle-style word puzzle game built with Flutter and Dart. You guess a hidden word within a limited number of attempts, using colour feedback to guide each guess. Words are based on University Course Codes.
+Uniordle is a Wordle-style word puzzle game built with Flutter and Dart. Choose a category of words from the home menu and pick your settings.
 
 ## Features
 
-* Wordle-style word guessing gameplay
-* On-screen keyboard with colour feedback
-* Limited guesses per round
-* Valid word checking
-* Clean, minimal UI
+* WIP
 
 ## Getting Started
 
@@ -91,8 +87,11 @@ Latest release:
 
 ## TODO
 
-* Add a larger word list for random selection
-* Improve UI for game over, restart, and win states
-* Add full physical keyboard input support
-* Add custom game modes
-* Add different Universities.
+* Add more categories,
+* Add words with needed letters
+* Add settings (theming)
+* Subtexts for each category should be the number of unique words to play with
+* Colour and pick icons for categories
+* Make subtexts and highlight be same colour as category
+* Change transition between screens
+* Add dialog when clicking help icon

@@ -1,6 +1,7 @@
 import 'package:uniordle/app/app_colors.dart';
 import 'package:uniordle/uniordle/uniordle.dart';
 import 'package:uniordle/uniordle/views/end_dialog.dart';
+import 'package:uniordle/home/models/discipline.dart';
 
 class UniordleScreen extends StatefulWidget {
   const UniordleScreen({
@@ -18,18 +19,21 @@ late UniordleController _controller;
 @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    if (!_isInitialized) {
-      final args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
-      
-      _controller = UniordleController(
-        wordLength: args?['wordLength'] ?? 5,
-        maxAttempts: 6,
-        onGameEnd: (won) => _showEndDialog(won),
-      );
+  if (!_isInitialized) {
+    final args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
+    
+    final discipline = args?['discipline'] as Discipline?;
+    
+    _controller = UniordleController(
+      wordLength: args?['wordLength'] ?? 5,
+      maxAttempts: 6,
+      disciplineId: discipline?.id ?? 'engineering',
+      onGameEnd: (won) => _showEndDialog(won),
+    );
 
-      _controller.addListener(() => setState(() {}));
-      _isInitialized = true;
-    }
+    _controller.addListener(() => setState(() {}));
+    _isInitialized = true;
+  }
   }
 
   void _showEndDialog(bool won) {
