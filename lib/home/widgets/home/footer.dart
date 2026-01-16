@@ -30,7 +30,7 @@ class HomeFooter extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _navItem('stats', 'Stats', LucideIcons.history),
-              _navItem('fields', 'Fields', LucideIcons.layoutGrid),
+              _navItem('home', 'home', LucideIcons.layoutGrid),
               _navItem('profile', 'Profile', LucideIcons.user),
             ],
           ),

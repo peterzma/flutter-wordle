@@ -8,7 +8,7 @@ class HeroSection extends StatelessWidget {
     return const Column(
       children: [
         Text(
-          'Select Discipline',
+          'Select a Discipline',
           style: TextStyle(
             fontSize: 40,
             fontWeight: FontWeight.w900,

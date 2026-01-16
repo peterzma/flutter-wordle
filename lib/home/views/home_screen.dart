@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:uniordle/app/app_colors.dart';
-import 'package:uniordle/home/widgets/footer.dart';
-import 'package:uniordle/home/widgets/header.dart';
-import 'package:uniordle/home/widgets/hero_section.dart';
+import 'package:uniordle/home/widgets/home/footer.dart';
+import 'package:uniordle/home/widgets/home/header.dart';
+import 'package:uniordle/home/widgets/home/hero_section.dart';
 import 'package:uniordle/home/widgets/disciplines/discipline.dart';
 import 'package:uniordle/home/models/subject.dart';
 
@@ -17,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String _activeTab = 'fields';
+  String _activeTab = 'home';
 
     final List<Subject> subjects = [
     Subject(id: '1', name: 'Engineering', icon: 'category', color: Colors.blue),
