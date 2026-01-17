@@ -46,7 +46,7 @@ class PlayButton extends StatelessWidget {
               : Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.play_arrow_rounded, size: 32, color: AppColors.mainBackground),
+                    Icon(Icons.play_arrow_rounded, size: 32, color: Colors.white),
                     SizedBox(width: 8),
                     Text(
                       'PLAY GAME',

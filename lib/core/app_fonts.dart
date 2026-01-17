@@ -70,7 +70,7 @@ class GameSetUpFonts {
 
   static TextStyle gameSettingsText(Color color) => AppTextStyles.smallLabel.copyWith(color: color, fontWeight: FontWeight.bold, letterSpacing: 2);
 
-  static TextStyle get playGameText => AppTextStyles.buttonText.copyWith(color: AppColors.mainBackground, fontSize: 18, fontWeight: FontWeight.w900, letterSpacing: 1.1);
+  static TextStyle get playGameText => AppTextStyles.buttonText.copyWith(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w900, letterSpacing: 1.1);
 
   static TextStyle get wordLengthText => AppTextStyles.gameTitle.copyWith(fontSize: 20, letterSpacing: 1.2);
 
