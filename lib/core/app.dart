@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:uniordle/core/app_colors.dart';
 import 'package:uniordle/features/home/views/home_screen.dart';
 import 'package:uniordle/features/game/views/game_screen.dart';
+import 'package:uniordle/core/app_fonts.dart';
 
 /// Root widget of Uniordle
 /// 
@@ -17,7 +18,16 @@ class App extends StatelessWidget {
       title: 'Uniordle',
       debugShowCheckedModeBanner: true,
       theme: ThemeData(
+        brightness: Brightness.dark,
+        fontFamily: AppTextStyles.uiFont, // Move it here
+      ).copyWith(
         scaffoldBackgroundColor: AppColors.mainBackground,
+        textTheme: TextTheme(
+          displayLarge: AppTextStyles.tileNumber,
+          headlineMedium: AppTextStyles.gameTitle,
+          labelLarge: AppTextStyles.buttonText,
+          labelSmall: AppTextStyles.smallLabel,
+        ),
       ),
 
       builder: (context, child) {
@@ -49,3 +59,4 @@ class ResponsiveWrapper extends StatelessWidget {
       ),
     );
   }
+}
