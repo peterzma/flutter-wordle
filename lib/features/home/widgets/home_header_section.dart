@@ -25,7 +25,7 @@ class HomeHeader extends StatelessWidget {
               // open settings
             },
           ),
-          const Text(
+          Text(
             'Uniordle',
             style: HomeFonts.titleText,
           ),

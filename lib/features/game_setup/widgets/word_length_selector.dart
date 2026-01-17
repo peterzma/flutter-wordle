@@ -50,7 +50,7 @@ class WordLengthSelector extends StatelessWidget {
                             style: GameSetUpFonts.numberOfLettersText,
                           ),
                           const SizedBox(height: 2),
-                          const Text(
+                          Text(
                             'LETTERS',
                             style: GameSetUpFonts.lettersText,
                           ),
