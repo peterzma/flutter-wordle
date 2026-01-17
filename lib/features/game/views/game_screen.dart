@@ -16,7 +16,7 @@ class _UniordleScreenState extends State<UniordleScreen> {
 late UniordleController _controller;
   bool _isInitialized = false;
 
-  final String _disciplineName = '';
+  String _disciplineName = '';
   String _yearLevel = '';
   int _wordLength = 5;
 
@@ -30,6 +30,7 @@ void didChangeDependencies() {
     final dynamic rawDifficulty = args?['difficulty'] ?? 1; // 1 is default difficulty
     final int difficulty = rawDifficulty is double ? rawDifficulty.round() : rawDifficulty as int;
     _wordLength = args?['wordLength'] ?? 5;
+    _disciplineName = discipline?.name ?? 'Engineering';
 
     int attempts;
     switch (difficulty) {

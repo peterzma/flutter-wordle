@@ -19,7 +19,7 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: true,
       theme: ThemeData(
         brightness: Brightness.dark,
-        fontFamily: AppTextStyles.uiFont, // Move it here
+        fontFamily: AppTextStyles.uiFont,
       ).copyWith(
         scaffoldBackgroundColor: AppColors.mainBackground,
         textTheme: TextTheme(
