@@ -51,22 +51,27 @@ class _PumpButtonWrapperState extends State<PumpButtonWrapper> {
       );
     }
 
-    return GestureDetector(
-      onTap: widget.onTap,
-      onTapDown: (_) => _updateState(widget.pressScale, true),
-      onTapUp: (_) => _updateState(1.0, false),
-      onTapCancel: () => _updateState(1.0, false),
-      child: AnimatedScale(
-        scale: _scale,
-        duration: pumpDuration,
-        curve: Curves.easeOut,
-        child: AnimatedContainer(
-          duration: darkenDuration,
-          decoration: BoxDecoration(
-            color: backgroundColor,
-            borderRadius: widget.borderRadius ?? BorderRadius.circular(4),
+    return MouseRegion(
+      cursor: widget.onTap != null 
+        ? SystemMouseCursors.click 
+        : SystemMouseCursors.basic,
+      child: GestureDetector(
+        onTap: widget.onTap,
+        onTapDown: (_) => _updateState(widget.pressScale, true),
+        onTapUp: (_) => _updateState(1.0, false),
+        onTapCancel: () => _updateState(1.0, false),
+        child: AnimatedScale(
+          scale: _scale,
+          duration: pumpDuration,
+          curve: Curves.easeOut,
+          child: AnimatedContainer(
+            duration: darkenDuration,
+            decoration: BoxDecoration(
+              color: backgroundColor,
+              borderRadius: widget.borderRadius ?? BorderRadius.circular(4),
+            ),
+            child: widget.child,
           ),
-          child: widget.child,
         ),
       ),
     );
