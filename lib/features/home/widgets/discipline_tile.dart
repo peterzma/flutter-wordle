@@ -1,17 +1,17 @@
 import 'package:uniordle/shared/home_screen_exports.dart';
 import 'package:uniordle/shared/widgets/pump_button_wrapper.dart';
 
-class SubjectTile extends StatefulWidget {
+class DisciplineTile extends StatefulWidget {
   final Discipline discipline;
   final VoidCallback onTap;
 
-  const SubjectTile({super.key, required this.discipline, required this.onTap});
+  const DisciplineTile({super.key, required this.discipline, required this.onTap});
 
   @override
-  State<SubjectTile> createState() => _SubjectTileState();
+  State<DisciplineTile> createState() => _DisciplineTileState();
 }
 
-class _SubjectTileState extends State<SubjectTile> {
+class _DisciplineTileState extends State<DisciplineTile> {
   bool _hovering = false;
 
   @override

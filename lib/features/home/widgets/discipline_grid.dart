@@ -15,13 +15,13 @@ class DisciplineGrid extends StatelessWidget {
       itemCount: disciplines.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        mainAxisSpacing: 12,
+        mainAxisSpacing: 24,
         crossAxisSpacing: 12,
         childAspectRatio: 3.5,
       ),
       itemBuilder: (context, index) {
         final sub = disciplines[index];
-        return SubjectTile(discipline: sub, onTap: () => onSubjectTap(sub));
+        return DisciplineTile(discipline: sub, onTap: () => onSubjectTap(sub));
       },
     );
   }

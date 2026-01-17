@@ -14,14 +14,13 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   String _activeTab = 'home';
 
-  // Updated list to satisfy the required tag and color fields
   final List<Discipline> disciplines = [
     Discipline(
       id: 'engineering', 
       name: 'Engineering', 
       icon: 'category', 
       tag: 'NEW',
-      color: Colors.black,
+      color: Colors.blue,
     ),
     Discipline(
       id: 'cs', 
