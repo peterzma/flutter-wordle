@@ -9,22 +9,13 @@ class HeroSection extends StatelessWidget {
       children: [
         Text(
           'Select a Discipline',
-          style: TextStyle(
-            fontSize: 40,
-            fontWeight: FontWeight.w900,
-            color: Colors.white,
-            letterSpacing: -1,
-          ),
+          style: HomeFonts.mainHeroText,
         ),
         SizedBox(height: 8),
         Text(
           'Master your academic vocabulary.',
           textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Colors.blueGrey,
-            fontSize: 14,
-            height: 1.5,
-          ),
+          style: HomeFonts.subHeroText,
         ),
       ],
     );

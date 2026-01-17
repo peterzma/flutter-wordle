@@ -56,12 +56,7 @@ class HomeFooter extends StatelessWidget {
           const SizedBox(height: 4),
           Text(
             label.toUpperCase(),
-            style: TextStyle(
-              fontSize: 9,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 1.4,
-              color: color,
-            )
+            style: HomeFonts.iconText(color),
           )
         ]
       )

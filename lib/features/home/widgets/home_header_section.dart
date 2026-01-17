@@ -24,12 +24,7 @@ class HomeHeader extends StatelessWidget {
           ),
           const Text(
             'Uniordle',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-              letterSpacing: -0.5,
-            ),
+            style: HomeFonts.titleText,
           ),
           _headerIcon(
             icon: LucideIcons.helpCircle,

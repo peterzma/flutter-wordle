@@ -89,4 +89,36 @@ class HomeFonts {
     color: Colors.white,
     fontWeight: FontWeight.w600,
   );
+  static TextStyle tagText(Color color) => TextStyle(
+    fontSize: 9,
+    fontWeight: FontWeight.bold,
+    color: color,
+  );
+
+  static TextStyle iconText(Color color) => TextStyle(
+    fontSize: 9,
+    fontWeight: FontWeight.bold,
+    letterSpacing: 1.4,
+    color: color,
+  );
+
+  static const TextStyle titleText = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.bold,
+    color: Colors.white,
+    letterSpacing: -0.5,
+  );
+
+  static const mainHeroText = TextStyle(
+    fontSize: 40,
+    fontWeight: FontWeight.w900,
+    color: Colors.white,
+    letterSpacing: -1,
+  );
+
+  static const subHeroText = TextStyle(
+    color: Colors.blueGrey,
+    fontSize: 14,
+    height: 1.5,
+  );
 }

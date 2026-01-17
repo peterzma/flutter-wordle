@@ -62,11 +62,7 @@ class _DisciplineTileState extends State<DisciplineTile> {
                         const SizedBox(width: 4),
                         Text(
                           sub.tag,
-                          style: TextStyle(
-                            fontSize: 9,
-                            fontWeight: FontWeight.bold,
-                            color: sub.color,
-                          ),
+                          style: HomeFonts.tagText(sub.color),
                         ),
                       ],
                     ),
