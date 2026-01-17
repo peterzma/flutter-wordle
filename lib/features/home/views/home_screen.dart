@@ -142,13 +142,13 @@ final List<Discipline> disciplines = [
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 sliver: SliverList(
                   delegate: SliverChildListDelegate([
-                    const SizedBox(height: 24),
+                    const SizedBox(height: 12),
                     const HeroSection(),
                     const SizedBox(height: 36),
-                    DisciplineGrid(
-                      disciplines: disciplines, 
-                      onSubjectTap: _onDisciplineTap,
-                    ),
+                      DisciplineGrid(
+                        disciplines: disciplines, 
+                        onSubjectTap: _onDisciplineTap,
+                      ),
                   ]),
                 ),
               ),

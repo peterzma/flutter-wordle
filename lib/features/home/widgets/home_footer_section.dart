@@ -1,4 +1,5 @@
 import 'package:uniordle/shared/home_screen_exports.dart';
+import 'package:uniordle/shared/widgets/app_nav_item.dart';
 import 'package:uniordle/shared/widgets/base_footer.dart';
 
 
@@ -24,38 +25,27 @@ class HomeFooter extends StatelessWidget implements PreferredSizeWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _navItem('stats', 'Stats', LucideIcons.history),
-              _navItem('home', 'home', LucideIcons.layoutGrid),
-              _navItem('profile', 'Profile', LucideIcons.user),
-          ],
+              AppNavItem(
+                icon: LucideIcons.history,
+                label: 'Stats',
+                isActive: activeTab == 'stats',
+                onTap: () => onTabChange('stats'),
+              ),
+              AppNavItem(
+                icon: LucideIcons.layoutGrid,
+                label: 'Home',
+                isActive: activeTab == 'home',
+                onTap: () => onTabChange('home'),
+              ),
+              AppNavItem(
+                icon: LucideIcons.user,
+                label: 'Profile',
+                isActive: activeTab == 'profile',
+                onTap: () => onTabChange('profile'),
+              ),
+            ],
         ),
       ),
-    );
-  }
-
-  Widget _navItem(String id, String label, IconData icon) {
-    final bool isActive = activeTab == id;
-    final Color color = isActive ? AppColors.selectedIcon : AppColors.nonSelectedIcon;
-
-    return InkWell(
-      borderRadius: BorderRadius.circular(16),
-      onTap: () => onTabChange(id),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            icon,
-            size: 24,
-            color: color,
-          ),
-          const SizedBox(height: 4),
-          Text(
-            label.toUpperCase(),
-            style: HomeFonts.iconText(color),
-          )
-        ]
-      )
     );
   }
 }

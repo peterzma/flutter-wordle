@@ -1,4 +1,5 @@
-import 'package:uniordle/shared/home_screen_exports.dart'; // Adjust based on where your styles are
+import 'package:uniordle/shared/home_screen_exports.dart';
+import 'package:uniordle/shared/widgets/app_nav_item.dart'; // Adjust based on where your styles are
 
 class BaseHeader extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -46,7 +47,7 @@ class BaseHeader extends StatelessWidget implements PreferredSizeWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              _headerIcon(
+              AppNavItem(
                 icon: leftIcon,
                 onTap: onLeftTap,
               ),
@@ -55,30 +56,10 @@ class BaseHeader extends StatelessWidget implements PreferredSizeWidget {
                 style: HomeFonts.titleText,
               ),
               rightIcon != null
-                  ? _headerIcon(
-                      icon: rightIcon!,
-                      onTap: onRightTap ?? () {},
-                    )
+                  ? AppNavItem(icon: rightIcon!, onTap: onRightTap ?? () {})
                   : const SizedBox(width: 40),
             ],
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _headerIcon({required IconData icon, required VoidCallback onTap}) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(20),
-      onTap: onTap,
-      child: Container(
-        width: 40,
-        height: 40,
-        alignment: Alignment.center,
-        child: Icon(
-          icon,
-          size: 24,
-          color: AppColors.nonSelectedIcon,
         ),
       ),
     );

@@ -8,21 +8,23 @@ class DisciplineGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      padding: const EdgeInsets.only(bottom: 24),
-      itemCount: disciplines.length,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        mainAxisSpacing: 24,
-        crossAxisSpacing: 12,
-        childAspectRatio: 3.5,
+    final screenHeight = MediaQuery.of(context).size.height;
+    return Center(
+      child: GridView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: disciplines.length,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          mainAxisSpacing: 24,
+          crossAxisSpacing: 12,
+          childAspectRatio: 3.5,
+        ),
+        itemBuilder: (context, index) {
+          final sub = disciplines[index];
+          return DisciplineTile(discipline: sub, onTap: () => onSubjectTap(sub));
+        },
       ),
-      itemBuilder: (context, index) {
-        final sub = disciplines[index];
-        return DisciplineTile(discipline: sub, onTap: () => onSubjectTap(sub));
-      },
     );
   }
 }
