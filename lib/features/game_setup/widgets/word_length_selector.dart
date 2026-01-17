@@ -1,13 +1,16 @@
+import 'package:uniordle/features/home/models/discipline.dart';
 import 'package:uniordle/shared/game_setup_exports.dart';
 
 class WordLengthSelector extends StatelessWidget {
   final int value;
   final ValueChanged<int> onChanged;
+  final Discipline discipline;
 
   const WordLengthSelector({
     super.key, 
     required this.value, 
-    required this.onChanged
+    required this.onChanged,
+    required this.discipline,
   });
 
   @override
@@ -35,10 +38,10 @@ class WordLengthSelector extends StatelessWidget {
                       duration: const Duration(milliseconds: 200),
                       curve: Curves.easeInOut,
                       decoration: BoxDecoration(
-                        color: active ? AppColors.selectedButton : AppColors.nonSelectedButton,
+                        color: active ? discipline.color : AppColors.nonSelectedButton,
                         borderRadius: BorderRadius.circular(36),
                         border: Border.all(
-                          color: active ? AppColors.selectedButton : AppColors.nonSelectedButtonBorder,
+                          color: active ? discipline.color : AppColors.nonSelectedButtonBorder,
                           width: 1,
                         ),
                       ),

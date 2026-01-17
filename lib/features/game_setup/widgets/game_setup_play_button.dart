@@ -1,14 +1,17 @@
+import 'package:uniordle/features/home/models/discipline.dart';
 import 'package:uniordle/shared/game_setup_exports.dart';
 import 'package:uniordle/shared/widgets/select_button_wrapper.dart';
 
 class PlayButton extends StatelessWidget {
   final bool isLoading;
   final VoidCallback onPressed;
+  final Discipline discipline;
 
   const PlayButton({
     super.key, 
     required this.isLoading, 
-    required this.onPressed
+    required this.onPressed,
+    required this.discipline,
   });
 
   @override
@@ -20,7 +23,7 @@ class PlayButton extends StatelessWidget {
         width: double.infinity,
         height: 64,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: discipline.color,
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(

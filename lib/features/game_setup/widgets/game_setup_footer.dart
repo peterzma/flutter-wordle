@@ -1,15 +1,18 @@
+import 'package:uniordle/features/home/models/discipline.dart';
 import 'package:uniordle/shared/game_setup_exports.dart';
 
 class SettingsFooter extends StatelessWidget {
   final bool isLoading;
   final VoidCallback onPlay;
   final VoidCallback onClose;
+  final Discipline discipline;
 
   const SettingsFooter({
     super.key,
     required this.isLoading,
     required this.onPlay,
     required this.onClose,
+    required this.discipline,
   });
 
   @override
@@ -25,7 +28,7 @@ class SettingsFooter extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          PlayButton(isLoading: isLoading, onPressed: onPlay),
+          PlayButton(isLoading: isLoading, onPressed: onPlay, discipline: discipline),
           const SizedBox(height: 8),
           SettingsCloseButton(onPressed: onClose),
         ],

@@ -57,11 +57,13 @@ class _GameSettingsScreenState extends State<GameSettingsScreen> {
                     WordLengthSelector(
                       value: _wordLength, 
                       onChanged: (v) => setState(() => _wordLength = v),
+                      discipline: widget.discipline,
                     ),
                     const SizedBox(height: 48),
                     DifficultySelector(
                       value: _difficulty, 
                       onChanged: (v) => setState(() => _difficulty = v),
+                      discipline: widget.discipline,
                     ),
                     const Spacer(flex: 3),
                   ],
@@ -71,6 +73,7 @@ class _GameSettingsScreenState extends State<GameSettingsScreen> {
                 isLoading: _isLoading, 
                 onPlay: _play, 
                 onClose: () => Navigator.pop(context),
+                discipline: widget.discipline,
               ),
             ],
           ),

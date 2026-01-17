@@ -52,7 +52,7 @@ class GameFonts {
 class GameSetUpFonts {
   static TextStyle get yearLevelText => AppTextStyles.gameTitle.copyWith(fontSize: 20, letterSpacing: 1.2);
   
-  static TextStyle get attemptsAllowedText => AppTextStyles.smallLabel.copyWith(color: Colors.blue, fontWeight: FontWeight.bold, letterSpacing: 1.5);
+  static TextStyle attemptsAllowedText(Color color) => AppTextStyles.smallLabel.copyWith(color: color, fontWeight: FontWeight.bold, letterSpacing: 1.5);
 
   static TextStyle get yearLabelBase => AppTextStyles.smallLabel.copyWith(fontWeight: FontWeight.normal, color: Colors.white54);
 
@@ -60,17 +60,17 @@ class GameSetUpFonts {
 
   static TextStyle get attemptsInactiveText => AppTextStyles.smallLabel.copyWith(fontWeight: FontWeight.normal, color: Colors.white54);
 
-  static TextStyle get attemptsActiveText => AppTextStyles.smallLabel.copyWith(fontWeight: FontWeight.bold, color: Colors.blue);
+  static TextStyle attemptsActiveText(Color color) => AppTextStyles.smallLabel.copyWith(fontWeight: FontWeight.bold, color: color);
 
   static const IconData attemptsIcon = Icons.favorite;
 
   static TextStyle get closeButtonText => AppTextStyles.buttonText.copyWith(color: Colors.blueGrey);
 
-  static TextStyle get gameSettingsText => AppTextStyles.smallLabel.copyWith(color: Colors.blue, fontWeight: FontWeight.bold, letterSpacing: 2);
+  static TextStyle gameSettingsText(Color color) => AppTextStyles.smallLabel.copyWith(color: color, fontWeight: FontWeight.bold, letterSpacing: 2);
 
   static TextStyle get playGameText => AppTextStyles.buttonText.copyWith(color: AppColors.mainBackground, fontSize: 18, fontWeight: FontWeight.w900, letterSpacing: 1.1);
 
-  static TextStyle get wordLengthText => AppTextStyles.smallLabel.copyWith(color: Colors.blueGrey, fontWeight: FontWeight.bold);
+  static TextStyle get wordLengthText => AppTextStyles.gameTitle.copyWith(fontSize: 20, letterSpacing: 1.2);
 
   static TextStyle get numberOfLettersText => AppTextStyles.tileNumber;
 

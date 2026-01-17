@@ -31,7 +31,6 @@ class AppColors {
 
   // Slider & Controls
   static const Color sliderThumb = Colors.white;
-  static const Color sliderActiveTrack = Colors.white24;
   static const Color sliderInactiveTrack = Colors.white24;
   static const Color sliderActiveTickMark = Colors.white54;
   static const Color sliderInactiveTickMark = Colors.white54;

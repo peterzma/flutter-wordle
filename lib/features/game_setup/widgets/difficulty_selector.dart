@@ -1,3 +1,4 @@
+import 'package:uniordle/features/home/models/discipline.dart';
 import 'package:uniordle/shared/game_setup_exports.dart';
 
 const _labels = {
@@ -10,11 +11,13 @@ const _labels = {
 class DifficultySelector extends StatelessWidget {
   final int value;
   final ValueChanged<int> onChanged;
+  final Discipline discipline;
 
   const DifficultySelector({
     super.key, 
     required this.value, 
-    required this.onChanged
+    required this.onChanged,
+    required this.discipline,
   });
 
   @override
@@ -32,12 +35,12 @@ class DifficultySelector extends StatelessWidget {
             Icon(
               GameSetUpFonts.attemptsIcon,
               size: 12,
-              color: AppColors.selectedIcon,
+              color: discipline.color,
             ),
             const SizedBox(width: 8),
             Text(
               'ATTEMPTS ALLOWED',
-              style: GameSetUpFonts.attemptsAllowedText,
+              style: GameSetUpFonts.attemptsAllowedText(discipline.color),
             ),
           ],
         ),
@@ -45,14 +48,13 @@ class DifficultySelector extends StatelessWidget {
         SliderTheme(
           data: SliderTheme.of(context).copyWith(
             trackHeight: 4,
-            activeTrackColor: Colors.white24,
+            activeTrackColor: discipline.color,
             inactiveTrackColor: Colors.white24,
-            thumbColor: AppColors.sliderActiveTrack,
-            overlayColor: AppColors.sliderInactiveTrack.withValues(alpha: 0.1),
+            thumbColor: discipline.color,
+            overlayColor: Colors.transparent,
             tickMarkShape: const RoundSliderTickMarkShape(tickMarkRadius: 3),
-            activeTickMarkColor: AppColors.sliderActiveTickMark,
+            activeTickMarkColor: discipline.color,
             inactiveTickMarkColor: AppColors.sliderInactiveTickMark,
-            thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 10),
           ),
           child: Slider(
             value: value.toDouble(),
@@ -83,7 +85,7 @@ class DifficultySelector extends StatelessWidget {
                       Text(
                         e.value.$2,
                         style: active
-                            ? GameSetUpFonts.attemptsActiveText
+                            ? GameSetUpFonts.attemptsActiveText(discipline.color)
                             : GameSetUpFonts.attemptsInactiveText,
                       ),
                       const SizedBox(width: 2),
@@ -91,7 +93,7 @@ class DifficultySelector extends StatelessWidget {
                         GameSetUpFonts.attemptsIcon,
                         size: 12,
                         color: active
-                            ? AppColors.selectedIcon
+                            ? discipline.color
                             : AppColors.nonSelectedIcon,
                       )
                     ],

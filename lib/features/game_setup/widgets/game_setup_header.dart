@@ -35,7 +35,7 @@ class SettingsHeader extends StatelessWidget {
         const SizedBox(height: 8),
         Text(
           'GAME SETTINGS',
-          style: GameSetUpFonts.gameSettingsText,
+          style: GameSetUpFonts.gameSettingsText(discipline.color),
         ),
       ],
     );
