@@ -87,12 +87,8 @@ Latest release:
 
 ## TODO
 
-* Add more categories,
-* Add words with needed letters
+* Make categories more university related
 * Add settings (theming)
 * Subtexts for each category should be the number of unique words to play with
-* Colour and pick icons for categories
-* Make subtexts and highlight be same colour as category
 * Change transition between screens
 * Add dialog when clicking help icon
-* Organise imports

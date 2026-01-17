@@ -22,7 +22,7 @@ class _GameSettingsScreenState extends State<GameSettingsScreen> {
   void _play() async {
     setState(() => _isLoading = true);
 
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(milliseconds: 300));
 
     if (!mounted) return;
     setState(() => _isLoading = false);
