@@ -6,6 +6,7 @@ class BaseHeader extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback onLeftTap;
   final IconData? rightIcon;
   final VoidCallback? onRightTap;
+  final double height;
 
   const BaseHeader({
     super.key,
@@ -14,15 +15,18 @@ class BaseHeader extends StatelessWidget implements PreferredSizeWidget {
     required this.onLeftTap,
     this.rightIcon,
     this.onRightTap,
+    this.height = 72,
   });
 
   @override
-  Size get preferredSize => const Size.fromHeight(72);
+  Size get preferredSize => Size.fromHeight(height);
 
   @override
   Widget build(BuildContext context) {
+    final double topPadding = MediaQuery.of(context).padding.top;
+
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 16),
+      height: preferredSize.height + topPadding,
       decoration: BoxDecoration(
         color: AppColors.mainBackground.withValues(alpha: 0.8),
         border: const Border(
@@ -34,10 +38,12 @@ class BaseHeader extends StatelessWidget implements PreferredSizeWidget {
       ),
       child: SafeArea(
         bottom: false,
-        child: Padding(
+        child: Container(
+          height: height, 
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               _headerIcon(
                 icon: leftIcon,

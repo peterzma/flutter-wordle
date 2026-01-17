@@ -1,4 +1,5 @@
 import 'package:uniordle/shared/home_screen_exports.dart';
+import 'package:uniordle/shared/widgets/base_footer.dart';
 
 
 class HomeFooter extends StatelessWidget implements PreferredSizeWidget {
@@ -12,20 +13,12 @@ class HomeFooter extends StatelessWidget implements PreferredSizeWidget {
   });
 
   @override
-  Size get preferredSize => const Size.fromHeight(88);
+  Size get preferredSize => const Size.fromHeight(72);
 
   @override
   Widget build (BuildContext context) {
-    return Container(
-      height: preferredSize.height + MediaQuery.of(context).padding.bottom,
-      decoration: BoxDecoration(
-        color: AppColors.mainBackground.withValues(alpha: 0.95),
-        border: const Border(
-          top: BorderSide(color: Colors.white10)
-        ),
-      ),
-      child: SafeArea(
-        top: false,
+    return BaseFooter(
+        height: preferredSize.height,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32),
           child: Row(
@@ -34,13 +27,11 @@ class HomeFooter extends StatelessWidget implements PreferredSizeWidget {
               _navItem('stats', 'Stats', LucideIcons.history),
               _navItem('home', 'home', LucideIcons.layoutGrid),
               _navItem('profile', 'Profile', LucideIcons.user),
-            ],
-          ),
+          ],
         ),
       ),
     );
   }
-
 
   Widget _navItem(String id, String label, IconData icon) {
     final bool isActive = activeTab == id;

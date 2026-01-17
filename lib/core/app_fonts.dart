@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:uniordle/shared/game_setup_exports.dart';
 
 class AppTextStyles {
   static const String displayFont = 'Lexend';
@@ -43,42 +43,40 @@ class AppTextStyles {
       );
 }
 
-class GameFonts {
-  static TextStyle get titleText => AppTextStyles.gameTitle.copyWith(fontSize: 24, fontWeight: FontWeight.w600);
-  
+class GameFonts {  
   static TextStyle get tileText => AppTextStyles.tileNumber;
 
-  static TextStyle get keyText => AppTextStyles.tileNumber.copyWith(fontSize: 24, fontWeight: FontWeight.w900);
+  static TextStyle get keyText => AppTextStyles.tileNumber.copyWith(fontSize: 24);
 }
 
 class GameSetUpFonts {
-  static TextStyle get yearLevelText => AppTextStyles.gameTitle.copyWith(fontSize: 22, fontWeight: FontWeight.w900, letterSpacing: 1.2);
+  static TextStyle get yearLevelText => AppTextStyles.gameTitle.copyWith(fontSize: 20, letterSpacing: 1.2);
   
   static TextStyle get attemptsAllowedText => AppTextStyles.smallLabel.copyWith(color: Colors.blue, fontWeight: FontWeight.bold, letterSpacing: 1.5);
 
-  static TextStyle get yearLabelBase => AppTextStyles.smallLabel.copyWith(fontSize: 13, fontWeight: FontWeight.normal, color: Colors.white54);
+  static TextStyle get yearLabelBase => AppTextStyles.smallLabel.copyWith(fontWeight: FontWeight.normal, color: Colors.white54);
 
-  static TextStyle get yearLabelActive => AppTextStyles.smallLabel.copyWith(fontSize: 13, fontWeight: FontWeight.bold, color: Colors.white);
+  static TextStyle get yearLabelActive => AppTextStyles.smallLabel.copyWith(fontWeight: FontWeight.bold, color: Colors.white);
 
-  static TextStyle get attemptsInactiveText => AppTextStyles.smallLabel.copyWith(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white54);
+  static TextStyle get attemptsInactiveText => AppTextStyles.smallLabel.copyWith(fontWeight: FontWeight.normal, color: Colors.white54);
 
-  static TextStyle get attemptsActiveText => AppTextStyles.smallLabel.copyWith(fontSize: 14, fontWeight: FontWeight.bold, color: const Color(0xFF64B5F6));
+  static TextStyle get attemptsActiveText => AppTextStyles.smallLabel.copyWith(fontWeight: FontWeight.bold, color: Colors.blue);
 
   static const IconData attemptsIcon = Icons.favorite;
 
-  static TextStyle get closeButtonText => AppTextStyles.buttonText.copyWith(color: Colors.blueGrey, fontSize: 15, fontWeight: FontWeight.w600);
+  static TextStyle get closeButtonText => AppTextStyles.buttonText.copyWith(color: Colors.blueGrey);
 
-  static TextStyle get gameSettingsText => AppTextStyles.smallLabel.copyWith(color: Colors.blueGrey, fontWeight: FontWeight.bold, letterSpacing: 2);
+  static TextStyle get gameSettingsText => AppTextStyles.smallLabel.copyWith(color: Colors.blue, fontWeight: FontWeight.bold, letterSpacing: 2);
 
-  static TextStyle get playGameText => AppTextStyles.buttonText.copyWith(color: const Color(0xFF0A0E17), fontSize: 18, fontWeight: FontWeight.w900, letterSpacing: 1.1);
+  static TextStyle get playGameText => AppTextStyles.buttonText.copyWith(color: AppColors.mainBackground, fontSize: 18, fontWeight: FontWeight.w900, letterSpacing: 1.1);
 
-  static TextStyle get wordLengthText => AppTextStyles.smallLabel.copyWith(color: Colors.blueGrey, fontWeight: FontWeight.bold, letterSpacing: 0.15 * 11);
+  static TextStyle get wordLengthText => AppTextStyles.smallLabel.copyWith(color: Colors.blueGrey, fontWeight: FontWeight.bold);
 
   static TextStyle get numberOfLettersText => AppTextStyles.tileNumber;
 
-  static TextStyle get lettersText => AppTextStyles.smallLabel.copyWith(fontSize: 9, fontWeight: FontWeight.w600, color: Colors.white70);
+  static TextStyle get lettersText => AppTextStyles.smallLabel;
 
-  static TextStyle get disciplineText => AppTextStyles.gameTitle.copyWith(fontSize: 32, fontWeight: FontWeight.w800);
+  static TextStyle get disciplineText => AppTextStyles.gameTitle.copyWith(fontSize: 32);
 }
 
 class HomeFonts {
