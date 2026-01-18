@@ -8,7 +8,7 @@ enum SoundType {
   enter,
   hover,
   grid,
-  slider,
+  settings,
 }
 
 class SoundManager {
@@ -21,8 +21,8 @@ class SoundManager {
   final Map<SoundType, double> _volumes = {
     SoundType.click: 1.0,
     SoundType.keyboard: 0.8,
-    SoundType.delete: 0.9,
-    SoundType.enter: 1.0,
+    SoundType.delete: 0.7,
+    SoundType.enter: 0.7,
     SoundType.hover: 0.3,
     SoundType.grid: 0.7,
     SoundType.settings: 0.6,

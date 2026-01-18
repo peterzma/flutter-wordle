@@ -1,0 +1,14 @@
+export 'package:uniordle/features/game/data/word_lists/engineering_words.dart';
+export 'package:uniordle/features/game/data/word_lists/medicine_words.dart';
+export 'package:uniordle/features/game/data/word_lists/cs_words.dart';
+export 'package:uniordle/features/game/data/word_lists/law_words.dart';
+export 'package:uniordle/features/game/data/word_lists/psychology_words.dart';
+export 'package:uniordle/features/game/data/word_lists/arts_words.dart';
+export 'package:uniordle/features/game/data/word_lists/business_words.dart';
+export 'package:uniordle/features/game/data/word_lists/humanities_words.dart';
+export 'package:uniordle/features/game/data/word_lists/education_words.dart';
+export 'package:uniordle/features/game/data/word_lists/maths_words.dart';
+export 'package:uniordle/features/game/data/word_lists/music_words.dart';
+export 'package:uniordle/features/game/data/word_lists/science_words.dart';
+export 'package:uniordle/features/game/data/word_lists/design_words.dart';
+export 'package:uniordle/features/game/data/word_lists/architecture_words.dart';
