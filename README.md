@@ -100,3 +100,5 @@ Latest release:
 * Make settings screen (Customise sound/music)
 * Add sound/music
 * Add stats/profile screens
+
+© 2026 Peter Ma. All rights reserved. Do not copy or redistribute.
