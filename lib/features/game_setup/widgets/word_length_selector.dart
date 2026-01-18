@@ -36,6 +36,7 @@ class WordLengthSelector extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: PumpButtonWrapper(
                   onTap: () => onChanged(len),
+                  soundType: SoundType.settings,
                   baseColor: baseColor,
                   enableDarken: true,
                   borderRadius: BorderRadius.circular(36),

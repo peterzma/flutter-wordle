@@ -64,7 +64,15 @@ class DifficultySelector extends StatelessWidget {
             min: 1,
             max: 4,
             divisions: 3,
-            onChanged: (v) => onChanged(v.round()),
+            onChanged: (v) {
+              final newValue = v.round();
+              
+              if (newValue != value) {
+                SoundManager().play(SoundType.settings, volumeOverride: 0.5);
+                
+                onChanged(newValue);
+              }
+            },
           ),
         ),
         const SizedBox(height: 12),

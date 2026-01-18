@@ -8,6 +8,7 @@ enum SoundType {
   enter,
   hover,
   grid,
+  slider,
 }
 
 class SoundManager {
@@ -24,6 +25,7 @@ class SoundManager {
     SoundType.enter: 1.0,
     SoundType.hover: 0.3,
     SoundType.grid: 0.7,
+    SoundType.settings: 0.6,
   };
 
   bool _isInitialized = false;
@@ -37,9 +39,10 @@ class SoundManager {
       _sources[SoundType.click] = await SoLoud.instance.loadAsset('assets/audio/grid_click.mp3');
       _sources[SoundType.keyboard] = await SoLoud.instance.loadAsset('assets/audio/keyboard_tap.mp3');
       _sources[SoundType.delete] = await SoLoud.instance.loadAsset('assets/audio/delete_tap.mp3');
-      _sources[SoundType.enter] = await SoLoud.instance.loadAsset('assets/audio/enter_tap.mp3');
+      _sources[SoundType.enter] = await SoLoud.instance.loadAsset('assets/audio/delete_tap.mp3');
       _sources[SoundType.hover] = await SoLoud.instance.loadAsset('assets/audio/hover.mp3');
       _sources[SoundType.grid] = await SoLoud.instance.loadAsset('assets/audio/grid_click.mp3');
+      _sources[SoundType.settings] = await SoLoud.instance.loadAsset('assets/audio/slider.mp3');
 
       
       
