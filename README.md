@@ -100,3 +100,5 @@ Latest release:
 * Make settings screen (Customise sound/music)
 * Add sound/music
 * Add stats/profile screens
+* Sort disciplines by alphabetical
+* Have tag text show actual number of words

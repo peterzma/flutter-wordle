@@ -7,6 +7,14 @@ const double _specialKeyWidth = 70;
 /// 
 /// Provides press and tap animation with darkening
 class KeyboardButton extends StatelessWidget {
+  final double height;
+  final double width;
+  final VoidCallback onTap;
+  final Color backgroundColor;
+  final String? letter;
+  final Widget? child;
+  final String soundPath;
+
   const KeyboardButton({ 
     super.key,
     this.height = 64,
@@ -15,29 +23,26 @@ class KeyboardButton extends StatelessWidget {
     required this.backgroundColor,
     this.letter,
     this.child,
-    });
+    this.soundPath = 'audio/keyboard_tap.mp3',
+  });
 
-    final double height;
-    final double width;
-    final VoidCallback onTap;
-    final Color backgroundColor;
-    final String? letter;
-    final Widget? child;
 
-  factory KeyboardButton.delete({required VoidCallback onTap}) =>
+  factory KeyboardButton.delete({required VoidCallback onTap, String? soundPath}) =>
       KeyboardButton(
         width: _specialKeyWidth,
         onTap: onTap,
         backgroundColor: AppColors.keyBackground,
+        soundPath: soundPath ?? 'audio/delete_tap.mp3',
         child: const Icon(Icons.backspace, color: Colors.white, size: 22),
       );
 
-  factory KeyboardButton.enter({required VoidCallback onTap}) =>
+  factory KeyboardButton.enter({required VoidCallback onTap, String? soundPath}) =>
       KeyboardButton(
         width: _specialKeyWidth,
         onTap: onTap,
         backgroundColor: AppColors.keyBackground,
         letter: 'ENTER',
+        soundPath: soundPath ?? 'audio/enter_tap.mp3',
         child: const Text(
           'ENTER',
           style: TextStyle(
@@ -54,6 +59,7 @@ class KeyboardButton extends StatelessWidget {
       padding: const EdgeInsets.all(4),
       child: PumpButtonWrapper(
         onTap: onTap,
+        soundPath: soundPath,
         pressScale: 0.95,
         enableDarken: true,
         baseColor: backgroundColor,
