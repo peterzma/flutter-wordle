@@ -114,11 +114,14 @@ class DifficultySelector extends StatelessWidget {
                                       ? MainAxisAlignment.end 
                                       : MainAxisAlignment.center,
                                 children: [
-                                  Text(
-                                    e.value.$2,
-                                    style: active
-                                        ? GameSetUpFonts.attemptsActiveText(discipline.color)
-                                        : GameSetUpFonts.attemptsInactiveText,
+                                  Transform.translate(
+                                    offset: const Offset(0, -1.0),
+                                    child: Text(
+                                      e.value.$2,
+                                      style: active
+                                          ? GameSetUpFonts.attemptsActiveText(discipline.color)
+                                          : GameSetUpFonts.attemptsInactiveText,
+                                    ),
                                   ),
                                   const SizedBox(width: 2),
                                   Icon(

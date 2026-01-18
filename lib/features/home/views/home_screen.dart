@@ -118,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
       tag: '${getWordCount(architectureWords)} WORDS',
       color: Colors.indigo,
     ),
-  ];
+  ]..sort((a, b) => a.name.compareTo(b.name));
 
   void _onDisciplineTap(Discipline sub) {
     Navigator.push(

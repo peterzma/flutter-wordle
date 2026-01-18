@@ -19,13 +19,13 @@ class SoundManager {
   final Map<SoundType, AudioSource> _sources = {};
 
   final Map<SoundType, double> _volumes = {
-    SoundType.click: 1.0,
+    SoundType.click: 0.8,
     SoundType.keyboard: 0.8,
-    SoundType.delete: 0.7,
-    SoundType.enter: 0.7,
+    SoundType.delete: 0.4,
+    SoundType.enter: 0.4,
     SoundType.hover: 0.3,
     SoundType.grid: 0.7,
-    SoundType.settings: 0.6,
+    SoundType.settings: 0.4,
   };
 
   bool _isInitialized = false;
