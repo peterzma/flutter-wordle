@@ -92,7 +92,6 @@ Latest release:
 * Subtexts for each category should be the number of unique words to play with
 * Change transition between screens
 * Add dialog when clicking help icon
-* Fix routing
 * Motion blur on game back to game settings transition
 * Add more words
 * Improve end game dialog
