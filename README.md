@@ -101,4 +101,4 @@ Latest release:
 * Add sound/music
 * Add stats/profile screens
 * Sort disciplines by alphabetical
-* Have tag text show actual number of words
+* change sound effect of tile flipping in game screen
