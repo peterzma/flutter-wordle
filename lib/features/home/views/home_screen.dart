@@ -1,5 +1,4 @@
 import 'package:uniordle/shared/exports/home_screen_exports.dart';
-import 'package:uniordle/features/game_setup/views/game_setup_screen.dart';
 import 'package:uniordle/shared/exports/word_lists_exports.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -120,10 +119,9 @@ class _HomeScreenState extends State<HomeScreen> {
   ]..sort((a, b) => a.name.compareTo(b.name));
 
   void _onDisciplineTap(Discipline sub) {
-    Navigator.of(context).push(
-      slideUpRoute(
-        GameSettingsScreen(discipline: sub),
-      ),
+    Navigator.of(context).pushNamed(
+      '/setup',
+      arguments: sub, 
     );
   }
 
