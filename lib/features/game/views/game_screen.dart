@@ -80,6 +80,7 @@ void didChangeDependencies() {
         attempts: _controller.currentWordIndex + 1,
         maxAttempts: _maxAttempts,
         discipline: discipline,
+        yearLevel: _yearLevel,
         onRestart: () {
           Navigator.pop(context);
           _controller.restart();

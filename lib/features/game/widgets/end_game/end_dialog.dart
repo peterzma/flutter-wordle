@@ -14,6 +14,7 @@ class EndGameDialog extends StatelessWidget {
   final String solution;
   final int attempts;
   final int maxAttempts;
+  final String yearLevel;
   final Discipline discipline;
   final VoidCallback onRestart;
 
@@ -23,6 +24,7 @@ class EndGameDialog extends StatelessWidget {
     required this.solution,
     required this.attempts,
     required this.maxAttempts,
+    required this.yearLevel,
     required this.discipline,
     required this.onRestart,
   });
@@ -118,11 +120,11 @@ class EndGameDialog extends StatelessWidget {
 
             Row(
               children: [
-                Expanded(child: InfoTag(label: '${solution.length} LETTERS', color: AppColors.keyBackground)),
-                const SizedBox(width: 8),
                 Expanded(child: InfoTag(label: discipline.name, color: AppColors.keyBackground)),
                 const SizedBox(width: 8),
-                Expanded(child: InfoTag(label: '1ST YEAR', color: AppColors.keyBackground)),
+                Expanded(child: InfoTag(label: '${solution.length} LETTERS', color: AppColors.keyBackground)),
+                const SizedBox(width: 8),
+                Expanded(child: InfoTag(label: yearLevel.toUpperCase(), color: AppColors.keyBackground)),
               ],
             ),
             const SizedBox(height: 32),
