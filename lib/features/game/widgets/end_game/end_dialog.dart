@@ -1,4 +1,5 @@
 import 'package:uniordle/features/home/models/discipline.dart';
+import 'package:uniordle/shared/buttons/primary_button.dart';
 import 'package:uniordle/shared/exports/game_screen_exports.dart';
 
 /// Dialog shown when game ends
@@ -116,55 +117,27 @@ class EndGameDialog extends StatelessWidget {
 
             Row(
               children: [
-                Expanded(child: InfoTag(label: discipline.name, color: AppColors.onSurfaceVariant)),
+                Expanded(child: InfoTag(label: discipline.name)),
                 const SizedBox(width: 8),
-                Expanded(child: InfoTag(label: '${solution.length} LETTERS', color: AppColors.onSurfaceVariant)),
+                Expanded(child: InfoTag(label: '${solution.length} LETTERS')),
                 const SizedBox(width: 8),
-                Expanded(child: InfoTag(label: yearLevel.toUpperCase(), color: AppColors.onSurfaceVariant)),
+                Expanded(child: InfoTag(label: yearLevel.toUpperCase())),
               ],
             ),
             const SizedBox(height: 32),
-            _buildLargeButton(
+            PrimaryButton(
               label: 'NEW GAME',
-              color: const Color(0xFF3B82F6),
+              color: AppColors.accent,
               onPressed: onRestart,
             ),
             const SizedBox(height: 12),
-            _buildLargeButton(
+            PrimaryButton(
               label: 'HOME',
-              color: const Color(0xFF1E2128),
+              color: AppColors.surfaceVariant,
               onPressed: () => Navigator.pop(context),
             ),
 
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildLargeButton({
-    required String label,
-    required Color color,
-    required VoidCallback onPressed,
-  }) {
-    return SizedBox(
-      width: double.infinity,
-      height: 60,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: color,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-          elevation: 0,
-        ),
-        child: Text(
-          label,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 1.2,
-          ),
         ),
       ),
     );

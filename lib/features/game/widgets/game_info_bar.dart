@@ -20,26 +20,11 @@ class GameInfoBar extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 12),
         child: Row(
           children: [
-            Expanded(
-              child: InfoTag(
-                label: disciplineName, 
-                color: AppColors.onSurfaceVariant,
-              ),
-            ),
+            Expanded(child: InfoTag(label: disciplineName)),
             const SizedBox(width: 4),
-            Expanded(
-              child: InfoTag(
-                label: '$wordLength LETTERS', 
-                color: AppColors.onSurfaceVariant,
-              ),
-            ),
+            Expanded(child: InfoTag(label: '$wordLength LETTERS')),
             const SizedBox(width: 4),
-            Expanded(
-              child: InfoTag(
-                label: yearLevel, 
-                color: AppColors.onSurfaceVariant,
-              ),
-            ),
+            Expanded(child: InfoTag(label: yearLevel)),
           ],
         ),
       ),

@@ -2,11 +2,14 @@ import 'package:uniordle/shared/exports/game_screen_exports.dart';
 
 class InfoTag extends StatelessWidget {
   final String label;
-  final Color color;
+  final Color borderColor;
+  final Color backgroundColor;
 
   const InfoTag({
     super.key, 
-    required this.label, required this.color
+    required this.label, 
+    this.borderColor = AppColors.outline, 
+    this.backgroundColor = AppColors.surfaceVariant,
   });
 
   @override
@@ -14,10 +17,10 @@ class InfoTag extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 8),
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.1),
+        color: backgroundColor.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(6),
         border: Border.all(
-          color: color.withValues(alpha: 0.4),
+          color: borderColor.withValues(alpha: 0.4),
           width: 1,
         ),
       ),
