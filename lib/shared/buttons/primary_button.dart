@@ -25,7 +25,31 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    return PumpButtonWrapper(
+      onTap: isLoading ? null : onPressed,
+      child: Container(
+        width: double.infinity,
+        height: height,
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(borderRadius),
+          boxShadow: showShadow
+            ? [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.3),
+                blurRadius: 20,
+                offset: const Offset(0, 10),
+              ),
+            ]
+            : null,
+        ),
+        child: Center(
+          child: isLoading
+              ? _buildLoader()
+              : _buildContent(),
+        ),
+      )
+    );
   }
 
   Widget _buildLoader() {
