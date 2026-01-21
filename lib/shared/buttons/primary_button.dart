@@ -27,4 +27,36 @@ class PrimaryButton extends StatelessWidget {
   Widget build(BuildContext context) {
 
   }
+
+  Widget _buildLoader() {
+    return const SizedBox(
+      height: 24,
+      width: 24,
+      child: CircularProgressIndicator(
+        strokeWidth: 3,
+        color: Colors.white,
+      ),
+    );
+  }
+
+  Widget _buildContent() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        if (icon != null) ...[
+          Icon(icon, size: 28, color: Colors.white),
+          const SizedBox(width: 8),
+        ],
+        Text(
+          label.toUpperCase(),
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 1.2,
+          ),
+        ),
+      ],
+    );
+  }
 }
