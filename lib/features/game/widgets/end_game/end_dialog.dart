@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uniordle/features/home/models/discipline.dart';
+import 'package:uniordle/shared/exports/game_screen_exports.dart';
 
 const Color _topBarWinColor = Color(0xFF55B725);
 const Color _topBarLoseColor = Color(0xFFC62121);
@@ -53,69 +54,30 @@ class EndGameDialog extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              decoration: BoxDecoration(
-                color: won ? _topBarWinColor : _topBarLoseColor,
-                borderRadius: const BorderRadius.vertical(
-                top: Radius.circular(12),
-                ),
-              ),
-              child: Text(
-                won ? 'You Won!' : 'Game Over',
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontFamily: 'clashdisplay',
-                  fontWeight: FontWeight.w600,
-                ),
+            Text(
+              won ? 'YOU WIN!' : 'GAME OVER',
+              style: GameFonts.infoBarText.copyWith(
+                fontSize: 32,
+                fontWeight: FontWeight.w900,
+                color: Colors.white,
               ),
             ),
-            // content
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20, 
-                vertical: 20,
-              ), // inner boxes width padding
+            const SizedBox(height: 24),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+              decoration: BoxDecoration(
+                color: const Color(0xFF1A1D26),
+                borderRadius: BorderRadius.circular(20),
+              ),
               child: Column(
                 children: [
-                  // top left label
-                    Column(
-                      children: [
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 6,
-                            vertical: 2,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Color(0xFF27282A),
-                            borderRadius: BorderRadius.circular(8),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withValues(alpha: 0.3),
-                                offset: const Offset(0, 3),
-                                blurRadius: 6,
-                                spreadRadius: 1,
-                              ),
-                            ],
-                          ),
-                          child: Text(
-                            '${solution.length} Letters',
-                            style: const TextStyle(
-                              color: Color(0xFFB0B4B7),
-                              fontSize: 14,
-                              fontFamily: 'dm-sans',
-                              fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                  Text(
+                    'THE WORD WAS',
+                    style: GameFonts.infoBarText,
+                  ),
+                  const SizedBox(height: 12),
+                  
                 ],
               ),
             ),
