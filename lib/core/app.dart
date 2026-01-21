@@ -23,10 +23,10 @@ class App extends StatelessWidget {
       ).copyWith(
         scaffoldBackgroundColor: AppColors.surface,
         textTheme: TextTheme(
-          displayLarge: AppTextStyles.tileNumber,
-          headlineMedium: AppTextStyles.gameTitle,
-          labelLarge: AppTextStyles.buttonText,
-          labelSmall: AppTextStyles.smallLabel,
+          displayLarge: AppTextStyles.displayMedium,
+          headlineMedium: AppTextStyles.displayLarge,
+          labelLarge: AppTextStyles.labelLarge,
+          labelSmall: AppTextStyles.labelMedium,
         ),
       ),
 

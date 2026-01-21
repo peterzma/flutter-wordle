@@ -1,4 +1,5 @@
 import 'package:uniordle/features/home/models/discipline.dart';
+import 'package:uniordle/shared/buttons/primary_button.dart';
 import 'package:uniordle/shared/exports/game_setup_exports.dart';
 
 class SettingsFooter extends StatelessWidget {
@@ -28,7 +29,15 @@ class SettingsFooter extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          PlayButton(isLoading: isLoading, onPressed: onPlay, discipline: discipline),
+          PrimaryButton(
+            label: 'PLAY GAME',
+            onPressed: onPlay,
+            color: discipline.color,
+            isLoading: isLoading,
+            icon: Icons.play_arrow_rounded,
+            showShadow: true,
+            borderRadius: 20,
+          ),
           const SizedBox(height: 8),
         ],
       ),

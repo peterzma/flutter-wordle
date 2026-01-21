@@ -10,22 +10,25 @@ class HomeHeader extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseHeader(
-      title: 'Uniordle',
-      leftIcon: LucideIcons.settings,
-      onLeftTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => SettingsScreen(
-              onClose: () => Navigator.of(context).pop(),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: BaseHeader(
+        title: 'Uniordle',
+        leftIcon: LucideIcons.settings,
+        onLeftTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => SettingsScreen(
+                onClose: () => Navigator.of(context).pop(),
+              ),
             ),
-          ),
-        );
-      },
-      rightIcon: LucideIcons.helpCircle,
-      onRightTap: () {
-        // help logic here
-      },
+          );
+        },
+        rightIcon: LucideIcons.helpCircle,
+        onRightTap: () {
+          // help logic here
+        },
+      ),
     );
   }
 }

@@ -18,7 +18,7 @@ class PrimaryButton extends StatelessWidget {
     required this.color,
     this.isLoading = false,
     this.icon,
-    this.height = 60,
+    this.height = 64,
     this.borderRadius = 16,
     this.showShadow = false,
   });
