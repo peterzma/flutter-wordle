@@ -1,3 +1,4 @@
+import 'package:uniordle/features/game/widgets/end_game/end_dialog_header.dart';
 import 'package:uniordle/features/home/models/discipline.dart';
 import 'package:uniordle/shared/buttons/primary_button.dart';
 import 'package:uniordle/shared/exports/game_screen_exports.dart';
@@ -41,33 +42,13 @@ class EndGameDialog extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
-              padding: const EdgeInsets.all(12),
-              decoration: const BoxDecoration(
-                color: Color(0xFF1B2E1D),
-                shape: BoxShape.circle,
-              ),
-              child: const Icon(
-                Icons.stars_rounded,
-                color: Color(0xFF55B725),
-                size: 60,
-              ),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              won ? 'YOU WIN!' : 'GAME OVER',
-              style: GameFonts.infoBarText.copyWith(
-                fontSize: 32,
-                fontWeight: FontWeight.w900,
-                color: Colors.white,
-              ),
-            ),
+            DialogHeader(won: won),
             const SizedBox(height: 24),
             Container(
               width: double.infinity,
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
               decoration: BoxDecoration(
-                color: AppColors.onSurfaceVariant,
+                color: AppColors.surfaceVariant,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
@@ -81,7 +62,7 @@ class EndGameDialog extends StatelessWidget {
                     width: double.infinity,
                     padding: const EdgeInsets.symmetric(vertical: 12),
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white24),
+                      border: Border.all(color: AppColors.outline),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Text(
