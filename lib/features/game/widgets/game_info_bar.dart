@@ -21,21 +21,21 @@ class GameInfoBar extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              child: _InfoTag(
+              child: InfoTag(
                 label: disciplineName, 
                 color: AppColors.keyBackground,
               ),
             ),
             const SizedBox(width: 4),
             Expanded(
-              child: _InfoTag(
+              child: InfoTag(
                 label: '$wordLength LETTERS', 
                 color: AppColors.keyBackground,
               ),
             ),
             const SizedBox(width: 4),
             Expanded(
-              child: _InfoTag(
+              child: InfoTag(
                 label: yearLevel, 
                 color: AppColors.keyBackground,
               ),
@@ -47,11 +47,14 @@ class GameInfoBar extends StatelessWidget {
   }
 }
 
-class _InfoTag extends StatelessWidget {
+class InfoTag extends StatelessWidget {
   final String label;
   final Color color;
 
-  const _InfoTag({required this.label, required this.color});
+  const InfoTag({
+    super.key, 
+    required this.label, required this.color
+  });
 
   @override
   Widget build(BuildContext context) {

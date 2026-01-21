@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:uniordle/features/game/widgets/game_info_bar.dart';
 import 'package:uniordle/features/home/models/discipline.dart';
 import 'package:uniordle/shared/exports/game_screen_exports.dart';
 
@@ -88,15 +88,41 @@ class EndGameDialog extends StatelessWidget {
                       solution.toUpperCase(),
                       textAlign: TextAlign.center,
                       style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 36,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 4,
+                        color: Colors.red,
                       ),
                     ),
                   )
                 ],
               ),
+            ),
+            const SizedBox(height: 24),
+
+            RichText(
+              text: TextSpan(
+                style: const TextStyle(
+                  fontSize: 20,
+                ),
+                children: [
+                  TextSpan(
+                    text: '$attempts/6 ',
+                  ),
+                  const TextSpan(
+                    text: 'Attempts',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 20),
+
+            Row(
+              children: [
+                Expanded(child: InfoTag(label: '${solution.length} LETTERS', color: AppColors.keyBackground)),
+                const SizedBox(width: 8),
+                Expanded(child: InfoTag(label: discipline.name, color: AppColors.keyBackground)),
+                const SizedBox(width: 8),
+                Expanded(child: InfoTag(label: '1ST YEAR', color: AppColors.keyBackground)),
+              ],
             ),
           ],
         ),
