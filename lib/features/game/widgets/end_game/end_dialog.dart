@@ -78,7 +78,7 @@ class EndGameDialog extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
                   Container(
-                    // width: double.infinity,
+                    width: double.infinity,
                     padding: const EdgeInsets.symmetric(vertical: 12),
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.white24),
@@ -124,7 +124,48 @@ class EndGameDialog extends StatelessWidget {
                 Expanded(child: InfoTag(label: '1ST YEAR', color: AppColors.keyBackground)),
               ],
             ),
+            const SizedBox(height: 32),
+            _buildLargeButton(
+              label: 'NEW GAME',
+              color: const Color(0xFF3B82F6),
+              onPressed: onRestart,
+            ),
+            const SizedBox(height: 12),
+            _buildLargeButton(
+              label: 'HOME',
+              color: const Color(0xFF1E2128),
+              onPressed: () => Navigator.pop(context),
+            ),
+
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildLargeButton({
+    required String label,
+    required Color color,
+    required VoidCallback onPressed,
+  }) {
+    return SizedBox(
+      width: double.infinity,
+      height: 60,
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: color,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          elevation: 0,
+        ),
+        child: Text(
+          label,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 1.2,
+          ),
         ),
       ),
     );
