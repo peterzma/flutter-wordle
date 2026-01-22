@@ -60,11 +60,15 @@ class EndGameDialog extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 32),
-            PrimaryButton(
-              label: 'NEW GAME',
-              color: AppColors.accent,
-              onPressed: onRestart,
-              borderRadius: 24,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: PrimaryButton(
+                label: 'NEW GAME',
+                color: AppColors.accent,
+                onPressed: onRestart,
+                borderRadius: 24,
+                
+              ),
             ),
             const SizedBox(height: 12),
             PrimaryButton(
