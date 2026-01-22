@@ -21,7 +21,7 @@ class WordLengthSelector extends StatelessWidget {
         const SizedBox(height: 32),
         Text(
           'WORD LENGTH',
-          style: GameSetUpFonts.wordLengthText,
+          style: AppTextStyles.displayMedium,
         ),
         const SizedBox(height: 16),
         Row(
@@ -60,12 +60,12 @@ class WordLengthSelector extends StatelessWidget {
                         children: [
                           Text(
                             '$len',
-                            style: GameSetUpFonts.numberOfLettersText,
+                            style: AppTextStyles.displayMedium,
                           ),
                           const SizedBox(height: 2),
                           Text(
                             'LETTERS',
-                            style: GameSetUpFonts.lettersText,
+                            style: AppTextStyles.labelMedium,
                           ),
                         ],
                       ),

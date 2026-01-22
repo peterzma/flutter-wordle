@@ -53,7 +53,7 @@ class BaseHeader extends StatelessWidget implements PreferredSizeWidget {
               ),
               Text(
                 title,
-                style: HomeFonts.titleText,
+                style: AppTextStyles.displayMedium,
               ),
               rightIcon != null
                   ? AppNavItem(icon: rightIcon!, onTap: onRightTap ?? () {})

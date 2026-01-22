@@ -32,7 +32,7 @@ class GameSetupHero extends StatelessWidget {
         const SizedBox(height: 16),
         Text(
           discipline.name,
-          style: GameSetUpFonts.disciplineText,
+          style: AppTextStyles.displayLarge,
         ),
         const SizedBox(height: 8),
         Text(

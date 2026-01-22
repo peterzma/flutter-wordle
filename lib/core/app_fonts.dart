@@ -45,34 +45,7 @@ class AppTextStyles {
   static TextStyle get labelSmall => const TextStyle(
         fontFamily: displayFont,
         fontSize: 10,
-        fontWeight: FontWeight.w800,
+        fontWeight: FontWeight.w600,
         color: Colors.blueAccent,
   );
-}
-
-class GameSetUpFonts {
-
-  static TextStyle get playGameText => AppTextStyles.labelLarge.copyWith(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w900, letterSpacing: 1.1);
-
-  static TextStyle get wordLengthText => AppTextStyles.displayLarge.copyWith(fontSize: 20, letterSpacing: 1.2);
-
-  static TextStyle get numberOfLettersText => AppTextStyles.displayMedium;
-
-  static TextStyle get lettersText => AppTextStyles.labelMedium;
-
-  static TextStyle get disciplineText => AppTextStyles.displayLarge.copyWith(fontSize: 32);
-}
-
-class HomeFonts {
-  static TextStyle get disciplineText => AppTextStyles.labelLarge.copyWith(fontSize: 16, fontWeight: FontWeight.w600);
-
-  static TextStyle get titleText => AppTextStyles.displayLarge;
-
-  static TextStyle get mainHeroText => AppTextStyles.displayLarge.copyWith(fontSize: 40, letterSpacing: -1, fontWeight: FontWeight.w900);
-
-  static TextStyle get subHeroText => AppTextStyles.labelMedium.copyWith(fontSize: 14, color: Colors.blueGrey, height: 1.5);
-
-  static TextStyle iconText(Color color) => AppTextStyles.labelSmall.copyWith(letterSpacing: 1.4, color: color);
-
-  static TextStyle tagText(Color color) => AppTextStyles.labelSmall.copyWith(color: color);
 }
