@@ -12,13 +12,15 @@ class DialogHeader extends StatelessWidget {
       children: [
         Container(
           padding: const EdgeInsets.all(12),
-          decoration: const BoxDecoration(
-            color: Color(0xFF1B2E1D),
+          decoration: BoxDecoration(
+            color: won
+                ? AppColors.correctColor.withValues(alpha: 0.15)
+                : Colors.red.withValues(alpha: 0.15),
             shape: BoxShape.circle,
           ),
           child: Icon(
             won ? Icons.stars_rounded : Icons.close_rounded,
-            color: won ? Color(0xFF55B725) : Colors.red,
+            color: won ? AppColors.correctColor : Colors.red,
             size: 64,
           ),
         ),
