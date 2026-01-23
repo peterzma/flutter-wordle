@@ -17,15 +17,12 @@ class BoardTile extends StatefulWidget {
 }
 
 class _BoardTileState extends State<BoardTile> with SingleTickerProviderStateMixin{
-  /// Controls the pump animation
   late AnimationController _controller;
-
-  static const Duration _pumpDuration = Duration(milliseconds: 80);
-  static const double _pumpBeginScale = 1.0;
-  static const double _pumpEndScale = 1.05;
-
-  /// Scale animation applied to the tile
   late Animation<double> _scale;
+
+  static const Duration _typingDuration = Duration(milliseconds: 80);
+  static const Duration _entranceDuration = Duration(milliseconds: 160);
+
 
   @override
   void initState() {
@@ -38,13 +35,13 @@ class _BoardTileState extends State<BoardTile> with SingleTickerProviderStateMix
     });
 
     _controller = AnimationController(
-      duration: _pumpDuration,
+      duration: _typingDuration,
       vsync: this,
     );
 
     _scale = Tween<double>(
-      begin: _pumpBeginScale,
-      end: _pumpEndScale,
+      begin: 1.0,
+      end: 1.05,
     ).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeOut),
     );
@@ -52,12 +49,20 @@ class _BoardTileState extends State<BoardTile> with SingleTickerProviderStateMix
     _controller.addStatusListener((status) {
       if (status == AnimationStatus.completed) _controller.reverse();
     });
+
+    _triggerEntrancePulse();
+  }
+
+  void _triggerEntrancePulse() {
+    _controller.duration = _entranceDuration;
+    _controller.forward(from: 0.0).then((_) {
+      _controller.duration = _typingDuration;
+    });
   }
 
   @override
   void didUpdateWidget(covariant BoardTile oldWidget) {
     super.didUpdateWidget(oldWidget);
-    /// Triggers the pump animation when the letter changes
     if (oldWidget.letter.val != widget.letter.val) {
       _controller.forward(from: 0.0);
     }

@@ -1,4 +1,4 @@
-import 'package:uniordle/features/home/widgets/help/help_dialog.dart';
+import 'package:uniordle/features/help/help_dialog.dart';
 import 'package:uniordle/shared/exports/game_screen_exports.dart';
 import 'package:uniordle/shared/layout/base_header.dart';
 

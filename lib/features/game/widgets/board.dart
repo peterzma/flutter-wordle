@@ -30,20 +30,20 @@ class Board extends StatelessWidget {
         children: board.asMap().entries.map((rowEntry) {
           final i = rowEntry.key;
           final word = rowEntry.value;
+
           return Row(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: word.letters.asMap().entries.map((letterEntry) {
               final j = letterEntry.key;
               final letter = letterEntry.value;
-              final staggerDelay = Duration(milliseconds: (i * word.letters.length + j) * 40);
+
                 return FlipCard(
                   key: flipCardKeys[i][j],
                   flipOnTouch: false,
                   direction: FlipDirection.VERTICAL,
                   speed: _flipSpeed,
                   front: BoardTile(
-                    entranceDelay: staggerDelay,
                     letter: Letter(
                       val: letter.val,
                       status: LetterStatus.initial,
