@@ -27,37 +27,33 @@ class Board extends StatelessWidget {
       alignment: Alignment.center,
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        children: board
-          .asMap()
-          .map(
-            (i, word) => MapEntry(
-              i,
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: word.letters
-                    .asMap()
-                    .map(
-                      (j, letter) => MapEntry(
-                        j,
-                        FlipCard(
-                          key: flipCardKeys[i][j],
-                          flipOnTouch: false,
-                          direction: FlipDirection.VERTICAL,
-                          speed: _flipSpeed,
-                          front: BoardTile(
-                            letter: Letter(
-                              val: letter.val,
-                              status: LetterStatus.initial,
-                            ),
-                          ),
-                          back: BoardTile(letter: letter),
-                        ),
-                      ),
-                    ).values.toList(),
-              ),
-            ),
-          ).values.toList(),
+        children: board.asMap().entries.map((rowEntry) {
+          final i = rowEntry.key;
+          final word = rowEntry.value;
+          return Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: word.letters.asMap().entries.map((letterEntry) {
+              final j = letterEntry.key;
+              final letter = letterEntry.value;
+              final staggerDelay = Duration(milliseconds: (i * word.letters.length + j) * 40);
+                return FlipCard(
+                  key: flipCardKeys[i][j],
+                  flipOnTouch: false,
+                  direction: FlipDirection.VERTICAL,
+                  speed: _flipSpeed,
+                  front: BoardTile(
+                    entranceDelay: staggerDelay,
+                    letter: Letter(
+                      val: letter.val,
+                      status: LetterStatus.initial,
+                    ),
+                  ),
+                  back: BoardTile(letter: letter),
+                );
+              }).toList(),
+            );
+        }).toList(),
       ),
     );
   }

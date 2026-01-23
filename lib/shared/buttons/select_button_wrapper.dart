@@ -18,7 +18,7 @@ class PumpButtonWrapper extends StatefulWidget {
     super.key,
     required this.child,
     this.onTap,
-    this.pressScale = 0.95,
+    this.pressScale = 0.98,
     this.enableDarken = false,
     this.baseColor,
     this.darkenIntensity = 0.15,

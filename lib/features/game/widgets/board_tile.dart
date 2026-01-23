@@ -1,18 +1,16 @@
 import 'package:uniordle/shared/exports/game_screen_exports.dart';
 
-/// A single tile displayed on the Uniordle board
-/// 
-/// Shows a letter, background colour based on [LetterStatus],
-/// and plays a brief pump animation when a letter changes
 class BoardTile extends StatefulWidget {
   const BoardTile({
     super.key,
     required this.letter,
     this.initialBorderColor = AppColors.surfaceVariant,
+    this.entranceDelay = Duration.zero,
   });
 
   final Letter letter;
   final Color initialBorderColor;
+  final Duration entranceDelay;
 
   @override
   State<BoardTile> createState() => _BoardTileState();
@@ -32,6 +30,12 @@ class _BoardTileState extends State<BoardTile> with SingleTickerProviderStateMix
   @override
   void initState() {
     super.initState();
+
+    Future.delayed(widget.entranceDelay, () {
+      if (mounted) {
+        _controller.forward(from: 0.0);
+      }
+    });
 
     _controller = AnimationController(
       duration: _pumpDuration,
