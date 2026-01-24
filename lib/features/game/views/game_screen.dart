@@ -1,3 +1,4 @@
+import 'package:uniordle/core/app_layout.dart';
 import 'package:uniordle/features/game/widgets/end_game/end_dialog.dart';
 import 'package:uniordle/features/game/widgets/game_info_bar.dart';
 import 'package:uniordle/shared/exports/game_screen_exports.dart';
@@ -111,7 +112,7 @@ void didChangeDependencies() {
           Expanded(
             child: Center(
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 24),
+                padding: const EdgeInsets.symmetric(vertical: AppLayout.kSidePadding),
                 child: Board(
                   board: _controller.board, 
                   flipCardKeys: _controller.flipCardKeys

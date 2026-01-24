@@ -5,7 +5,7 @@ abstract class AppLayout {
   static const double dialogInsetPadding = 24.0;
   static const double dialogInternalPadding = 32.0;
 
-  static const double barHeight = 64.0; // header/footer
+  static const double barHeight = 60.0; // header/footer
   static const double kSidePadding = 24.0;
   static const double kIconSize = 40.0;
   

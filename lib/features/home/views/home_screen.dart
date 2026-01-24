@@ -1,3 +1,4 @@
+import 'package:uniordle/core/app_layout.dart';
 import 'package:uniordle/features/home/data/disciplines_data.dart';
 import 'package:uniordle/shared/exports/home_screen_exports.dart';
 
@@ -29,30 +30,20 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: AppColors.surface,
       appBar: HomeHeader(),
-      body: ScrollConfiguration(
-        behavior: const ScrollBehavior().copyWith(scrollbars: false),
-        child: CustomScrollView(
-          physics: const NeverScrollableScrollPhysics(),
-          slivers: [
-            SliverSafeArea(
-              bottom: false,
-              sliver: SliverPadding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                sliver: SliverList(
-                  delegate: SliverChildListDelegate([
-                    const SizedBox(height: 12),
-                    const HeroSection(),
-                    const SizedBox(height: 36),
-                      DisciplineGrid(
-                        disciplines: _disciplines, 
-                        onSubjectTap: _onDisciplineTap,
-                      ),
-                  ]),
-                ),
+      body: Center(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: AppLayout.kSidePadding),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const HeroSection(),
+              const SizedBox(height: 36),
+              DisciplineGrid(
+                disciplines: _disciplines,
+                onSubjectTap: _onDisciplineTap,
               ),
-            ),
-            const SliverToBoxAdapter(child: SizedBox(height: 120)),
-          ],
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: HomeFooter(

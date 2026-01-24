@@ -28,10 +28,10 @@ class AppNavItem extends StatelessWidget {
       onTap: onTap,
       pressScale: 0.90,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
         child: SizedBox(
           height: 48, 
-          width: 56,
+          width: 48,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
