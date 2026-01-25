@@ -13,14 +13,21 @@ class ProfileView extends StatelessWidget {
     final double progressValue = (solvedCount % wordsPerLevel) / wordsPerLevel;
     final int nextLevel = currentLevel + 1;
 
-    
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        const ProfileHeader(),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Row(
+    return SingleChildScrollView(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: Column(
+        children: [
+          const ProfileHeader(),
+
+          LevelCard(
+            level: currentLevel,
+            progress: progressValue,
+            nextLevel: nextLevel,
+          ),
+
+          const SizedBox(height: 16),
+
+          Row(
             children: [
               Expanded(
                 child: SummaryCard(
@@ -39,18 +46,32 @@ class ProfileView extends StatelessWidget {
                   iconColor: AppColors.accent,
                 )
               ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: LevelCard(
-                  level: currentLevel,
-                  progress: progressValue,
-                  nextLevel: nextLevel,
-                ),
-              ),
             ],
           ),
-        ),
-      ],
+
+          const SizedBox(height: 32),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text("UNLOCKED DISCIPLINES", style: AppTextStyles.labelLarge),
+              TextButton(onPressed: () {}, child: const Text("See All")),
+            ],
+          ),
+
+          // GridView.count(
+          //   shrinkWrap: true,
+          //   physics: const NeverScrollableScrollPhysics(),
+          //   crossAxisCount: 2,
+          //   mainAxisSpacing: 12,
+          //   crossAxisSpacing: 12,
+          //   childAspectRatio: 2.2,
+          //   children: const [
+              
+          //   ],
+          // ),
+        ],
+      ),
     );
   }
 }

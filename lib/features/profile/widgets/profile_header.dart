@@ -6,57 +6,54 @@ class ProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 40, bottom: 20),
-      child: Column(
-        children: [
-          Center(
-            child: Stack(
-              alignment: Alignment.bottomRight,
-              children: [
-                Container(
+    return Column(
+      children: [
+        Center(
+          child: Stack(
+            alignment: Alignment.bottomRight,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(4),
+                decoration: const BoxDecoration(
+                  color: AppColors.accent,
+                  shape: BoxShape.circle,
+                ),
+                child: Container(
                   padding: const EdgeInsets.all(4),
-                  decoration: const BoxDecoration(
-                    color: AppColors.accent,
+                  decoration: BoxDecoration(
+                    color: AppColors.surface,
                     shape: BoxShape.circle,
                   ),
-                  child: Container(
-                    padding: const EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      color: AppColors.surface,
-                      shape: BoxShape.circle,
-                    ),
-                    child: CircleAvatar(
-                      radius: 40,
-                      backgroundColor: AppColors.surfaceVariant,
-                      child: Icon(Icons.account_circle, size: 48, color: AppColors.onSurfaceVariant),
-                    ),
+                  child: CircleAvatar(
+                    radius: 40,
+                    backgroundColor: AppColors.surfaceVariant,
+                    child: Icon(Icons.account_circle, size: 48, color: AppColors.onSurfaceVariant),
                   ),
                 ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            "Temp Name",
-            style: AppTextStyles.displayMedium
-          ),
-          const SizedBox(height: 8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-              "Academic Level: ", 
-              style: AppTextStyles.labelMedium
-              ),
-              Text(
-                "SENIOR", 
-              style: AppTextStyles.labelLarge.copyWith(color: AppColors.accent)
               ),
             ],
           ),
-        ],
-      ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          "Temp Name",
+          style: AppTextStyles.displayMedium
+        ),
+        const SizedBox(height: 8),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+            "Academic Level: ", 
+            style: AppTextStyles.labelMedium
+            ),
+            Text(
+              "SENIOR", 
+            style: AppTextStyles.labelLarge.copyWith(color: AppColors.accent)
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
