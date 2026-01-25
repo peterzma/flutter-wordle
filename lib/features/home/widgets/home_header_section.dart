@@ -3,7 +3,11 @@ import 'package:uniordle/shared/exports/home_screen_exports.dart';
 import 'package:uniordle/shared/layout/base_header.dart';
 
 class HomeHeader extends StatelessWidget implements PreferredSizeWidget {
-  const HomeHeader({super.key});
+  final String title;
+  const HomeHeader({
+    super.key,
+    this.title = 'Uniordle'
+  });
 
   @override
   Size get preferredSize => const Size.fromHeight(72);
@@ -11,7 +15,7 @@ class HomeHeader extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return BaseHeader(
-        title: 'Uniordle',
+        title: title,
         leftIcon: LucideIcons.settings,
         onLeftTap: () {
           Navigator.of(context).pushNamed('/settings');

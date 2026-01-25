@@ -5,29 +5,27 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    return Scaffold(
-      backgroundColor: Colors.green,
-      body: SafeArea(
-        child: Column(
-          children: [
-            const ProfileHeader(primaryColor: Colors.orange, bgColor: Colors.pink),
-            const SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Row(
-                children: [
-                  Expanded(child: SummaryCard(label: "Streak", value: currentStats.streak)),
-                  const SizedBox(width: 12),
-                  Expanded(child: SummaryCard(label: "Solved", value: currentStats.solved)),
-                  const SizedBox(width: 12),
-                  Expanded(child: SummaryCard(label: "Level", value: currentStats.level)),
-                ],
-              ),
-            ),
-          ],
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const ProfileHeader(
+          primaryColor: Colors.blue, 
+          bgColor: Colors.red,
         ),
-      ),
+        const SizedBox(height: 16),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Row(
+            children: [
+              Expanded(child: SummaryCard(label: "Streak", value: currentStats.streak)),
+              const SizedBox(width: 12),
+              Expanded(child: SummaryCard(label: "Solved", value: currentStats.solved)),
+              const SizedBox(width: 12),
+              Expanded(child: SummaryCard(label: "Level", value: currentStats.level)),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
