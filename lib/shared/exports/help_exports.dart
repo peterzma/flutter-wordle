@@ -5,4 +5,4 @@ export 'package:uniordle/shared/layout/base_dialog.dart';
 export '../../features/help/widgets/how_to_play.dart';
 export '../../features/help/widgets/level_up.dart';
 export '../../features/help/widgets/reach_top.dart';
-
+export '../../features/help/widgets/page_indicator.dart';

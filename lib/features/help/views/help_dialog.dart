@@ -16,6 +16,7 @@ class _HelpDialogState extends State<HelpDialog> {
   Widget build(BuildContext context) {
     return BaseDialog(
       child: Container(
+        width: 400,
         decoration: BoxDecoration(
           color: AppColors.surface, 
           borderRadius: BorderRadius.circular(32),
@@ -31,6 +32,7 @@ class _HelpDialogState extends State<HelpDialog> {
                   height: 300,
                   child: PageView(
                     controller: _pageController,
+                    physics: const BouncingScrollPhysics(),
                     onPageChanged: (index) => setState(() => _currentPage = index),
                     children: [
                       const HowToPlay(),
@@ -40,18 +42,9 @@ class _HelpDialogState extends State<HelpDialog> {
                   ),
                 ),
                 const SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(_totalPages, (index) => AnimatedContainer(
-                    duration: const Duration(milliseconds: 200),
-                    margin: const EdgeInsets.symmetric(horizontal: 6),
-                    height: 6,
-                    width: 6,
-                    decoration: BoxDecoration(
-                      color: _currentPage == index ? AppColors.accent : AppColors.outline,
-                      borderRadius: BorderRadius.circular(24),
-                    ),
-                  )),
+                PageIndicator(
+                  totalPages: _totalPages,
+                  currentPage: _currentPage,
                 ),
                 const SizedBox(height: 32),
                 PrimaryButton(
@@ -66,29 +59,21 @@ class _HelpDialogState extends State<HelpDialog> {
 
             // Left Arrow
             if (_currentPage > 0)
-              Positioned(
-                left: -25,
-                top: 170,
-                child: _NavArrow(
-                  icon: LucideIcons.chevronLeft,
-                  onTap: () => _pageController.previousPage(
-                    duration: const Duration(milliseconds: 200),
-                    curve: Curves.easeOutQuart,
-                  ),
+              NavArrow(
+                isLeft: true,
+                onTap: () => _pageController.previousPage(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeOutQuart,
                 ),
               ),
 
             // Right Arrow
             if (_currentPage < _totalPages - 1)
-              Positioned(
-                right: -25,
-                top: 170,
-                child: _NavArrow(
-                  icon: LucideIcons.chevronRight,
-                  onTap: () => _pageController.nextPage(
-                    duration: const Duration(milliseconds: 200),
-                    curve: Curves.easeOutQuart,
-                  ),
+              NavArrow(
+                isLeft: false,
+                onTap: () => _pageController.nextPage(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeOutQuart,
                 ),
               ),
           ],
@@ -98,20 +83,44 @@ class _HelpDialogState extends State<HelpDialog> {
   }
 }
 
-class _NavArrow extends StatelessWidget {
-  final IconData icon;
+class NavArrow extends StatelessWidget {
+  final bool isLeft;
   final VoidCallback onTap;
 
-  const _NavArrow({required this.icon, required this.onTap});
+  const NavArrow({
+    super.key,
+    required this.isLeft,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      icon: Icon(icon, color: AppColors.outline),
-      onPressed: onTap,
-      splashColor: Colors.transparent,
-      highlightColor: Colors.transparent,
-      hoverColor: Colors.transparent,
+    return Positioned(
+      top: 0,
+      bottom: 20,
+      left: isLeft ? -60 : null,
+      right: !isLeft ? -60 : null,
+      child: GestureDetector(
+        onTap: onTap,
+        behavior: HitTestBehavior.opaque,
+        child: Container(
+          width: 80,
+          height: 100,
+          alignment: isLeft ? Alignment.centerRight : Alignment.centerLeft,
+          child: Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: Colors.transparent,
+              shape: BoxShape.circle,
+            ),
+            child: Icon(
+              isLeft ? LucideIcons.chevronLeft : LucideIcons.chevronRight,
+              color: AppColors.outline,
+              size: 28,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
