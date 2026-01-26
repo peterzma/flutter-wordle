@@ -28,19 +28,19 @@ class StatsScreen extends StatelessWidget {
                       "Your learning journey analytics",
                       style: AppFonts.labelMedium,
                     ),
-                    const SizedBox(height: 24),
+                    const SizedBox(height: 32),
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                       decoration: BoxDecoration(
                         color: AppColors.accent.withValues(alpha: 0.1),
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(24),
                         border: Border.all(color: AppColors.accent.withValues(alpha: 0.3)),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(Icons.stars, color: AppColors.accent, size: 18),
-                          const SizedBox(width: 8),
+                          Icon(Icons.stars, color: AppColors.accent, size: 20),
+                          const SizedBox(width: 12),
                           Text(
                             "${stats.xp} TOTAL CREDITS",
                             style: AppFonts.labelLarge.copyWith(
@@ -63,14 +63,12 @@ class StatsScreen extends StatelessWidget {
                     const SizedBox(width: 12),
                     Expanded(child: StatCard(value: stats.winPercentage, label: "Win\n%", color: Colors.red)),
                     const SizedBox(width: 12),
-                    Expanded(child: StatCard(value: "${stats.streak}", label: "Current\nStreak", color: Colors.orange)),
-                    const SizedBox(width: 12),
                     Expanded(child: StatCard(value: "${stats.maxStreak}", label: "Max\nStreak", color: AppColors.accent)),
                   ],
                 ),
               ),
               
-              const SizedBox(height: 48),
+              const SizedBox(height: 32),
 
               Text(
                 "CORRECT GUESS DISTRIBUTION",
@@ -79,7 +77,7 @@ class StatsScreen extends StatelessWidget {
               const SizedBox(height: 12),
               GuessDistributionChart(distribution: stats.guessDistribution),
               
-              const SizedBox(height: 36),
+              const SizedBox(height: 32),
             ],
           ),
         );

@@ -36,11 +36,12 @@ class LevelCard extends StatelessWidget {
           
           // The Progress Bar
           ClipRRect(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(12),
             child: LinearProgressIndicator(
               value: progress,
               minHeight: 12,
               backgroundColor: AppColors.outline,
+              borderRadius: BorderRadius.circular(12),
               valueColor: const AlwaysStoppedAnimation<Color>(AppColors.accent),
             ),
           ),
@@ -52,7 +53,7 @@ class LevelCard extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
             decoration: BoxDecoration(
               color: AppColors.accent.withValues(alpha: 0.1),
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(24),
               border: Border.all(color: AppColors.accent.withValues(alpha: 0.3)),
             ),
             child: Text(

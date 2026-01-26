@@ -88,8 +88,6 @@ Latest release:
 ## TODO
 
 * Make categories more university related
-* Change transition between screens
-* Motion blur on game back to game settings transition
 * Add more words
 * Add sound/music
 * Add stats/profile screens
