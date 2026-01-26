@@ -11,6 +11,8 @@ class ProfileView extends StatelessWidget {
       valueListenable: statsManager.statsNotifier,
       builder: (context, stats, child) {
         final int solvedCount = stats.solved;
+        final int currentStreak = stats.streak;
+
         const int wordsPerLevel = 10;
 
         final int currentLevel = (solvedCount / wordsPerLevel).floor();
@@ -38,7 +40,7 @@ class ProfileView extends StatelessWidget {
                   Expanded(
                     child: SummaryCard(
                       label: "Streak", 
-                      value: '${stats.streak}',
+                      value: '$currentStreak',
                       icon: Icons.local_fire_department,
                       iconColor: Colors.orange,
                     )
@@ -47,7 +49,7 @@ class ProfileView extends StatelessWidget {
                   Expanded(
                     child: SummaryCard(
                       label: "Solved", 
-                      value: '${stats.solved}',
+                      value: '$solvedCount',
                       icon: Icons.check_circle_outline,
                       iconColor: AppColors.accent,
                     )
