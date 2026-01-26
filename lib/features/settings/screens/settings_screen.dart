@@ -32,15 +32,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
     _savePreference('sounds_enabled', value);
   }
 
-  void _toggleDarkMode(bool value) {
-    setState(() {
-      _settings = _settings.copyWith(darkModeEnabled: value);
-    });
+  // void _toggleDarkMode(bool value) {
+  //   setState(() {
+  //     _settings = _settings.copyWith(darkModeEnabled: value);
+  //   });
 
-    settingsNotifier.value = _settings;
+  //   settingsNotifier.value = _settings;
 
-    _savePreference('dark_mode_enabled', value);
-  }
+  //   _savePreference('dark_mode_enabled', value);
+  // }
 
   @override
   Widget build(BuildContext context) {

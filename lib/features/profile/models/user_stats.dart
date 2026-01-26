@@ -1,3 +1,5 @@
+import 'dart:math';
+
 class UserStats {
   final int streak;
   final int maxStreak;
@@ -20,16 +22,28 @@ class UserStats {
 }
 
 extension UserStatsExtension on UserStats {
-  static const int xpPerLevel = 100;
+  static const int creditsPerLevel = 100;
 
   static int calculateGainedXP(int yearLevel, int wordLength) {
-    return 20 + (yearLevel * 5) + ((wordLength - 5) * 5);
+    final random = Random();
+    
+    //
+    // Year 1: 15-25 | Year 2: 20-30 | Year 3: 25-35 | Postgrad: 30-45
+    int minBase = 10 + (yearLevel * 5);
+    int maxBase = 20 + (yearLevel * 6);
+
+    // 5: +0 | 6: +3 | 7: +7
+    int lengthBonus = (wordLength - 5) * 4;
+
+    int reward = minBase + random.nextInt(maxBase - minBase + 1) + lengthBonus;
+
+    return reward;
   }
 
-  int get currentLevel => xp ~/ xpPerLevel;
+  int get currentLevel => xp ~/ creditsPerLevel;
   int get nextLevel => currentLevel + 1;
-  double get levelProgress => (xp % xpPerLevel) / xpPerLevel;
-  int get xpInCurrentLevel => xp % xpPerLevel;
+  double get levelProgress => (xp % creditsPerLevel) / creditsPerLevel;
+  int get xpInCurrentLevel => xp % creditsPerLevel;
   
-  String get progressText => "$xpInCurrentLevel/$xpPerLevel CREDITS";
+  String get progressText => "$xpInCurrentLevel/$creditsPerLevel CREDITS";
 }

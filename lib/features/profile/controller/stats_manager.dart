@@ -45,9 +45,10 @@ class StatsManager {
 
   Future<void> recordWin({required int yearLevel, required int wordLength, required int attempts}) async {
     final current = statsNotifier.value;
-    final int gainedXP = UserStatsExtension.calculateGainedXP(yearLevel, wordLength);
+    final int gainedCredits = UserStatsExtension.calculateGainedXP(yearLevel, wordLength);
 
     final newSolved = current.solved + 1;
+    final newXP = current.xp + gainedCredits;
     final newStreak = current.streak + 1;
     final newMaxStreak = newStreak > current.maxStreak ? newStreak : current.maxStreak;
     
@@ -57,15 +58,15 @@ class StatsManager {
     await _prefs.setInt('stat_solved', newSolved);
     await _prefs.setInt('stat_streak', newStreak);
     await _prefs.setInt('stat_max_streak', newMaxStreak);
-    await _prefs.setInt('stat_xp', current.xp + gainedXP);
+    await _prefs.setInt('stat_xp', newXP);
     await _prefs.setString('stat_dist', jsonEncode(newDist.map((k, v) => MapEntry(k.toString(), v))));
 
     statsNotifier.value = UserStats(
       streak: newStreak,
-      maxStreak: newMaxStreak,
+      maxStreak: newStreak > current.maxStreak ? newStreak : current.maxStreak,
       solved: newSolved,
       lost: current.lost,
-      xp: current.xp + gainedXP,
+      xp: newXP,
       guessDistribution: newDist,
     );
   }

@@ -1,4 +1,3 @@
-import 'package:uniordle/shared/exports/home_exports.dart';
 import 'package:uniordle/shared/exports/profile_exports.dart';
 
 class ProfileHeader extends StatelessWidget {

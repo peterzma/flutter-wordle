@@ -35,7 +35,7 @@ class EndDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final int levelValue = _mapYearToValue(yearLevel);
-    final gainedXP = UserStatsExtension.calculateGainedXP(levelValue, solution.length);
+    final gainedCredits = UserStatsExtension.calculateGainedXP(levelValue, solution.length);
 
     return BaseDialog(
       child: Padding(
@@ -58,7 +58,7 @@ class EndDialog extends StatelessWidget {
                   border: Border.all(color: AppColors.accent.withValues(alpha: 0.2)),
                 ),
                 child: Text(
-                  '+$gainedXP CREDITS',
+                  '+$gainedCredits CREDITS',
                   style: AppFonts.labelMedium.copyWith(
                     color: AppColors.accent,
                     fontWeight: FontWeight.bold,
