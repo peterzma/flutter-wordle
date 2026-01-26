@@ -7,4 +7,6 @@ abstract class AppLayout {
   static const double kSidePadding = 24.0;
   static const double kVerticalPadding = 36.0;
   static const double kIconSize = 40.0;
+
+  static const double settingsTileHeight = 60;
 }

@@ -59,34 +59,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 children: [
                   const SettingsHeader(title: 'PREFERENCES'),
-                  SettingsCard(
-                    children: [
-                      SettingsToggleTile(
-                        icon: Icons.volume_up_rounded,
-                        label: 'Sound Effects',
-                        value: _settings.soundsEnabled,
-                        onChanged: _toggleSounds,
-                      ),
-                      // SettingsToggleTile(
-                      //   icon: Icons.dark_mode_rounded,
-                      //   label: 'Dark Mode',
-                      //   value: _settings.darkModeEnabled,
-                      //   onChanged: _toggleDarkMode,
-                      //   isLast: true,
-                      // ),
-                    ],
+                  SettingsToggleTile(
+                    icon: Icons.volume_up_rounded,
+                    label: 'Sound Effects',
+                    value: _settings.soundsEnabled,
+                    onChanged: _toggleSounds,
                   ),
                   const SettingsHeader(title: 'SUPPORT'),
-                  SettingsCard(
-                    children: [
-                      SettingsActionTile(
-                        icon: Icons.info_outline_rounded,
-                        label: 'About Uniordle',
-                        value: 'v1.0.0',
-                        onTap: () {},
-                        isLast: true,
-                      ),
-                    ],
+                  SettingsActionTile(
+                    icon: Icons.info_outline_rounded,
+                    label: 'About Uniordle',
+                    value: 'v1.0.0',
+                    onTap: () {},
                   ),
                 ],
               ),
