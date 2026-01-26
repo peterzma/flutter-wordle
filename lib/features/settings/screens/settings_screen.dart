@@ -23,8 +23,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   Future<void> _launchUrl(String url) async {
     final Uri uri = Uri.parse(url);
-    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
-      throw Exception('Could not launch $url');
+    if (!await launchUrl(uri, mode: LaunchMode.platformDefault)) {
+      debugPrint('Could not launch $url');
     }
   }
 
@@ -66,6 +66,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               child: ListView(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 children: [
+
                   const SettingsHeader(title: 'PREFERENCES'),
                   SettingsToggleTile(
                     icon: Icons.volume_up_rounded,
@@ -73,6 +74,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     value: _settings.soundsEnabled,
                     onChanged: _toggleSounds,
                   ),
+
                   const SettingsHeader(title: 'SUPPORT'),
                   SettingsActionTile(
                     icon: Icons.info_outline_rounded,
@@ -80,18 +82,22 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     value: 'v1.0.0',
                     onTap: () {},
                   ),
+
+                  const SettingsHeader(title: 'SOCIALS'),
+                  SettingsActionTile(
+                    icon: Icons.person_search_rounded,
+                    label: 'LinkedIn (Let\'s connect!)',
+                    onTap: () => _launchUrl('https://www.linkedin.com/in/peterzma'),
+                  ),
                   const SizedBox(height: 8),
                   SettingsActionTile(
                     icon: Icons.code_rounded,
-                    label: 'My GitHub',
-                    onTap: () => _launchUrl('https://github.com/chuckabox'),
+                    label: 'GitHub',
+                    onTap: () {
+                      _launchUrl('https://github.com/chuckabox');
+                    },
                   ),
                   const SizedBox(height: 8),
-                  SettingsActionTile(
-                    icon: Icons.person_search_rounded,
-                    label: 'My LinkedIn',
-                    onTap: () => _launchUrl('https://www.linkedin.com/in/peterzma'),
-                  ),
                 ],
               ),
             ),

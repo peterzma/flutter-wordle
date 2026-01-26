@@ -26,6 +26,7 @@ class SettingsActionTile extends StatelessWidget {
         border: Border.all(color: AppColors.surface.withValues(alpha: 0.6)),
       ),
       child: SelectButtonWrapper(
+        onTap: onTap,
         child: Container(
           height: 60,
           padding: const EdgeInsets.symmetric(horizontal: 16),
