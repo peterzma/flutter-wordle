@@ -1,17 +1,37 @@
 import 'package:uniordle/shared/exports/help_exports.dart';
 
-class HowToPlaySlide extends StatelessWidget {
-  const HowToPlaySlide({super.key});
+class LevelUp extends StatelessWidget {
+  const LevelUp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text('HOW TO PLAY', style: AppFonts.headline, textAlign: TextAlign.center),
+        Text('LEVEL UP & UNLOCK', style: AppFonts.headline, textAlign: TextAlign.center),
         const SizedBox(height: 8),
-        Text(
-          'Choose a category, customise your settings, then guess the word!',
+        Text.rich(
+          TextSpan(
+            children: [
+              const TextSpan(text: 'Guess words correctly to earn '),
+              TextSpan(
+                text: 'credits',
+                style: TextStyle(
+                  color: Colors.amber, // Makes credits pop
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const TextSpan(text: '. Level up with credits, and every five levels you unlock a new '),
+              TextSpan(
+                text: 'discipline',
+                style: TextStyle(
+                  color: Colors.greenAccent, // Distinct color for the reward
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const TextSpan(text: '.'),
+            ],
+          ),
           style: AppFonts.labelMedium.copyWith(color: Colors.white70),
           textAlign: TextAlign.center,
         ),
@@ -21,11 +41,26 @@ class HowToPlaySlide extends StatelessWidget {
           padding: const EdgeInsets.only(left: 16.0),
           child: Column(
             children: [
-            const InstructionRow(letter: 'U', color: AppColors.correctColor, title: 'Correct Letter', subtitle: 'Right spot'),
-            const SizedBox(height: 32),
-            const InstructionRow(letter: 'N', color: AppColors.inWordColor, title: 'Correct Letter', subtitle: 'Wrong spot'),
-            const SizedBox(height: 32),
-            const InstructionRow(letter: 'I', color: AppColors.notInWordColor, title: 'Letter not in word', subtitle: 'Not in any spot'),
+              InstructionRow(
+                leading: Icon(LucideIcons.dollarSign, color: Color(0xFFFFD700), size: 24),
+                color: AppColors.surfaceVariant,
+                title: 'Earn Credits',
+                subtitle: 'FOR EVERY CORRECT GUESS',
+              ),
+              const SizedBox(height: 32),
+              InstructionRow(
+                leading: Icon(LucideIcons.trendingUp, color: Color(0xFF4A90E2), size: 24),
+                color: AppColors.surfaceVariant,
+                title: 'Choose your education',
+                subtitle: 'HARDER SETTINGS = MORE CREDITS',
+              ),
+              const SizedBox(height: 32),
+              InstructionRow(
+                leading: Icon(LucideIcons.graduationCap, color: Color(0xFF8E99FF), size: 24),
+                color: AppColors.surfaceVariant,
+                title: 'Unlock Disciplines',
+                subtitle: 'EVERY 5 LEVELS',
+              ),
             ]
           ),
         ),

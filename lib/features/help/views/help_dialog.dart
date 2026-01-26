@@ -34,11 +34,12 @@ class _HelpDialogState extends State<HelpDialog> {
                     onPageChanged: (index) => setState(() => _currentPage = index),
                     children: [
                       const HowToPlay(),
-                      const Center(child: Text("Slide 2", style: TextStyle(color: Colors.white))),
-                      const Center(child: Text("Slide 3", style: TextStyle(color: Colors.white))),
+                      const LevelUp(),
+                      const ReachTop(),
                     ],
                   ),
                 ),
+                const SizedBox(height: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(_totalPages, (index) => AnimatedContainer(
@@ -65,7 +66,7 @@ class _HelpDialogState extends State<HelpDialog> {
             if (_currentPage > 0)
               Positioned(
                 left: -20,
-                top: 180,
+                top: 170,
                 child: _NavArrow(
                   icon: LucideIcons.chevronLeft,
                   onTap: () => _pageController.previousPage(
@@ -79,7 +80,7 @@ class _HelpDialogState extends State<HelpDialog> {
             if (_currentPage < _totalPages - 1)
               Positioned(
                 right: -20,
-                top: 180,
+                top: 170,
                 child: _NavArrow(
                   icon: LucideIcons.chevronRight,
                   onTap: () => _pageController.nextPage(

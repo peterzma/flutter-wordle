@@ -12,7 +12,7 @@ class HowToPlay extends StatelessWidget {
         const SizedBox(height: 8),
         Text(
           'Choose a category, customise your settings, then guess the word!',
-          style: AppFonts.labelMedium.copyWith(color: Colors.white70),
+          style: AppFonts.labelMedium.copyWith(color: AppColors.onSurfaceVariant),
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 16),
@@ -21,11 +21,26 @@ class HowToPlay extends StatelessWidget {
           padding: const EdgeInsets.only(left: 16.0),
           child: Column(
             children: [
-            const InstructionRow(letter: 'U', color: AppColors.correctColor, title: 'Correct Letter', subtitle: 'Right spot'),
+            InstructionRow(
+              leading: Text('U', style: AppFonts.displayMedium),
+              color: AppColors.correctColor,
+              title: 'Correct Letter',
+              subtitle: 'Right spot',
+            ),
             const SizedBox(height: 32),
-            const InstructionRow(letter: 'N', color: AppColors.inWordColor, title: 'Correct Letter', subtitle: 'Wrong spot'),
+            InstructionRow(
+              leading: Text('N', style: AppFonts.displayMedium), 
+              color: AppColors.inWordColor, 
+              title: 'Correct Letter', 
+              subtitle: 'Wrong spot'
+            ),
             const SizedBox(height: 32),
-            const InstructionRow(letter: 'I', color: AppColors.notInWordColor, title: 'Letter not in word', subtitle: 'Not in any spot'),
+            InstructionRow(
+              leading: Text('I', style: AppFonts.displayMedium), 
+              color: AppColors.notInWordColor, 
+              title: 'Letter not in word', 
+              subtitle: 'Not in any spot'
+            ),
             ]
           ),
         ),
