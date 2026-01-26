@@ -26,7 +26,7 @@ class SolutionBox extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 48),
+            padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 16),
             decoration: BoxDecoration(
               color: backgroundColor,
               border: Border.all(
@@ -35,9 +35,12 @@ class SolutionBox extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Text(
-              solution.toUpperCase(),
-              style: AppFonts.displayLarge.copyWith(fontSize: 48, letterSpacing: 8),
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                solution.toUpperCase(),
+                style: AppFonts.displayLarge.copyWith(fontSize: 48, letterSpacing: 8),
+              ),
             ),
           ),
         ],

@@ -6,6 +6,7 @@ import 'package:uniordle/features/home/models/discipline.dart';
 import 'package:uniordle/shared/buttons/primary_button.dart';
 import 'package:uniordle/shared/exports/game_exports.dart';
 import 'package:uniordle/shared/layout/base_dialog.dart';
+import 'package:uniordle/features/profile/models/user_stats.dart';
 
 /// Dialog shown when game ends
 /// 
