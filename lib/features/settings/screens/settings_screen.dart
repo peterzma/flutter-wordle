@@ -151,31 +151,30 @@ class _SettingsScreenState extends State<SettingsScreen> {
             style: AppFonts.labelLarge,
           ),
           
-          Text("Made by Peter", style: AppFonts.labelMedium),
-          const SizedBox(height: 4),
+          const SizedBox(height: 24),
+
+          Text("Developed by Peter", style: AppFonts.labelMedium),
           Text(
-            "UQ Software Engineering Student", 
+            "Software Engineering Student @ UQ", 
             style: AppFonts.labelSmall
           ),
           
           const SizedBox(height: 24),
           
-          Row(
-            children: [
-              Expanded(
-                child: TextButton(
-                  onPressed: () => showLicensePage(context: context),
-                  child: Text("LICENSES", style: AppFonts.labelMedium),
-                ),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: TextButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: Text("CLOSE", style: AppFonts.labelMedium),
-                ),
-              ),
-            ],
+          PrimaryButton(
+            onPressed: () => showLicensePage(context: context),
+            label: "LICENSES",
+            height: 48,
+            width: 300
+          ),
+
+          const SizedBox(height: 12),
+
+          PrimaryButton(
+            onPressed: () => Navigator.pop(context),
+            label: "CLOSE",
+            height: 48,
+            width: 300
           ),
         ],
       ),

@@ -15,65 +15,58 @@ class _HelpDialogState extends State<HelpDialog> {
   @override
   Widget build(BuildContext context) {
     return BaseDialog(
-      child: Container(
-        width: 400,
-        decoration: BoxDecoration(
-          color: AppColors.surface, 
-          borderRadius: BorderRadius.circular(32),
-        ),
-        child: Stack(
-          clipBehavior: Clip.none,
-          alignment: Alignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SizedBox(
-                    child: PageView(
-                      controller: _pageController,
-                      physics: const BouncingScrollPhysics(),
-                      onPageChanged: (index) => setState(() => _currentPage = index),
-                      children: [
-                        const HowToPlay(),
-                        const LevelUp(),
-                        const ReachTop(),
-                      ],
-                    ),
+      child: Stack(
+        clipBehavior: Clip.none,
+        alignment: Alignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  height: 320,
+                  child: PageView(
+                    controller: _pageController,
+                    physics: const BouncingScrollPhysics(),
+                    onPageChanged: (index) => setState(() => _currentPage = index),
+                    children: [
+                      const HowToPlay(),
+                      const LevelUp(),
+                      const ReachTop(),
+                    ],
                   ),
-                  const SizedBox(height: 16),
-                  PageIndicator(
-                    totalPages: _totalPages,
-                    currentPage: _currentPage,
-                  ),
-                  const SizedBox(height: 32),
-                  PrimaryButton(
-                    label: 'Got it!',
-                    onPressed: () => Navigator.pop(context),
-                    borderRadius: 16,
-                    height: 48,
-                    width: 300
-                  ),
-                ],
-              ),
+                ),
+                const SizedBox(height: 16),
+                PageIndicator(
+                  totalPages: _totalPages,
+                  currentPage: _currentPage,
+                ),
+                const SizedBox(height: 32),
+                PrimaryButton(
+                  label: 'Got it!',
+                  onPressed: () => Navigator.pop(context),
+                  height: 48,
+                  width: 300
+                ),
+              ],
             ),
-
-            // Left Arrow
-            if (_currentPage > 0)
-              NavArrow(
-                isLeft: true,
-                onTap: () => _pageController.jumpToPage(_currentPage - 1),
-              ),
-
-            // Right Arrow
-            if (_currentPage < _totalPages - 1)
-              NavArrow(
-                isLeft: false,
-                onTap: () => _pageController.jumpToPage(_currentPage + 1),
-              ),
-          ],
-        ),
+          ),
+      
+          // Left Arrow
+          if (_currentPage > 0)
+            NavArrow(
+              isLeft: true,
+              onTap: () => _pageController.jumpToPage(_currentPage - 1),
+            ),
+      
+          // Right Arrow
+          if (_currentPage < _totalPages - 1)
+            NavArrow(
+              isLeft: false,
+              onTap: () => _pageController.jumpToPage(_currentPage + 1),
+            ),
+        ],
       ),
     );
   }
