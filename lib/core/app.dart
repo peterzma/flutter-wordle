@@ -1,15 +1,5 @@
-import 'package:uniordle/core/app_layout.dart';
-import 'package:uniordle/core/app_theme.dart';
-import 'package:uniordle/features/stats/views/stats_screen.dart';
-import 'package:uniordle/shared/exports/home_exports.dart';
-import 'package:uniordle/shared/exports/game_exports.dart';
-import 'package:uniordle/shared/exports/game_setup_exports.dart';
-import 'package:uniordle/features/settings/screens/settings_screen.dart';
-import 'package:uniordle/shared/exports/profile_exports.dart';
+import 'package:uniordle/shared/exports/app_exports.dart';
 
-/// Root widget of Uniordle
-/// 
-/// Sets up theme, routes, and initial home screen
 class App extends StatelessWidget {
   const App({
     super.key,

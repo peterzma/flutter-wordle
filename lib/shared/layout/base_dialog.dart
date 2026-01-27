@@ -1,5 +1,4 @@
 import 'dart:ui';
-import 'package:uniordle/core/app_layout.dart';
 import 'package:uniordle/shared/exports/game_exports.dart';
 
 class BaseDialog extends StatelessWidget {

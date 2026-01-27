@@ -1,12 +1,6 @@
+import 'package:uniordle/features/game_setup/data/difficulty_config.dart';
 import 'package:uniordle/features/home/models/discipline.dart';
 import 'package:uniordle/shared/exports/game_setup_exports.dart';
-
-const _labels = {
-  1: ('1st Year', '8'),
-  2: ('2nd Year', '7'),
-  3: ('3rd Year', '6'),
-  4: ('Postgrad', '5'),
-};
 
 const _attemptsIcon = Icons.favorite;
 
@@ -77,13 +71,13 @@ class DifficultySelector extends StatelessWidget {
             },
           ),
         ),
-        const SizedBox(height: 12),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 22.0),
           child: LayoutBuilder(
             builder: (context, constraints) {
                 return Row(
-                  children: _labels.entries.map((e) {
+                  children: DifficultyConfig.levels.entries.map((e) {
+
                     final active = e.key == value;
                     final isFirst = e.key == 1;
                     final isLast = e.key == 4;

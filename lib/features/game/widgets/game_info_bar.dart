@@ -1,4 +1,5 @@
 import 'package:uniordle/shared/exports/game_exports.dart';
+import 'package:uniordle/features/game_setup/data/difficulty_config.dart';
 
 class GameInfoBar extends StatelessWidget {
   final String disciplineName;
@@ -13,19 +14,7 @@ class GameInfoBar extends StatelessWidget {
   });
 
   String get _attemptsLabel {
-    const labels = {
-      1: ('1st Year', '8'),
-      2: ('2nd Year', '7'),
-      3: ('3rd Year', '6'),
-      4: ('Postgrad', '5'),
-    };
-
-    final match = labels.values.firstWhere(
-      (element) => element.$1.toLowerCase() == yearLevel.toLowerCase(),
-      orElse: () => ('', '6'),
-    );
-
-    return match.$2;
+  return DifficultyConfig.getAttemptsByLabel(yearLevel);
   }
 
   @override

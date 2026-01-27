@@ -1,11 +1,6 @@
 import 'package:uniordle/shared/exports/game_exports.dart';
 import 'package:uniordle/shared/buttons/select_button_wrapper.dart';
 
-const double _specialKeyWidth = 70;
-
-/// A single key used on the keyboard
-/// 
-/// Provides press and tap animation with darkening
 class KeyboardButton extends StatelessWidget {
   final double height;
   final double width;
@@ -29,7 +24,7 @@ class KeyboardButton extends StatelessWidget {
 
   factory KeyboardButton.delete({required VoidCallback onTap}) =>
       KeyboardButton(
-        width: _specialKeyWidth,
+        width: 70,
         onTap: onTap,
         backgroundColor: AppColors.surfaceVariant,
         soundType: SoundType.delete,
@@ -42,7 +37,7 @@ class KeyboardButton extends StatelessWidget {
 
   factory KeyboardButton.enter({required VoidCallback onTap}) =>
       KeyboardButton(
-        width: _specialKeyWidth,
+        width: 70,
         onTap: onTap,
         backgroundColor: AppColors.surfaceVariant,
         letter: 'ENTER',
