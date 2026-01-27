@@ -4,8 +4,8 @@ class ReachTop extends StatelessWidget {
   const ReachTop({super.key});
 
   final List<Map<String, String>> ranks = const [
-    {'title': 'UNDERGRADUATE', 'level': 'LEVEL 0-9'},
-    {'title': 'BACHELOR', 'level': 'LEVEL 10-19'},
+    {'title': 'UNDERGRADUATE', 'level': 'LEVEL 0+'},
+    {'title': 'BACHELOR', 'level': 'LEVEL 10+'},
     {'title': '???', 'level': 'LEVEL 70+'}, // CHANCELLOR
   ];
 
@@ -18,7 +18,7 @@ class ReachTop extends StatelessWidget {
         const SizedBox(height: 8),
         Text(
           'Earn a new academic rank every 10 levels!',
-          style: AppFonts.labelMedium.copyWith(color: AppColors.onSurfaceVariant),
+          style: AppFonts.labelMedium,
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 24),
@@ -27,10 +27,10 @@ class ReachTop extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
-              _buildRankRow(ranks[0]),
+              _buildRankRow(ranks[0], color: AppColors.accent),
               const Divider(color: AppColors.outline, height: 1),
 
-              _buildRankRow(ranks[1]),
+              _buildRankRow(ranks[1], color: AppColors.onSurface),
               const Divider(color: AppColors.outline, height: 1),
 
               Padding(
@@ -38,14 +38,14 @@ class ReachTop extends StatelessWidget {
                 child: Text(
                   '.\n.\n.',
                   style: AppFonts.headline.copyWith(
-                    color: AppColors.onSurfaceVariant.withValues(alpha: 0.5),
+                    color: AppColors.onSurfaceVariant,
                     height: 1,
                   ),
                   textAlign: TextAlign.center,
                 ),
               ),
 
-              _buildRankRow(ranks[2], isSecret: true),
+              _buildRankRow(ranks[2], color: AppColors.outline, isBold: true),
               const Divider(color: AppColors.outline, height: 1),
             ],
           ),
@@ -54,7 +54,7 @@ class ReachTop extends StatelessWidget {
     );
   }
 
-  Widget _buildRankRow(Map<String, String> rank, {bool isSecret = false}) {
+  Widget _buildRankRow(Map<String, String> rank, {required Color color, bool isBold = false}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: Row(
@@ -63,14 +63,13 @@ class ReachTop extends StatelessWidget {
           Text(
             rank['title']!,
             style: AppFonts.labelMedium.copyWith(
-              color: isSecret ? AppColors.accent : AppColors.onSurface,
-              fontWeight: isSecret ? FontWeight.bold : FontWeight.normal,
+              color: color,
             ),
           ),
           Text(
             rank['level']!,
             style: AppFonts.labelSmall.copyWith(
-              color: isSecret ? AppColors.accent : AppColors.onSurfaceVariant,
+              color: color,
             ),
           ),
         ],

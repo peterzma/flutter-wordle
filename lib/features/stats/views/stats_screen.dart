@@ -73,7 +73,7 @@ class StatsScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 12),
-                    Expanded(child: StatCard(value: "${stats.maxStreak}", label: "Max\nStreak", color: AppColors.accent)),
+                    Expanded(child: StatCard(value: "${stats.maxStreak}", label: "Best\nStreak", color: Colors.orange)),
                   ],
                 ),
               ),
