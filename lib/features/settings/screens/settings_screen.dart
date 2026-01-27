@@ -75,14 +75,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     onChanged: _toggleSounds,
                   ),
 
-                  const SettingsHeader(title: 'SUPPORT'),
-                  SettingsActionTile(
-                    icon: Icons.info_outline_rounded,
-                    label: 'About Uniordle',
-                    value: 'v1.0.0',
-                    onTap: () {},
-                  ),
-
                   const SettingsHeader(title: 'SOCIALS'),
                   SettingsActionTile(
                     icon: Icons.person_search_rounded,
@@ -98,6 +90,26 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     },
                   ),
                   const SizedBox(height: 8),
+
+                  const SettingsHeader(title: 'SUPPORT'),
+                  SettingsActionTile(
+                    icon: Icons.bug_report_rounded,
+                    label: 'Report a Bug',
+                    onTap: () => _launchUrl('https://docs.google.com/forms/d/19N6-JRjClBgYyfCR6-PgeSD8mpJWJkswuQcQXo9DE0k/prefill'),
+                  ),
+                  const SizedBox(height: 8),
+                  SettingsActionTile(
+                    icon: Icons.lightbulb_outline_rounded,
+                    label: 'Feedback',
+                    onTap: () => _launchUrl('https://docs.google.com/forms/d/e/1FAIpQLSeTSDNdbh0e0pl3-IbcI9aXB-3vqUnG__bQR57T2AOmz-PgsQ/viewform?usp=pp_url&entry.1189187296=Feedback'),
+                  ),
+                  const SizedBox(height: 8),
+                  SettingsActionTile(
+                    icon: Icons.info_outline_rounded,
+                    label: 'About Uniordle',
+                    value: 'v1.0.0',
+                    onTap: () {},
+                  ),
                 ],
               ),
             ),
