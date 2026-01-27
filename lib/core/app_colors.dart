@@ -15,7 +15,6 @@ abstract class AppColors {
   static const Color onSurfaceVariant = Color(0xFF94A3B8); // Medium emphasis / secondary text / inactive
   static const Color accent = Colors.blue;                 // Active icons/selection
   static const Color nonAccent = Colors.grey; // Nonactive icons/selection
-
   
   // Borders of non-selected buttons
   static const Color outline = Colors.white10;

@@ -48,32 +48,10 @@ class ProfileScreen extends StatelessWidget {
               ),
         
               const SizedBox(height: 32),
-        
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     Text("UNLOCKED DISCIPLINES", style: AppFonts.labelLarge),
-              //     TextButton(
-              //       onPressed: () {}, 
-              //       child: Text(
-              //         "See All",
-              //         style: AppFonts.labelSmall.copyWith(fontSize: 12)
-              //       )
-              //     ),
-              //   ],
-              // ),
-        
-              // GridView.count(
-              //   shrinkWrap: true,
-              //   physics: const NeverScrollableScrollPhysics(),
-              //   crossAxisCount: 2,
-              //   mainAxisSpacing: 12,
-              //   crossAxisSpacing: 12,
-              //   childAspectRatio: 2.2,
-              //   children: const [
-                  
-              //   ],
-              // ),
+
+              RankPathway(currentLevel: stats.currentLevel),
+
+              const SizedBox(height: 32),
             ],
           ),
         );

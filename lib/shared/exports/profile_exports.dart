@@ -8,3 +8,6 @@ export 'package:shared_preferences/shared_preferences.dart';
 export '../../features/profile/widgets/level_card.dart';
 export '../../core/app_fonts.dart';
 export '../../core/app_colors.dart';
+export '../../features/profile/data/all_ranks.dart';
+export '../../features/profile/widgets/rank_pathway.dart';
+export '../../features/profile/widgets/thank_you_dialog.dart';
