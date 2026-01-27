@@ -4,14 +4,14 @@ class LevelUpDialog extends StatefulWidget {
   final int startingLevel;
   final double startingProgress;
   final double gainedXP;
-  final VoidCallback onContinue;
+  final Discipline discipline;
 
   const LevelUpDialog({
     super.key,
     required this.startingLevel,
     required this.startingProgress,
     required this.gainedXP,
-    required this.onContinue,
+    required this.discipline,
   });
 
   @override
@@ -89,12 +89,33 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
                 const SizedBox(height: 20),
                 _buildMilestoneBox(),
               ],
-              const SizedBox(height: 24),
+
+              const SizedBox(height: 36),
+
               PrimaryButton(
-                label: 'NEXT',
-                onPressed: widget.onContinue,
-                color: AppColors.accent,
-              ),
+              label: 'NEW GAME',
+              color: AppColors.accent,
+              onPressed: () {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/setup',
+                  (route) => route.isFirst, 
+                  arguments: widget.discipline,
+                );
+              },
+              borderRadius: 24,
+            ),
+
+              const SizedBox(height: 12),
+              
+              PrimaryButton(
+              label: 'HOME',
+              onPressed: () {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/',
+                  (route) => false,
+                );
+              },
+            ),
 
             ]
           )

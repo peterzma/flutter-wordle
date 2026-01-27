@@ -8,6 +8,7 @@ class EndDialog extends StatelessWidget {
   final String yearLevel;
   final Discipline discipline;
   final VoidCallback onRestart;
+  final VoidCallback onNext;
 
   const EndDialog({
     super.key,
@@ -18,6 +19,7 @@ class EndDialog extends StatelessWidget {
     required this.yearLevel,
     required this.discipline,
     required this.onRestart,
+    required this.onNext,
   });
 
 
@@ -41,27 +43,12 @@ class EndDialog extends StatelessWidget {
             GameInfoBar(disciplineName: discipline.name, yearLevel: yearLevel, wordLength: solution.length),
             const SizedBox(height: 24),
             PrimaryButton(
-              label: 'NEW GAME',
+              label: 'NEXT',
               color: AppColors.accent,
-              onPressed: () {
-                Navigator.of(context).pushNamed(
-                  '/setup',
-                  arguments: discipline
-                );
-              },
+              onPressed: onNext,
               borderRadius: 24,
             ),
             const SizedBox(height: 12),
-            PrimaryButton(
-              label: 'HOME',
-              borderRadius: 24,
-              onPressed: () {
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                  '/',
-                  (route) => false,
-                );
-              },
-            ),
           ],
         ),
       ),
