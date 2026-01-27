@@ -1,5 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uniordle/features/settings/settings_manager.dart';
+import 'package:uniordle/shared/exports/help_exports.dart';
 import 'package:uniordle/shared/exports/settings_exports.dart';
 import 'package:uniordle/shared/layout/base_header.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -108,7 +109,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     icon: Icons.info_outline_rounded,
                     label: 'About Uniordle',
                     value: 'v1.0.0',
-                    onTap: () {},
+                    onTap: () => _showAboutDialog(context),
                   ),
                 ],
               ),
@@ -121,4 +122,64 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
     );
   }
+
+  void _showAboutDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (context) => BaseDialog(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // App Icon
+          Container(
+            height: 80,
+            width: 80,
+            decoration: BoxDecoration(
+              color: AppColors.accent,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: const Icon(Icons.school, size: 40, color: Colors.white),
+          ),
+          const SizedBox(height: 24),
+          
+          Text("Uniordle", style: AppFonts.headline),
+          const SizedBox(height: 12),
+
+          Text(
+            "University + Wordle",
+            textAlign: TextAlign.center,
+            style: AppFonts.labelLarge,
+          ),
+          
+          Text("Made by Peter", style: AppFonts.labelMedium),
+          const SizedBox(height: 4),
+          Text(
+            "UQ Software Engineering Student", 
+            style: AppFonts.labelSmall
+          ),
+          
+          const SizedBox(height: 24),
+          
+          Row(
+            children: [
+              Expanded(
+                child: TextButton(
+                  onPressed: () => showLicensePage(context: context),
+                  child: Text("LICENSES", style: AppFonts.labelMedium),
+                ),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: Text("CLOSE", style: AppFonts.labelMedium),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    ),
+  );
+}
 }
