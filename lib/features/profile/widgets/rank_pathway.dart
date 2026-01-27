@@ -7,19 +7,25 @@ class RankPathway extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /// code to test all achieved
-    bool debugComplete = true;
+    // /// code to test all achieved
+    // bool debugComplete = false;
 
-    int currentRankIndex = debugComplete 
-      ? allRanks.length - 1 
-      : allRanks.lastIndexWhere((r) => currentLevel >= r['minLevel']);
+    // int currentRankIndex = debugComplete 
+    //   ? allRanks.length - 1 
+    //   : allRanks.lastIndexWhere((r) => currentLevel >= r['minLevel']);
+
+    // final bool isPathwayComplete = currentRankIndex == allRanks.length - 1;
+
+    final int currentRankIndex = allRanks.lastIndexWhere(
+      (r) => currentLevel >= r['minLevel'],
+    );
 
     final bool isPathwayComplete = currentRankIndex == allRanks.length - 1;
     
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Academic Pathway", style: AppFonts.labelLarge),
+        Text("Academic Pathway", style: AppFonts.headline),
 
         const SizedBox(height: 16),
 
