@@ -2,14 +2,12 @@ import 'package:uniordle/shared/exports/game_exports.dart';
 
 class InfoTag extends StatelessWidget {
   final String label;
-  final Color borderColor;
   final Color backgroundColor;
   final Widget? icon;
 
   const InfoTag({
     super.key, 
     required this.label, 
-    this.borderColor = AppColors.onSurfaceVariant, 
     this.backgroundColor = AppColors.surfaceVariant,
     this.icon,
   });
@@ -23,10 +21,6 @@ class InfoTag extends StatelessWidget {
       decoration: BoxDecoration(
         color: backgroundColor.withValues(alpha: 0.5),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: borderColor.withValues(alpha: 0.4),
-          width: 1,
-        ),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,

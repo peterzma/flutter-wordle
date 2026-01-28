@@ -30,7 +30,7 @@ class SolutionBox extends StatelessWidget {
             decoration: BoxDecoration(
               color: backgroundColor,
               border: Border.all(
-                color: AppColors.onSurfaceVariant,
+                color: AppColors.outline,
                 width: 2
               ),
               borderRadius: BorderRadius.circular(12),

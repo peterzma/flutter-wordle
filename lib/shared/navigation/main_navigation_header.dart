@@ -26,7 +26,6 @@ class MainNavigationHeader extends StatelessWidget implements PreferredSizeWidge
           showDialog(
           context: context,
           barrierDismissible: true, 
-          barrierColor: Colors.black.withValues(alpha: 0.4),
           builder: (context) => const HelpDialog(),
         );
       },

@@ -14,4 +14,6 @@ abstract class AppColors {
   static const Color onSurface = Color(0xFFF8FAFC); // High emphasis text
   static const Color onSurfaceVariant = Color(0xFF94A3B8); // Medium emphasis / secondary text / inactive
   static const Color accent = Colors.blue; // Active icons/selection
+
+  static const Color outline = Colors.white10;
 }

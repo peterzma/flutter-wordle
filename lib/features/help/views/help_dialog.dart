@@ -64,7 +64,11 @@ class NavHitArea extends StatelessWidget {
   final bool isLeft;
   final VoidCallback onTap;
 
-  const NavHitArea({super.key, required this.isLeft, required this.onTap});
+  const NavHitArea({
+    super.key, 
+    required this.isLeft, 
+    required this.onTap
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -73,12 +77,14 @@ class NavHitArea extends StatelessWidget {
       behavior: HitTestBehavior.opaque,
       child: Container(
         width: 40, 
-        height: 300, 
+        height: 310, 
         alignment: Alignment.center,
-        child: Icon(
-          isLeft ? LucideIcons.chevronLeft : LucideIcons.chevronRight,
-          color: AppColors.onSurfaceVariant,
-          size: 30,
+        child: Transform.translate(
+          offset: const Offset(0, -28),
+          child: Icon(
+            isLeft ? LucideIcons.chevronLeft : LucideIcons.chevronRight,
+            color: AppColors.onSurfaceVariant,
+          ),
         ),
       ),
     );
