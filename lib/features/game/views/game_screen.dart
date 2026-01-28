@@ -1,5 +1,5 @@
+import 'package:uniordle/features/game/widgets/invalid_word_dialog.dart';
 import 'package:uniordle/shared/exports/game_exports.dart';
-import 'dart:ui';
 
 class GameScreen extends StatefulWidget {
   const GameScreen({
@@ -59,7 +59,7 @@ void didChangeDependencies() {
       maxAttempts: attempts,
       disciplineId: discipline?.id ?? 'engineering',
       onGameEnd: (won) => _showEndDialog(won),
-      onInvalidWord: _showInvalidWord,
+      onInvalidWord: () => InvalidWordDialog.show(context),
       yearLevel: yearLevel,
     );
 
@@ -135,32 +135,6 @@ void _showEndDialog(bool won) {
           ),
         ],
       ),
-    );
-  }
-
-  void _showInvalidWord() {
-    showDialog(
-      context: context,
-      barrierColor: Colors.transparent,
-      barrierDismissible: false,
-      builder: (dialogContext) {
-        final navigator = Navigator.of(dialogContext);
-
-        Future.delayed(const Duration(milliseconds: 700), () {
-          if (mounted && navigator.canPop()) {
-            navigator.pop();
-          }
-        });
-
-        return BaseDialog(
-          blur: 0.0,
-          child: Text(
-            'Word not found', 
-            textAlign: TextAlign.center,
-            style: AppFonts.labelLarge
-          ),
-        );
-      },
     );
   }
 }

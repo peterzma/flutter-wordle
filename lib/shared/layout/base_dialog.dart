@@ -6,6 +6,8 @@ class BaseDialog extends StatelessWidget {
   final double blur;
   final Widget? leftAction;
   final Widget? rightAction;
+  final EdgeInsets? padding;
+  final EdgeInsets? insetPadding;
 
   const BaseDialog({
     super.key,
@@ -13,6 +15,8 @@ class BaseDialog extends StatelessWidget {
     this.blur = 10.0,
     this.leftAction,
     this.rightAction,
+    this.padding,
+    this.insetPadding,
   });
 
   @override
@@ -23,13 +27,13 @@ class BaseDialog extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           Dialog(
-            insetPadding: const EdgeInsets.symmetric(horizontal: 40),
+            insetPadding: insetPadding ?? const EdgeInsets.symmetric(horizontal: 40.0),
             backgroundColor: AppColors.surface,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
             child: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: AppLayout.maxDialogWidth),
               child: Padding(
-                padding: const EdgeInsets.all(24),
+                padding: padding ?? const EdgeInsets.all(24),
                 child: child,
               ),
             ),
