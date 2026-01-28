@@ -18,7 +18,7 @@ class AbandonGameDialog extends StatelessWidget {
           const SizedBox(height: 16),
           Text(
             "ABANDON GAME?",
-            style: AppFonts.labelLarge, // Using your existing font styles
+            style: AppFonts.labelLarge,
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 12),
@@ -51,7 +51,6 @@ class AbandonGameDialog extends StatelessWidget {
     );
   }
 
-  // Helper static method to show the dialog
   static Future<bool> show(BuildContext context) async {
     return await showDialog<bool>(
       context: context,

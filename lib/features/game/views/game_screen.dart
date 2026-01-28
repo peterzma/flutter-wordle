@@ -93,7 +93,7 @@ class _GameScreenState extends State<GameScreen> {
   }
   
 
-  void _onBackPressed() async {
+  void _handleBack() async {
   final shouldLeave = await AbandonGameDialog.show(context);
   
   if (shouldLeave) {
@@ -113,12 +113,12 @@ class _GameScreenState extends State<GameScreen> {
       canPop: false,
       onPopInvokedWithResult: (didPop, result) {
       if (didPop) return;
-        _onBackPressed();
+        _handleBack();
       },
       child: Scaffold(
         backgroundColor: AppColors.surface,
         appBar: GameHeader(
-          onBack: _onBackPressed
+          onBack: _handleBack
         ),
         body: Column(
           children: [
