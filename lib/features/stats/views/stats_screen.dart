@@ -18,7 +18,7 @@ class StatsScreen extends StatelessWidget {
         final Color winColor = Color.lerp(Colors.red, AppColors.correctColor, normalizedValue)!;
         
         return SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: AppLayout.kSidePadding, vertical: 24),
+          padding: const EdgeInsets.symmetric(horizontal: AppLayout.sidePadding, vertical: 24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

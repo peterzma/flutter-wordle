@@ -133,7 +133,7 @@ void _showEndDialog(bool won) {
           Expanded(
             child: Center(
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: AppLayout.kSidePadding),
+                padding: const EdgeInsets.symmetric(vertical: AppLayout.sidePadding),
                 child: Board(
                   board: _controller.board, 
                   flipCardKeys: _controller.flipCardKeys

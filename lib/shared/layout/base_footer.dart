@@ -21,7 +21,7 @@ class BaseFooter extends StatelessWidget {
         color: AppColors.surface.withValues(alpha: 0.95),
         border: const Border(
           top: BorderSide(
-            color: AppColors.onSurfaceVariant,
+            color: AppColors.outline,
             width: 0.5,
           ),
         ),
@@ -29,7 +29,7 @@ class BaseFooter extends StatelessWidget {
       child: SafeArea(
         top: false,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppLayout.kSidePadding),
+          padding: const EdgeInsets.symmetric(horizontal: AppLayout.sidePadding),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,

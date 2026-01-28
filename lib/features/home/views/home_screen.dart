@@ -10,10 +10,13 @@ class HomeScreen extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(AppLayout.kSidePadding),
+Widget build(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.all(AppLayout.sidePadding),
+    child: Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
         children: [
           const HomeHero(),
           const SizedBox(height: 36),
@@ -21,9 +24,9 @@ class HomeScreen extends StatelessWidget {
             disciplines: DisciplinesData.all,
             onSubjectTap: (sub) => _onDisciplineTap(context, sub),
           ),
-          const SizedBox(height: 36),
         ],
       ),
-    );
-  }
+    ),
+  );
+}
 }

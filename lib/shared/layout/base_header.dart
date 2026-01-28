@@ -31,7 +31,7 @@ class BaseHeader extends StatelessWidget {
         color: AppColors.surface.withValues(alpha: 0.8),
         border: const Border(
           bottom: BorderSide(
-            color: AppColors.onSurfaceVariant,
+            color: AppColors.outline,
             width: 0.5,
           ),
         ),
@@ -39,7 +39,7 @@ class BaseHeader extends StatelessWidget {
       child: SafeArea(
         bottom: false,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppLayout.kSidePadding),
+          padding: const EdgeInsets.symmetric(horizontal: AppLayout.sidePadding),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,

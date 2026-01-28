@@ -1,6 +1,5 @@
 import 'package:uniordle/shared/exports/game_exports.dart';
 
-
 enum GameStatus { playing, submitting, won, lost }
 
 class GameController extends ChangeNotifier {
@@ -10,8 +9,6 @@ class GameController extends ChangeNotifier {
   final int yearLevel;
   final Function(bool won) onGameEnd;
   final VoidCallback? onInvalidWord;
-
-  final Duration _flipDuration = const Duration(milliseconds: 160);
 
   GameController({
     required this.wordLength,
@@ -31,40 +28,7 @@ class GameController extends ChangeNotifier {
   GameStatus status = GameStatus.playing;
   final Set<Letter> keyboardLetters = {};
 
-  void _initGame() {
-    board = List.generate(
-      maxAttempts, 
-      (_) => Word(letters: List.generate(wordLength, (_) => Letter.empty()))
-    );
-    
-    flipCardKeys = List.generate(
-      maxAttempts, 
-      (_) => List.generate(wordLength, (_) => GlobalKey<FlipCardState>())
-    );
-    
-    final disciplineLibrary = categorizedWords[disciplineId.toLowerCase()] ?? categorizedWords['engineering']!;
-    final library = disciplineLibrary[wordLength] ?? disciplineLibrary[5]!;
-
-    solution = Word.fromString(
-      library[Random().nextInt(library.length)].toUpperCase(),
-    );
-  }
-
   Word? get currentWord => currentWordIndex < board.length ? board[currentWordIndex] : null;
-
-  void addLetter(String val) {
-    if (status == GameStatus.playing) {
-      currentWord?.addLetter(val);
-      notifyListeners();
-    }
-  }
-
-  void removeLetter() {
-    if (status == GameStatus.playing) {
-      currentWord?.removeLetter();
-      notifyListeners();
-    }
-  }
 
   Future<void> submitWord() async {
     if (status != GameStatus.playing || currentWord == null) return;
@@ -73,7 +37,6 @@ class GameController extends ChangeNotifier {
     final guess = currentWord!.wordString; 
     if (!WordRepository.isValidWord(guess)) {
       onInvalidWord?.call(); 
-      
       return;
     }
 
@@ -100,7 +63,6 @@ class GameController extends ChangeNotifier {
       }
     }
 
-    // reveal letters 1 by 1
     for (int i = 0; i < wordLength; i++) {
       currentWord!.letters[i] = currentWord!.letters[i].copyWith(status: statuses[i]);
       _updateKeyboard(currentWord!.letters[i]);
@@ -109,18 +71,27 @@ class GameController extends ChangeNotifier {
 
       SoundManager().play(SoundType.keyboard);
 
-      notifyListeners();
-
       if (currentWordIndex < flipCardKeys.length && i < flipCardKeys[currentWordIndex].length) {
         flipCardKeys[currentWordIndex][i].currentState?.toggleCard();
       }
       
-      await Future.delayed(_flipDuration);
+      await Future.delayed(const Duration(milliseconds: AppLayout.flipSpeedMs));
     }
 
-    await Future.delayed(const Duration(milliseconds: 200));
-
     _checkResult();
+  }
+
+
+  void _initGame() {
+    board = List.generate(maxAttempts, (_) => Word(letters: List.generate(wordLength, (_) => Letter.empty())));
+    flipCardKeys = List.generate(maxAttempts, (_) => List.generate(wordLength, (_) => GlobalKey<FlipCardState>()));
+    
+    final disciplineLibrary = categorizedWords[disciplineId.toLowerCase()] ?? categorizedWords['engineering']!;
+    final library = disciplineLibrary[wordLength] ?? disciplineLibrary[5]!;
+
+    solution = Word.fromString(
+      library[Random().nextInt(library.length)].toUpperCase(),
+    );
   }
 
   void _updateKeyboard(Letter newLetter) {
@@ -149,6 +120,20 @@ class GameController extends ChangeNotifier {
       currentWordIndex++;
     }
     notifyListeners();
+  }
+
+  void addLetter(String val) {
+    if (status == GameStatus.playing) {
+      currentWord?.addLetter(val);
+      notifyListeners();
+    }
+  }
+
+  void removeLetter() {
+    if (status == GameStatus.playing) {
+      currentWord?.removeLetter();
+      notifyListeners();
+    }
   }
 
   void restart() {

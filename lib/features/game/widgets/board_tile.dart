@@ -91,7 +91,7 @@ class _BoardTileState extends State<BoardTile> with SingleTickerProviderStateMix
             color: widget.letter.borderColor,
             width: 2,
           ),
-          borderRadius: BorderRadius.circular(6),
+          borderRadius: BorderRadius.circular(8),
         ),
         child: Text(
           widget.letter.val,

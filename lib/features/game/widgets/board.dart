@@ -33,7 +33,7 @@ class Board extends StatelessWidget {
                   key: flipCardKeys[i][j],
                   flipOnTouch: false,
                   direction: FlipDirection.VERTICAL,
-                  speed: 800,
+                  speed: AppLayout.flipSpeedMs,
                   front: BoardTile(
                     letter: Letter(
                       val: letter.val,
