@@ -51,9 +51,10 @@ class _DisciplineTileState extends State<DisciplineTile> {
             opacity: widget.isLocked ? 0.5 : 1.0,
             child: Row(
               children: [
-                widget.isLocked 
-                  ? Icon(Icons.lock_outline, color: displayColor)
-                  : DisciplineIcon(iconName: sub.icon, color: sub.color),
+                DisciplineIcon(
+                  iconName: widget.isLocked ? 'lock' : sub.icon, 
+                  color: widget.isLocked ? Colors.grey : sub.color,
+                ),
                 const SizedBox(width: 12),
                 Expanded(
                   child: Column(

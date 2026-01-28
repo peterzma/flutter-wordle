@@ -105,3 +105,4 @@ Latest release:
 * lock disciplines (make them greyscale and add a small lock icon on the right of the tile). also sort all discipline sby lock status then after alphabetical.
 * fix slight offset on text in settings when holding down buttons (rasturising issue)
 * improve transition between end game dialog and levelup dialog
+* during unlocking discipline, bring up dialog, behind the scenes, move the unlock to the top.

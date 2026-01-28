@@ -43,6 +43,7 @@ abstract class AppIcons {
 class IconMapper {
   static IconData getIcon(String name) {
     switch (name) {
+      case 'lock': return Icons.lock_outline;
       case 'settings': return LucideIcons.settings;
       case 'code': return LucideIcons.code;
       case 'heart_pulse': return LucideIcons.heartPulse;

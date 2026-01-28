@@ -28,8 +28,17 @@ class HomeScreen extends StatelessWidget {
           if (isFree) ElevatedButton(
           onPressed: () async {
             await statsManager.unlockDiscipline(sub.id);
-            if (context.mounted) Navigator.pop(context); 
-            
+            if (context.mounted) {
+              Navigator.pop(context);
+              
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text("${sub.name} is now available!"),
+                  backgroundColor: sub.color,
+                  duration: const Duration(seconds: 2),
+                ),
+              );
+            }
           },
           child: const Text("UNLOCK"),
         ),
