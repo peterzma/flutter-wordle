@@ -1,4 +1,4 @@
-import 'package:uniordle/shared/exports/help_exports.dart';
+import 'package:uniordle/shared/exports/game_exports.dart';
 
 class ReachTop extends StatelessWidget {
   const ReachTop({super.key});
@@ -15,7 +15,7 @@ class ReachTop extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text('REACH THE TOP', style: AppFonts.headline, textAlign: TextAlign.center),
-        const SizedBox(height: 8),
+        const SizedBox(height: AppLayout.titleToSubtitle),
         Text(
           'Earn a new academic rank every 10 levels!',
           style: AppFonts.labelMedium,

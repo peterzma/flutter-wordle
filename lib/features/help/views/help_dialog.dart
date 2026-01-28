@@ -1,3 +1,4 @@
+import 'package:uniordle/shared/exports/game_exports.dart';
 import 'package:uniordle/shared/exports/help_exports.dart';
 
 class HelpDialog extends StatefulWidget {
@@ -48,7 +49,7 @@ class _HelpDialogState extends State<HelpDialog> {
             totalPages: _totalPages,
             currentPage: _currentPage,
           ),
-          const SizedBox(height: 32),
+          const SizedBox(height: AppLayout.gapToButton),
           PrimaryButton(
             label: 'Got it!',
             color: AppColors.accent,

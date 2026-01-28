@@ -34,14 +34,14 @@ class UnlockDisciplineDialog extends StatelessWidget {
           color: statusColor,
           size: AppLayout.dialogIcon,
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: 8),
         
         // Title
         Text(
           canAfford ? "Enroll in ${discipline.name}?" : "LOCKED",
           style: AppFonts.displayMedium,
         ),
-        const SizedBox(height: 6),
+        const SizedBox(height: AppLayout.titleToSubtitle),
         
         // Content
         Text(
@@ -52,32 +52,30 @@ class UnlockDisciplineDialog extends StatelessWidget {
           style: AppFonts.labelLarge,
         ),
         
-        const SizedBox(height: 12),
+        const SizedBox(height: AppLayout.gapToButton),
         
-        Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "$credits ${credits == 1 ? 'Credit' : 'Credits'} Available",
-                  style: AppFonts.labelMedium.copyWith(
-                    color: statusColor, 
-                    fontWeight: FontWeight.bold
-                  ),
-                ),
-              ],
-            ),
-            if (!canAfford) ...[
-              Text(
-                "Next Credit at Level $nextLevel",
-                style: AppFonts.labelSmall.copyWith(color: AppColors.onSurfaceVariant),
-              ),
-            ],
-          ],
-        ),
-        
-        const SizedBox(height: 24),
+        // Column(
+        //   children: [
+        //     Row(
+        //       mainAxisAlignment: MainAxisAlignment.center,
+        //       children: [
+        //         Text(
+        //           "$credits ${credits == 1 ? 'Credit' : 'Credits'} Available",
+        //           style: AppFonts.labelMedium.copyWith(
+        //             color: statusColor, 
+        //             fontWeight: FontWeight.bold
+        //           ),
+        //         ),
+        //       ],
+        //     ),
+        //     if (!canAfford) ...[
+        //       Text(
+        //         "Next Credit at Level $nextLevel",
+        //         style: AppFonts.labelSmall.copyWith(color: AppColors.onSurfaceVariant),
+        //       ),
+        //     ],
+        //   ],
+        // ),
         
         Row(
           children: [

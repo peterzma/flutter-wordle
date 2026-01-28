@@ -54,13 +54,13 @@ class EndDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             EndDialogHeader(won: won),
-            const SizedBox(height: 12),
+            const SizedBox(height: AppLayout.titleToSubtitle),
             SolutionBox(solution: solution),
             const SizedBox(height: 12),
             AttemptsInfo(attempts: attempts, maxAttempts: maxAttempts, won: won),
             const SizedBox(height: 12),
             GameInfoBar(disciplineName: discipline.name, yearLevel: yearLevel, wordLength: solution.length),
-            const SizedBox(height: 24),
+            const SizedBox(height: AppLayout.gapToButton),
             PrimaryButton(
               label: 'NEXT',
               color: AppColors.accent,

@@ -81,6 +81,7 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              // TODO: change progress to something else
               Text("PROGRESS", style: AppFonts.labelMedium),
               const SizedBox(height: 16),
               AnimatedBuilder(
@@ -106,7 +107,7 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
                 _buildMilestoneBox(),
               ],
 
-              const SizedBox(height: 36),
+              const SizedBox(height: AppLayout.gapToButton),
 
               Row(
                 children: [
@@ -121,7 +122,7 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
                       },
                     ),
                   ),
-                  const SizedBox(width: 12),
+                  const SizedBox(width: AppLayout.gapBetweenButtons),
                   Expanded(
                     child: PrimaryButton(
                       label: 'NEW GAME',

@@ -13,13 +13,13 @@ class DataResetService {
           const Icon(AppIcons.inProgressDeleteData1, size: AppLayout.dialogIcon, color: AppColors.accent2),
           const SizedBox(height: 16),
           Text("RESET PROGRESS?", style: AppFonts.headline),
-          const SizedBox(height: 12),
+          const SizedBox(height: AppLayout.titleToSubtitle),
           Text(
             "This will permanently delete your level, stats, and academic rank.",
             style: AppFonts.labelMedium,
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: AppLayout.gapToButton),
           PrimaryButton(
             label: 'YES, RESET EVERYTHING',
             color: Colors.red,
@@ -45,13 +45,13 @@ class DataResetService {
           const Icon(AppIcons.inProgressDeleteData2, size: AppLayout.dialogIcon, color: AppColors.accent2),
           const SizedBox(height: 16),
           Text("ARE YOU CERTAIN?", style: AppFonts.headline),
-          const SizedBox(height: 12),
+          const SizedBox(height: AppLayout.titleToSubtitle),
           Text(
             "There is no way to recover your data once deleted. Be very careful!",
             style: AppFonts.labelMedium,
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: AppLayout.gapToButton),
           PrimaryButton(
             label: 'I AM SURE, DELETE IT ALL',
             color: Colors.red,

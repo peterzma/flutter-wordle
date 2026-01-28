@@ -1,3 +1,4 @@
+import 'package:uniordle/shared/exports/app_exports.dart';
 import 'package:uniordle/shared/exports/help_exports.dart';
 
 class HowToPlay extends StatelessWidget {
@@ -9,7 +10,7 @@ class HowToPlay extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text('HOW TO PLAY', style: AppFonts.headline, textAlign: TextAlign.center),
-        const SizedBox(height: 8),
+        const SizedBox(height: AppLayout.titleToSubtitle),
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 360),
           child: Text(

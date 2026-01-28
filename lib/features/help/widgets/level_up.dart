@@ -1,3 +1,4 @@
+import 'package:uniordle/shared/exports/game_exports.dart';
 import 'package:uniordle/shared/exports/help_exports.dart';
 
 class LevelUp extends StatelessWidget {
@@ -9,7 +10,7 @@ class LevelUp extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text('LEVEL UP & UNLOCK', style: AppFonts.headline, textAlign: TextAlign.center),
-        const SizedBox(height: 8),
+        const SizedBox(height: AppLayout.titleToSubtitle),
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 360),
           child: Text.rich(

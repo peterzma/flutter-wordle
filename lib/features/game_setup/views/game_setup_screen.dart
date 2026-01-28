@@ -1,8 +1,8 @@
 import 'package:uniordle/core/app_icons.dart';
 import 'package:uniordle/features/game_setup/widgets/credit_preview_badge.dart';
 import 'package:uniordle/shared/buttons/primary_button.dart';
+import 'package:uniordle/shared/exports/game_exports.dart';
 import 'package:uniordle/shared/exports/game_setup_exports.dart';
-import 'package:uniordle/features/home/models/discipline.dart';
 import 'package:uniordle/features/game_setup/widgets/game_setup_hero.dart';
 
 class GameSetupScreen extends StatefulWidget {
@@ -84,7 +84,7 @@ class _GameSetupScreenState extends State<GameSetupScreen> {
                 discipline: widget.discipline,
               ),
 
-              const SizedBox(height: 24),
+              const SizedBox(height: AppLayout.gapToButton),
 
               PrimaryButton(
                 label: 'PLAY GAME',

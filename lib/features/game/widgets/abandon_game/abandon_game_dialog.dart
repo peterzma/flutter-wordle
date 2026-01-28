@@ -28,7 +28,7 @@ class AbandonGameDialog extends StatelessWidget {
             style: AppFonts.displayLarge,
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: AppLayout.titleToSubtitle),
           Text.rich(
             TextSpan(
               style: AppFonts.labelMedium,
@@ -50,21 +50,19 @@ class AbandonGameDialog extends StatelessWidget {
             ),
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 32),
+          const SizedBox(height: AppLayout.gapToButton),
           Row(
             children: [
               Expanded(
                 child: PrimaryButton(
                   label: 'CANCEL',
-                  height: 48,
                   onPressed: () => Navigator.pop(context, false),
                 ),
               ),
-              const SizedBox(width: 16),
+              const SizedBox(width: AppLayout.gapBetweenButtons),
               Expanded(
                 child: PrimaryButton(
                   label: 'LEAVE',
-                  height: 48,
                   color: AppColors.accent2,
                   onPressed: () => Navigator.pop(context, true),
                 ),

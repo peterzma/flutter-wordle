@@ -88,26 +88,27 @@ class StatsManager {
       lost: newLost,
       merit: newMerit,
       guessDistribution: current.guessDistribution,
+      unlockedIds: current.unlockedIds,
     );
   }
 
   Future<void> unlockDiscipline(String id) async {
-  final current = statsNotifier.value;
-  if (current.unlockedIds.contains(id)) return;
+    final current = statsNotifier.value;
+    if (current.unlockedIds.contains(id)) return;
 
-  final newList = List<String>.from(current.unlockedIds)..add(id);
-  await _prefs.setStringList('unlocked_disciplines', newList);
-  
-  statsNotifier.value = UserStats(
-    streak: current.streak,
-    maxStreak: current.maxStreak,
-    solved: current.solved,
-    lost: current.lost,
-    merit: current.merit,
-    guessDistribution: current.guessDistribution,
-    unlockedIds: newList,
-  );
-}
+    final newList = List<String>.from(current.unlockedIds)..add(id);
+    await _prefs.setStringList('unlocked_disciplines', newList);
+    
+    statsNotifier.value = UserStats(
+      streak: current.streak,
+      maxStreak: current.maxStreak,
+      solved: current.solved,
+      lost: current.lost,
+      merit: current.merit,
+      guessDistribution: current.guessDistribution,
+      unlockedIds: newList,
+    );
+  }
 }
 
 final statsManager = StatsManager();

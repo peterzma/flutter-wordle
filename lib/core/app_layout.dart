@@ -11,4 +11,7 @@ abstract class AppLayout {
   static const int flipSpeedMs = 300; // board flip speed
 
   static const double dialogIcon = 64; // icons at the top of dialogs
+  static const double titleToSubtitle = 8;
+  static const double gapBetweenButtons = 16; // width or height
+  static const double gapToButton = 32; // last item to the action buttons
 }
