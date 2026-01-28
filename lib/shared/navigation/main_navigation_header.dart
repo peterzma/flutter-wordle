@@ -3,9 +3,9 @@ import 'package:uniordle/features/help/views/help_dialog.dart';
 import 'package:uniordle/shared/exports/home_exports.dart';
 import 'package:uniordle/shared/layout/base_header.dart';
 
-class HomeHeader extends StatelessWidget implements PreferredSizeWidget {
+class MainNavigationHeader extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-  const HomeHeader({
+  const MainNavigationHeader({
     super.key,
     this.title = 'Uniordle'
   });

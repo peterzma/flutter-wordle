@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(horizontal: AppLayout.kSidePadding),
+      padding: const EdgeInsets.all(AppLayout.kSidePadding),
       child: Column(
         children: [
           const HomeHero(),

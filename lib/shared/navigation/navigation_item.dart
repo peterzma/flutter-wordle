@@ -1,14 +1,14 @@
 import 'package:uniordle/shared/exports/home_exports.dart';
 import 'package:uniordle/shared/buttons/select_button_wrapper.dart';
 
-class AppNavigationItem extends StatelessWidget {
+class NavigationItem extends StatelessWidget {
   final IconData icon;
   final String? label;
   final VoidCallback onTap;
   final bool isActive;
   final double iconSize;
 
-  const AppNavigationItem({
+  const NavigationItem({
     super.key,
     required this.icon,
     required this.onTap,
