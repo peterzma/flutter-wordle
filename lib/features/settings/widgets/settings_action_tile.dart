@@ -1,5 +1,4 @@
 import 'package:uniordle/core/app_icons.dart';
-import 'package:uniordle/core/app_layout.dart';
 import 'package:uniordle/shared/buttons/select_button_wrapper.dart';
 import 'package:uniordle/shared/exports/settings_exports.dart';
 
@@ -19,16 +18,14 @@ class SettingsActionTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: AppLayout.settingsTileHeight,
-      decoration: BoxDecoration(
-        color: AppColors.surfaceVariant,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.surface.withValues(alpha: 0.6)),
-      ),
-      child: SelectButtonWrapper(
-        onTap: onTap,
-        pressScale: 0.99,
+    return SelectButtonWrapper(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.surfaceVariant,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: AppColors.surface.withValues(alpha: 0.6)),
+        ),
         child: Container(
           height: 60,
           padding: const EdgeInsets.symmetric(horizontal: 16),
