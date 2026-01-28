@@ -6,6 +6,7 @@ class Discipline {
   final String icon;
   final String tag;
   final Color color;
+  final bool isLocked;
   
   Discipline({
     required this.id,
@@ -13,5 +14,6 @@ class Discipline {
     required this.icon,
     required this.tag,
     required this.color,
+    this.isLocked = true,
   });
 }

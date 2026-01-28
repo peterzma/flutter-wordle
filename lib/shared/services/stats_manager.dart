@@ -23,6 +23,8 @@ class StatsManager {
       for (int i = 1; i <= 8; i++) i: distribution[i] ?? 0
     };
 
+    final unlocked = _prefs.getStringList('unlocked_disciplines') ?? [];
+
     statsNotifier.value = UserStats(
       streak: _prefs.getInt('stat_streak') ?? 0,
       maxStreak: _prefs.getInt('stat_max_streak') ?? 0,
@@ -30,6 +32,7 @@ class StatsManager {
       lost: _prefs.getInt('stat_lost') ?? 0,
       merit: _prefs.getInt('stat_merit') ?? 0,
       guessDistribution: fullDistribution,
+      unlockedIds: unlocked,
     );
   }
 
@@ -87,6 +90,24 @@ class StatsManager {
       guessDistribution: current.guessDistribution,
     );
   }
+
+  Future<void> unlockDiscipline(String id) async {
+  final current = statsNotifier.value;
+  if (current.unlockedIds.contains(id)) return;
+
+  final newList = List<String>.from(current.unlockedIds)..add(id);
+  await _prefs.setStringList('unlocked_disciplines', newList);
+  
+  statsNotifier.value = UserStats(
+    streak: current.streak,
+    maxStreak: current.maxStreak,
+    solved: current.solved,
+    lost: current.lost,
+    merit: current.merit,
+    guessDistribution: current.guessDistribution,
+    unlockedIds: newList,
+  );
+}
 }
 
 final statsManager = StatsManager();

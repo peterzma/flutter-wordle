@@ -7,6 +7,7 @@ class UserStats {
   final int lost;
   final int merit;
   final Map<int, int> guessDistribution;
+  final List<String> unlockedIds;
 
   UserStats({
     required this.streak,
@@ -15,6 +16,7 @@ class UserStats {
     this.maxStreak = 0,
     this.lost = 0,
     this.guessDistribution = const {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0},
+    this.unlockedIds = const [],
   });
 
   int get totalGames => solved + lost;
@@ -88,4 +90,6 @@ extension UserStatsExtension on UserStats {
     
     return titles[index];
   }
+
+  bool get hasAnyUnlock => unlockedIds.isNotEmpty;
 }

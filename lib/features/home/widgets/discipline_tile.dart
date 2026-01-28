@@ -4,8 +4,14 @@ import 'package:uniordle/shared/buttons/select_button_wrapper.dart';
 class DisciplineTile extends StatefulWidget {
   final Discipline discipline;
   final VoidCallback onTap;
+  final bool isLocked;
 
-  const DisciplineTile({super.key, required this.discipline, required this.onTap});
+  const DisciplineTile({
+    super.key, 
+    required this.discipline, 
+    required this.onTap,
+    required this.isLocked,
+  });
 
   @override
   State<DisciplineTile> createState() => _DisciplineTileState();
@@ -17,6 +23,8 @@ class _DisciplineTileState extends State<DisciplineTile> {
   @override
   Widget build(BuildContext context) {
     final sub = widget.discipline;
+
+    final displayColor = widget.isLocked ? AppColors.onSurfaceVariant.withValues(alpha: 0.5) : sub.color;
 
     return SelectButtonWrapper(
       onTap: widget.onTap,
@@ -35,45 +43,50 @@ class _DisciplineTileState extends State<DisciplineTile> {
             color: AppColors.surfaceVariant,
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: _hovering ? sub.color : AppColors.surfaceVariant.withValues(alpha: 0.4),
-              width: _hovering ? 1.5 : 0.5,
+              color: _hovering ? sub.color : Colors.transparent,
+              width: 1.5,
             ),
           ),
-          child: Row(
-            children: [
-              DisciplineIcon(iconName: sub.icon, color: sub.color),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      sub.name,
-                      style: AppFonts.labelLarge,
-                    ),
-                    const SizedBox(height: 2),
-                    Row(
-                      children: [
-                        Container(
-                          width: 6,
-                          height: 6,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: sub.color,
+          child: Opacity(
+            opacity: widget.isLocked ? 0.5 : 1.0,
+            child: Row(
+              children: [
+                widget.isLocked 
+                  ? Icon(Icons.lock_outline, color: displayColor)
+                  : DisciplineIcon(iconName: sub.icon, color: sub.color),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        sub.name,
+                        style: AppFonts.labelLarge,
+                      ),
+                      const SizedBox(height: 2),
+                      Row(
+                        children: [
+                          Container(
+                            width: 6,
+                            height: 6,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: sub.color,
+                            ),
                           ),
-                        ),
-                        const SizedBox(width: 4),
-                        Text(
-                          sub.tag,
-                          style: AppFonts.labelSmall.copyWith(color: sub.color),
-                        ),
-                      ],
-                    ),
-                  ],
+                          const SizedBox(width: 4),
+                          Text(
+                            widget.isLocked ? "LOCKED" : sub.tag, 
+                            style: AppFonts.labelSmall.copyWith(color: displayColor)
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
