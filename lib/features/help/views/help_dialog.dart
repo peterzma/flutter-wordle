@@ -54,6 +54,7 @@ class _HelpDialogState extends State<HelpDialog> {
             color: AppColors.accent,
             onPressed: () => Navigator.pop(context),
             width: 360,
+            height: 48,
           ),
           const SizedBox(height: 8),
         ],

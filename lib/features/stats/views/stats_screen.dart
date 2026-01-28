@@ -15,7 +15,7 @@ class StatsScreen extends StatelessWidget {
       builder: (context, stats, child) {
         final double winValue = double.tryParse(stats.winPercentage.replaceAll('%', '')) ?? 0;
         final double normalizedValue = (winValue / 100).clamp(0.0, 1.0);
-        final Color winColor = Color.lerp(Colors.red, AppColors.correctColor, normalizedValue)!;
+        final Color winColor = Color.lerp(AppColors.accent2, AppColors.correctColor, normalizedValue)!;
         
         return SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: AppLayout.sidePadding, vertical: 24),

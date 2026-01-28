@@ -33,7 +33,7 @@ class AbandonGameDialog extends StatelessWidget {
             TextSpan(
               style: AppFonts.labelMedium,
               children: [
-                const TextSpan(text: "Leaving now will result in a penalty of "),
+                const TextSpan(text: "Leaving now, during a game, will result in a penalty of "),
                 TextSpan(
                   text: "${UserStatsExtension.penaltyAmount} merits",
                   style: highlightStyle,
