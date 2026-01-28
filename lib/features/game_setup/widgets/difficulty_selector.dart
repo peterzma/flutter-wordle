@@ -112,7 +112,7 @@ class DifficultySelector extends StatelessWidget {
                                   Transform.translate(
                                     offset: const Offset(0, -1.0),
                                     child: Text(
-                                      e.value.$2,
+                                      e.value.$2.toString(),
                                       style: active
                                           ? AppFonts.labelMedium.copyWith(color: discipline.color, fontWeight: FontWeight.w600)
                                           : AppFonts.labelMedium,

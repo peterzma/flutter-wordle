@@ -1,4 +1,5 @@
 import 'package:uniordle/features/game/widgets/invalid_word_dialog.dart';
+import 'package:uniordle/features/game_setup/data/difficulty_config.dart';
 import 'package:uniordle/shared/exports/game_exports.dart';
 
 class GameScreen extends StatefulWidget {
@@ -26,37 +27,20 @@ void didChangeDependencies() {
   if (!_isInitialized) {
     final args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
     final discipline = args?['discipline'] as Discipline?;
-    final dynamic rawDifficulty = args?['yearLevel'] ?? 1; // 1 is default yearLevel
+
+    final dynamic rawDifficulty = args?['yearLevel'] ?? 1;
     final int yearLevel = rawDifficulty is double ? rawDifficulty.round() : rawDifficulty as int;
+
+    final config = DifficultyConfig.getByLevel(yearLevel);
+    _yearLevel = config.$1;
+    _maxAttempts = config.$2;
+
     _wordLength = args?['wordLength'] ?? 5;
     _disciplineName = discipline?.name ?? 'Engineering';
-
-    int attempts;
-    switch (yearLevel) {
-      case 4: 
-        attempts = 5; 
-        _yearLevel = 'Postgrad'; 
-        break;
-      case 3: 
-        attempts = 6; 
-        _yearLevel = '3rd Year'; 
-        break;
-      case 2: 
-        attempts = 7; 
-        _yearLevel = '2nd Year'; 
-        break;
-      case 1:
-      default: 
-        attempts = 8; 
-        _yearLevel = '1st Year'; 
-        break;
-    }
-
-    _maxAttempts = attempts;
     
     _controller = GameController(
-      wordLength: args?['wordLength'] ?? 5,
-      maxAttempts: attempts,
+      wordLength: _wordLength,
+      maxAttempts: _maxAttempts,
       disciplineId: discipline?.id ?? 'engineering',
       onGameEnd: (won) => _showEndDialog(won),
       onInvalidWord: () => InvalidWordDialog.show(context),
@@ -65,7 +49,7 @@ void didChangeDependencies() {
 
     _controller.addListener(() => setState(() {}));
     _isInitialized = true;
-  }
+    }
   }
 
 void _showEndDialog(bool won) {
