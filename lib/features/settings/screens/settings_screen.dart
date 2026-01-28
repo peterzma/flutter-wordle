@@ -1,3 +1,4 @@
+import 'package:uniordle/core/app_icons.dart';
 import 'package:uniordle/features/settings/data/data_reset_service.dart';
 import 'package:uniordle/features/settings/data/link_service.dart';
 import 'package:uniordle/shared/exports/settings_exports.dart';
@@ -20,7 +21,7 @@ class SettingsScreen extends StatelessWidget {
           children: [
             BaseHeader(
               title: 'Settings',
-              leftIcon: LucideIcons.chevronLeft, 
+              leftIcon: AppIcons.leftArrow, 
               onLeftTap: onClose,
             ),
             Expanded(
@@ -32,20 +33,20 @@ class SettingsScreen extends StatelessWidget {
                     children: [
                       const SettingsHeader(title: 'PREFERENCES'),
                       SettingsToggleTile(
-                        icon: Icons.volume_up_rounded,
+                        icon: AppIcons.volume,
                         label: 'Sound Effects',
                         value: state.soundsEnabled,
                         onChanged: controller.toggleSounds,
                       ),
                       const SettingsHeader(title: 'SOCIALS'),
                       SettingsActionTile(
-                        icon: Icons.person_search_rounded,
+                        icon: AppIcons.linkedIn,
                         label: 'LinkedIn (Let\'s connect!)',
                         onTap: () => LinkService.launch(LinkService.linkedin),
                       ),
                       const SizedBox(height: 8),
                       SettingsActionTile(
-                        icon: Icons.code_rounded,
+                        icon: AppIcons.gitHub,
                         label: 'GitHub',
                         onTap: () => LinkService.launch(LinkService.github),
                       ),
@@ -53,26 +54,26 @@ class SettingsScreen extends StatelessWidget {
                   
                       const SettingsHeader(title: 'SUPPORT'),
                       SettingsActionTile(
-                        icon: Icons.bug_report_rounded,
+                        icon: AppIcons.bugReport,
                         label: 'Report a Bug',
                         onTap: () => LinkService.launch(LinkService.bugReport),
                       ),
                       const SizedBox(height: 8),
                       SettingsActionTile(
-                        icon: Icons.lightbulb_outline_rounded,
+                        icon: AppIcons.feedback,
                         label: 'Feedback',
                         onTap: () => LinkService.launch(LinkService.feedback),
                       ),
                       const SizedBox(height: 8),
                       SettingsActionTile(
-                        icon: Icons.info_outline_rounded,
+                        icon: AppIcons.about,
                         label: 'About Uniordle',
                         value: 'v1.0.0',
                         onTap: () => const AboutDialog()
                       ),
                       const SettingsHeader(title: 'DANGER ZONE'),
                       SettingsActionTile(
-                        icon: Icons.delete_forever_rounded,
+                        icon: AppIcons.deleteData,
                         label: 'Clear All Data',
                         onTap: () => DataResetService.showResetDialog(context),
                       ),

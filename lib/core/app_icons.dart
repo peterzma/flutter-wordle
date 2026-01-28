@@ -5,8 +5,12 @@ abstract class AppIcons {
   static const IconData leftArrow = LucideIcons.chevronLeft;
   static const IconData rightArrow = LucideIcons.chevronRight;
   static const IconData help = LucideIcons.helpCircle;
-
+  
+  static const IconData volume = Icons.volume_up_rounded;
   static const IconData heart = Icons.favorite;
+  static const IconData linkedIn = Icons.person_search_rounded;
+  static const IconData gitHub = Icons.code_rounded;
+  static const IconData bugReport = Icons.bug_report_rounded;
 }
 
 class IconMapper {
