@@ -20,7 +20,7 @@ class SettingsScreen extends StatelessWidget {
           children: [
             BaseHeader(
               title: 'Settings',
-              leftIcon: Icons.chevron_left, 
+              leftIcon: LucideIcons.chevronLeft, 
               onLeftTap: onClose,
             ),
             Expanded(

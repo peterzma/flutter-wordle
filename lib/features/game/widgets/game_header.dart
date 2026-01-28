@@ -1,3 +1,4 @@
+import 'package:uniordle/core/app_icons.dart';
 import 'package:uniordle/features/help/views/help_dialog.dart';
 import 'package:uniordle/shared/exports/game_exports.dart';
 import 'package:uniordle/shared/layout/base_header.dart';
@@ -19,9 +20,9 @@ class GameHeader extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return BaseHeader(
       title: 'Uniordle',
-      leftIcon: LucideIcons.arrowLeft,
+      leftIcon: AppIcons.leftArrow,
       onLeftTap: () => Navigator.maybePop(context),
-      rightIcon: LucideIcons.helpCircle,
+      rightIcon: AppIcons.help,
       onRightTap: () {
           showDialog(
           context: context,

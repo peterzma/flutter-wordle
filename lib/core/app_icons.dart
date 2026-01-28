@@ -1,4 +1,13 @@
-import 'package:uniordle/shared/exports/game_setup_exports.dart';
+import 'package:flutter/material.dart';
+import 'package:lucide_icons/lucide_icons.dart';
+
+abstract class AppIcons {
+  static const IconData leftArrow = LucideIcons.chevronLeft;
+  static const IconData rightArrow = LucideIcons.chevronRight;
+  static const IconData help = LucideIcons.helpCircle;
+
+  static const IconData heart = Icons.favorite;
+}
 
 class IconMapper {
   static IconData getIcon(String name) {
