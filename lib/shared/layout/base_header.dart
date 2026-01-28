@@ -1,6 +1,6 @@
 import 'package:uniordle/core/app_layout.dart';
 import 'package:uniordle/shared/exports/home_exports.dart';
-import 'package:uniordle/shared/navigation/app_nav_item.dart';
+import 'package:uniordle/shared/navigation/app_navigation_item.dart';
 
 class BaseHeader extends StatelessWidget {
   final String title;
@@ -44,7 +44,7 @@ class BaseHeader extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              AppNavItem(
+              AppNavigationItem(
                 icon: leftIcon,
                 onTap: onLeftTap,
               ),
@@ -53,7 +53,7 @@ class BaseHeader extends StatelessWidget {
                 style: AppFonts.displayMedium,
               ),
               rightIcon != null
-                  ? AppNavItem(icon: rightIcon!, onTap: onRightTap ?? () {})
+                  ? AppNavigationItem(icon: rightIcon!, onTap: onRightTap ?? () {})
                   : const SizedBox(width: 40),
             ],
           ),

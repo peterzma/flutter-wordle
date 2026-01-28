@@ -1,5 +1,5 @@
 import 'package:uniordle/shared/exports/home_exports.dart';
-import 'package:uniordle/shared/navigation/app_nav_item.dart';
+import 'package:uniordle/shared/navigation/app_navigation_item.dart';
 import 'package:uniordle/shared/layout/base_footer.dart';
 
 
@@ -18,19 +18,19 @@ class HomeFooter extends StatelessWidget {
   Widget build (BuildContext context) {
     return BaseFooter(
       children: [
-        AppNavItem(
+        AppNavigationItem(
           icon: LucideIcons.history,
           label: 'Stats',
           isActive: activeTab == 'stats',
           onTap: () => onTabChange('stats'),
         ),
-        AppNavItem(
+        AppNavigationItem(
           icon: LucideIcons.layoutGrid,
           label: 'Home',
           isActive: activeTab == 'home',
           onTap: () => onTabChange('home'),
         ),
-        AppNavItem(
+        AppNavigationItem(
           icon: LucideIcons.user,
           label: 'Profile',
           isActive: activeTab == 'profile',

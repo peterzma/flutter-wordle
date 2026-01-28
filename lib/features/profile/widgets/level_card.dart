@@ -54,7 +54,6 @@ class LevelCard extends StatelessWidget {
             decoration: BoxDecoration(
               color: AppColors.accent.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(24),
-              border: Border.all(color: AppColors.accent.withValues(alpha: 0.3)),
             ),
             child: Text(
               progressLabel,

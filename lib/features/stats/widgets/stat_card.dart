@@ -21,9 +21,7 @@ class StatCard extends StatelessWidget {
           Text(
             value,
             style: AppFonts.displayMedium.copyWith(
-              color: color ?? Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 24,
+              color: color,
             ),
           ),
           const SizedBox(height: 4),

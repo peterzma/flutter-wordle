@@ -1,4 +1,5 @@
 import 'package:uniordle/shared/exports/app_exports.dart';
+import 'package:uniordle/shared/navigation/main_navigation_screen.dart';
 
 class App extends StatelessWidget {
   const App({
@@ -30,7 +31,7 @@ class App extends StatelessWidget {
   Widget _getPage(RouteSettings settings) {
     switch (settings.name) {
       case '/':
-        return const HomeScreen();
+        return const MainNavigationScreen();
       case '/uniordle':
         return const GameScreen();
       case '/setup':
@@ -42,10 +43,6 @@ class App extends StatelessWidget {
             onClose: () => Navigator.of(context).pop(),
           );
         });
-      case '/profile':
-        return const ProfileScreen();
-      case '/stats':
-        return const StatsScreen();
       default:
         return const HomeScreen();
     }
