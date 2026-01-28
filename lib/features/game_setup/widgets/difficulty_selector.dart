@@ -1,5 +1,5 @@
 import 'package:uniordle/core/app_icons.dart';
-import 'package:uniordle/features/game_setup/data/difficulty_config.dart';
+import 'package:uniordle/shared/services/models/difficulty_config.dart';
 import 'package:uniordle/features/home/models/discipline.dart';
 import 'package:uniordle/shared/exports/game_setup_exports.dart';
 

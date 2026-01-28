@@ -1,6 +1,6 @@
 import 'package:uniordle/core/app_icons.dart';
 import 'package:uniordle/shared/exports/game_exports.dart';
-import 'package:uniordle/features/game_setup/data/difficulty_config.dart';
+import 'package:uniordle/shared/services/models/difficulty_config.dart';
 
 class GameInfoBar extends StatelessWidget {
   final String disciplineName;

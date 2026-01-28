@@ -12,52 +12,58 @@ class UserStats {
     required this.streak,
     required this.solved,
     required this.xp,
-    this.maxStreak = 0, // Default to 0
-    this.lost = 0,      // Default to 0
-    this.guessDistribution = const {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0},
+    this.maxStreak = 0,
+    this.lost = 0,
+    this.guessDistribution = const {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0},
   });
 
   int get totalGames => solved + lost;
-  String get winPercentage => totalGames == 0 ? "0%" : "${((solved / totalGames) * 100).toInt()}%";
+
+  String get winPercentage {
+    if (totalGames == 0) return "0%";
+    return "${((solved / totalGames) * 100).toInt()}%";
+  }
 }
 
 extension UserStatsExtension on UserStats {
-  static const int creditsPerLevel = 100;
+  static const int xpPerLevel = 100;
 
-  static int calculateGainedXP(int yearLevel, int wordLength) {
+  static ({int min, int max}) _calculateXpBounds(int yearLevel, int wordLength) {
+    int minBase = 10 + (yearLevel * 5);
+    int maxBase = 20 + (yearLevel * 6);
+
+    int lengthBonus = 0;
+    if (wordLength == 6) lengthBonus = 5;
+    if (wordLength >= 7) lengthBonus = 15;
+
+    return (min: minBase + lengthBonus, max: maxBase + lengthBonus);
+  }
+
+  static String getMeritRange(int yearLevel, int wordLength) {
+    final bounds = _calculateXpBounds(yearLevel, wordLength);
+    return "${bounds.min}-${bounds.max}";
+  }
+
+  static int generateGainedMerit(int yearLevel, int wordLength) {
+    final bounds = _calculateXpBounds(yearLevel, wordLength);
     final random = Random();
-    
-    //
-    // Year 1: 15-25 | Year 2: 20-30 | Year 3: 25-35 | Postgrad: 30-45
-    int minBase = 10 + (yearLevel * 5);
-    int maxBase = 20 + (yearLevel * 6);
-
-    // 5: +0 | 6: +3 | 7: +7
-    int lengthBonus = 0;
-    if (wordLength == 6) lengthBonus = 5;
-    if (wordLength == 7) lengthBonus = 15;
-
-    int reward = minBase + random.nextInt(maxBase - minBase + 1) + lengthBonus;
-
-    return reward;
+    return bounds.min + random.nextInt(bounds.max - bounds.min + 1);
   }
 
-  static String getCreditRange(int yearLevel, int wordLength) {
-    int minBase = 10 + (yearLevel * 5);
-    int maxBase = 20 + (yearLevel * 6);
-    int lengthBonus = 0;
-    if (wordLength == 6) lengthBonus = 5;
-    if (wordLength == 7) lengthBonus = 15;
+  int get currentLevel => xp ~/ xpPerLevel;
 
-    return "${minBase + lengthBonus} - ${maxBase + lengthBonus}";
-  }
-
-  int get currentLevel => xp ~/ creditsPerLevel;
   int get nextLevel => currentLevel + 1;
-  double get levelProgress => (xp % creditsPerLevel) / creditsPerLevel;
-  int get xpInCurrentLevel => xp % creditsPerLevel;
   
-  String get progressText => "$xpInCurrentLevel/$creditsPerLevel MERITS";
+  int get xpInCurrentLevel => xp % xpPerLevel;
+
+  double get levelProgress => (xp % xpPerLevel) / xpPerLevel.toDouble();
+  
+  String get progressText => "$xpInCurrentLevel/$xpPerLevel MERITS";
+  
+  static (int level, double progress) getPreviousState(int totalXP, int gainedXP) {
+    int oldXP = totalXP - gainedXP;
+    return (oldXP ~/ xpPerLevel, (oldXP % xpPerLevel) / xpPerLevel.toDouble());
+  }
 
   String get academicTitle => getAcademicTitle(currentLevel);
 

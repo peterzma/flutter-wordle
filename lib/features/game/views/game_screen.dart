@@ -1,5 +1,5 @@
 import 'package:uniordle/features/game/widgets/invalid_word_dialog.dart';
-import 'package:uniordle/features/game_setup/data/difficulty_config.dart';
+import 'package:uniordle/shared/services/models/difficulty_config.dart';
 import 'package:uniordle/shared/exports/game_exports.dart';
 
 class GameScreen extends StatefulWidget {
@@ -52,29 +52,41 @@ void didChangeDependencies() {
     }
   }
 
-void _showEndDialog(bool won) {
-  final args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
-  final discipline = args?['discipline'] as Discipline;
+  void _showEndDialog(bool won) async {
+    final args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
+    final discipline = args?['discipline'] as Discipline;
+    final int rawYearLevel = args?['yearLevel'] ?? 1;
 
-  showDialog(
-    context: context,
-    barrierColor: Colors.black.withValues(alpha: 0.4),
-    builder: (context) {
-      return EndDialog(
-        won: won,
-        solution: _controller.solution.wordString,
+    int earnedXP = 0;
+
+    if (won) {
+      earnedXP = await statsManager.recordWin(
+        yearLevel: rawYearLevel,
+        wordLength: _controller.solution.wordString.length,
         attempts: _controller.currentWordIndex + 1,
-        maxAttempts: _maxAttempts,
-        discipline: discipline,
-        yearLevel: _yearLevel,
-        onRestart: () {
-          Navigator.pop(context);
-          _controller.restart();
-        },
       );
-    },
-  );
-}
+    } else {
+      await statsManager.recordLoss();
+    }
+
+    if (!mounted) return;
+
+    showDialog(
+      context: context,
+      barrierColor: Colors.black.withValues(alpha: 0.4),
+      builder: (context) {
+        return EndDialog(
+          won: won,
+          solution: _controller.solution.wordString,
+          attempts: _controller.currentWordIndex + 1,
+          maxAttempts: _maxAttempts,
+          discipline: discipline,
+          yearLevel: _yearLevel,
+          gainedXP: earnedXP,
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

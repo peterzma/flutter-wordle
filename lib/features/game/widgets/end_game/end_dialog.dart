@@ -7,7 +7,7 @@ class EndDialog extends StatelessWidget {
   final int maxAttempts;
   final String yearLevel;
   final Discipline discipline;
-  final VoidCallback onRestart;
+  final int gainedXP;
 
   const EndDialog({
     super.key,
@@ -17,40 +17,26 @@ class EndDialog extends StatelessWidget {
     required this.maxAttempts,
     required this.yearLevel,
     required this.discipline,
-    required this.onRestart,
+    required this.gainedXP,
   });
 
   void _handleNext(BuildContext context) {
-    // 1. Get current stats
-    final int currentXP = statsManager.statsNotifier.value.xp;
+    final currentStats = statsManager.statsNotifier.value;
     
-    // 2. Calculate logic locally
-    final int levelValue = _mapYearToValue(yearLevel);
-    final int gainedXP = UserStatsExtension.calculateGainedXP(levelValue, solution.length);
-    final int startLevel = currentXP ~/ 100;
-    final double startProgress = (currentXP % 100) / 100.0;
+    final prevState = UserStatsExtension.getPreviousState(currentStats.xp, gainedXP);
 
     Navigator.pop(context);
-
     showDialog(
       context: context,
-      builder: (context) => 
-        LevelUpDialog(
-          startingLevel: startLevel,
-          startingProgress: startProgress,
-          gainedXP: gainedXP.toDouble(),
-          discipline: discipline,
-        ),
+      builder: (context) => LevelUpDialog(
+        startingLevel: prevState.$1,
+        startingProgress: prevState.$2,
+        gainedXP: gainedXP.toDouble(),
+        discipline: discipline,
+      ),
     );
   }
-
-  int _mapYearToValue(String year) {
-    if (year.contains('Postgrad')) return 4;
-    if (year.contains('3rd')) return 3;
-    if (year.contains('2nd')) return 2;
-    return 1;
-  }
-
+  
   @override
   Widget build(BuildContext context) {
     return BaseDialog(
