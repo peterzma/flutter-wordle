@@ -146,11 +146,10 @@ class GameController extends ChangeNotifier {
 
   void abandonGame() {
   if (status == GameStatus.playing || status == GameStatus.submitting) {
-    status = GameStatus.lost;
-    
-    statsManager.recordLoss(); 
-    
-    notifyListeners();
+    if (currentWordIndex > 0) {
+        status = GameStatus.lost;
+        statsManager.recordAbandonment(); 
+      }
+    }
   }
-}
 }

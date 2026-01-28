@@ -50,6 +50,11 @@ extension UserStatsExtension on UserStats {
     return bounds.min + random.nextInt(bounds.max - bounds.min + 1);
   }
 
+  static int calculatePenalty(int yearLevel, int wordLength) {
+    final bounds = _calculateMeritBounds(yearLevel, wordLength);
+    return (bounds.min * 0.25).toInt(); 
+  }
+
   int get currentLevel => merit ~/ meritPerLevel;
 
   int get nextLevel => currentLevel + 1;

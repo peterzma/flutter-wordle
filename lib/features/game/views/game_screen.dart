@@ -96,12 +96,8 @@ void didChangeDependencies() {
       canPop: false,
       onPopInvokedWithResult: (didPop, result) {
       if (didPop) return;
-      
-      if (_controller.status == GameStatus.playing || _controller.status == GameStatus.submitting) {
         _controller.abandonGame();
-      }
-      
-      Navigator.of(context).pop();
+        Navigator.of(context).pop();
       },
       child: Scaffold(
         backgroundColor: AppColors.surface,
