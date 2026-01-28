@@ -87,15 +87,14 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
                   final int displayLevel = val.floor();
                   final double displayProgress = val % 1.0;
                   
-                  final int currentLevelMerit = (displayProgress * 100).round();
+                  const int totalRequired = UserStatsExtension.meritPerLevel;
+                  final int currentLevelMerit = (displayProgress * totalRequired).round();
                   
                   return LevelCard(
                     level: displayLevel,
                     progress: displayProgress,
                     nextLevel: displayLevel + 1,
-                    progressLabel: _hasLeveledUp 
-                        ? "LEVEL UP REACHED!" 
-                        : "$currentLevelMerit / 100",
+                    progressLabel: "$currentLevelMerit/$totalRequired",
                   );
                 },
               ),
