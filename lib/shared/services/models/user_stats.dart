@@ -27,6 +27,7 @@ class UserStats {
 
 extension UserStatsExtension on UserStats {
   static const int meritPerLevel = 100;
+  static const int penaltyAmount = 10;
 
   static ({int min, int max}) _calculateMeritBounds(int yearLevel, int wordLength) {
     int minBase = 10 + (yearLevel * 5);

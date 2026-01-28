@@ -66,7 +66,7 @@ void didChangeDependencies() {
         attempts: _controller.currentWordIndex + 1,
       );
     } else {
-      meritChange = 10; 
+      meritChange = UserStatsExtension.penaltyAmount;
       await statsManager.recordLoss();
     }
 

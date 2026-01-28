@@ -62,11 +62,11 @@ class StatsManager {
   }
 
   Future<void> recordLoss() async {
-    await _applyPenalty(10);
+    await _applyPenalty(UserStatsExtension.penaltyAmount);
   }
 
   Future<void> recordAbandonment() async {
-    await _applyPenalty(10);
+    await _applyPenalty(UserStatsExtension.penaltyAmount);
   }
 
   Future<void> _applyPenalty(int amount) async {
