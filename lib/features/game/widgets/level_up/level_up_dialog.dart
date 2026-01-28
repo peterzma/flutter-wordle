@@ -1,3 +1,4 @@
+import 'package:uniordle/core/app_icons.dart';
 import 'package:uniordle/shared/exports/end_game_exports.dart';
 
 class LevelUpDialog extends StatefulWidget {
@@ -21,17 +22,17 @@ class LevelUpDialog extends StatefulWidget {
 class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
-  bool _hasLeveledUp = false;
-  int _newLevelReached = 0;
+  
+  final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
+  final List<int> _visibleMilestones = [];
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
     super.initState();
 
-    const int meritPerLevel = UserStats.meritPerLevel;
-
     final double startTotal = widget.startingLevel + widget.startingProgress;
-    final double levelChange = widget.gainedMerit / meritPerLevel;
+    final double levelChange = widget.gainedMerit / UserStats.meritPerLevel;
     final double endTotal = startTotal + levelChange;
 
     _controller = AnimationController(
@@ -43,15 +44,16 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
         .animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOutCubic));
 
     _controller.addListener(() {
-      double currentTotal = _animation.value;
-      int currentLevel = currentTotal.floor();
+      final double animatedVal = _animation.value;
+      final int animatedLevel = animatedVal.floor();
       
-      if (currentLevel > widget.startingLevel) {
-        if (!_hasLeveledUp || _newLevelReached != currentLevel) {
-          setState(() {
-            _hasLeveledUp = true;
-            _newLevelReached = currentLevel;
-          });
+      final List<int> allAchieved = statsManager.statsNotifier.value.achievedMilestones;
+
+      for (int level in allAchieved) {
+        if (level <= animatedLevel && 
+            level > widget.startingLevel && 
+            !_visibleMilestones.contains(level)) {
+          _revealMilestone(level);
         }
       }
     });
@@ -59,19 +61,39 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
     Future.delayed(const Duration(milliseconds: 400), () => _controller.forward());
   }
 
-  String _getRankMessage(int level) {
+  void _revealMilestone(int level) {
+    if (!mounted) return;
+    setState(() {
+      _visibleMilestones.insert(0, level);
+      _listKey.currentState?.insertItem(0, duration: const Duration(milliseconds: 500));
+    });
+    
+    // Auto-scroll to the top to show the newest achievement
+    if (_scrollController.hasClients) {
+      _scrollController.animateTo(0, 
+        duration: const Duration(milliseconds: 300), 
+        curve: Curves.easeOut
+      );
+    }
+    
+    // SoundManager().play(SoundType.grid);
+  }
+
+  String _getMilestoneTitle(int level) {
     if (level % 10 == 0) return "NEW ACADEMIC RANK!";
-    if (level % 5 == 0 && level <= 70) return "ENROLLMENT CREDIT EARNED";
+    if (level % 5 == 0 && level <= 70) return "CREDIT +1";
     return "LEVEL UP!";
   }
 
   String _getMilestoneSubtitle(int level) {
     if (level % 10 == 0) {
-      final String rank = UserStats(streak: 0, solved: 0, merit: level * UserStats.meritPerLevel).academicTitle;
-      return "You are now a $rank";
+      final String rank = UserStats(
+        streak: 0, solved: 0, merit: level * UserStats.meritPerLevel
+      ).academicTitle;
+      return "You have ranked up to $rank";
     }
-    if (level % 5 == 0) return "Head back to spend it";
-    return "Level $level attained";
+    if (level % 5 == 0) return "Spend credits to unlock disciplines";
+    return "You have leveled up to LEVEL $level";
   }
 
   @override
@@ -82,87 +104,135 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedSize(
-      duration: const Duration(milliseconds: 400),
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            AnimatedBuilder(
-              animation: _animation,
-              builder: (context, _) {
-                final double val = _animation.value;
-                final int displayLevel = val.floor();
-                final double displayProgress = val % 1.0;
-    
-                final int percentage = (displayProgress * 100).round();
-                
-                return LevelCard(
-                  level: displayLevel,
-                  progress: displayProgress,
-                  nextLevel: displayLevel + 1,
-                  progressLabel: "$percentage%",
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          AnimatedBuilder(
+            animation: _animation,
+            builder: (context, _) {
+              final double val = _animation.value;
+              final int displayLevel = val.floor();
+              final double displayProgress = val % 1.0;
+              final int percentage = (displayProgress * 100).round();
+              
+              return LevelCard(
+                level: displayLevel,
+                progress: displayProgress,
+                nextLevel: displayLevel + 1,
+                progressLabel: "$percentage%",
+              );
+            },
+          ),
+
+          const SizedBox(height: 16),
+        
+          ConstrainedBox(
+            constraints: const BoxConstraints(maxHeight: 200),
+            child: AnimatedList(
+              key: _listKey,
+              controller: _scrollController,
+              shrinkWrap: true,
+              initialItemCount: _visibleMilestones.length,
+              itemBuilder: (context, index, animation) {
+                return FadeTransition(
+                  opacity: animation,
+                  child: SizeTransition(
+                    sizeFactor: animation,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: _buildMilestoneItem(_visibleMilestones[index]),
+                    ),
+                  ),
                 );
               },
             ),
-            if (_hasLeveledUp) ...[
-              const SizedBox(height: 20),
-              _buildMilestoneBox(),
+          ),
+
+          const SizedBox(height: AppLayout.gapToButton),
+        
+          Row(
+            children: [
+              Expanded(
+                child: PrimaryButton(
+                  label: 'HOME',
+                  onPressed: () {
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/',
+                      (route) => false,
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(width: AppLayout.gapBetweenButtons),
+              Expanded(
+                child: PrimaryButton(
+                  label: 'NEW GAME',
+                  color: AppColors.accent,
+                  onPressed: () {
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/setup',
+                      (route) => route.isFirst,
+                      arguments: widget.discipline,
+                    );
+                  },
+                ),
+              ),
             ],
-    
-            const SizedBox(height: AppLayout.gapToButton),
-    
-            Row(
-              children: [
-                Expanded(
-                  child: PrimaryButton(
-                    label: 'HOME',
-                    onPressed: () {
-                      Navigator.of(context).pushNamedAndRemoveUntil(
-                        '/',
-                        (route) => false,
-                      );
-                    },
-                  ),
-                ),
-                const SizedBox(width: AppLayout.gapBetweenButtons),
-                Expanded(
-                  child: PrimaryButton(
-                    label: 'NEW GAME',
-                    color: AppColors.accent,
-                    onPressed: () {
-                      Navigator.of(context).pushNamedAndRemoveUntil(
-                        '/setup',
-                        (route) => route.isFirst,
-                        arguments: widget.discipline,
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
-    
-          ]
-        )
+          ),
+        
+        ]
       )
     );
   } 
 
-  Widget _buildMilestoneBox() {
+  Widget _buildMilestoneItem(int level) {
+    final bool isRankUp = level % 10 == 0;
+    final bool isCreditEarned = level % 5 == 0;
+    
+    final Color bgColor = (isRankUp || isCreditEarned) 
+        ? AppColors.accent3 
+        : AppColors.surfaceVariant;
+    
+    final Color contentColor = (isRankUp || isCreditEarned) 
+        ? AppColors.onSurface 
+        : AppColors.onSurfaceVariant;
+
     return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: AppColors.accent,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.accent),
+        color: bgColor,
+        borderRadius: BorderRadius.circular(16),
       ),
-      child: Column(
+      child: Row(
         children: [
-          Text(_getRankMessage(_newLevelReached),
-              style: AppFonts.labelLarge),
-          Text("Level $_newLevelReached attained", style: AppFonts.labelMedium),
+          Icon(
+            isCreditEarned ? AppIcons.credits : LucideIcons.award,
+            size: 20,
+            color: contentColor,
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  _getMilestoneTitle(level),
+                  style: AppFonts.labelLarge.copyWith(
+                    color: contentColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  _getMilestoneSubtitle(level),
+                  style: AppFonts.labelSmall.copyWith(
+                    color: contentColor,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
