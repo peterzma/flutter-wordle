@@ -63,7 +63,7 @@ extension UserStatsExtension on UserStats {
 
   double get levelProgress => (merit % meritPerLevel) / meritPerLevel.toDouble();
   
-  String get progressText => "$meritInCurrentLevel/$meritPerLevel MERITS";
+  String get progressText => "$meritInCurrentLevel/$meritPerLevel";
   
   static (int level, double progress) getPreviousState(int totalMerit, int gainedMerit) {
     int oldMerit = totalMerit - gainedMerit;

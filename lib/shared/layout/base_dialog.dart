@@ -12,7 +12,7 @@ class BaseDialog extends StatelessWidget {
   const BaseDialog({
     super.key,
     required this.child,
-    this.blur = 10.0,
+    this.blur = 4.0,
     this.leftAction,
     this.rightAction,
     this.padding,

@@ -95,7 +95,7 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
                     nextLevel: displayLevel + 1,
                     progressLabel: _hasLeveledUp 
                         ? "LEVEL UP REACHED!" 
-                        : "$currentLevelMerit / 100 MERITS",
+                        : "$currentLevelMerit / 100",
                   );
                 },
               ),
