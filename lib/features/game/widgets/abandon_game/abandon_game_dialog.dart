@@ -44,10 +44,8 @@ class AbandonGameDialog extends StatelessWidget {
                     text: "$streak win streak",
                     style: highlightStyle,
                   ),
-                  const TextSpan(text: "."),
-                ] else ...[
-                  const TextSpan(text: " and streak loss."),
                 ],
+                const TextSpan(text: "."),
               ],
             ),
             textAlign: TextAlign.center,
