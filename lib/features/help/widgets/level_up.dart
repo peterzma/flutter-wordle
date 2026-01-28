@@ -10,35 +10,30 @@ class LevelUp extends StatelessWidget {
       children: [
         Text('LEVEL UP & UNLOCK', style: AppFonts.headline, textAlign: TextAlign.center),
         const SizedBox(height: 8),
-        Text.rich(
-          TextSpan(
-            children: [
-              const TextSpan(text: 'Guess words correctly to earn '),
-              TextSpan(
-                text: 'merits',
-                style: TextStyle(
-                  color: Colors.amber,
-                  fontWeight: FontWeight.bold,
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 360),
+          child: Text.rich(
+            TextSpan(
+              children: [
+                const TextSpan(text: 'Guess words correctly to earn '),
+                TextSpan(
+                  text: 'merits',
+                  style: TextStyle(
+                    color: Color(0xFFFFD700),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              const TextSpan(text: '. Level up with merits, and every five levels you unlock a new '),
-              TextSpan(
-                text: 'discipline',
-                style: TextStyle(
-                  color: Colors.greenAccent,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const TextSpan(text: '.'),
-            ],
+                const TextSpan(text: '. Level up with merits, and every five levels you unlock a new discipline.'),
+              ],
+            ),
+            style: AppFonts.labelMedium.copyWith(color: Colors.white70),
+            textAlign: TextAlign.center,
           ),
-          style: AppFonts.labelMedium.copyWith(color: Colors.white70),
-          textAlign: TextAlign.center,
         ),
         const SizedBox(height: 16),
         
         Padding(
-          padding: const EdgeInsets.only(left: 16.0),
+          padding: const EdgeInsets.only(left: 30.0),
           child: Column(
             children: [
               InstructionRow(

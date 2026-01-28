@@ -43,7 +43,7 @@ class _HelpDialogState extends State<HelpDialog> {
               ],
             ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 8),
           PageIndicator(
             totalPages: _totalPages,
             currentPage: _currentPage,
@@ -53,7 +53,9 @@ class _HelpDialogState extends State<HelpDialog> {
             label: 'Got it!',
             color: AppColors.accent,
             onPressed: () => Navigator.pop(context),
+            width: 360,
           ),
+          const SizedBox(height: 8),
         ],
       ),
     );
@@ -76,7 +78,7 @@ class NavHitArea extends StatelessWidget {
       onTap: onTap,
       behavior: HitTestBehavior.opaque,
       child: Container(
-        width: 40, 
+        width: 50, 
         height: 310, 
         alignment: Alignment.center,
         child: Transform.translate(

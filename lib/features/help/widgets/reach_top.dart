@@ -24,7 +24,7 @@ class ReachTop extends StatelessWidget {
         const SizedBox(height: 24),
         
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
               _buildRankRow(ranks[0], color: AppColors.accent),

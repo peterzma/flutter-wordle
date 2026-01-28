@@ -21,7 +21,7 @@ class PrimaryButton extends StatelessWidget {
     this.icon,
     this.height = 64,
     this.width = double.infinity,
-    this.borderRadius = 16,
+    this.borderRadius = 24,
     this.showShadow = false,
   });
 

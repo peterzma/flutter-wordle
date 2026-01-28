@@ -10,37 +10,40 @@ class HowToPlay extends StatelessWidget {
       children: [
         Text('HOW TO PLAY', style: AppFonts.headline, textAlign: TextAlign.center),
         const SizedBox(height: 8),
-        Text(
-          'Choose a discipline. Customise your game settings. Guess the word!',
-          style: AppFonts.labelMedium.copyWith(color: AppColors.onSurfaceVariant),
-          textAlign: TextAlign.center,
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 360),
+          child: Text(
+            'Choose a starting discipline, customise your game settings and then guess the word!',
+            style: AppFonts.labelMedium.copyWith(color: AppColors.onSurfaceVariant),
+            textAlign: TextAlign.center,
+          ),
         ),
         const SizedBox(height: 16),
         
         Padding(
-          padding: const EdgeInsets.only(left: 16.0),
+          padding: const EdgeInsets.only(left: 30.0),
           child: Column(
             children: [
-            InstructionRow(
-              leading: Text('U', style: AppFonts.displayMedium),
-              color: AppColors.correctColor,
-              title: 'Correct Letter',
-              subtitle: 'Right spot',
-            ),
-            const SizedBox(height: 32),
-            InstructionRow(
-              leading: Text('N', style: AppFonts.displayMedium), 
-              color: AppColors.inWordColor, 
-              title: 'Correct Letter', 
-              subtitle: 'Wrong spot'
-            ),
-            const SizedBox(height: 32),
-            InstructionRow(
-              leading: Text('I', style: AppFonts.displayMedium), 
-              color: AppColors.notInWordColor, 
-              title: 'Letter not in word', 
-              subtitle: 'Not in any spot'
-            ),
+              InstructionRow(
+                leading: Text('U', style: AppFonts.displayMedium),
+                color: AppColors.correctColor,
+                title: 'Correct Letter',
+                subtitle: 'Right spot',
+              ),
+              const SizedBox(height: 32),
+              InstructionRow(
+                leading: Text('N', style: AppFonts.displayMedium), 
+                color: AppColors.inWordColor, 
+                title: 'Correct Letter', 
+                subtitle: 'Wrong spot'
+              ),
+              const SizedBox(height: 32),
+              InstructionRow(
+                leading: Text('I', style: AppFonts.displayMedium), 
+                color: AppColors.notInWordColor, 
+                title: 'Letter not in word', 
+                subtitle: 'Not in any spot'
+              ),
             ]
           ),
         ),

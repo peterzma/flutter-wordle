@@ -46,7 +46,6 @@ class EndDialog extends StatelessWidget {
               label: 'NEXT',
               color: AppColors.accent,
               onPressed: onNext,
-              borderRadius: 24,
             ),
             const SizedBox(height: 12),
           ],
