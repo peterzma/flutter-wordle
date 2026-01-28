@@ -93,7 +93,6 @@ Latest release:
 * Add stats/profile screens
 * change sound effect of tile flipping in game screen
 * replace ui click on buttons to be more minimal
-* Add level system - make levels longer to complete every discpline unlock
 * Add locked disciplines - let player choose 1 from the start, unlock every 5 levels.
 * Add level up pop up.
 * Add win/loss sound to end dialog
@@ -104,5 +103,5 @@ Latest release:
 * every 5 levels, give user 1 credit, 1 credit can unlock a discipline. first we need to have locked disciplines. allow user to choose their first discipline upon joining
 * add intro for app only
 * lock disciplines (make them greyscale and add a small lock icon on the right of the tile). also sort all discipline sby lock status then after alphabetical.
-* fix slight offset on text in settings when holding down buttons
+* fix slight offset on text in settings when holding down buttons (rasturising issue)
 * improve transition between end game dialog and levelup dialog

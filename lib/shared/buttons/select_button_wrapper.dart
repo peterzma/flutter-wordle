@@ -3,7 +3,6 @@ import 'package:uniordle/shared/exports/home_exports.dart';
 const Duration pumpDuration = Duration(milliseconds: 100);
 const Duration darkenDuration = Duration(milliseconds: 100);
 
-/// Scale effect and Darken Effect on Click
 class SelectButtonWrapper extends StatefulWidget {
   final Widget child;
   final VoidCallback? onTap;
@@ -75,6 +74,8 @@ class _PumpButtonWrapperState extends State<SelectButtonWrapper> {
           scale: _isHovered && !_isPressed ? 1.02 : _scale,
           duration: pumpDuration,
           curve: Curves.easeOut,
+          alignment: Alignment.center,
+          filterQuality: FilterQuality.high,
           child: AnimatedContainer(
             duration: darkenDuration,
             decoration: BoxDecoration(
