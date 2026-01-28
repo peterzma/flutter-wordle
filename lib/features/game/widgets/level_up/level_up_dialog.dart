@@ -61,8 +61,17 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
 
   String _getRankMessage(int level) {
     if (level % 10 == 0) return "NEW ACADEMIC RANK!";
-    if (level % 5 == 0 && level <= 70) return "ACADEMIC MILESTONE!";
+    if (level % 5 == 0 && level <= 70) return "ENROLLMENT CREDIT EARNED";
     return "LEVEL UP!";
+  }
+
+  String _getMilestoneSubtitle(int level) {
+    if (level % 10 == 0) {
+      final String rank = UserStats(streak: 0, solved: 0, merit: level * UserStats.meritPerLevel).academicTitle;
+      return "You are now a $rank";
+    }
+    if (level % 5 == 0) return "Head back to spend it";
+    return "Level $level attained";
   }
 
   @override
@@ -73,72 +82,70 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
 
   @override
   Widget build(BuildContext context) {
-    return BaseDialog(
-      child: AnimatedSize(
-        duration: const Duration(milliseconds: 400),
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              AnimatedBuilder(
-                animation: _animation,
-                builder: (context, _) {
-                  final double val = _animation.value;
-                  final int displayLevel = val.floor();
-                  final double displayProgress = val % 1.0;
-
-                  final int percentage = (displayProgress * 100).round();
-                  
-                  return LevelCard(
-                    level: displayLevel,
-                    progress: displayProgress,
-                    nextLevel: displayLevel + 1,
-                    progressLabel: "$percentage%",
-                  );
-                },
-              ),
-              if (_hasLeveledUp) ...[
-                const SizedBox(height: 20),
-                _buildMilestoneBox(),
+    return AnimatedSize(
+      duration: const Duration(milliseconds: 400),
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            AnimatedBuilder(
+              animation: _animation,
+              builder: (context, _) {
+                final double val = _animation.value;
+                final int displayLevel = val.floor();
+                final double displayProgress = val % 1.0;
+    
+                final int percentage = (displayProgress * 100).round();
+                
+                return LevelCard(
+                  level: displayLevel,
+                  progress: displayProgress,
+                  nextLevel: displayLevel + 1,
+                  progressLabel: "$percentage%",
+                );
+              },
+            ),
+            if (_hasLeveledUp) ...[
+              const SizedBox(height: 20),
+              _buildMilestoneBox(),
+            ],
+    
+            const SizedBox(height: AppLayout.gapToButton),
+    
+            Row(
+              children: [
+                Expanded(
+                  child: PrimaryButton(
+                    label: 'HOME',
+                    onPressed: () {
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                        '/',
+                        (route) => false,
+                      );
+                    },
+                  ),
+                ),
+                const SizedBox(width: AppLayout.gapBetweenButtons),
+                Expanded(
+                  child: PrimaryButton(
+                    label: 'NEW GAME',
+                    color: AppColors.accent,
+                    onPressed: () {
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                        '/setup',
+                        (route) => route.isFirst,
+                        arguments: widget.discipline,
+                      );
+                    },
+                  ),
+                ),
               ],
-
-              const SizedBox(height: AppLayout.gapToButton),
-
-              Row(
-                children: [
-                  Expanded(
-                    child: PrimaryButton(
-                      label: 'HOME',
-                      onPressed: () {
-                        Navigator.of(context).pushNamedAndRemoveUntil(
-                          '/',
-                          (route) => false,
-                        );
-                      },
-                    ),
-                  ),
-                  const SizedBox(width: AppLayout.gapBetweenButtons),
-                  Expanded(
-                    child: PrimaryButton(
-                      label: 'NEW GAME',
-                      color: AppColors.accent,
-                      onPressed: () {
-                        Navigator.of(context).pushNamedAndRemoveUntil(
-                          '/setup',
-                          (route) => route.isFirst,
-                          arguments: widget.discipline,
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              ),
-
-            ]
-          )
+            ),
+    
+          ]
         )
-      ) 
+      )
     );
   } 
 

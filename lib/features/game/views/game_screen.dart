@@ -77,6 +77,7 @@ class _GameScreenState extends State<GameScreen> {
 
     showDialog(
       context: context,
+      barrierDismissible: false,
       barrierColor: Colors.transparent,
       builder: (context) {
         return EndDialog(

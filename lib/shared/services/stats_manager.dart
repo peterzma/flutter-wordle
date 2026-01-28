@@ -14,6 +14,8 @@ class StatsManager {
     
     final distString = _prefs.getString('stat_dist') ?? '{}';
     final Map<String, dynamic> decodedDist = jsonDecode(distString);
+    final unlocked = _prefs.getStringList('unlocked_disciplines') ?? [];
+    final milestonesRaw = _prefs.getStringList('stat_milestones') ?? [];
     
     final Map<int, int> distribution = {
       for (var e in decodedDist.entries) int.parse(e.key): e.value as int
@@ -23,7 +25,6 @@ class StatsManager {
       for (int i = 1; i <= 8; i++) i: distribution[i] ?? 0
     };
 
-    final unlocked = _prefs.getStringList('unlocked_disciplines') ?? [];
 
     statsNotifier.value = UserStats(
       streak: _prefs.getInt('stat_streak') ?? 0,
@@ -33,15 +34,26 @@ class StatsManager {
       merit: _prefs.getInt('stat_merit') ?? 0,
       guessDistribution: fullDistribution,
       unlockedIds: unlocked,
+      achievedMilestones: milestonesRaw.map(int.parse).toList(),
     );
   }
 
   Future<int> recordWin({required int yearLevel, required int wordLength, required int attempts}) async {
     final current = statsNotifier.value;
-
     final int gainedMerit = UserStatsRewards.generateGainedMerit(yearLevel, wordLength);
 
-    final newMerit = current.merit + gainedMerit;
+    final int oldLevel = current.currentLevel;
+    final int newMerit = current.merit + gainedMerit;
+    final int newLevel = newMerit ~/ UserStats.meritPerLevel;
+
+    List<int> updatedMilestones = List.from(current.achievedMilestones);
+    if (newLevel > oldLevel) {
+      for (int i = oldLevel + 1; i <= newLevel; i++) {
+        if (!updatedMilestones.contains(i)) updatedMilestones.insert(0, i);
+      }
+      await _prefs.setStringList('stat_milestones', updatedMilestones.map((e) => e.toString()).toList());
+    }
+
     final newStreak = current.streak + 1;
     final newMaxStreak = max(newStreak, current.maxStreak);
     final newDist = Map<int, int>.from(current.guessDistribution);
@@ -50,28 +62,23 @@ class StatsManager {
     await _prefs.setInt('stat_merit', newMerit);
     await _prefs.setInt('stat_streak', newStreak);
     await _prefs.setInt('stat_max_streak', newMaxStreak);
+    await _prefs.setInt('stat_solved', current.solved + 1);
     await _prefs.setString('stat_dist', jsonEncode(newDist.map((k, v) => MapEntry(k.toString(), v))));
 
-    statsNotifier.value = UserStats(
+    statsNotifier.value = current.copyWith(
       streak: newStreak,
       maxStreak: newMaxStreak,
       solved: current.solved + 1,
-      lost: current.lost,
       merit: newMerit,
       guessDistribution: newDist,
-      unlockedIds: current.unlockedIds,
+      achievedMilestones: updatedMilestones,
     );
 
     return gainedMerit;
   }
 
-  Future<void> recordLoss() async {
-    await _applyPenalty(UserStats.penaltyAmount);
-  }
-
-  Future<void> recordAbandonment() async {
-    await _applyPenalty(UserStats.penaltyAmount);
-  }
+  Future<void> recordLoss() => _applyPenalty(UserStats.penaltyAmount);
+  Future<void> recordAbandonment() => _applyPenalty(UserStats.penaltyAmount);
 
   Future<void> _applyPenalty(int amount) async {
     final current = statsNotifier.value;
@@ -82,14 +89,10 @@ class StatsManager {
     await _prefs.setInt('stat_lost', newLost);
     await _prefs.setInt('stat_merit', newMerit);
 
-    statsNotifier.value = UserStats(
+    statsNotifier.value = current.copyWith(
       streak: 0,
-      maxStreak: current.maxStreak,
-      solved: current.solved,
       lost: newLost,
       merit: newMerit,
-      guessDistribution: current.guessDistribution,
-      unlockedIds: current.unlockedIds,
     );
   }
 
@@ -100,15 +103,7 @@ class StatsManager {
     final newList = List<String>.from(current.unlockedIds)..add(id);
     await _prefs.setStringList('unlocked_disciplines', newList);
     
-    statsNotifier.value = UserStats(
-      streak: current.streak,
-      maxStreak: current.maxStreak,
-      solved: current.solved,
-      lost: current.lost,
-      merit: current.merit,
-      guessDistribution: current.guessDistribution,
-      unlockedIds: newList,
-    );
+    statsNotifier.value = current.copyWith(unlockedIds: newList);
   }
 }
 

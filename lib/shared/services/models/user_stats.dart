@@ -12,6 +12,7 @@ class UserStats {
   final int merit;
   final Map<int, int> guessDistribution;
   final List<String> unlockedIds;
+  final List<int> achievedMilestones;
 
   UserStats({
     required this.streak,
@@ -21,7 +22,30 @@ class UserStats {
     this.lost = 0,
     this.guessDistribution = const {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0},
     this.unlockedIds = const [],
+    this.achievedMilestones = const [],
   });
+
+    UserStats copyWith({
+    int? streak,
+    int? maxStreak,
+    int? solved,
+    int? lost,
+    int? merit,
+    Map<int, int>? guessDistribution,
+    List<String>? unlockedIds,
+    List<int>? achievedMilestones,
+  }) {
+    return UserStats(
+      streak: streak ?? this.streak,
+      maxStreak: maxStreak ?? this.maxStreak,
+      solved: solved ?? this.solved,
+      lost: lost ?? this.lost,
+      merit: merit ?? this.merit,
+      guessDistribution: guessDistribution ?? this.guessDistribution,
+      unlockedIds: unlockedIds ?? this.unlockedIds,
+      achievedMilestones: achievedMilestones ?? this.achievedMilestones,
+    );
+  }
 
   int get totalGames => solved + lost;
 

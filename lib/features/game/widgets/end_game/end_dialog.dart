@@ -1,4 +1,5 @@
 import 'package:uniordle/shared/exports/end_game_exports.dart';
+import 'package:uniordle/shared/layout/base_show_dialog.dart';
 
 class EndDialog extends StatelessWidget {
   final bool won;
@@ -31,9 +32,9 @@ class EndDialog extends StatelessWidget {
     );
 
     Navigator.pop(context);
-    showDialog(
+    baseShowDialog(
       context: context,
-      builder: (context) => LevelUpDialog(
+      child: LevelUpDialog(
         startingLevel: prevState.$1,
         startingProgress: prevState.$2,
         gainedMerit: directedMerit,
