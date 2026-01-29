@@ -51,30 +51,28 @@ class StatsScreen extends StatelessWidget {
                 ),
               ),
               
-              const SizedBox(height: 32),
+              const SizedBox(height: 16),
 
               Text(
                 "CORRECT GUESS DISTRIBUTION", 
-                style: AppFonts.labelMedium
+                style: AppFonts.labelLarge
               ),
 
               const SizedBox(height: 12),
 
               GuessDistributionChart(distribution: stats.guessDistribution),
               
-              const SizedBox(height: 32),
+              const SizedBox(height: 16),
 
               Text(
                 "GAMES PLAYED", 
-                style: AppFonts.labelMedium
+                style: AppFonts.labelLarge
               ),
 
               const SizedBox(height: 12),
 
               // This Heatmap-style grid shows Word Length vs Max Attempts
               ModeAnalyticsChart(modeFrequency: stats.modeFrequency),
-
-              const SizedBox(height: 32),
             ],
           ),
         );

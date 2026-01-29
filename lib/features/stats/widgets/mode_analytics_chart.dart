@@ -1,3 +1,5 @@
+import 'package:uniordle/core/app_icons.dart';
+import 'package:uniordle/shared/exports/game_exports.dart';
 import 'package:uniordle/shared/exports/stats_exports.dart';
 
 class ModeAnalyticsChart extends StatelessWidget {
@@ -21,24 +23,60 @@ class ModeAnalyticsChart extends StatelessWidget {
   }
 
   Widget _buildHeaderRow() {
-    return Row(
-      children: [
-        const SizedBox(width: 40),
-        ...[8, 7, 6, 5].map((tries) => Expanded(
-          child: Text("$tries Tries", 
-            textAlign: TextAlign.center, 
-            style: AppFonts.labelSmall.copyWith(fontSize: 10))
-        )),
-      ],
-    );
-  }
+      return Row(
+        children: [
+          const SizedBox(width: 40),
+          ...[8, 7, 6, 5].map((tries) => Expanded(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "$tries", 
+                  textAlign: TextAlign.center, 
+                  style: AppFonts.labelMedium.copyWith(
+                    color: AppColors.onSurfaceVariant
+                  ),
+                ),
+                const SizedBox(width: 4),
+                Icon(
+                  AppIcons.attempts,
+                  size: 12,
+                  color: AppColors.onSurfaceVariant,
+                ),
+              ],
+            ),
+          )),
+        ],
+      );
+    }
 
   Widget _buildDataRow(int length, int maxUsage) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
+      padding: const EdgeInsets.symmetric(vertical: 2),
       child: Row(
         children: [
-          SizedBox(width: 40, child: Text("${length}L", style: AppFonts.labelMedium)),
+          // Label Column (Word Length)
+          SizedBox(
+            width: 40, 
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  "$length", 
+                  style: AppFonts.labelMedium
+                ),
+                const SizedBox(width: 4),
+                Icon(
+                  Icons.text_fields_rounded,
+                  size: 12,
+                  color: AppColors.onSurfaceVariant,
+                ),
+              ],
+            ),
+          ),
+          
+          // Heat Map Cells
           ...[8, 7, 6, 5].map((tries) {
             final count = modeFrequency["$length-$tries"] ?? 0;
             final opacity = count == 0 ? 0.05 : (count / maxUsage).clamp(0.1, 1.0);
@@ -52,10 +90,12 @@ class ModeAnalyticsChart extends StatelessWidget {
                   borderRadius: BorderRadius.circular(4),
                 ),
                 child: Center(
-                  child: Text(count > 0 ? "$count" : "-", 
+                  child: Text(
+                    count > 0 ? "$count" : "-", 
                     style: AppFonts.labelSmall.copyWith(
-                      color: opacity > 0.5 ? Colors.white : AppColors.onSurface
-                    )),
+                      color: opacity > 0.5 ? AppColors.onSurface : AppColors.onSurfaceVariant,
+                    ),
+                  ),
                 ),
               ),
             );
