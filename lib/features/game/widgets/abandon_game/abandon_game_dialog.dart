@@ -6,7 +6,9 @@ class AbandonGameDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final streak = statsManager.statsNotifier.value.streak;
+    final stats = statsManager.statsNotifier.value;
+    final streak = stats.streak;
+    final penalty = stats.activePenalty;
     
     final highlightStyle = AppFonts.labelMedium.copyWith(
       color: AppColors.accent2,
@@ -35,7 +37,7 @@ class AbandonGameDialog extends StatelessWidget {
               children: [
                 const TextSpan(text: "Leaving early will result in a penalty of "),
                 TextSpan(
-                  text: "${UserStats.penaltyAmount} demerits",
+                  text: "$penalty demerits",
                   style: highlightStyle,
                 ),
                 if (streak > 0) ...[
