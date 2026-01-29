@@ -38,8 +38,6 @@ class _UnlockDisciplineDialogState extends State<UnlockDisciplineDialog> {
 
   @override
   Widget build(BuildContext context) {
-    final bool isFirstUnlock = statsManager.statsNotifier.value.unlockedIds.isEmpty;
-
     if (_isUnlocked) {
       return UnlockedDisciplineDialog(discipline: widget.discipline);
     }
@@ -99,10 +97,7 @@ class _UnlockDisciplineDialogState extends State<UnlockDisciplineDialog> {
                   color: canAfford ? widget.discipline.color : AppColors.onSurfaceVariant,
                 ),
                 const SizedBox(width: 8),
-                Text(
-                  isFirstUnlock 
-                    ? "INITIAL ENROLLMENT" 
-                    : "PERMANENT +5% MERIT BONUS",
+                Text("PERMANENT +5% MERIT BONUS",
                   style: AppFonts.labelSmall.copyWith(
                     color: canAfford ? widget.discipline.color : AppColors.onSurfaceVariant,
                     fontWeight: FontWeight.bold,

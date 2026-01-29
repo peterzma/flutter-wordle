@@ -91,9 +91,10 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
       final String rank = UserStats(
         streak: 0, solved: 0, merit: level * UserStats.meritPerLevel
       ).academicTitle;
-      return "Promoted to $rank. Check the Home screen to spend your credit.";
+      final int rankBonus = (level ~/ 10) * 10;
+      return "Promoted to $rank! Permanent +$rankBonus% Rank Bonus reached.";
     }
-    if (level % 5 == 0) return "Check the Home screen to spend your credit";
+    if (level % 5 == 0) return "Credit Earned! Check the Home screen to enroll in a new Discipline.";
     return "You have reached LEVEL $level";
   }
 

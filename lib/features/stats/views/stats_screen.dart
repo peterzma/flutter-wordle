@@ -19,7 +19,7 @@ class StatsScreen extends StatelessWidget {
         final double normalizedValue = (winValue / 100).clamp(0.0, 1.0);
         final Color winColor = Color.lerp(AppColors.accent2, AppColors.correctColor, normalizedValue)!;
 
-        final int bonusCount = stats.unlockedIds.length - 1;
+        final int bonusCount = stats.unlockedIds.length;
         final int totalBonusPercent = (bonusCount * 5).clamp(0, 100);
         
         return SingleChildScrollView(
@@ -67,7 +67,9 @@ class StatsScreen extends StatelessWidget {
                     const SizedBox(width: 12),
                     Expanded(child: StatCard(value: stats.winPercentage, label: "Win\n%", color: winColor)),
                     const SizedBox(width: 12),
-                    Expanded(child: StatCard(value: "${stats.maxStreak}", label: "Best\nStreak", color: Colors.orange)),
+                    Expanded(child: StatCard(value: "${stats.streak}", label: "Current\nStreak", color: Colors.orange)),
+                    const SizedBox(width: 12),
+                    Expanded(child: StatCard(value: "${stats.maxStreak}", label: "Best\nStreak", color: Colors.deepOrange)),
                   ],
                 ),
               ),

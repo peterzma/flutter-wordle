@@ -81,8 +81,13 @@ extension UserStatsProgress on UserStats {
 extension UserStatsRewards on UserStats {
 
   double get meritMultiplier {
-    final bonusCount = max(0, unlockedIds.length - 1);
-    return 1.0 + (bonusCount * 0.05);
+    // 5% bonus per
+    final double rankMultiplier = (currentLevel ~/ 10) * 0.05;
+    
+    // 10% bonus per
+    final double disciplineMultiplier = unlockedIds.length * 0.10;
+    
+    return 1.0 + disciplineMultiplier + rankMultiplier;
   }
 
   static ({int min, int max}) _calculateMeritBounds(int yearLevel, int wordLength) {

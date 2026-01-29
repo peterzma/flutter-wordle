@@ -1,21 +1,28 @@
 import 'package:uniordle/core/app_icons.dart';
+import 'package:uniordle/shared/exports/game_exports.dart';
 import 'package:uniordle/shared/exports/profile_exports.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  const ProfileScreen({
+    super.key
+  });
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
+    return ValueListenableBuilder<UserStats>(
       valueListenable: statsManager.statsNotifier,
       builder: (context, stats, child) {
+
+        final int dBonus = stats.unlockedIds.length * 5;
+        final int rBonus = (stats.currentLevel ~/ 10) * 5;
+
         return SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             children: [
               const SizedBox(height: 16),
 
-              ProfileHeader(),
+              const ProfileHeader(),
         
               const SizedBox(height: 32),
         
@@ -28,26 +35,41 @@ class ProfileScreen extends StatelessWidget {
         
               const SizedBox(height: 16),
         
-              Row(
-                children: [
-                  Expanded(
-                    child: SummaryCard(
-                      label: "Streak", 
-                      value: '${stats.streak}',
-                      icon: AppIcons.streak,
-                      iconColor: Colors.orange,
-                    )
-                  ),
-                  const SizedBox(width: 16),
-                  Expanded(
-                    child: SummaryCard(
-                      label: "Solved", 
-                      value: '${stats.solved}',
-                      icon: AppIcons.solved,
-                      iconColor: AppColors.accent,
-                    )
-                  ),
-                ],
+
+              IntrinsicHeight(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Expanded(
+                      child: SummaryCard(
+                        label: "Discipline Bonus",
+                        value: "+$dBonus%",
+                        icon: LucideIcons.graduationCap,
+                        iconColor: dBonus > 0 ? AppColors.correctColor : AppColors.onSurfaceVariant,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+
+                    Expanded(
+                      child: SummaryCard(
+                        label: "Total Merit",
+                        value: '${stats.merit}',
+                        icon: AppIcons.merits,
+                        iconColor: AppColors.accent,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+
+                    Expanded(
+                      child: SummaryCard(
+                        label: "Rank Bonus",
+                        value: "+$rBonus%",
+                        icon: LucideIcons.award,
+                        iconColor: rBonus > 0 ? Colors.orange : AppColors.onSurfaceVariant,
+                      ),
+                    ),
+                  ],
+                ),
               ),
         
               const SizedBox(height: 32),
