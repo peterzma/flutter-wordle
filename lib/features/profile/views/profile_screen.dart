@@ -29,7 +29,7 @@ class ProfileScreen extends StatelessWidget {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "ACADEMIC PROGRESS",
+                  "Academic Progress",
                   style: AppFonts.headline,
                 ),
               ),
