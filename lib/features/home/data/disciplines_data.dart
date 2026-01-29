@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:uniordle/features/home/models/discipline.dart';
 import 'package:uniordle/shared/exports/word_lists_exports.dart';
+import 'package:uniordle/features/game/data/word_list.dart';
 
 class DisciplinesData {
+
+  static List<String> getAllWordsForDiscipline(String id) {
+    // 1. Get the map for this discipline (e.g., engineeringWords)
+    final Map<int, List<String>> wordMap = categorizedWords[id.toLowerCase()] ?? {};
+    
+    // 2. Flatten all values (List of strings for 5, 6, 7 letters) into one list
+    return wordMap.values
+        .expand((list) => list)
+        .map((word) => word.toUpperCase())
+        .toList();
+  }
 
   static int getWordCount(Map<int, List<String>> wordMap) {
     return wordMap.values.fold(0, (sum, list) => sum + list.length);

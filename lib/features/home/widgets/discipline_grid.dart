@@ -21,9 +21,9 @@ class DisciplineGrid extends StatelessWidget {
         itemCount: disciplines.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          mainAxisSpacing: 24,
+          mainAxisSpacing: 12,
           crossAxisSpacing: 12,
-          childAspectRatio: 3.5,
+          childAspectRatio: 3.1,
         ),
         itemBuilder: (context, index) {
           final sub = disciplines[index];
