@@ -25,26 +25,37 @@ class WordRepository {
   }
 
   static String getNextWord({
-  required String disciplineId,
-  required int length,
-  required List<String> userSolvedWords,
-}) {
-  final Map<int, List<String>>? disciplineMap = categorizedWords[disciplineId.toLowerCase()];
-  final List<String> allWords = disciplineMap?[length] ?? [];
-  
-  if (allWords.isEmpty) return "ERROR";
+    required String disciplineId,
+    required int length,
+    required List<String> userSolvedWords,
+  }) {
+    final Map<int, List<String>>? disciplineMap = categorizedWords[disciplineId.toLowerCase()];
+    final List<String> allWords = disciplineMap?[length] ?? [];
+    
+    if (allWords.isEmpty) return "ERROR";
 
-  final List<String> unsolved = allWords
-      .where((w) => !userSolvedWords.contains(w.toUpperCase()))
-      .toList();
+    final List<String> unsolved = allWords
+        .where((w) => !userSolvedWords.contains(w.toUpperCase()))
+        .toList();
 
-  final Random random = Random();
-  final bool pickNew = random.nextDouble() < 0.8; 
+    final Random random = Random();
+    
+    final bool wantNew = random.nextDouble() < 0.8; 
 
-  if (pickNew && unsolved.isNotEmpty) {
-    return unsolved[random.nextInt(unsolved.length)];
-  } else {
+    if (wantNew && unsolved.isNotEmpty) {
+      return unsolved[random.nextInt(unsolved.length)];
+    } 
+    
+    if (userSolvedWords.isNotEmpty) {
+      final List<String> reviewPool = allWords
+          .where((w) => userSolvedWords.contains(w.toUpperCase()))
+          .toList();
+
+      if (reviewPool.isNotEmpty) {
+        return reviewPool[random.nextInt(reviewPool.length)];
+      }
+    }
+
     return allWords[random.nextInt(allWords.length)];
   }
-}
 }
