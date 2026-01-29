@@ -51,10 +51,10 @@ class StatsScreen extends StatelessWidget {
                 ),
               ),
               
-              const SizedBox(height: 16),
+              const SizedBox(height: 12),
 
               Text(
-                "CORRECT GUESS DISTRIBUTION", 
+                "CORRECT GUESSES", 
                 style: AppFonts.labelLarge
               ),
 

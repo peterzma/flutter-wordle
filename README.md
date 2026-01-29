@@ -106,3 +106,4 @@ Latest release:
 * fix slight offset on text in settings when holding down buttons (rasturising issue)
 * improve transition between end game dialog and levelup dialog
 * during unlocking discipline, bring up dialog, behind the scenes, move the unlock to the top.
+* make paddings consistent throughout app using app_layout.dart
