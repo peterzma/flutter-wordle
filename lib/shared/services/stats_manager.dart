@@ -131,18 +131,18 @@
     }
 
     Future<Map<String, int>> _incrementModeFrequency(int length, int maxAttempts) async {
-    final current = statsNotifier.value;
-    final String modeKey = "$length-$maxAttempts";
-    
-    final newFreq = Map<String, int>.from(current.modeFrequency);
-    newFreq[modeKey] = (newFreq[modeKey] ?? 0) + 1;
+      final current = statsNotifier.value;
+      final String modeKey = "$length-$maxAttempts";
+      
+      final newFreq = Map<String, int>.from(current.modeFrequency);
+      newFreq[modeKey] = (newFreq[modeKey] ?? 0) + 1;
 
-    await _prefs.setString('stat_mode_freq', jsonEncode(newFreq));
-    
-    statsNotifier.value = current.copyWith(modeFrequency: newFreq);
-    
-    return newFreq;
-  }
+      await _prefs.setString('stat_mode_freq', jsonEncode(newFreq));
+      
+      statsNotifier.value = current.copyWith(modeFrequency: newFreq);
+      
+      return newFreq;
+    }
   }
 
   final statsManager = StatsManager();

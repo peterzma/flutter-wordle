@@ -115,7 +115,7 @@ class GameController extends ChangeNotifier {
       onGameEnd(true);
     } else if (currentWordIndex + 1 >= maxAttempts) {
       status = GameStatus.lost;
-      statsManager.recordLoss(wordLength: yearLevel, maxAttempts: maxAttempts);
+      statsManager.recordLoss(wordLength: wordLength, maxAttempts: maxAttempts);
       onGameEnd(false);
     } else {
       status = GameStatus.playing;
@@ -149,6 +149,10 @@ class GameController extends ChangeNotifier {
   void abandonGame() {
     if (status == GameStatus.playing || status == GameStatus.submitting) {
       status = GameStatus.lost;
+      statsManager.recordAbandonment(
+        wordLength: wordLength, 
+        maxAttempts: maxAttempts
+      );
       notifyListeners();
     }
   }

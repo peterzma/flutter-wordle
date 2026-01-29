@@ -104,7 +104,6 @@ class _GameScreenState extends State<GameScreen> {
     final shouldLeave = await AbandonGameDialog.show(context);
     
     if (shouldLeave) {
-      await statsManager.recordAbandonment(wordLength: _wordLength, maxAttempts: _maxAttempts);
       _controller.abandonGame();
       
       if (mounted) {
