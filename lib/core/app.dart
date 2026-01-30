@@ -1,5 +1,6 @@
 import 'package:uniordle/shared/exports/app_exports.dart';
 import 'package:uniordle/shared/navigation/main_navigation_screen.dart';
+import 'package:uniordle/shared/responsive/responsive_wrapper.dart';
 
 class App extends StatelessWidget {
   const App({
@@ -46,24 +47,6 @@ class App extends StatelessWidget {
       default:
         return const HomeScreen();
     }
-  }
-}
-
-class ResponsiveWrapper extends StatelessWidget {
-  final Widget child;
-  const ResponsiveWrapper({super.key, required this.child});
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: AppColors.surface, 
-      child: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: AppLayout.minAppWidth),
-          child: ClipRect(child: child),
-        ),
-      ),
-    );
   }
 }
 
