@@ -106,3 +106,4 @@ Latest release:
 * make paddings consistent throughout app using app_layout.dart
 * add progress on each discipline. increase likihood of new unique words. once mastered, **stop user from farming it by decreasing merits earned** (need to add this part now)
 * **IMPROVE APPEARANCE AND DESIGN AFTER ADDING LOGIC**
+* **IMPORTANT: ensure widths 360 to 512 are handled properly**

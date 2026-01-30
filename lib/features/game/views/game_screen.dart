@@ -151,15 +151,13 @@ class _GameScreenState extends State<GameScreen> {
                     yearLevel: _yearLevel,
                     wordLength: _wordLength,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 24),
-                    child: Keyboard(
-                      onKeyTapped: _controller.addLetter,
-                      onDeleteTapped: _controller.removeLetter,
-                      onEnterTapped: _controller.submitWord,
-                      letters: _controller.keyboardLetters,
-                    ),
-                  )
+                  Keyboard(
+                    onKeyTapped: _controller.addLetter,
+                    onDeleteTapped: _controller.removeLetter,
+                    onEnterTapped: _controller.submitWord,
+                    letters: _controller.keyboardLetters,
+                  ),
+                  const SizedBox(height: 12),
                 ]
               ),
             ),
