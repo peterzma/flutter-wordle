@@ -16,7 +16,8 @@ class WordLengthSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isNarrow = AppLayout.mobileMode(context);
+    final bool mobileMode = AppLayout.mobileMode(context);
+
     return Column(
       children: [
         Text(
@@ -33,7 +34,7 @@ class WordLengthSelector extends StatelessWidget {
                 : AppColors.surfaceVariant;
             return Expanded(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 6.0),
+                padding: EdgeInsets.symmetric(horizontal: mobileMode ? 2.0 : 6.0),
                 child: SelectButtonWrapper(
                   onTap: () => onChanged(len),
                   soundType: SoundType.settings,
