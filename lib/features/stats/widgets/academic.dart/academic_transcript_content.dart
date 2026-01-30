@@ -1,4 +1,5 @@
 import 'package:uniordle/features/stats/widgets/academic.dart/history_item_card.dart';
+import 'package:uniordle/shared/buttons/simple_button.dart';
 import 'package:uniordle/shared/exports/game_exports.dart';
 
 class AcademicTranscriptContent extends StatelessWidget {
@@ -28,10 +29,13 @@ class AcademicTranscriptContent extends StatelessWidget {
               ],
             ),
             // Close button inside the content
-            IconButton(
-              onPressed: () => Navigator.pop(context),
-              icon: Icon(LucideIcons.x, color: AppColors.onSurfaceVariant, size: 20),
-            ),
+           SimpleButton(
+              icon: LucideIcons.x,
+              onTap: () => Navigator.pop(context),
+              color: AppColors.onSurfaceVariant,
+              iconSize: 20,
+              padding: const EdgeInsets.all(16),
+            )
           ],
         ),
         const Padding(

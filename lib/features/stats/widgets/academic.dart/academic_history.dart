@@ -1,5 +1,6 @@
 import 'package:uniordle/features/stats/widgets/academic.dart/history_item_card.dart';
 import 'package:uniordle/features/stats/widgets/academic.dart/academic_transcript_content.dart';
+import 'package:uniordle/shared/buttons/simple_button.dart';
 import 'package:uniordle/shared/exports/game_exports.dart';
 import 'package:uniordle/shared/layout/base_show_dialog.dart';
 
@@ -21,16 +22,11 @@ class AcademicHistory extends StatelessWidget {
           children: [
             Text("Academic Record", style: AppFonts.headline),
             if (stats.gameHistory.length > 3)
-              TextButton(
-                onPressed: () {
-                  baseShowDialog(
-                    context: context,
-                    child: AcademicTranscriptContent(stats: stats),
-                  );
-                },
-                child: Text(
-                  "VIEW ALL",
-                  style: AppFonts.labelSmall.copyWith(color: AppColors.accent),
+              SimpleButton(
+                text: "VIEW ALL",
+                onTap: () => baseShowDialog(
+                  context: context,
+                  child: AcademicTranscriptContent(stats: stats),
                 ),
               ),
           ],
