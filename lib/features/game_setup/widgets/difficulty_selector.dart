@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:uniordle/core/app_icons.dart';
 import 'package:uniordle/shared/services/models/difficulty_config.dart';
 import 'package:uniordle/features/home/models/discipline.dart';
@@ -41,7 +42,6 @@ class DifficultySelector extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 32),
         SliderTheme(
           data: SliderTheme.of(context).copyWith(
             trackHeight: 4,
@@ -94,12 +94,13 @@ class DifficultySelector extends StatelessWidget {
                                   ? CrossAxisAlignment.end 
                                   : CrossAxisAlignment.center,
                             children: [
-                              Text(
+                              AutoSizeText(
                                 e.value.$1,
                                 textAlign: TextAlign.center,
                                 style: active
                                     ? AppFonts.labelMedium.copyWith(color: Colors.white, fontWeight: FontWeight.w600)
                                     : AppFonts.labelMedium,
+                                maxLines: 1,
                               ),
                               const SizedBox(height: 4),
                               Row(

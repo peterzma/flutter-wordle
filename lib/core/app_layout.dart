@@ -33,10 +33,10 @@ abstract class AppLayout {
   static double screenHeight(BuildContext context) => MediaQuery.of(context).size.height;
 
   /// Global check if we are in "Mobile" mode (under 512px)
-  static bool isSmall(BuildContext context) => screenWidth(context) < breakpoint;
+  static bool mobileMode(BuildContext context) => screenWidth(context) < breakpoint;
 
   /// Global check if we are in "Desktop" mode (exactly 512px or centered)
-  static bool isLarge(BuildContext context) => screenWidth(context) >= breakpoint;
+  static bool desktopMode(BuildContext context) => screenWidth(context) >= breakpoint;
 
   /// Returns the width of the app content (clamped between 360 and 512)
   static double contentWidth(BuildContext context) {

@@ -15,6 +15,8 @@ class MeritPreviewBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool mobileMode = AppLayout.mobileMode(context);
+
     return ValueListenableBuilder<UserStats>(
       valueListenable: statsManager.statsNotifier,
       builder: (context, stats, child) {
@@ -23,54 +25,63 @@ class MeritPreviewBadge extends StatelessWidget {
 
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          constraints: const BoxConstraints(maxWidth: AppLayout.maxDialogWidth),
           decoration: BoxDecoration(
             color: discipline.color.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(16),
           ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(
-                AppIcons.merits, 
-                size: 16, 
-                color: discipline.color
-              ),
-              const SizedBox(width: 8),
-              Text(
-                "POTENTIAL MERITS: ",
-                style: AppFonts.labelLarge.copyWith(
-                  color: discipline.color,
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              spacing: 2,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(AppIcons.merits, size: 16, color: discipline.color),
+                    const SizedBox(width: 8),
+                    Text(
+                      mobileMode? "MERITS: " : "POTENTIAL MERITS: ",
+                      style: AppFonts.labelLarge.copyWith(color: discipline.color),
+                    ),
+                  ],
                 ),
-              ),
-              
-              Text(
-                ranges.original,
-                style: AppFonts.labelLarge.copyWith(
-                  color: bonusPercent > 0 
-                      ? discipline.color.withValues(alpha: 0.5) 
-                      : discipline.color,
-                  fontWeight: bonusPercent > 0 ? FontWeight.normal : FontWeight.bold,
-                  decoration: bonusPercent > 0 ? TextDecoration.lineThrough : null,
-                ),
-              ),
-
-              if (bonusPercent > 0) ...[
-                const SizedBox(width: 6),
-                Icon(
-                  LucideIcons.arrowRight, 
-                  size: 14, 
-                  color: discipline.color.withValues(alpha: 0.7)
-                ),
-                const SizedBox(width: 6),
-                Text(
-                  ranges.boosted,
-                  style: AppFonts.labelLarge.copyWith(
-                    color: discipline.color,
-                    fontWeight: FontWeight.bold,
-                  ),
+                
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      ranges.original,
+                      style: AppFonts.labelLarge.copyWith(
+                        color: bonusPercent > 0 
+                            ? discipline.color.withValues(alpha: 0.5) 
+                            : discipline.color,
+                        fontWeight: bonusPercent > 0 ? FontWeight.normal : FontWeight.bold,
+                        decoration: bonusPercent > 0 ? TextDecoration.lineThrough : null,
+                      ),
+                    ),
+            
+                    if (bonusPercent > 0) ...[
+                      const SizedBox(width: 6),
+                      Icon(
+                        LucideIcons.arrowRight, 
+                        size: 14, 
+                        color: discipline.color.withValues(alpha: 0.7)
+                      ),
+                      const SizedBox(width: 6),
+                      Text(
+                        ranges.boosted,
+                        style: AppFonts.labelLarge.copyWith(
+                          color: discipline.color,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ],
                 ),
               ],
-            ],
+            ),
           ),
         );
       },

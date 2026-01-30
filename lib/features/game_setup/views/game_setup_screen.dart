@@ -64,16 +64,17 @@ class _GameSetupScreenState extends State<GameSetupScreen> {
                       onChanged: (v) => setState(() => _wordLength = v),
                       discipline: widget.discipline,
                     ),
-                    const Spacer(flex: 2),
+                    const SizedBox(height: 12),
                     DifficultySelector(
                       value: _difficulty, 
                       onChanged: (v) => setState(() => _difficulty = v),
                       discipline: widget.discipline,
                     ),
-                    const Spacer(flex: 3),
                   ],
                 ),
               ),
+
+              const SizedBox(height: 12),
 
               MeritPreviewBadge(
                 difficulty: _difficulty,
@@ -81,7 +82,7 @@ class _GameSetupScreenState extends State<GameSetupScreen> {
                 discipline: widget.discipline,
               ),
 
-              const SizedBox(height: AppLayout.gapToButton),
+              const SizedBox(height: 12),
 
               PrimaryButton(
                 label: 'PLAY GAME',

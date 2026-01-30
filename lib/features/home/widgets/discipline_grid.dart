@@ -15,7 +15,7 @@ class DisciplineGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool useListMode = AppLayout.isSmall(context);
+    final bool useListMode = AppLayout.mobileMode(context);
 
     return useListMode ? _buildListView() : _buildGridView();
   }

@@ -11,7 +11,7 @@ class ResponsiveWrapper extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final double windowWidth = constraints.maxWidth;
-        final bool isSmall = windowWidth < AppLayout.breakpoint;
+        final bool mobileMode = windowWidth < AppLayout.breakpoint;
 
         return Material(
           color: AppColors.surface,
@@ -37,7 +37,7 @@ class ResponsiveWrapper extends StatelessWidget {
                 Positioned(
                   top: MediaQuery.of(context).padding.top + 10,
                   right: 10,
-                  child: _buildDebugBadge(windowWidth, isSmall),
+                  child: _buildDebugBadge(windowWidth, mobileMode),
                 ),
             ],
           ),
@@ -46,16 +46,16 @@ class ResponsiveWrapper extends StatelessWidget {
     );
   }
 
-  Widget _buildDebugBadge(double width, bool isSmall) {
+  Widget _buildDebugBadge(double width, bool mobileMode) {
     return IgnorePointer(
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         decoration: BoxDecoration(
-          color: isSmall ? Colors.orange : Colors.blue,
+          color: mobileMode ? Colors.orange : Colors.blue,
           borderRadius: BorderRadius.circular(4),
         ),
         child: Text(
-          '${isSmall ? "SMALL UI" : "LARGE UI"} | Screen W: ${width.toInt()}',
+          '${mobileMode ? "SMALL UI" : "LARGE UI"} | Screen W: ${width.toInt()}',
           style: const TextStyle(
             color: Colors.white,
             fontSize: 10,
