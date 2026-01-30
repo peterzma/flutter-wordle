@@ -3,7 +3,6 @@ import 'package:uniordle/features/home/widgets/unlock_discipline_dialog.dart';
 import 'package:uniordle/shared/exports/game_exports.dart';
 import 'package:uniordle/shared/exports/help_exports.dart';
 import 'package:uniordle/shared/layout/base_show_dialog.dart';
-import 'package:uniordle/shared/responsive/responsive_layout.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -24,69 +23,38 @@ class HomeScreen extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      valueListenable: statsManager.statsNotifier,
-      builder: (context, stats, _) {
-        final sortedDisciplines = DisciplinesData.getSortedDisciplines(stats.unlockedIds);
+Widget build(BuildContext context) {
+  return ValueListenableBuilder(
+    valueListenable: statsManager.statsNotifier,
+    builder: (context, stats, _) {
+      final sortedDisciplines = DisciplinesData.getSortedDisciplines(stats.unlockedIds);
+      
+      final bool isMobile = AppLayout.isSmall(context);
 
-        return ResponsiveLayout(
-          smallScreen: _buildSmallHome(context, stats, sortedDisciplines),
-          largeScreen: _buildLargeHome(context, stats, sortedDisciplines),
-        );
-      },
-    );
-  }
+      return Scaffold(
+        backgroundColor: AppColors.surface,
+        body: SafeArea(
+          child: SingleChildScrollView(
+            padding: EdgeInsets.all(isMobile ? 16.0 : AppLayout.sidePadding),
+            child: Column(
+              children: [
+                HomeHero(stats: stats),
+                const SizedBox(height: AppLayout.badgeToContent),
 
-  Widget _buildLargeHome(BuildContext context, UserStats stats, List<Discipline> disciplines) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(AppLayout.sidePadding),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          HomeHero(stats: stats),
-          const SizedBox(height: AppLayout.badgeToContent),
-          DisciplineGrid(
-            isSmall: false,
-            disciplines: disciplines,
-            unlockedIds: stats.unlockedIds,
-            onSubjectTap: (sub) => _onDisciplineTap(context, sub, stats),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildSmallHome(BuildContext context, UserStats stats, List<Discipline> disciplines) {
-    return Scaffold(
-      backgroundColor: AppColors.surface,
-      body: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            SliverPadding(
-              padding: const EdgeInsets.all(16.0),
-              sliver: SliverToBoxAdapter(
-                child: HomeHero(stats: stats),
-              ),
-            ),
-
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              sliver: SliverToBoxAdapter(
-                child: DisciplineGrid(
-                  isSmall: true,
-                  disciplines: disciplines,
+                DisciplineGrid(
+                  isSmall: isMobile,
+                  disciplines: sortedDisciplines,
                   unlockedIds: stats.unlockedIds,
                   onSubjectTap: (sub) => _onDisciplineTap(context, sub, stats),
                 ),
-              ),
+                
+                const SizedBox(height: 32),
+              ],
             ),
-
-            const SliverToBoxAdapter(child: SizedBox(height: 32)),
-          ],
+          ),
         ),
-      ),
-    );
-  }
+      );
+    },
+  );
+}
 }
