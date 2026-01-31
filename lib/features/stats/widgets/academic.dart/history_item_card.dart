@@ -16,7 +16,7 @@ class HistoryItemCard extends StatelessWidget {
     final grade = GameGrade.calculate(won, attempts, maxAttempts);
 
     return Container(
-      margin: EdgeInsets.only(bottom: context.r(16)),
+      margin: EdgeInsets.only(bottom: context.r(8)),
       padding: EdgeInsets.all(context.r(16)),
       decoration: BoxDecoration(
         color: grade.color.withValues(alpha: 0.1),

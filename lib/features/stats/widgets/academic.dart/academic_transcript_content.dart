@@ -12,19 +12,18 @@ class AcademicTranscriptContent extends StatelessWidget {
     final allGames = stats.gameHistory.reversed.toList();
 
     return Column(
-      mainAxisSize: MainAxisSize.min, // Respects BaseDialog Column
+      mainAxisSize: MainAxisSize.min,
       children: [
-        // Header
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Academic Transcript", style: AppFonts.headline),
+                Text("Transcript", style: AppFonts.headline),
                 Text(
-                  "OFFICIAL RECORD • ${allGames.length} ENTRIES",
-                  style: AppFonts.labelSmall.copyWith(color: AppColors.onSurfaceVariant),
+                  "${allGames.length} ENTRIES",
+                  style: AppFonts.labelMedium,
                 ),
               ],
             ),
@@ -34,17 +33,14 @@ class AcademicTranscriptContent extends StatelessWidget {
               onTap: () => Navigator.pop(context),
               color: AppColors.onSurfaceVariant,
               iconSize: 20,
-              padding: const EdgeInsets.all(16),
             )
           ],
         ),
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 16.0),
-          child: Divider(height: 1),
-        ),
+
+        SizedBox(height: context.r(16)),
         
         SizedBox(
-          height: 400, 
+          height: context.responsive(200, 400), 
           child: ListView.builder(
             shrinkWrap: true,
             itemCount: allGames.length,
@@ -54,16 +50,12 @@ class AcademicTranscriptContent extends StatelessWidget {
             },
           ),
         ),
+
+        SizedBox(height: context.r(16)),
         
-        const SizedBox(height: 16),
-        
-        // Footer
         Text(
-          "Only the last 50 attempts are retained.",
-          style: AppFonts.labelSmall.copyWith(
-            color: AppColors.onSurfaceVariant.withValues(alpha: 0.6),
-            fontSize: 10,
-          ),
+          "Only the last 50 scores are shown.",
+          style: AppFonts.labelMedium,
         ),
       ],
     );

@@ -84,8 +84,8 @@ class PerformanceBreakdown extends StatelessWidget {
                       ),
                       TextSpan(
                         text: isPositive 
-                          ? " based on your efficiency." 
-                          : " due to failing the semester."
+                          ? " based on your attempts." 
+                          : " due to failing to guess correctly."
                       ),
                     ],
                   ),

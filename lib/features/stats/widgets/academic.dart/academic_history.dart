@@ -26,6 +26,7 @@ class AcademicHistory extends StatelessWidget {
                 text: "VIEW ALL",
                 onTap: () => baseShowDialog(
                   context: context,
+                  barrierDismissible: true,
                   child: AcademicTranscriptContent(stats: stats),
                 ),
               ),
