@@ -1,4 +1,4 @@
-export '../../features/home/models/discipline.dart';
+export '../../features/home/models/major.dart';
 export '../../features/home/views/home_screen.dart';
 export '../../features/home/widgets/discipline_grid.dart';
 export '../../features/home/widgets/discipline_icon.dart';

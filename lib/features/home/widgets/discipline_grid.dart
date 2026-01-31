@@ -2,9 +2,9 @@ import 'package:uniordle/shared/exports/home_exports.dart';
 import 'package:uniordle/core/app_layout.dart';
 
 class DisciplineGrid extends StatelessWidget {
-  final List<Discipline> disciplines;
+  final List<Major> disciplines;
   final List<String> unlockedIds;
-  final void Function(Discipline) onSubjectTap;
+  final void Function(Major) onSubjectTap;
 
   const DisciplineGrid({
     super.key,
@@ -50,10 +50,10 @@ class DisciplineGrid extends StatelessWidget {
     );
   }
 
-  Widget _buildTile(Discipline sub) {
+  Widget _buildTile(Major sub) {
     final bool isLocked = !unlockedIds.contains(sub.id);
     return DisciplineTile(
-      discipline: sub,
+      major: sub,
       isLocked: isLocked,
       onTap: () => onSubjectTap(sub),
     );

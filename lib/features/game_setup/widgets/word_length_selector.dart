@@ -5,13 +5,13 @@ import 'package:uniordle/shared/buttons/select_button_wrapper.dart';
 class WordLengthSelector extends StatelessWidget {
   final int value;
   final ValueChanged<int> onChanged;
-  final Discipline discipline;
+  final Major major;
 
   const WordLengthSelector({
     super.key, 
     required this.value, 
     required this.onChanged,
-    required this.discipline,
+    required this.major,
   });
 
   @override
@@ -30,7 +30,7 @@ class WordLengthSelector extends StatelessWidget {
           children: [5, 6, 7].map((len) {
             final bool active = value == len;
             final Color baseColor = active 
-                ? discipline.color 
+                ? major.color 
                 : AppColors.surfaceVariant;
             return Expanded(
               child: Padding(
@@ -47,7 +47,7 @@ class WordLengthSelector extends StatelessWidget {
                       duration: const Duration(milliseconds: 300),
                       curve: Curves.easeInOut,
                       decoration: BoxDecoration(
-                        color: active ? discipline.color : AppColors.surfaceVariant,
+                        color: active ? major.color : AppColors.surfaceVariant,
                         borderRadius: BorderRadius.circular(36),
                       ),
                       child: Column(

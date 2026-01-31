@@ -4,13 +4,13 @@ import 'package:uniordle/shared/exports/game_exports.dart';
 class MeritPreviewBadge extends StatelessWidget {
   final int difficulty;
   final int wordLength;
-  final Discipline discipline;
+  final Major major;
 
   const MeritPreviewBadge({
     super.key,
     required this.difficulty,
     required this.wordLength,
-    required this.discipline,
+    required this.major,
   });
 
   @override
@@ -27,7 +27,7 @@ class MeritPreviewBadge extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
           constraints: const BoxConstraints(maxWidth: AppLayout.maxDialogWidth),
           decoration: BoxDecoration(
-            color: discipline.color.withValues(alpha: 0.1),
+            color: major.color.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(16),
           ),
           child: FittedBox(
@@ -39,11 +39,11 @@ class MeritPreviewBadge extends StatelessWidget {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(AppIcons.merits, size: 16, color: discipline.color),
+                    Icon(AppIcons.merits, size: 16, color: major.color),
                     const SizedBox(width: 8),
                     Text(
                       mobileMode? "MERITS: " : "POTENTIAL MERITS: ",
-                      style: AppFonts.labelLarge.copyWith(color: discipline.color),
+                      style: AppFonts.labelLarge.copyWith(color: major.color),
                     ),
                   ],
                 ),
@@ -55,8 +55,8 @@ class MeritPreviewBadge extends StatelessWidget {
                       ranges.original,
                       style: AppFonts.labelLarge.copyWith(
                         color: bonusPercent > 0 
-                            ? discipline.color.withValues(alpha: 0.5) 
-                            : discipline.color,
+                            ? major.color.withValues(alpha: 0.5) 
+                            : major.color,
                         fontWeight: bonusPercent > 0 ? FontWeight.normal : FontWeight.bold,
                         decoration: bonusPercent > 0 ? TextDecoration.lineThrough : null,
                       ),
@@ -67,13 +67,13 @@ class MeritPreviewBadge extends StatelessWidget {
                       Icon(
                         LucideIcons.arrowRight, 
                         size: 14, 
-                        color: discipline.color.withValues(alpha: 0.7)
+                        color: major.color.withValues(alpha: 0.7)
                       ),
                       const SizedBox(width: 6),
                       Text(
                         ranges.boosted,
                         style: AppFonts.labelLarge.copyWith(
-                          color: discipline.color,
+                          color: major.color,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

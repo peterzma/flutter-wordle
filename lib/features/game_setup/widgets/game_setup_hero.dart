@@ -1,13 +1,13 @@
 import 'package:uniordle/shared/exports/game_setup_exports.dart';
-import 'package:uniordle/features/home/models/discipline.dart';
+import 'package:uniordle/features/home/models/major.dart';
 import 'package:uniordle/core/app_icons.dart';
 
 class GameSetupHero extends StatelessWidget {
-  final Discipline discipline;
+  final Major major;
 
   const GameSetupHero({
     super.key,
-    required this.discipline,
+    required this.major,
   });
 
   @override
@@ -23,19 +23,19 @@ class GameSetupHero extends StatelessWidget {
             borderRadius: BorderRadius.circular(32),
           ),
           child: Icon(
-            IconMapper.getIcon(discipline.icon),
-            color: discipline.color,
+            IconMapper.getIcon(major.icon),
+            color: major.color,
             size: 48,
           ),
         ),
         const SizedBox(height: 8),
         Text(
-          discipline.name,
+          major.name,
           style: AppFonts.displayLarge,
         ),
         Text(
           'GAME SETTINGS',
-          style: AppFonts.labelLarge.copyWith(color: discipline.color),
+          style: AppFonts.labelLarge.copyWith(color: major.color),
         ),
       ],
     );

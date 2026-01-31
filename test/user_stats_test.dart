@@ -37,7 +37,7 @@ void main() {
 
   group('UserStats Rewards & Multipliers:', () {
     test('Merit multiplier increases with unlocked disciplines', () {
-      // 1 initial discipline = 1.0x
+      // 1 initial major = 1.0x
       final baseStats = UserStats(streak: 0, solved: 0, merit: 0, unlockedIds: ['eng']);
       
       // 1 initial + 2 additional = 1.0 + (2 * 0.05) = 1.1x

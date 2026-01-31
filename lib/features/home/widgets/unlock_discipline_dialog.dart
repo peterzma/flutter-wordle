@@ -4,13 +4,13 @@ import 'package:uniordle/shared/exports/help_exports.dart';
 import 'package:uniordle/shared/buttons/wiggle_button_wrapper.dart';
 
 class UnlockDisciplineDialog extends StatefulWidget {
-  final Discipline discipline;
+  final Major major;
   final int credits;
   final int nextLevel;
 
   const UnlockDisciplineDialog({
     super.key,
-    required this.discipline,
+    required this.major,
     required this.credits,
     required this.nextLevel,
   });
@@ -24,7 +24,7 @@ class _UnlockDisciplineDialogState extends State<UnlockDisciplineDialog> {
   final wiggleKey = GlobalKey<WiggleButtonWrapperState>();
 
   void _handleUnlock() async {
-    await statsManager.unlockDiscipline(widget.discipline.id);
+    await statsManager.unlockDiscipline(widget.major.id);
     
     if (mounted) {
       setState(() {
@@ -39,7 +39,7 @@ class _UnlockDisciplineDialogState extends State<UnlockDisciplineDialog> {
   @override
   Widget build(BuildContext context) {
     if (_isUnlocked) {
-      return UnlockedDisciplineDialog(discipline: widget.discipline);
+      return UnlockedDisciplineDialog(major: widget.major);
     }
 
     final stats = statsManager.statsNotifier.value;
@@ -47,10 +47,10 @@ class _UnlockDisciplineDialogState extends State<UnlockDisciplineDialog> {
 
     final bool canAfford = widget.credits > 0;
     final Color buttonColor = canAfford 
-        ? widget.discipline.color 
+        ? widget.major.color 
         : AppColors.onSurfaceVariant.withValues(alpha: 0.5);
     final Color statusColor = canAfford 
-        ? widget.discipline.color 
+        ? widget.major.color 
         : AppColors.onSurfaceVariant.withValues(alpha: 0.5);
 
     final String bonusText = isFirstEnrollment 
@@ -69,22 +69,22 @@ class _UnlockDisciplineDialogState extends State<UnlockDisciplineDialog> {
         mainAxisSize: MainAxisSize.min,
         children: [
           DisciplineIcon(
-            iconName: canAfford ? widget.discipline.icon : 'lock',
+            iconName: canAfford ? widget.major.icon : 'lock',
             color: statusColor,
             size: AppLayout.dialogIcon,
           ),
           const SizedBox(height: 8),
       
           Text(
-            canAfford ? "Enroll in ${widget.discipline.name}?" : "LOCKED",
+            canAfford ? "Enroll in ${widget.major.name}?" : "LOCKED",
             style: AppFonts.displayMedium,
           ),
           const SizedBox(height: AppLayout.titleToSubtitle),
           
           Text(
             canAfford 
-              ? "Spend 1 Credit to unlock ${widget.discipline.name}?"
-              : "You don't have any credits to unlock ${widget.discipline.name}.",
+              ? "Spend 1 Credit to unlock ${widget.major.name}?"
+              : "You don't have any credits to unlock ${widget.major.name}.",
             textAlign: TextAlign.center,
             style: AppFonts.labelLarge,
           ),
@@ -95,7 +95,7 @@ class _UnlockDisciplineDialogState extends State<UnlockDisciplineDialog> {
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
             decoration: BoxDecoration(
               color: canAfford 
-                  ? widget.discipline.color.withValues(alpha: 0.1)
+                  ? widget.major.color.withValues(alpha: 0.1)
                   : AppColors.onSurfaceVariant.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(20),
             ),
@@ -105,13 +105,13 @@ class _UnlockDisciplineDialogState extends State<UnlockDisciplineDialog> {
                 Icon(
                   bonusIcon,
                   size: 16, 
-                  color: canAfford ? widget.discipline.color : AppColors.onSurfaceVariant,
+                  color: canAfford ? widget.major.color : AppColors.onSurfaceVariant,
                 ),
                 const SizedBox(width: 8),
                 Text(
                   bonusText,
                   style: AppFonts.labelSmall.copyWith(
-                    color: canAfford ? widget.discipline.color : AppColors.onSurfaceVariant,
+                    color: canAfford ? widget.major.color : AppColors.onSurfaceVariant,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

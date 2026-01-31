@@ -2,19 +2,19 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:uniordle/core/app_icons.dart';
 import 'package:uniordle/core/app_layout.dart';
 import 'package:uniordle/shared/services/models/difficulty_config.dart';
-import 'package:uniordle/features/home/models/discipline.dart';
+import 'package:uniordle/features/home/models/major.dart';
 import 'package:uniordle/shared/exports/game_setup_exports.dart';
 
 class DifficultySelector extends StatelessWidget {
   final int value;
   final ValueChanged<int> onChanged;
-  final Discipline discipline;
+  final Major major;
 
   const DifficultySelector({
     super.key, 
     required this.value, 
     required this.onChanged,
-    required this.discipline,
+    required this.major,
   });
 
   @override
@@ -33,12 +33,12 @@ class DifficultySelector extends StatelessWidget {
             Icon(
               AppIcons.attempts,
               size: 12,
-              color: discipline.color,
+              color: major.color,
             ),
             const SizedBox(width: 8),
             Text(
               'ATTEMPTS ALLOWED',
-              style: AppFonts.labelMedium.copyWith(color: discipline.color),
+              style: AppFonts.labelMedium.copyWith(color: major.color),
             ),
           ],
         ),
@@ -46,14 +46,14 @@ class DifficultySelector extends StatelessWidget {
         SliderTheme(
           data: SliderTheme.of(context).copyWith(
             trackHeight: 4,
-            activeTrackColor: discipline.color,
+            activeTrackColor: major.color,
             inactiveTrackColor: Colors.white24,
-            thumbColor: discipline.color,
+            thumbColor: major.color,
             overlayColor: Colors.transparent,
             overlayShape: RoundSliderOverlayShape(overlayRadius: mobileMode ? 40 : 60),
             thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 5.0),
             tickMarkShape: const RoundSliderTickMarkShape(tickMarkRadius: 3.0),
-            activeTickMarkColor: discipline.color,
+            activeTickMarkColor: major.color,
             inactiveTickMarkColor: AppColors.onSurfaceVariant,
           ),
           child: SizedBox(
@@ -107,7 +107,7 @@ class DifficultySelector extends StatelessWidget {
                         e.value.$2.toString(),
                         style: active
                             ? AppFonts.labelMedium.copyWith(
-                                color: discipline.color, 
+                                color: major.color, 
                                 fontWeight: FontWeight.w600,
                               )
                             : AppFonts.labelMedium,
@@ -117,7 +117,7 @@ class DifficultySelector extends StatelessWidget {
                         AppIcons.attempts,
                         size: 12,
                         color: active
-                            ? discipline.color
+                            ? major.color
                             : AppColors.onSurfaceVariant,
                       )
                     ],

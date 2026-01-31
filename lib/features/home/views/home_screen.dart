@@ -7,14 +7,14 @@ import 'package:uniordle/shared/layout/base_show_dialog.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  void _onDisciplineTap(BuildContext context, Discipline sub, UserStats stats) {
+  void _onDisciplineTap(BuildContext context, Major sub, UserStats stats) {
     if (stats.unlockedIds.contains(sub.id)) {
       Navigator.of(context).pushNamed('/setup', arguments: sub);
     } else {
       baseShowDialog(
         context: context,
         child: UnlockDisciplineDialog(
-          discipline: sub,
+          major: sub,
           credits: stats.availableCredits,
           nextLevel: stats.nextCreditAtLevel,
         ),

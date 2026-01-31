@@ -29,7 +29,7 @@ class _GameScreenState extends State<GameScreen> {
 
     if (!_isInitialized) {
       final args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
-      final discipline = args?['discipline'] as Discipline?;
+      final major = args?['major'] as Major?;
 
       final dynamic rawDifficulty = args?['yearLevel'] ?? 1;
       final int yearLevel = rawDifficulty is double ? rawDifficulty.round() : rawDifficulty as int;
@@ -39,12 +39,12 @@ class _GameScreenState extends State<GameScreen> {
       _maxAttempts = config.$2;
 
       _wordLength = args?['wordLength'] ?? 5;
-      _disciplineName = discipline?.name ?? 'Engineering';
+      _disciplineName = major?.name ?? 'Engineering';
       
       _controller = GameController(
         wordLength: _wordLength,
         maxAttempts: _maxAttempts,
-        disciplineId: discipline?.id ?? 'engineering',
+        disciplineId: major?.id ?? 'engineering',
         onGameEnd: (won) => _showEndDialog(won),
         onInvalidWord: () => InvalidWordDialog.show(context),
         yearLevel: yearLevel,
@@ -57,7 +57,7 @@ class _GameScreenState extends State<GameScreen> {
 
   void _showEndDialog(bool won) async {
     final args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
-    final discipline = args?['discipline'] as Discipline;
+    final major = args?['major'] as Major;
     final int rawYearLevel = args?['yearLevel'] ?? 1;
 
     int meritChange = 0;
@@ -89,7 +89,7 @@ class _GameScreenState extends State<GameScreen> {
           solution: _controller.solution.wordString,
           attempts: _controller.currentWordIndex + 1,
           maxAttempts: _maxAttempts,
-          discipline: discipline,
+          major: major,
           yearLevel: _yearLevel,
           gainedMerit: meritChange,
         );

@@ -36,8 +36,8 @@ class App extends StatelessWidget {
       case '/uniordle':
         return const GameScreen();
       case '/setup':
-        final args = settings.arguments as Discipline;
-        return GameSetupScreen(discipline: args);
+        final args = settings.arguments as Major;
+        return GameSetupScreen(major: args);
       case '/settings':
         return Builder(builder: (context) {
           return SettingsScreen(

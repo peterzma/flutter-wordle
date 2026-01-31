@@ -79,7 +79,7 @@ void main() {
       expect(stats.gameHistory.length, 50);
     });
 
-    test('Unlocking a discipline adds it to the list', () async {
+    test('Unlocking a major adds it to the list', () async {
       const String disciplineId = 'medicine';
       await manager.unlockDiscipline(disciplineId);
       

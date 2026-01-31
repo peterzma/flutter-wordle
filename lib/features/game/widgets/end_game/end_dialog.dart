@@ -7,7 +7,7 @@ class EndDialog extends StatelessWidget {
   final int attempts;
   final int maxAttempts;
   final String yearLevel;
-  final Discipline discipline;
+  final Major major;
   final int gainedMerit;
 
   const EndDialog({
@@ -17,7 +17,7 @@ class EndDialog extends StatelessWidget {
     required this.attempts,
     required this.maxAttempts,
     required this.yearLevel,
-    required this.discipline,
+    required this.major,
     required this.gainedMerit,
   });
 
@@ -38,7 +38,7 @@ class EndDialog extends StatelessWidget {
         startingLevel: prevState.$1,
         startingProgress: prevState.$2,
         gainedMerit: directedMerit,
-        discipline: discipline,
+        major: major,
         attempts: attempts,
         maxAttempts: maxAttempts,
         won: won,
@@ -63,7 +63,7 @@ class EndDialog extends StatelessWidget {
             const SizedBox(height: 12),
             // AttemptsInfo(attempts: attempts, maxAttempts: maxAttempts, won: won),
             // const SizedBox(height: 12),
-            GameInfoBar(disciplineName: discipline.name, yearLevel: yearLevel, wordLength: solution.length),
+            GameInfoBar(disciplineName: major.name, yearLevel: yearLevel, wordLength: solution.length),
             const SizedBox(height: AppLayout.size2XL),
             PrimaryButton(
               label: 'NEXT',

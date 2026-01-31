@@ -45,7 +45,7 @@ void main() {
     });
 
     test('All disciplines have valid word lists', () {
-    // Loop through every discipline ID you've registered
+    // Loop through every major ID you've registered
     for (final entry in categorizedWords.entries) {
       final String disciplineId = entry.key;
       final Map<int, List<String>> wordMap = entry.value;
@@ -58,20 +58,20 @@ void main() {
         expect(
           wordList, 
           isNotNull, 
-          reason: 'Discipline "$disciplineId" is missing the $length-letter word list.',
+          reason: 'Major "$disciplineId" is missing the $length-letter word list.',
         );
         
         expect(
           wordList!.isNotEmpty, 
           isTrue, 
-          reason: 'Discipline "$disciplineId" has an empty list for $length-letter words.',
+          reason: 'Major "$disciplineId" has an empty list for $length-letter words.',
         );
 
         // Ensure no empty strings sneaked into the lists
       expect(
         wordList.every((word) => word.trim().isNotEmpty),
         isTrue,
-        reason: 'Discipline "$disciplineId" ($length letters) contains an empty string entry.',
+        reason: 'Major "$disciplineId" ($length letters) contains an empty string entry.',
       );
     }
   }

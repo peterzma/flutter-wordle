@@ -1,6 +1,6 @@
 import 'package:uniordle/shared/exports/home_exports.dart';
 
-class Discipline {
+class Major {
   final String id;
   final String name;
   final String icon;
@@ -9,7 +9,7 @@ class Discipline {
   final bool isLocked;
   final int totalWords;
   
-  Discipline({
+  Major({
     required this.id,
     required this.name,
     required this.icon,

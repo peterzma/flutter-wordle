@@ -6,7 +6,7 @@ class LevelUpDialog extends StatefulWidget {
   final int startingLevel;
   final double startingProgress;
   final double gainedMerit;
-  final Discipline discipline;
+  final Major major;
   final int attempts;
   final int maxAttempts;
   final bool won;
@@ -16,7 +16,7 @@ class LevelUpDialog extends StatefulWidget {
     required this.startingLevel,
     required this.startingProgress,
     required this.gainedMerit,
-    required this.discipline,
+    required this.major,
     required this.attempts,
     required this.maxAttempts,
     required this.won,
@@ -181,7 +181,7 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
                   Navigator.of(context).pushNamedAndRemoveUntil(
                     '/setup',
                     (route) => route.isFirst,
-                    arguments: widget.discipline,
+                    arguments: widget.major,
                   );
                 },
               ),

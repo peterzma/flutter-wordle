@@ -14,7 +14,7 @@ class HowToPlay extends StatelessWidget {
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: AppLayout.minAppWidth),
           child: Text(
-            'Choose a starting discipline, customise your game settings and then guess the word!',
+            'Choose a starting major, customise your game settings and then guess the word!',
             style: AppFonts.labelMedium.copyWith(color: AppColors.onSurfaceVariant),
             textAlign: TextAlign.center,
           ),

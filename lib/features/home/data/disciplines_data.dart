@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:uniordle/features/home/models/discipline.dart';
+import 'package:uniordle/features/home/models/major.dart';
 import 'package:uniordle/shared/exports/word_lists_exports.dart';
 import 'package:uniordle/features/game/data/word_list.dart';
 
 class DisciplinesData {
 
   static List<String> getAllWordsForDiscipline(String id) {
-    // Get the map for this discipline (e.g., engineeringWords)
+    // Get the map for this major (e.g., engineeringWords)
     final Map<int, List<String>> wordMap = categorizedWords[id.toLowerCase()] ?? {};
     
     // Flatten all values (List of strings for 5, 6, 7 letters) into one list
@@ -20,8 +20,8 @@ class DisciplinesData {
     return wordMap.values.fold(0, (sum, list) => sum + list.length);
   }
 
-  static List<Discipline> getSortedDisciplines(List<String> unlockedIds) {
-    List<Discipline> sortedList = List.from(all);
+  static List<Major> getSortedDisciplines(List<String> unlockedIds) {
+    List<Major> sortedList = List.from(all);
 
     sortedList.sort((a, b) {
       bool isAUnlocked = unlockedIds.contains(a.id);
@@ -38,8 +38,8 @@ class DisciplinesData {
     return sortedList;
   }
 
-  static final List<Discipline> all = [
-    Discipline(
+  static final List<Major> all = [
+    Major(
       id: 'engineering',
       name: 'Engineering',
       icon: 'settings',
@@ -47,7 +47,7 @@ class DisciplinesData {
       tag: '${getWordCount(engineeringWords)} WORDS', 
       color: Colors.blue,
     ),
-    Discipline(
+    Major(
       id: 'cs',
       name: 'CS',
       icon: 'code',
@@ -55,7 +55,7 @@ class DisciplinesData {
       tag: '${getWordCount(csWords)} WORDS',
       color: Colors.red,
     ),
-    Discipline(
+    Major(
       id: 'medicine',
       name: 'Medicine',
       icon: 'heart_pulse',
@@ -63,7 +63,7 @@ class DisciplinesData {
       tag: '${getWordCount(medicineWords)} WORDS',
       color: Colors.pinkAccent,
     ),
-    Discipline(
+    Major(
       id: 'law',
       name: 'Law',
       icon: 'scale',
@@ -71,7 +71,7 @@ class DisciplinesData {
       tag: '${getWordCount(lawWords)} WORDS',
       color: Colors.orangeAccent,
     ),
-    Discipline(
+    Major(
       id: 'psychology',
       name: 'Psychology',
       icon: 'brain',
@@ -79,7 +79,7 @@ class DisciplinesData {
       tag: '${getWordCount(psychologyWords)} WORDS',
       color: Colors.purpleAccent,
     ),
-    Discipline(
+    Major(
       id: 'arts',
       name: 'Arts',
       icon: 'palette',
@@ -87,7 +87,7 @@ class DisciplinesData {
       tag: '${getWordCount(artsWords)} WORDS',
       color: Colors.deepPurpleAccent,
     ),
-    Discipline(
+    Major(
       id: 'business',
       name: 'Business',
       icon: 'briefcase',
@@ -95,7 +95,7 @@ class DisciplinesData {
       tag: '${getWordCount(businessWords)} WORDS',
       color: Colors.greenAccent,
     ),
-    Discipline(
+    Major(
       id: 'humanities',
       name: 'Humanities',
       icon: 'book_open',
@@ -103,7 +103,7 @@ class DisciplinesData {
       tag: '${getWordCount(humanitiesWords)} WORDS',
       color: Colors.amber,
     ),
-    Discipline(
+    Major(
       id: 'education',
       name: 'Education',
       icon: 'graduation_cap',
@@ -111,7 +111,7 @@ class DisciplinesData {
       tag: '${getWordCount(educationWords)} WORDS',
       color: Colors.lightBlueAccent,
     ),
-    Discipline(
+    Major(
       id: 'maths',
       name: 'Maths',
       icon: 'calculator',
@@ -119,7 +119,7 @@ class DisciplinesData {
       tag: '${getWordCount(mathsWords)} WORDS',
       color: Colors.deepOrangeAccent,
     ),
-    Discipline(
+    Major(
       id: 'music',
       name: 'Music',
       icon: 'music',
@@ -127,7 +127,7 @@ class DisciplinesData {
       tag: '${getWordCount(musicWords)} WORDS',
       color: Colors.lime,
     ),
-    Discipline(
+    Major(
       id: 'science',
       name: 'Science',
       icon: 'flask_conical',
@@ -135,7 +135,7 @@ class DisciplinesData {
       tag: '${getWordCount(scienceWords)} WORDS',
       color: Colors.tealAccent,
     ),
-    Discipline(
+    Major(
       id: 'design',
       name: 'Design',
       icon: 'pen_tool',
@@ -143,7 +143,7 @@ class DisciplinesData {
       tag: '${getWordCount(designWords)} WORDS',
       color: Colors.cyanAccent,
     ),
-    Discipline(
+    Major(
       id: 'architecture',
       name: 'Architecture',
       icon: 'building_2',

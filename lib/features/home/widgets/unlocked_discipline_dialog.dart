@@ -2,9 +2,9 @@ import 'package:uniordle/shared/exports/game_exports.dart';
 import 'package:uniordle/shared/exports/help_exports.dart';
 
 class UnlockedDisciplineDialog extends StatelessWidget {
-  final Discipline discipline;
+  final Major major;
 
-  const UnlockedDisciplineDialog({super.key, required this.discipline});
+  const UnlockedDisciplineDialog({super.key, required this.major});
 
   @override
   Widget build(BuildContext context) {
@@ -14,18 +14,18 @@ class UnlockedDisciplineDialog extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           DisciplineIcon(
-            iconName: discipline.icon,
-            color: discipline.color,
+            iconName: major.icon,
+            color: major.color,
             size: AppLayout.dialogIcon * 1.2,
           ),
           const SizedBox(height: 16),
           Text(
             "CONGRATULATIONS",
-            style: AppFonts.displayMedium.copyWith(color: discipline.color),
+            style: AppFonts.displayMedium.copyWith(color: major.color),
           ),
           const SizedBox(height: 12),
           Text(
-            "You have officially enrolled in the\n${discipline.name} Department.",
+            "You have officially enrolled in the\n${major.name} Department.",
             textAlign: TextAlign.center,
             style: AppFonts.labelLarge,
           ),
@@ -33,7 +33,7 @@ class UnlockedDisciplineDialog extends StatelessWidget {
           PrimaryButton(
             onPressed: () => Navigator.pop(context),
             label: "START STUDYING",
-            color: discipline.color,
+            color: major.color,
           ),
         ],
       ),

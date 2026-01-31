@@ -4,13 +4,13 @@ import 'package:uniordle/shared/exports/home_exports.dart';
 import 'package:uniordle/shared/buttons/select_button_wrapper.dart';
 
 class DisciplineTile extends StatefulWidget {
-  final Discipline discipline;
+  final Major major;
   final VoidCallback onTap;
   final bool isLocked;
 
   const DisciplineTile({
     super.key, 
-    required this.discipline, 
+    required this.major, 
     required this.onTap,
     required this.isLocked,
   });
@@ -24,7 +24,7 @@ class _DisciplineTileState extends State<DisciplineTile> {
 
   @override
   Widget build(BuildContext context) {
-    final sub = widget.discipline;
+    final sub = widget.major;
     final displayColor = widget.isLocked ? AppColors.onSurfaceVariant.withValues(alpha: 0.5) : sub.color;
 
     return ValueListenableBuilder(
