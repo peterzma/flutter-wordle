@@ -28,7 +28,7 @@ class MajorGrid extends StatelessWidget {
       itemCount: majors.length,
       separatorBuilder: (_, _) => const SizedBox(height: 12),
       itemBuilder: (context, index) => SizedBox(
-        height: 80,
+        height: 82,
         child: _buildTile(majors[index]),
       ),
     );
@@ -44,7 +44,7 @@ class MajorGrid extends StatelessWidget {
         crossAxisCount: 2,
         mainAxisSpacing: 12,
         crossAxisSpacing: 12,
-        mainAxisExtent: 80,
+        mainAxisExtent: 82,
       ),
       itemBuilder: (context, index) => _buildTile(majors[index]),
     );

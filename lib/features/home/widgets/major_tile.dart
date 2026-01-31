@@ -47,7 +47,7 @@ class _MajorTileState extends State<MajorTile> {
             cursor: SystemMouseCursors.click,
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 80),
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: AppColors.surfaceVariant,
                 borderRadius: BorderRadius.circular(12),
@@ -64,7 +64,7 @@ class _MajorTileState extends State<MajorTile> {
                       iconName: widget.isLocked ? 'lock' : sub.icon, 
                       color: widget.isLocked ? Colors.grey : sub.color,
                     ),
-                    const SizedBox(width: 12),
+                    const SizedBox(width: 16),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
