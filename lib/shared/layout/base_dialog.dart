@@ -42,7 +42,7 @@ class BaseDialog extends StatelessWidget {
                 maxWidth: AppLayout.maxDialogWidth,
               ),
               child: Padding(
-                padding: padding ?? const EdgeInsets.all(24),
+                padding: padding ?? const EdgeInsets.all(AppLayout.dialogPadding),
                 child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [child],

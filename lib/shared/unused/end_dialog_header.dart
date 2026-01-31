@@ -13,7 +13,7 @@ class EndDialogHeader extends StatelessWidget {
       children: [
         Container(
           // background icon circle
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: won
                 ? AppColors.correctColor.withValues(alpha: 0.15)
@@ -27,7 +27,6 @@ class EndDialogHeader extends StatelessWidget {
             size: 64,
           ),
         ),
-        const SizedBox(height: 16),
         Text(
           won ? 'YOU WIN!' : 'GAME OVER',
           style: AppFonts.displayLarge

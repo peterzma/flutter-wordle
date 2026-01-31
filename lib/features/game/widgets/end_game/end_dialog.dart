@@ -1,3 +1,4 @@
+import 'package:uniordle/core/app_icons.dart';
 import 'package:uniordle/shared/exports/end_game_exports.dart';
 import 'package:uniordle/shared/layout/base_show_dialog.dart';
 
@@ -49,30 +50,37 @@ class EndDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseDialog(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 16, 
-          horizontal: 12
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            EndDialogHeader(won: won),
-            const SizedBox(height: AppLayout.titleToSubtitle),
-            SolutionBox(solution: solution),
-            const SizedBox(height: 12),
-            // AttemptsInfo(attempts: attempts, maxAttempts: maxAttempts, won: won),
-            // const SizedBox(height: 12),
-            GameInfoBar(majorName: major.name, yearLevel: yearLevel, wordLength: solution.length),
-            const SizedBox(height: AppLayout.size2XL),
-            PrimaryButton(
-              label: 'NEXT',
-              color: AppColors.accent,
-              onPressed: () => _handleNext(context),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            padding: EdgeInsets.all(context.r(16)),
+            decoration: BoxDecoration(
+              color: (won ? AppColors.correctColor : Colors.red).withValues(alpha: 0.1),
+              shape: BoxShape.circle,
             ),
-            const SizedBox(height: 12),
-          ],
-        ),
+            child: Icon(
+              won ? AppIcons.gameWin : AppIcons.gameLoss,
+              color: won ? AppColors.correctColor : Colors.red,
+              size: context.r(64),
+            ),
+          ),
+          context.autoText(
+            won ? 'YOU WIN!' : 'GAME OVER',
+            style: AppFonts.displayLarge,
+            reduction: 4,
+          ),
+          SizedBox(height: context.r(32)),
+          SolutionBox(solution: solution),
+          SizedBox(height: context.r(32)),
+          GameInfoBar(majorName: major.name, yearLevel: yearLevel, wordLength: solution.length),
+          SizedBox(height: context.r(32)),
+          PrimaryButton(
+            label: 'NEXT',
+            color: AppColors.accent,
+            onPressed: () => _handleNext(context),
+          ),
+        ],
       ),
     );
   }

@@ -14,7 +14,6 @@ class SolutionBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
       ),
@@ -24,9 +23,9 @@ class SolutionBox extends StatelessWidget {
             'THE WORD WAS',
           style: AppFonts.labelLarge.copyWith(color: AppColors.onSurfaceVariant)
           ),
-          const SizedBox(height: 12),
+          SizedBox(height: context.r(8)),
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 16),
+            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
             decoration: BoxDecoration(
               color: backgroundColor,
               border: Border.all(

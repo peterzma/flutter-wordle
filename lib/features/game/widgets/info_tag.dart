@@ -29,7 +29,6 @@ class InfoTag extends StatelessWidget {
             child: Text(
               label.toUpperCase(),
               textAlign: TextAlign.center,
-              maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: AppFonts.labelMedium,
             ),
