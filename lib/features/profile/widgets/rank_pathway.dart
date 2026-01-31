@@ -1,6 +1,8 @@
 import 'package:uniordle/core/app_icons.dart';
 import 'package:uniordle/shared/buttons/primary_button.dart';
+import 'package:uniordle/shared/exports/end_game_exports.dart';
 import 'package:uniordle/shared/exports/profile_exports.dart';
+import 'package:uniordle/shared/layout/base_show_dialog.dart';
 
 class RankPathway extends StatelessWidget {
   final int currentLevel;
@@ -8,20 +10,21 @@ class RankPathway extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // /// code to test all achieved
-    // bool debugComplete = false;
+    /// code to test all achieved
+    bool debugComplete = true; // Set to true to test
 
-    // int currentRankIndex = debugComplete 
-    //   ? allRanks.length - 1 
-    //   : allRanks.lastIndexWhere((r) => currentLevel >= r['minLevel']);
-
-    // final bool isPathwayComplete = currentRankIndex == allRanks.length - 1;
-
-    final int currentRankIndex = allRanks.lastIndexWhere(
-      (r) => currentLevel >= r['minLevel'],
-    );
+  // FORCE the index to the last item if debugging
+    int currentRankIndex = debugComplete 
+      ? allRanks.length - 1 
+      : allRanks.lastIndexWhere((r) => currentLevel >= r['minLevel']);
 
     final bool isPathwayComplete = currentRankIndex == allRanks.length - 1;
+/// --------------------------------
+    // final int currentRankIndex = allRanks.lastIndexWhere(
+    //   (r) => currentLevel >= r['minLevel'],
+    // );
+
+    // final bool isPathwayComplete = currentRankIndex == allRanks.length - 1;
     
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,16 +89,22 @@ class RankPathway extends StatelessWidget {
         ),
 
         if (isPathwayComplete) ...[
-          const SizedBox(height: 32),
-          PrimaryButton(
-            label: 'A Message from the Faculty',
-            color: Colors.orange, 
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (context) => const ThankYouDialog(),
-              );
-            },
+          SizedBox(height: context.r(32)),
+          Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: AppLayout.contentWidth(context)),
+              child: PrimaryButton(
+                label: 'A Message from the Faculty',
+                color: Colors.orange,
+                width: double.infinity,
+                onPressed: () {
+                  baseShowDialog(
+                    context: context,
+                    child: const ThankYouDialog(),
+                  );
+                },
+              ),
+            ),
           ),
         ],
       ],
