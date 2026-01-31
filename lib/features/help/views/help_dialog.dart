@@ -78,11 +78,10 @@ class NavHitArea extends StatelessWidget {
       behavior: HitTestBehavior.opaque,
       child: Container(
         width: context.responsive(26, 50), 
-        height: context.responsive(260, 310), 
-        color: Colors.red,
+        height: context.responsive(260, 300), 
         alignment: Alignment.center,
         child: Transform.translate(
-          offset: const Offset(0, -20),
+          offset: Offset(context.responsive(6, 0), context.responsive(0, -6)),
           child: Icon(
             isLeft ? LucideIcons.chevronLeft : LucideIcons.chevronRight,
             color: AppColors.onSurfaceVariant,

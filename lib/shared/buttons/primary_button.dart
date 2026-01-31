@@ -7,7 +7,7 @@ class PrimaryButton extends StatelessWidget {
   final Color color;
   final bool isLoading;
   final IconData? icon;
-  final double? height; // Changed to nullable to allow responsive defaults
+  final double? height;
   final double? width;
   final double? borderRadius;
   final bool showShadow;
@@ -27,7 +27,6 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Typical Button Ratios: Height ~56, Width ~300 (scales down to ~28, ~150 on tiny screens)
     final double effectiveHeight = height ?? context.r(56);
     final double effectiveWidth = width ?? context.r(300);
     final double effectiveRadius = borderRadius ?? effectiveHeight / 2;
@@ -78,7 +77,6 @@ class PrimaryButton extends StatelessWidget {
           Icon(icon, size: context.r(28), color: Colors.white),
           SizedBox(width: context.r(8)),
         ],
-        // Using autoText so long labels don't break the button on 360px screens
         context.autoText(
           label.toUpperCase(),
           style: AppFonts.labelLarge,
