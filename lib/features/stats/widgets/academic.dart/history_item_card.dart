@@ -1,8 +1,8 @@
 import 'package:uniordle/shared/exports/game_exports.dart';
+import 'package:uniordle/shared/services/models/game_grade.dart';
 
 class HistoryItemCard extends StatelessWidget {
   final Map<String, dynamic> game;
-
   const HistoryItemCard({required this.game});
 
   @override
@@ -13,36 +13,16 @@ class HistoryItemCard extends StatelessWidget {
     final int merit = game['merit'] ?? 0;
     final String word = game['word'] ?? "?????";
 
-    // Your PerformanceBreakdown logic
-    final double weight = won ? (maxAttempts - attempts) / (maxAttempts - 1).toDouble() : 0.0;
-    
-    String gradeText;
-    Color gradeColor;
-
-    if (!won) {
-      gradeText = "FAIL";
-      gradeColor = AppColors.accent2;
-    } else if (weight >= 0.85) {
-      gradeText = "HIGH DISTINCTION";
-      gradeColor = AppColors.correctColor;
-    } else if (weight >= 0.70) {
-      gradeText = "DISTINCTION";
-      gradeColor = AppColors.accent;
-    } else if (weight >= 0.50) {
-      gradeText = "CREDIT";
-      gradeColor = Colors.orange;
-    } else {
-      gradeText = "PASS";
-      gradeColor = Colors.blueGrey;
-    }
+    // One-liner to get all the data we need
+    final grade = GameGrade.calculate(won, attempts, maxAttempts);
 
     return Container(
-      margin: const EdgeInsets.only(bottom: 10),
-      padding: const EdgeInsets.all(12),
+      margin: EdgeInsets.only(bottom: context.r(10)),
+      padding: EdgeInsets.all(context.r(12)),
       decoration: BoxDecoration(
-        color: gradeColor.withValues(alpha: 0.05),
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: gradeColor.withValues(alpha: 0.15)),
+        color: grade.color.withValues(alpha: 0.05),
+        borderRadius: BorderRadius.circular(context.r(12)),
+        border: Border.all(color: grade.color.withValues(alpha: 0.15)),
       ),
       child: Row(
         children: [
@@ -50,13 +30,14 @@ class HistoryItemCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  word.toUpperCase(), 
-                  style: AppFonts.labelLarge.copyWith(fontWeight: FontWeight.bold, letterSpacing: 1.2)
+                context.autoText(word.toUpperCase(), 
+                  style: AppFonts.labelLarge.copyWith(fontWeight: FontWeight.bold, letterSpacing: 1.2),
+                  textAlign: TextAlign.left,
                 ),
-                Text(
-                  "$attempts/$maxAttempts ATTEMPTS", 
-                  style: AppFonts.labelSmall.copyWith(color: AppColors.onSurfaceVariant)
+                context.autoText(
+                  won ? "$attempts/$maxAttempts ATTEMPTS" : "X/$maxAttempts ATTEMPTS", 
+                  style: AppFonts.labelSmall.copyWith(color: AppColors.onSurfaceVariant),
+                  textAlign: TextAlign.left,
                 ),
               ],
             ),
@@ -64,11 +45,10 @@ class HistoryItemCard extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text(
-                gradeText, 
-                style: AppFonts.labelSmall.copyWith(color: gradeColor, fontWeight: FontWeight.bold)
+              context.autoText(grade.label, 
+                style: AppFonts.labelSmall.copyWith(color: grade.color, fontWeight: FontWeight.bold),
               ),
-              Text(
+              context.autoText(
                 won ? "+$merit MERITS" : "$merit MERITS",
                 style: AppFonts.labelSmall.copyWith(
                   color: won ? AppColors.correctColor : AppColors.accent2,

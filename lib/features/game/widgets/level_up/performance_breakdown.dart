@@ -1,4 +1,5 @@
 import 'package:uniordle/shared/exports/end_game_exports.dart';
+import 'package:uniordle/shared/services/models/game_grade.dart';
 
 class PerformanceBreakdown extends StatelessWidget {
   final bool won;
@@ -15,57 +16,30 @@ class PerformanceBreakdown extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    final double weight = won
-        ? (maxAttempts - attempts) / (maxAttempts - 1).toDouble()
-        : 0.0;
+Widget build(BuildContext context) {
+  final grade = GameGrade.calculate(won, attempts, maxAttempts);
 
-    String performanceText;
-    Color performanceColor;
-
-    if (!won) {
-      performanceText = "FAIL";
-      performanceColor = AppColors.accent2;
-    } else {
-      if (weight >= 0.85) {
-        performanceText = "HIGH DISTINCTION";
-        performanceColor = AppColors.correctColor;
-      } else if (weight >= 0.70) {
-        performanceText = "DISTINCTION";
-        performanceColor = AppColors.accent;
-      } else if (weight >= 0.50) {
-        performanceText = "CREDIT";
-        performanceColor = Colors.orange;
-      } else {
-        performanceText = "PASS";
-        performanceColor = Colors.blueGrey;
-      }
-    }
-
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: performanceColor.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              context.autoText(
-                performanceText,
-                style: AppFonts.labelSmall.copyWith(
-                  color: performanceColor,
-                ),
-              ),
-              context.autoText(
-                won ? "$attempts/$maxAttempts ATTEMPTS" : "X/$maxAttempts ATTEMPTS",
-                style: AppFonts.labelSmall.copyWith(color: performanceColor),
-              ),
-            ],
-          ),
-          const SizedBox(height: 4),
+  return Container(
+    padding: EdgeInsets.all(context.r(16)),
+    decoration: BoxDecoration(
+      color: grade.color.withValues(alpha: 0.1),
+      borderRadius: BorderRadius.circular(context.r(16)),
+    ),
+    child: Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            context.autoText(grade.label, 
+              style: AppFonts.labelSmall.copyWith(color: grade.color),
+            ),
+            context.autoText(
+              won ? "$attempts/$maxAttempts ATTEMPTS" : "X/$maxAttempts ATTEMPTS",
+              style: AppFonts.labelSmall.copyWith(color: grade.color),
+            ),
+          ],
+        ),
+        SizedBox(height: context.r(8)),
           Builder(
             builder: (context) {
               final double baseSize = AppFonts.labelSmall.fontSize ?? 12;
