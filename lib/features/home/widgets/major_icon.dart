@@ -18,8 +18,8 @@ class MajorIcon extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Container(
-      width: context.responsive(60, 80),
-      height: context.responsive(60, 80),
+      width: 40,
+      height: 40,
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: Colors.white.withValues(alpha: 0.05),

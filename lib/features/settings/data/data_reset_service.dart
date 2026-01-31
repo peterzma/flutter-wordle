@@ -11,7 +11,7 @@ class DataResetService {
         mainAxisSize: MainAxisSize.min,
         children: [
           const Icon(AppIcons.inProgressDeleteData1, size: AppLayout.dialogIcon, color: AppColors.accent2),
-          const SizedBox(height: 16),
+          SizedBox(height: context.r(8)),
           Text("RESET PROGRESS?", style: AppFonts.headline),
           const SizedBox(height: AppLayout.titleToSubtitle),
           Text(
@@ -25,7 +25,7 @@ class DataResetService {
             color: Colors.red,
             onPressed: () => Navigator.pop(context, true),
           ),
-          const SizedBox(height: 12),
+          SizedBox(height: context.r(8)),
           PrimaryButton(
             label: 'CANCEL',
             onPressed: () => Navigator.pop(context, false),
