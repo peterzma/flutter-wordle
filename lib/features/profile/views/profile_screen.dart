@@ -22,12 +22,12 @@ class ProfileScreen extends StatelessWidget {
             children: [
               const ProfileHeader(),
 
-              const SizedBox(height: 16),
+              SizedBox(height: context.r(16)),
               
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text(
-                  "Academic Progress",
+                child: context.autoText(
+                  "Progress",
                   style: AppFonts.labelLarge,
                 ),
               ),
@@ -81,6 +81,16 @@ class ProfileScreen extends StatelessWidget {
               ),
         
               SizedBox(height: context.r(16)),
+
+              Align(
+                alignment: Alignment.centerLeft,
+                child: context.autoText(
+                  "Pathway", 
+                  style: AppFonts.labelLarge
+                )
+              ),
+
+              const SizedBox(height: 8),
 
               RankPathway(currentLevel: stats.currentLevel),
             ],

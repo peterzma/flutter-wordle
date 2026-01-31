@@ -18,7 +18,7 @@ class HomeHero extends StatelessWidget {
 
     return Column(
       children: [
-        AutoSizeText('Select a Discipline', style: AppFonts.displayLarge, maxLines: 1,),
+        AutoSizeText('Select a Major', style: AppFonts.displayLarge, maxLines: 1,),
         const SizedBox(height: AppLayout.titleToSubtitle),
         Text(
           'Master your academic vocabulary.',

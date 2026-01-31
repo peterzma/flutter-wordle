@@ -1,4 +1,5 @@
 import 'package:uniordle/core/app_icons.dart';
+import 'package:uniordle/core/app_layout.dart';
 import 'package:uniordle/shared/exports/profile_exports.dart';
 
 class ProfileHeader extends StatelessWidget {
@@ -39,22 +40,13 @@ class ProfileHeader extends StatelessWidget {
                 ],
               ),
             ),
-            Text(
+            context.autoText(
               "Temp Name",
               style: AppFonts.displayLarge
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                "Academic Rank: ", 
-                style: AppFonts.labelMedium
-                ),
-                Text(
-                  academicTitle, 
-                style: AppFonts.labelLarge.copyWith(color: AppColors.accent)
-                ),
-              ],
+            context.autoText(
+              academicTitle, 
+            style: AppFonts.labelLarge.copyWith(color: AppColors.accent)
             ),
           ],
         );
