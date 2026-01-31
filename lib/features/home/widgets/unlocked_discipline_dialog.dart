@@ -29,7 +29,7 @@ class UnlockedDisciplineDialog extends StatelessWidget {
             textAlign: TextAlign.center,
             style: AppFonts.labelLarge,
           ),
-          const SizedBox(height: AppLayout.gapToButton),
+          const SizedBox(height: AppLayout.size2XL),
           PrimaryButton(
             onPressed: () => Navigator.pop(context),
             label: "START STUDYING",

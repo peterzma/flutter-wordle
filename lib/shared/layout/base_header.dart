@@ -25,7 +25,7 @@ class BaseHeader extends StatelessWidget {
     final double topPadding = MediaQuery.of(context).padding.top;
 
     return Container(
-      height: AppLayout.barHeight + topPadding,
+      height: AppLayout.marginHeight + topPadding,
       padding: EdgeInsets.only(top: topPadding),
       width: double.infinity,
       decoration: BoxDecoration(

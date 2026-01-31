@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:uniordle/shared/exports/game_exports.dart';
 
 abstract class AppLayout {
@@ -14,16 +15,25 @@ abstract class AppLayout {
   // Dialog constraints
   static const double maxDialogWidth = 480.0;
   static const double maxDialogHeight = 620.0;
+  
+// Base Scale Units
+  static const double size3XL = 64.0; 
+  static const double size2XL = 32.0; 
+  static const double sizeXL  = 24.0; 
+  static const double sizeL   = 16.0; 
+  static const double sizeM   = 12.0; 
+  static const double sizeS   = 8.0;  
+  static const double sizeXS  = 4.0;  
+  static const double sizeXXS = 2.0;
 
   // Common layout constants
-  static const double barHeight = 64.0;
+  static const double marginHeight = 64.0; // header/footers
   static const double sidePadding = 24.0;
   static const double settingsTileHeight = 60.0;
   static const int flipSpeedMs = 300;
   static const double dialogIcon = 64.0;
   static const double titleToSubtitle = 8.0;
   static const double gapBetweenButtons = 16.0;
-  static const double gapToButton = 32.0;
   static const double badgeToContent = 16.0;
 
   /// Returns the actual width of the window
@@ -51,9 +61,33 @@ abstract class AppLayout {
     return (width - minAppWidth) / (maxAppWidth - minAppWidth);
   }
 
-  /// Returns a responsive value that scales between [min] and [max]
-  /// based on the current content width.
-  static double responsive(BuildContext context, double min, double max) {
+  /// Internal logic for scaling values
+  static double lerp(BuildContext context, double min, double max) {
     return min + (max - min) * scaleFactor(context);
+  }
+}
+
+extension ResponsiveLayout on BuildContext {
+  /// Shorthand for AppLayout.lerp: context.responsive(16, 32)
+  double responsive(double min, double max) => AppLayout.lerp(this, min, max);
+  
+  Widget autoText(
+  String text, {
+  required TextStyle style,
+  required double minSize,
+  double? maxSize,
+  int maxLines = 1,
+  }) {
+    final double effectiveMax = maxSize ?? style.fontSize ?? 14;
+
+    return AutoSizeText(
+      text,
+      style: style.copyWith(
+        fontSize: responsive(minSize, effectiveMax),
+      ),
+      minFontSize: minSize, 
+      maxLines: maxLines,
+      overflow: TextOverflow.ellipsis,
+    );
   }
 }

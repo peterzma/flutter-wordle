@@ -16,7 +16,7 @@ class BaseFooter extends StatelessWidget {
     final double bottomPadding = MediaQuery.of(context).padding.bottom;
 
     return Container(
-      height: AppLayout.barHeight + bottomPadding,
+      height: AppLayout.marginHeight + bottomPadding,
       decoration: BoxDecoration(
         color: AppColors.surface.withValues(alpha: 0.95),
         border: const Border(

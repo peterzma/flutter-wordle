@@ -44,12 +44,12 @@ class _HelpDialogState extends State<HelpDialog> {
               ],
             ),
           ),
-          const SizedBox(height: 8),
+          SizedBox(height: context.responsive(2, 8)),
           PageIndicator(
             totalPages: _totalPages,
             currentPage: _currentPage,
           ),
-          const SizedBox(height: AppLayout.gapToButton),
+          const SizedBox(height: AppLayout.size2XL),
           PrimaryButton(
             label: 'Got it!',
             color: AppColors.accent,

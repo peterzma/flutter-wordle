@@ -19,7 +19,7 @@ class DataResetService {
             style: AppFonts.labelMedium,
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: AppLayout.gapToButton),
+          const SizedBox(height: AppLayout.size2XL),
           PrimaryButton(
             label: 'YES, RESET EVERYTHING',
             color: Colors.red,
@@ -51,7 +51,7 @@ class DataResetService {
             style: AppFonts.labelMedium,
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: AppLayout.gapToButton),
+          const SizedBox(height: AppLayout.size2XL),
           PrimaryButton(
             label: 'I AM SURE, DELETE IT ALL',
             color: Colors.red,

@@ -12,7 +12,7 @@ class MainNavigationHeader extends StatelessWidget implements PreferredSizeWidge
   });
 
   @override
-  Size get preferredSize => const Size.fromHeight(AppLayout.barHeight);
+  Size get preferredSize => const Size.fromHeight(AppLayout.marginHeight);
 
   @override
   Widget build(BuildContext context) {

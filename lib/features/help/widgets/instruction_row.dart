@@ -1,3 +1,4 @@
+import 'package:uniordle/core/app_layout.dart';
 import 'package:uniordle/shared/exports/home_exports.dart';
 
 class InstructionRow extends StatelessWidget {
@@ -19,8 +20,8 @@ class InstructionRow extends StatelessWidget {
     return Row(
       children: [
         Container(
-          width: 48,
-          height: 48,
+          width: context.responsive(42, 48),
+          height: context.responsive(42, 48),
           decoration: BoxDecoration(
             color: color,
             borderRadius: BorderRadius.circular(16),
@@ -33,8 +34,18 @@ class InstructionRow extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title, style: AppFonts.labelLarge),
-              Text(subtitle, style: AppFonts.labelMedium),
+              context.autoText(
+                title, 
+                style: AppFonts.labelLarge,
+                maxLines: 1,
+                minSize: 12,
+              ),
+              context.autoText(
+                subtitle, 
+                style: AppFonts.labelMedium, 
+                maxLines: 1, 
+                minSize: 10
+              ),
             ]
           )
         )

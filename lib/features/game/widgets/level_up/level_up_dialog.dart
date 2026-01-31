@@ -157,7 +157,7 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
           ),
         ),
     
-        const SizedBox(height: AppLayout.gapToButton),
+        const SizedBox(height: AppLayout.size2XL),
       
         Row(
           children: [

@@ -132,7 +132,7 @@ class _UnlockDisciplineDialogState extends State<UnlockDisciplineDialog> {
             ],
           ),
       
-          const SizedBox(height: AppLayout.gapToButton),
+          const SizedBox(height: AppLayout.size2XL),
       
           Row(
             children: [
