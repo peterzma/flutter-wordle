@@ -29,8 +29,8 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double effectiveHeight = height ?? context.r(56);
-    final double effectiveWidth = width ?? context.r(300);
+    final double effectiveHeight = height ?? context.r(64);
+    final double effectiveWidth = width ?? context.r(256);
     final double effectiveRadius = borderRadius ?? effectiveHeight / 2;
 
     return SelectButtonWrapper(
@@ -79,12 +79,11 @@ class PrimaryButton extends StatelessWidget {
           Icon(icon, size: context.r(28), color: Colors.white),
           SizedBox(width: context.r(8)),
         ],
-        // Conditional check for resizing
         resizeLabel 
           ? context.autoText(
               label.toUpperCase(),
               style: AppFonts.labelLarge,
-              minSize: 12,
+              minSize: 14,
               maxSize: 18,
             )
           : Text(

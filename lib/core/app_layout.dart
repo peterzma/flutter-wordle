@@ -35,13 +35,7 @@ abstract class AppLayout {
   static const double dialogRounding = 16.0; // unused
   static const double settingsPadding = 16;
 
-  static const double settingsTileHeight = 60.0;
   static const int flipSpeedMs = 300;
-  static const double dialogIcon = 64.0;
-  static const double titleToSubtitle = 8.0;
-  static const double gapBetweenButtons = 16.0;
-  static const double gapToButton = 32.0;
-  static const double badgeToContent = 16.0;
 
   /// Returns the actual width of the window
   static double screenWidth(BuildContext context) => MediaQuery.of(context).size.width;

@@ -22,7 +22,7 @@ class LevelUp extends StatelessWidget {
           ),
         ),
 
-        SizedBox(height: context.r(24)),
+        SizedBox(height: context.r(32)),
         
         Padding(
           padding: EdgeInsets.symmetric(horizontal: context.r(32)),

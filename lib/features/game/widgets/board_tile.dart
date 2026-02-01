@@ -80,8 +80,8 @@ class _BoardTileState extends State<BoardTile> with SingleTickerProviderStateMix
       scale: _scale,
       child: Container(
         margin: EdgeInsets.all(4),
-        height: context.responsive(48, 64),
-        width: context.responsive(48, 64),
+        height: context.responsive(60, 64),
+        width: context.responsive(60, 64),
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: widget.letter.val.isEmpty

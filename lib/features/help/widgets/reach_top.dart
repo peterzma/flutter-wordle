@@ -15,14 +15,14 @@ class ReachTop extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         context.autoText('REACH THE TOP', style: AppFonts.headline, textAlign: TextAlign.center),
-        const SizedBox(height: AppLayout.titleToSubtitle),
+        SizedBox(height: context.r(8)),
         context.autoText(
           'Earn new academic ranks every 10 levels and reach the end. Can you do it?',
           style: AppFonts.labelMedium,
           textAlign: TextAlign.center,
           maxLines: 2
         ),
-        SizedBox(height: context.r(16)),
+        SizedBox(height: context.r(32)),
         
         Padding(
           padding: EdgeInsets.symmetric(horizontal: context.r(32)),

@@ -10,10 +10,10 @@ class DataResetService {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Icon(AppIcons.inProgressDeleteData1, size: AppLayout.dialogIcon, color: AppColors.accent2),
+          Icon(AppIcons.inProgressDeleteData1, size: context.r(64), color: AppColors.accent2),
           SizedBox(height: context.r(8)),
           Text("RESET PROGRESS?", style: AppFonts.headline),
-          const SizedBox(height: AppLayout.titleToSubtitle),
+          SizedBox(height: context.r(8)),
           Text(
             "This will permanently delete your level, stats, and academic rank.",
             style: AppFonts.labelMedium,
@@ -24,11 +24,13 @@ class DataResetService {
             label: 'RESET EVERYTHING',
             color: Colors.red,
             onPressed: () => Navigator.pop(context, true),
+            width: 180,
           ),
           SizedBox(height: context.r(8)),
           PrimaryButton(
             label: 'CANCEL',
             onPressed: () => Navigator.pop(context, false),
+            width: 180,
           ),
         ],
       ),
@@ -42,10 +44,10 @@ class DataResetService {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Icon(AppIcons.inProgressDeleteData2, size: AppLayout.dialogIcon, color: AppColors.accent2),
+          Icon(AppIcons.inProgressDeleteData2, size: context.r(64), color: AppColors.accent2),
           SizedBox(height: context.r(8)),
           Text("ARE YOU CERTAIN?", style: AppFonts.headline),
-          const SizedBox(height: AppLayout.titleToSubtitle),
+          SizedBox(height: context.r(8)),
           Text(
             "There is no way to recover your data once deleted. Be very careful!",
             style: AppFonts.labelMedium,
@@ -56,11 +58,13 @@ class DataResetService {
             label: 'I AM SURE',
             color: Colors.red,
             onPressed: () => Navigator.pop(context, true),
+            width: 180,
           ),
           SizedBox(height: context.r(8)),
           PrimaryButton(
             label: 'NEVERMIND',
             onPressed: () => Navigator.pop(context, false),
+            width: 180,
           ),
         ],
       ),

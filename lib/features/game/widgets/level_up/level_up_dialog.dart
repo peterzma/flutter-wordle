@@ -173,7 +173,7 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
                 },
               ),
             ),
-            const SizedBox(width: AppLayout.gapBetweenButtons),
+            SizedBox(width: context.r(16)),
             Expanded(
               child: PrimaryButton(
                 label: 'NEW GAME',

@@ -151,7 +151,7 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
                   label: "BACK",
                 ),
               ),
-              const SizedBox(width: AppLayout.gapBetweenButtons),
+              SizedBox(width: context.r(16)),
               Expanded(
                 child: WiggleButtonWrapper(
                   key: wiggleKey, 
