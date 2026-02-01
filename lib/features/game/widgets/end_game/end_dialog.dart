@@ -72,7 +72,7 @@ class EndDialog extends StatelessWidget {
           ),
           SizedBox(height: context.r(32)),
           SolutionBox(solution: solution),
-          SizedBox(height: context.r(32)),
+          SizedBox(height: context.r(16)),
           GameInfoBar(majorName: major.name, yearLevel: yearLevel, wordLength: solution.length),
           SizedBox(height: context.r(32)),
           PrimaryButton(

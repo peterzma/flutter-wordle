@@ -16,8 +16,6 @@ class SettingsSignOutButton extends StatelessWidget {
         onPressed: onPressed,
         label: 'SIGN OUT',
         color: Colors. red,
-        height: 48,
-        width: 360,
       ),
     );
   }

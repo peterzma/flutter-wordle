@@ -132,36 +132,33 @@ class RankPathway extends StatelessWidget {
             ? AppColors.accent 
             : (isNext ? Colors.white : AppColors.onSurfaceVariant));
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 2),
-      child: Row(
-        children: [
-          Icon(
-            isLast && isAchieved
-                ? AppIcons.finalRank
-                : (isAchieved ? AppIcons.unlockedRank : (isNext ? AppIcons.nextRank : AppIcons.lockedRank)),
-            color: rowColor,
-            size: 24,
-          ),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Text(
-              title,
-              style: AppFonts.labelMedium.copyWith(
-                color: rowColor,
-                fontWeight: isAchieved || isNext ? FontWeight.bold : FontWeight.normal,
-                letterSpacing: isSecret ? 2 : null,
-              ),
-            ),
-          ),
-          Text(
-            levelRange,
-            style: AppFonts.labelSmall.copyWith(
+    return Row(
+      children: [
+        Icon(
+          isLast && isAchieved
+              ? AppIcons.finalRank
+              : (isAchieved ? AppIcons.unlockedRank : (isNext ? AppIcons.nextRank : AppIcons.lockedRank)),
+          color: rowColor,
+          size: 24,
+        ),
+        const SizedBox(width: 8),
+        Expanded(
+          child: Text(
+            title,
+            style: AppFonts.labelMedium.copyWith(
               color: rowColor,
+              fontWeight: isAchieved || isNext ? FontWeight.bold : FontWeight.normal,
+              letterSpacing: isSecret ? 2 : null,
             ),
           ),
-        ],
-      ),
+        ),
+        Text(
+          levelRange,
+          style: AppFonts.labelSmall.copyWith(
+            color: rowColor,
+          ),
+        ),
+      ],
     );
   }
 }

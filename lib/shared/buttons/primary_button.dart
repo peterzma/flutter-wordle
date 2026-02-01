@@ -29,17 +29,18 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double effectiveHeight = height ?? context.r(64);
-    final double effectiveRadius = borderRadius ?? effectiveHeight / 2;
+    final double effectiveWidth = width ?? MediaQuery.of(context).size.width * 0.9;
     
+    final double ratioHeight = effectiveWidth * (2 / 15);
+    final double effectiveHeight = height ?? ratioHeight;
+    
+    final double effectiveRadius = borderRadius ?? effectiveHeight / 2;
+
     return SelectButtonWrapper(
       onTap: isLoading ? null : onPressed,
       child: Container(
-        width: width, 
+        width: effectiveWidth,
         height: effectiveHeight,
-        padding: width == null 
-            ? EdgeInsets.symmetric(horizontal: context.r(64)) 
-            : null,
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(effectiveRadius),
@@ -55,17 +56,18 @@ class PrimaryButton extends StatelessWidget {
         ),
         child: Center(
           child: isLoading 
-            ? _buildLoader(context) 
-            : _buildContent(context),
+              ? _buildLoader(context, effectiveHeight) 
+              : _buildContent(context, effectiveHeight),
         ),
       ),
     );
   }
 
-  Widget _buildLoader(BuildContext context) {
+  Widget _buildLoader(BuildContext context, double buttonHeight) {
+    final double loaderSize = buttonHeight * 0.4;
     return SizedBox(
-      height: context.r(24),
-      width: context.r(24),
+      height: loaderSize,
+      width: loaderSize,
       child: const CircularProgressIndicator(
         strokeWidth: 3,
         color: Colors.white,
@@ -73,27 +75,35 @@ class PrimaryButton extends StatelessWidget {
     );
   }
 
-  Widget _buildContent(BuildContext context) {
+  Widget _buildContent(BuildContext context, double buttonHeight) {
+    final double iconSize = buttonHeight * 0.45;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min, 
+      mainAxisSize: MainAxisSize.min,
       children: [
         if (icon != null) ...[
-          Icon(icon, size: context.r(28), color: Colors.white),
+          Icon(icon, size: iconSize, color: Colors.white),
           SizedBox(width: context.r(8)),
         ],
-        resizeLabel 
-          ? context.autoText(
-              label.toUpperCase(),
-              style: AppFonts.labelLarge,
-              minSize: 14,
-              maxSize: 18,
-            )
-          : Text(
-              label.toUpperCase(),
-              style: AppFonts.labelLarge,
-              overflow: TextOverflow.ellipsis,
-            ),
+        Flexible(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: context.r(8)),
+            child: resizeLabel
+                ? context.autoText(
+                    label.toUpperCase(),
+                    style: AppFonts.labelLarge,
+                    minSize: 12,
+                    maxSize: 18,
+                  )
+                : Text(
+                    label.toUpperCase(),
+                    style: AppFonts.labelLarge,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
+          ),
+        ),
       ],
     );
   }
