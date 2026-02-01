@@ -19,7 +19,7 @@ Widget build(BuildContext context) {
     height: context.responsive(100, 140),
     decoration: BoxDecoration(
       color: AppColors.surfaceVariant, 
-      borderRadius: BorderRadius.circular(24),
+      borderRadius: BorderRadius.circular(AppLayout.cardRounding),
     ),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,

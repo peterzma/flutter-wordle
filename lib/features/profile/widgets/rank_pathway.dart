@@ -30,10 +30,10 @@ class RankPathway extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.all(AppLayout.cardPadding),
           decoration: BoxDecoration(
             color: AppColors.surfaceVariant,
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: BorderRadius.circular(AppLayout.cardRounding),
           ),
           child: Column(
             children: List.generate(allRanks.length, (index) {
