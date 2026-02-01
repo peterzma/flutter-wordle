@@ -107,7 +107,7 @@ extension UserStatsRewards on UserStats {
   static ({int min, int max}) _calculateMeritBounds(int yearLevel, int wordLength) {
     int minBase = 10 + (yearLevel * 5);
     int maxBase = 20 + (yearLevel * 6);
-    int lengthBonus = (wordLength == 6) ? 5 : (wordLength >= 7 ? 15 : 0);
+    int lengthBonus = (wordLength == 6) ? 5 : (wordLength >= 7 ? 10 : 0);
 
     return (min: minBase + lengthBonus, max: maxBase + lengthBonus);
   }

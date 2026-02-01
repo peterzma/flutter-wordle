@@ -10,6 +10,7 @@ class PrimaryButton extends StatelessWidget {
   final double? height;
   final double? width;
   final double? borderRadius;
+  final double? horizontalPadding;
   final bool showShadow;
   final bool resizeLabel;
 
@@ -23,6 +24,7 @@ class PrimaryButton extends StatelessWidget {
     this.height,
     this.width,
     this.borderRadius,
+    this.horizontalPadding,
     this.showShadow = false,
     this.resizeLabel = true,
   });
@@ -30,14 +32,21 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double effectiveHeight = height ?? context.r(64);
-    final double effectiveWidth = width ?? context.r(256);
     final double effectiveRadius = borderRadius ?? effectiveHeight / 2;
+    
+    final double effectivePadding = horizontalPadding ?? context.r(64);
 
     return SelectButtonWrapper(
       onTap: isLoading ? null : onPressed,
       child: Container(
-        width: effectiveWidth,
+        width: width, 
         height: effectiveHeight,
+        constraints: BoxConstraints(
+          minWidth: width ?? context.r(120), 
+        ),
+        padding: width == null 
+            ? EdgeInsets.symmetric(horizontal: effectivePadding) 
+            : null,
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(effectiveRadius),
@@ -74,22 +83,26 @@ class PrimaryButton extends StatelessWidget {
   Widget _buildContent(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min, 
       children: [
         if (icon != null) ...[
           Icon(icon, size: context.r(28), color: Colors.white),
           SizedBox(width: context.r(8)),
         ],
-        resizeLabel 
-          ? context.autoText(
-              label.toUpperCase(),
-              style: AppFonts.labelLarge,
-              minSize: 14,
-              maxSize: 18,
-            )
-          : Text(
-              label.toUpperCase(),
-              style: AppFonts.labelLarge,
-            ),
+        Flexible(
+          child: resizeLabel 
+            ? context.autoText(
+                label.toUpperCase(),
+                style: AppFonts.labelLarge,
+                minSize: 14,
+                maxSize: 18,
+              )
+            : Text(
+                label.toUpperCase(),
+                style: AppFonts.labelLarge,
+                overflow: TextOverflow.ellipsis,
+              ),
+        ),
       ],
     );
   }
