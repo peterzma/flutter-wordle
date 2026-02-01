@@ -106,13 +106,6 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
               ),
             ),
             SizedBox(height: context.r(32)),
-            PerformanceBreakdown(
-              won: widget.won,
-              attempts: widget.attempts,
-              maxAttempts: widget.maxAttempts,
-              gainedMerit: widget.gainedMerit,
-            ),
-            SizedBox(height: context.r(16)),
             AnimatedBuilder(
               animation: _animation,
               builder: (context, _) {
@@ -129,6 +122,13 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
                 );
               },
             ),
+            SizedBox(height: context.r(8)),
+            PerformanceBreakdown(
+              won: widget.won,
+              attempts: widget.attempts,
+              maxAttempts: widget.maxAttempts,
+              gainedMerit: widget.gainedMerit,
+            ),
             SizedBox(height: context.r(32)), 
             Row(
               children: [
@@ -136,6 +136,7 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
                   child: PrimaryButton(
                     label: 'HOME',
                     onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false),
+                    width: 300,
                   ),
                 ),
                 SizedBox(width: context.r(16)),
@@ -150,6 +151,7 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
                         arguments: widget.major,
                       );
                     },
+                    width: 300,
                   ),
                 ),
               ],

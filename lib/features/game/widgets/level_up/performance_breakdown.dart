@@ -20,7 +20,7 @@ class PerformanceBreakdown extends StatelessWidget {
     final grade = GameGrade.calculate(won, attempts, maxAttempts);
 
     return Container(
-      padding: EdgeInsets.all(context.r(16)),
+      padding: EdgeInsets.all(AppLayout.cardPadding),
       decoration: BoxDecoration(
         color: grade.color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(context.r(16)),
@@ -56,39 +56,36 @@ class PerformanceBreakdown extends StatelessWidget {
               
               final Color highlightColor = grade.color;
 
-              return Padding(
-                padding: EdgeInsets.symmetric(horizontal: context.r(16)),
-                child: RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(
-                    style: AppFonts.labelSmall.copyWith(
-                      fontSize: responsiveSize,
-                      color: normalColor,
-                    ),
-                    children: [
-                      TextSpan(text: isPositive ? "You earned " : "You gained "),
-                      TextSpan(
-                        text: amount,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: highlightColor,
-                        ),
-                      ),
-                      const TextSpan(text: " "),
-                      TextSpan(
-                        text: unit,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: highlightColor,
-                        ),
-                      ),
-                      TextSpan(
-                        text: isPositive 
-                          ? " based on your attempts." 
-                          : " due to failing to guess correctly."
-                      ),
-                    ],
+              return RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(
+                  style: AppFonts.labelSmall.copyWith(
+                    fontSize: responsiveSize,
+                    color: normalColor,
                   ),
+                  children: [
+                    TextSpan(text: isPositive ? "You earned " : "You gained "),
+                    TextSpan(
+                      text: amount,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: highlightColor,
+                      ),
+                    ),
+                    const TextSpan(text: " "),
+                    TextSpan(
+                      text: unit,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: highlightColor,
+                      ),
+                    ),
+                    TextSpan(
+                      text: isPositive 
+                        ? " based on your attempts." 
+                        : " due to failing to guess correctly."
+                    ),
+                  ],
                 ),
               );
             },
