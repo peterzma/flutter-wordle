@@ -41,7 +41,7 @@ class ProfileScreen extends StatelessWidget {
                 progressLabel: stats.progressText,
               ),
         
-              SizedBox(height: context.r(16)),
+              SizedBox(height: context.r(8)),
 
               IntrinsicHeight(
                 child: Row(
@@ -55,7 +55,7 @@ class ProfileScreen extends StatelessWidget {
                         iconColor: dBonus > 0 ? AppColors.correctColor : AppColors.onSurfaceVariant,
                       ),
                     ),
-                    SizedBox(width: context.r(16)),
+                    SizedBox(width: context.r(8)),
 
                     Expanded(
                       child: SummaryCard(
@@ -66,7 +66,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
 
-                    SizedBox(width: context.r(16)),
+                    SizedBox(width: context.r(8)),
 
                     Expanded(
                       child: SummaryCard(
