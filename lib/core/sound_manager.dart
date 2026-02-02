@@ -7,6 +7,9 @@ enum SoundType {
   delete,
   enter,
   hover,
+  win,
+  lose,
+  levelUp,
   gameSettings,
   menuMusic,
   gameMusic,
@@ -26,6 +29,10 @@ class SoundManager {
     SoundType.enter: 0.2,
     SoundType.hover: 0.4,
     SoundType.gameSettings: 0.4,
+    SoundType.win: 1,
+    SoundType.lose: 1,
+    SoundType.levelUp: 1,
+    
   };
 
   bool _isInitialized = false;
@@ -42,6 +49,9 @@ class SoundManager {
       _sources[SoundType.enter] = await SoLoud.instance.loadAsset('assets/audio/special_key.mp3');
       _sources[SoundType.hover] = await SoLoud.instance.loadAsset('assets/audio/hover.mp3');
       _sources[SoundType.gameSettings] = await SoLoud.instance.loadAsset('assets/audio/click.mp3');
+      _sources[SoundType.win] = await SoLoud.instance.loadAsset('assets/audio/click.mp3');
+      _sources[SoundType.lose] = await SoLoud.instance.loadAsset('assets/audio/click.mp3');
+      _sources[SoundType.levelUp] = await SoLoud.instance.loadAsset('assets/audio/click.mp3');
 
       _isInitialized = true;
     } catch (e) {
