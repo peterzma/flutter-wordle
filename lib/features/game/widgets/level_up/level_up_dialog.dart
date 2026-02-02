@@ -60,15 +60,17 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
       
       if (currentLevel > _lastThrottledLevel) {
         _lastThrottledLevel = currentLevel;
-
-        SoundManager().play(SoundType.levelUp);
         
         _confettiController.play();
 
         if (currentLevel % 10 == 0) {
+          SoundManager().play(SoundType.rankUp);
           _showMilestoneDialog(MilestoneType.rankUp, currentLevel);
         } else if (currentLevel % 5 == 0) {
+          SoundManager().play(SoundType.creditEarned);
           _showMilestoneDialog(MilestoneType.creditEarned, currentLevel);
+        } else {
+          SoundManager().play(SoundType.levelUp);
         }
       }
     });
