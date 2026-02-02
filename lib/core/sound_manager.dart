@@ -49,8 +49,8 @@ class SoundManager {
       _sources[SoundType.enter] = await SoLoud.instance.loadAsset('assets/audio/special_key.mp3');
       _sources[SoundType.hover] = await SoLoud.instance.loadAsset('assets/audio/hover.mp3');
       _sources[SoundType.gameSettings] = await SoLoud.instance.loadAsset('assets/audio/click.mp3');
-      _sources[SoundType.win] = await SoLoud.instance.loadAsset('assets/audio/click.mp3');
-      _sources[SoundType.lose] = await SoLoud.instance.loadAsset('assets/audio/click.mp3');
+      _sources[SoundType.win] = await SoLoud.instance.loadAsset('assets/audio/win.mp3');
+      _sources[SoundType.lose] = await SoLoud.instance.loadAsset('assets/audio/lose.mp3');
       _sources[SoundType.levelUp] = await SoLoud.instance.loadAsset('assets/audio/click.mp3');
 
       _isInitialized = true;
