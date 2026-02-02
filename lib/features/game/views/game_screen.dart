@@ -56,6 +56,8 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   void _showEndDialog(bool won) async {
+    SoundManager().play(won ? SoundType.win : SoundType.lose);
+    
     final args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
     final major = args?['major'] as Major;
     final int rawYearLevel = args?['yearLevel'] ?? 1;
