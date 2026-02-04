@@ -1,21 +1,20 @@
-import 'package:uniordle/core/app_icons.dart';
 import 'package:uniordle/shared/exports/game_exports.dart';
 import 'package:uniordle/shared/exports/help_exports.dart';
 
-class LevelUp extends StatelessWidget {
-  const LevelUp({super.key});
+class RiskAndReward extends StatelessWidget {
+  const RiskAndReward({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        context.autoText('LEVEL UP & UNLOCK', style: AppFonts.headline, textAlign: TextAlign.center),
+        context.autoText('RISK & REWARD', style: AppFonts.headline, textAlign: TextAlign.center),
         SizedBox(height: context.r(8)),
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 360),
           child: context.autoText(
-            'Guess words to earn merits. Level up with merits, and gain credits.',
+            'Higher ranks bring bigger challenges. \n Keep it going!',
             style: AppFonts.labelMedium.copyWith(color: AppColors.onSurfaceVariant),
             textAlign: TextAlign.center,
             maxLines: 2,
@@ -29,24 +28,24 @@ class LevelUp extends StatelessWidget {
           child: Column(
             children: [
               InstructionRow(
-                leading: context.autoIcon(AppIcons.merits, color: AppColors.accent, size: 24),
+                leading: context.autoIcon(LucideIcons.trendingDown, color: AppColors.accent2, size: 24),
                 color: AppColors.surfaceVariant,
-                title: 'Earn Merits',
-                subtitle: 'EVERY CORRECT GUESS',
+                title: 'Tough Break',
+                subtitle: 'LOSE MERITS ON FAILING',
               ),
               SizedBox(height: context.r(32)),
               InstructionRow(
-                leading: context.autoIcon(LucideIcons.trendingUp, color: Colors.green, size: 24),
+                leading: context.autoIcon(LucideIcons.ghost, color: Colors.orange, size: 24),
                 color: AppColors.surfaceVariant,
-                title: 'Level Up',
-                subtitle: 'GAIN MERIT BONUSES',
+                title: 'Ghosting Penalty',
+                subtitle: 'QUITTING EARLY COSTS EXTRA',
               ),
               SizedBox(height: context.r(32)),
               InstructionRow(
-                leading: context.autoIcon(AppIcons.credits, color: AppColors.accent3, size: 24),
+                leading: context.autoIcon(LucideIcons.graduationCap, color: Colors.amber, size: 24),
                 color: AppColors.surfaceVariant,
-                title: 'Use Credits',
-                subtitle: 'UNLOCK NEW MAJORS',
+                title: 'Graduated Credit',
+                subtitle: 'LESS MERITS FOR MASTERED MAJORS',
               ),
             ]
           ),

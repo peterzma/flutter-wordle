@@ -39,7 +39,7 @@ class LevelUp extends StatelessWidget {
                 leading: context.autoIcon(LucideIcons.trendingUp, color: Colors.green, size: 24),
                 color: AppColors.surfaceVariant,
                 title: 'Level Up',
-                subtitle: 'GAIN MERIT BONUSES',
+                subtitle: 'EARN CREDITS EVERY 5 LVLS',
               ),
               SizedBox(height: context.r(32)),
               InstructionRow(

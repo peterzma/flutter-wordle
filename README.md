@@ -14,6 +14,7 @@ Levelling up
 10 levels = rank up
 abandon penalty increases by 10 from original 10 up until level 70. so -70
 loss penalty increases by 5 from original 5 so -35
+merits reduced by 50% on mastered majors
 ## Getting Started
 
 ### Prerequisites
@@ -79,7 +80,7 @@ You can download prebuilt versions from GitHub Releases:
 * Windows build: download and run the `.exe`
 
 Latest release:
-**[v1.0.0](https://github.com/peterzma/uniordle/releases/tag/v1.0.0)**
+**[v1.0.0](https://github.com/chuckabox/uniordle/releases/tag/v1.0.0)**
 
 ## How to Play
 
@@ -109,7 +110,8 @@ Latest release:
 * finetune sounds by cutting off silence
 * rename stuff to be university themed
 * add game finished dialog once all majors are mastered
-* reduce merit to play game padding
 * move mastered majors below
 * make colours easier to see
 * add special effect for completed tiles
+* add indiciator of guest mode and give pop up for user to sign in to see stats
+* add text if user masters all majors, and have the text be depending on the order of which the user has completed. e.g. message from faculty vs message from dean

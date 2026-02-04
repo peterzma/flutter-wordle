@@ -1,7 +1,7 @@
 import 'package:uniordle/shared/exports/game_exports.dart';
 
-class ReachTop extends StatelessWidget {
-  const ReachTop({super.key});
+class RiseAndReach extends StatelessWidget {
+  const RiseAndReach({super.key});
 
   final List<Map<String, String>> ranks = const [
     {'title': 'UNDERGRADUATE', 'level': 'LEVEL 0+'},
@@ -14,10 +14,10 @@ class ReachTop extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        context.autoText('REACH THE TOP', style: AppFonts.headline, textAlign: TextAlign.center),
+        context.autoText('RISE & REACH', style: AppFonts.headline, textAlign: TextAlign.center),
         SizedBox(height: context.r(8)),
         context.autoText(
-          'Earn new academic ranks every 10 levels and reach the end. Can you do it?',
+          'Earn new academic ranks every 10 levels and unlock prestigious titles on your way to becoming ???',
           style: AppFonts.labelMedium,
           textAlign: TextAlign.center,
           maxLines: 2
