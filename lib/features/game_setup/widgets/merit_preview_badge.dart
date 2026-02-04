@@ -43,10 +43,14 @@ class MeritPreviewBadge extends StatelessWidget {
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(AppIcons.merits, size: 16, color: major.color),
+                        Icon(
+                          isMastered ? LucideIcons.refreshCw : AppIcons.merits, 
+                          size: 16, 
+                          color: major.color,
+                        ),
                         const SizedBox(width: 8),
                         Text(
-                          mobileMode? "MERITS: " : "POTENTIAL MERITS: ",
+                          isMastered ? "REDUCED MERITS: " : (mobileMode ? "MERITS: " : "POTENTIAL MERITS: "),
                           style: AppFonts.labelLarge.copyWith(color: major.color),
                         ),
                       ],
@@ -56,17 +60,27 @@ class MeritPreviewBadge extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          ranges.original,
+                          ranges.boosted,
                           style: AppFonts.labelLarge.copyWith(
-                            color: hasBonus
-                                ? major.color.withValues(alpha: 0.5) 
-                                : major.color,
-                            fontWeight: hasBonus ? FontWeight.normal : FontWeight.bold,
-                            decoration: hasBonus ? TextDecoration.lineThrough : null,
+                            color: isMastered ? major.color.withValues(alpha: 0.5) : major.color,
+                            fontWeight: isMastered ? FontWeight.normal : FontWeight.bold,
+                            decoration: isMastered ? TextDecoration.lineThrough : null,
                           ),
                         ),
                 
-                        if (hasBonus) ...[
+                        if (isMastered) ...[
+                          const SizedBox(width: 6),
+                          Icon(LucideIcons.arrowRight, size: 14, color: major.color.withValues(alpha: 0.7)),
+                          const SizedBox(width: 6),
+                          Text(
+                            // This calculates the 50% reduction for the preview text
+                            UserStatsRewards.formatReducedRange(ranges.boosted),
+                            style: AppFonts.labelLarge.copyWith(
+                              color: major.color,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ] else if (hasBonus) ...[
                           const SizedBox(width: 6),
                           Icon(
                             LucideIcons.arrowRight, 

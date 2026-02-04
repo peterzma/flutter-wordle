@@ -129,7 +129,7 @@ class _GameScreenState extends State<GameScreen> {
       child: Scaffold(
         backgroundColor: AppColors.surface,
         appBar: GameHeader(
-          onBack: _handleBack
+          onBack: _handleBack,
         ),
         body: Center(
           child: Padding(

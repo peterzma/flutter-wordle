@@ -160,6 +160,23 @@ extension UserStatsRewards on UserStats {
     
     return totalMerit.round();
   }
+
+  static ({int min, int max}) calculateReducedBounds(int min, int max) {
+    return (
+      min: min ~/ 2,
+      max: max ~/ 2,
+    );
+  }
+
+  static String formatReducedRange(String boostedRange) {
+    final parts = boostedRange.split('-');
+    if (parts.length != 2) return boostedRange;
+    
+    final min = (int.tryParse(parts[0]) ?? 0) ~/ 2;
+    final max = (int.tryParse(parts[1]) ?? 0) ~/ 2;
+    
+    return "$min-$max";
+  }
 }
 
 extension UserStatsUnlocks on UserStats {

@@ -63,7 +63,7 @@ class _MajorTileState extends State<MajorTile> {
                           : (isFullyMastered ? 'check_circle' : sub.icon), 
                       color: widget.isLocked 
                           ? Colors.grey 
-                          : (isFullyMastered ? AppColors.correctColor : sub.color),
+                          : (isFullyMastered ? AppColors.accent3 : sub.color),
                     ),
                     const SizedBox(width: 16),
                     Expanded(
@@ -75,13 +75,13 @@ class _MajorTileState extends State<MajorTile> {
                             children: [
                               Text(
                                 sub.name, 
-                                style: AppFonts.labelLarge
+                                style: AppFonts.labelLarge.copyWith(color: isFullyMastered ? AppColors.accent3 : AppColors.onSurface)
                               ),
                               if (!widget.isLocked)
                                 Text(
                                   "${progressData.solved}/${sub.totalWords}",
                                   style: AppFonts.labelSmall.copyWith(
-                                    color: displayColor, 
+                                    color: isFullyMastered ? AppColors.accent3 : displayColor, 
                                     fontWeight: FontWeight.bold
                                   ),
                                 ),
@@ -95,7 +95,7 @@ class _MajorTileState extends State<MajorTile> {
                               value: progressData.percent,
                               minHeight: 4,
                               backgroundColor: displayColor.withValues(alpha: 0.1),
-                              valueColor: AlwaysStoppedAnimation<Color>(displayColor),
+                              valueColor: AlwaysStoppedAnimation<Color>(isFullyMastered ? AppColors.accent3 : displayColor),
                             ),
                           ),
                           const SizedBox(height: 2),
@@ -103,11 +103,11 @@ class _MajorTileState extends State<MajorTile> {
                             widget.isLocked 
                                 ? "LOCKED" 
                                 : (isFullyMastered 
-                                    ? "FULLY MASTERED" 
+                                    ? "MASTERED" 
                                     : "MASTERY: ${(progressData.percent * 100).toInt()}%"), 
                             style: AppFonts.labelSmall.copyWith(
                               color: isFullyMastered 
-                                  ? AppColors.correctColor 
+                                  ? AppColors.accent3 
                                   : displayColor.withValues(alpha: 0.7),
                               fontSize: 10,
                             )
