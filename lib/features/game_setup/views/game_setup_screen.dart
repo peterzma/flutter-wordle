@@ -110,13 +110,13 @@ class _GameSetupScreenState extends State<GameSetupScreen> {
                 ),
               ),
 
-              const SizedBox(height: 16),
+              const SizedBox(height: 8),
               MeritPreviewBadge(
                 difficulty: _difficulty,
                 wordLength: _wordLength,
                 major: widget.major,
               ),
-              SizedBox(height: context.v(16, 32)),
+              SizedBox(height: context.v(8, 16)),
               PrimaryButton(
                 label: 'PLAY GAME',
                 onPressed: _play,
