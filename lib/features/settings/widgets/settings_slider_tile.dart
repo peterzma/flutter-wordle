@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:uniordle/core/app_layout.dart';
 import 'package:uniordle/shared/exports/settings_exports.dart';
 
@@ -35,11 +35,10 @@ class SettingsSliderTile extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  // Tapping the icon acts as a quick mute/unmute
                   GestureDetector(
                     onTap: onMuteToggle,
                     child: context.autoIcon(
-                      value > 0 ? icon : muteIcon, 
+                      value > 0 ? icon : muteIcon,
                       color: value > 0 ? AppColors.accent : AppColors.onSurfaceVariant,
                     ),
                   ),
@@ -47,21 +46,32 @@ class SettingsSliderTile extends StatelessWidget {
                   context.autoText(label, style: AppFonts.labelLarge),
                 ],
               ),
-              // Percentage indicator
               context.autoText(
-                '${(value * 100).toInt()}%', 
-                style: AppFonts.labelMedium.copyWith(color: AppColors.onSurfaceVariant),
+                '${(value * 100).toInt()}%',
+                style: AppFonts.labelMedium,
               ),
             ],
           ),
-          const SizedBox(height: 8),
-          SizedBox(
-            width: double.infinity,
-            child: CupertinoSlider(
-              value: value,
-              onChanged: onChanged,
-              activeColor: AppColors.accent,
-              thumbColor: AppColors.onSurface,
+          SliderTheme(
+            data: SliderTheme.of(context).copyWith(
+            trackHeight: 4,
+            activeTrackColor: AppColors.accent,
+            inactiveTrackColor: AppColors.onSurfaceVariant,
+            thumbColor: AppColors.onSurface,
+            overlayColor: Colors.transparent,
+            thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 5.0),
+            overlayShape: const RoundSliderOverlayShape(overlayRadius: 16.0),
+            tickMarkShape: SliderTickMarkShape.noTickMark,
+            ),
+            child: SizedBox(
+              width: double.infinity,
+              height: 32,
+              child: Slider(
+                value: value,
+                min: 0,
+                max: 1,
+                onChanged: onChanged,
+              ),
             ),
           ),
         ],

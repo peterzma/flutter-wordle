@@ -25,26 +25,25 @@ class SoundManager {
 
   final Map<SoundType, AudioSource> _sources = {};
 
-  final Map<SoundType, double> _volumes = {
-    SoundType.click: 0.4,
-    SoundType.keyboard: 0.4,
-    SoundType.delete: 0.2,
-    SoundType.enter: 0.2,
-    SoundType.hover: 0.4,
-    SoundType.gameSettings: 0.4,
-    SoundType.win: 1,
-    SoundType.lose: 1,
-    SoundType.levelUp: 1,
-    SoundType.creditEarned: 1,
-    SoundType.rankUp: 1,
-    SoundType.tileFlip: 1,
-  };
+  // final Map<SoundType, double> _volumes = {
+  //   SoundType.click: 0.4,
+  //   SoundType.keyboard: 0.4,
+  //   SoundType.delete: 0.2,
+  //   SoundType.enter: 0.2,
+  //   SoundType.hover: 0.4,
+  //   SoundType.gameSettings: 0.4,
+  //   SoundType.win: 1,
+  //   SoundType.lose: 1,
+  //   SoundType.levelUp: 1,
+  //   SoundType.creditEarned: 1,
+  //   SoundType.rankUp: 1,
+  //   SoundType.tileFlip: 1,
+  // };
 
   bool _isInitialized = false;
   double _musicVolume = 1.0;
   double _soundVolume = 1.0;
-  bool _enabled = true;
-  set soundsEnabled(bool value) => _enabled = value;
+
 
   SoundHandle? _activeMusicHandle; 
   bool _musicEnabled = true;

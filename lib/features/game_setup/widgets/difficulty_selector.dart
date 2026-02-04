@@ -43,7 +43,7 @@ class DifficultySelector extends StatelessWidget {
           data: SliderTheme.of(context).copyWith(
             trackHeight: 4,
             activeTrackColor: major.color,
-            inactiveTrackColor: Colors.white24,
+            inactiveTrackColor: AppColors.onSurfaceVariant,
             thumbColor: major.color,
             overlayColor: Colors.transparent,
             overlayShape: RoundSliderOverlayShape(overlayRadius: mobileMode ? 40 : 60),

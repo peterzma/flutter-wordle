@@ -35,10 +35,9 @@ class SettingsScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: AppLayout.pagePadding),
                     children: [
                       const SettingsHeader(title: 'PREFERENCES'),
-                      const SizedBox(height: 16),
                       SettingsSliderTile(
                         icon: AppIcons.backgroundMusic,
-                        muteIcon: Icons.volume_off,
+                        muteIcon: Icons.music_off,
                         label: 'Background Music',
                         value: state.musicVolume,
                         onChanged: controller.setMusicVolume,
