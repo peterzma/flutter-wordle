@@ -8,6 +8,7 @@ class NavigationItem extends StatelessWidget {
   final bool isActive;
   final double iconSize;
   final Color? color;
+  final double width; // Add this
 
   const NavigationItem({
     super.key,
@@ -17,13 +18,13 @@ class NavigationItem extends StatelessWidget {
     this.isActive = false,
     this.iconSize = 24,
     this.color,
+    this.width = 48,
   });
 
   @override
   Widget build(BuildContext context) {
-    final Color color = isActive 
-        ? AppColors.accent 
-        : AppColors.onSurfaceVariant;
+    final Color finalColor = color ?? 
+        (isActive ? AppColors.accent : AppColors.onSurfaceVariant);
 
     return SelectButtonWrapper(
       borderRadius: BorderRadius.circular(16),
@@ -33,7 +34,7 @@ class NavigationItem extends StatelessWidget {
         padding: const EdgeInsets.all(4),
         child: SizedBox(
           height: 48, 
-          width: 48,
+          width: width,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -41,18 +42,18 @@ class NavigationItem extends StatelessWidget {
               Icon(
                 icon,
                 size: iconSize,
-                color: color,
+                color: finalColor,
               ),
               if (label != null) ...[
                 const SizedBox(height: 2),
                 Text(
                   label!.toUpperCase(),
-                  style: AppFonts.labelSmall.copyWith(color: color),
+                  style: AppFonts.labelSmall.copyWith(color: finalColor),
                 ),
               ],
             ],
           ),
-        )
+        ),
       ),
     );
   }

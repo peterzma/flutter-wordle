@@ -29,7 +29,7 @@ class GameHeader extends StatelessWidget implements PreferredSizeWidget {
             return NavigationItem(
               icon: isMuted ? AppIcons.backgroundMusicMuted : AppIcons.backgroundMusic,
               onTap: controller.toggleMusicMute,
-              color: isMuted ? AppColors.onSurfaceVariant : AppColors.accent,
+              width: context.responsive(36, 48)
             );
           },
         ),
@@ -42,6 +42,7 @@ class GameHeader extends StatelessWidget implements PreferredSizeWidget {
               builder: (context) => const HelpDialog(),
             );
           },
+          width: context.responsive(36, 48)
         ),
       ],
     );

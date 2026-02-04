@@ -45,6 +45,7 @@ class BaseHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
+                flex: 2,
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: NavigationItem(
@@ -53,27 +54,31 @@ class BaseHeader extends StatelessWidget {
                   ),
                 ),
               ),
-              Text(
-                title,
-                style: AppFonts.displayMedium,
-                textAlign: TextAlign.center,
+              Flexible(
+                flex: 3,
+                child: Text(
+                  title,
+                  style: AppFonts.displayMedium,
+                  textAlign: TextAlign.center,
+                ),
               ),
               Expanded(
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: actions != null
-                    ? Row(
-                        mainAxisSize: MainAxisSize.min, 
-                        children: actions!,
-                      )
-                    : rightIcon != null
-                        ? NavigationItem(
-                            icon: rightIcon!,
-                            onTap: onRightTap ?? () {},
-                          )
-                        : const SizedBox.shrink(),
+                flex: 2,
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: actions != null
+                      ? Row(
+                          mainAxisSize: MainAxisSize.min, 
+                          children: actions!,
+                        )
+                      : rightIcon != null
+                          ? NavigationItem(
+                              icon: rightIcon!,
+                              onTap: onRightTap ?? () {},
+                            )
+                          : const SizedBox.shrink(),
+                  ),
               ),
-            ),
             ],
           ),
         ),
