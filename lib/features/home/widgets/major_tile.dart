@@ -60,7 +60,7 @@ class _MajorTileState extends State<MajorTile> {
                   : null,
                 border: Border.all(
                   color: _hovering 
-                      ? (isFullyMastered ? AppColors.accent3 : sub.color) 
+                      ? (isFullyMastered ? AppColors.accent3 : displayColor) 
                       : Colors.transparent,
                   width: 1.5,
                 ),
