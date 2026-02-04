@@ -10,22 +10,22 @@ class RankPathway extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-//     /// code to test all achieved
-//     bool debugComplete = true; // Set to true to test
+  //   /// code to test all achieved
+  //   bool debugComplete = true; // Set to true to test
 
-//   // FORCE the index to the last item if debugging
-//     int currentRankIndex = debugComplete 
-//       ? allRanks.length - 1 
-//       : allRanks.lastIndexWhere((r) => currentLevel >= r['minLevel']);
+  // // FORCE the index to the last item if debugging
+  //   int currentRankIndex = debugComplete 
+  //     ? allRanks.length - 1 
+  //     : allRanks.lastIndexWhere((r) => currentLevel >= r['minLevel']);
 
-//     final bool isPathwayComplete = currentRankIndex == allRanks.length - 1;
+  //   final bool isPathwayComplete = currentRankIndex == allRanks.length - 1;
 // /// --------------------------------
     final int currentRankIndex = allRanks.lastIndexWhere(
       (r) => currentLevel >= r['minLevel'],
     );
 
     final bool isPathwayComplete = currentRankIndex == allRanks.length - 1;
-    
+// /// --------------------------------    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -96,7 +96,6 @@ class RankPathway extends StatelessWidget {
               child: PrimaryButton(
                 label: 'A Message from the Faculty',
                 color: Colors.orange,
-                width: 260,
                 onPressed: () {
                   showBaseDialog(
                     context: context,

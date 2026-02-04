@@ -47,7 +47,6 @@ class _ThankYouDialogState extends State<ThankYouDialog> {
             PrimaryButton(
               label: 'The pleasure was mine',
               color: Colors.orange,
-              width: double.infinity,
               onPressed: () => Navigator.pop(context),
             ),
           ],

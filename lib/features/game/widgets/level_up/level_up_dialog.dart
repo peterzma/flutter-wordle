@@ -140,7 +140,6 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
                   child: PrimaryButton(
                     label: 'HOME',
                     onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false),
-                    width: 300,
                   ),
                 ),
                 SizedBox(width: context.r(16)),
@@ -155,7 +154,6 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
                         arguments: widget.major,
                       );
                     },
-                    width: 300,
                   ),
                 ),
               ],
