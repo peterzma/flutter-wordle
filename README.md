@@ -114,4 +114,4 @@ Latest release:
 * make colours easier to see
 * add special effect for completed tiles
 * add indiciator of guest mode and give pop up for user to sign in to see stats
-* add text if user masters all majors, and have the text be depending on the order of which the user has completed. e.g. message from faculty vs message from dean
+* add text if user masters all majors, and have the text be depending on the order of which the user has completed. e.g. message from faculty vs message from dean (in this we need to indicate to the player they received mailing on the home screen)

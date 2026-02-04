@@ -14,14 +14,14 @@ class RiskAndReward extends StatelessWidget {
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 360),
           child: context.autoText(
-            'Higher ranks bring bigger challenges. \n Keep it going!',
+            'Higher ranks bring bigger challenges. \n Don\'t give up!',
             style: AppFonts.labelMedium.copyWith(color: AppColors.onSurfaceVariant),
             textAlign: TextAlign.center,
             maxLines: 2,
           ),
         ),
 
-        SizedBox(height: context.r(32)),
+        SizedBox(height: 32),
         
         Padding(
           padding: EdgeInsets.symmetric(horizontal: context.r(32)),
@@ -33,20 +33,20 @@ class RiskAndReward extends StatelessWidget {
                 title: 'Tough Break',
                 subtitle: 'LOSE MERITS ON FAILING',
               ),
-              SizedBox(height: context.r(32)),
+              SizedBox(height: context.r(64)),
               InstructionRow(
                 leading: context.autoIcon(LucideIcons.ghost, color: Colors.orange, size: 24),
                 color: AppColors.surfaceVariant,
                 title: 'Ghosting Penalty',
                 subtitle: 'QUITTING EARLY COSTS EXTRA',
               ),
-              SizedBox(height: context.r(32)),
-              InstructionRow(
-                leading: context.autoIcon(LucideIcons.graduationCap, color: Colors.amber, size: 24),
-                color: AppColors.surfaceVariant,
-                title: 'Master Majors',
-                subtitle: 'COMPLETE EVERY WORD FOR A SPECIAL PERK',
-              ),
+              // SizedBox(height: context.r(32)),
+              // InstructionRow(
+              //   leading: context.autoIcon(LucideIcons.graduationCap, color: Colors.amber, size: 24),
+              //   color: AppColors.surfaceVariant,
+              //   title: 'Master Majors',
+              //   subtitle: 'COMPLETE EVERY WORD FOR A SPECIAL PERK',
+              // ),
             ]
           ),
         ),

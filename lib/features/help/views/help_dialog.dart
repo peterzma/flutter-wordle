@@ -46,7 +46,7 @@ class _HelpDialogState extends State<HelpDialog> {
               ],
             ),
           ),
-          SizedBox(height: context.responsive(2, 8)),
+          SizedBox(height: context.responsive(4, 16)),
           PageIndicator(
             totalPages: _totalPages,
             currentPage: _currentPage,

@@ -17,7 +17,7 @@ class RiseAndReach extends StatelessWidget {
         context.autoText('RISE & REACH', style: AppFonts.headline, textAlign: TextAlign.center),
         SizedBox(height: context.r(8)),
         context.autoText(
-          'Earn new academic ranks every 10 levels and unlock prestigious titles on your way to becoming ???',
+          'Earn new academic ranks every 10 levels and unlock prestigious titles to become ???',
           style: AppFonts.labelMedium,
           textAlign: TextAlign.center,
           maxLines: 2
@@ -35,7 +35,7 @@ class RiseAndReach extends StatelessWidget {
               const Divider(color: AppColors.outline, height: 1),
 
               Padding(
-                padding: EdgeInsets.symmetric(vertical: context.responsive(0, 8)),
+                padding: EdgeInsets.symmetric(vertical: context.responsive(0, 2)),
                 child: context.autoText(
                   '.\n.\n.',
                   style: AppFonts.headline.copyWith(
@@ -58,7 +58,7 @@ class RiseAndReach extends StatelessWidget {
 
   Widget _buildRankRow(BuildContext context, Map<String, String> rank, {required Color color, bool isBold = false}) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: context.r(8)),
+      padding: EdgeInsets.symmetric(vertical: context.r(16)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
