@@ -47,73 +47,74 @@ class _GameSetupScreenState extends State<GameSetupScreen> {
     return Scaffold(
       backgroundColor: AppColors.surface,
       appBar: const GameSetupHeader(),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(AppLayout.pagePadding),
-          child: Column(
-            children: [
-              Expanded(
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
-                  return SingleChildScrollView(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        GameSetupHero(major: widget.major),
-                        SizedBox(height: context.responsive(32, 16)),
-                        context.autoText(
-                          'WORD LENGTH',
-                          style: AppFonts.displayMedium,
-                        ),
-                        SizedBox(height: context.r(8)),
-                        WordLengthSelector(
-                          value: _wordLength, 
-                          onChanged: (v) => setState(() => _wordLength = v),
-                          major: widget.major,
-                        ),
-
-                        SizedBox(height: context.responsive(64, 16)),
-
-                        context.autoText(
-                          'YEAR LEVEL',
-                          style: AppFonts.displayMedium,
-                        ),
-                        DifficultySelector(
-                          value: _difficulty, 
-                          onChanged: (v) => setState(() => _difficulty = v),
-                          major: widget.major,
-                        ),
-                      ],
-                    ),
-                  );
-                  }
+      // Inside build method
+body: SafeArea(
+  child: Padding(
+    padding: const EdgeInsets.all(AppLayout.pagePadding),
+    child: Column( // Main Container
+      children: [
+        Expanded(
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: constraints.maxHeight,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GameSetupHero(major: widget.major),
+                      SizedBox(height: context.responsive(32, 16)),
+                      context.autoText(
+                        'WORD LENGTH',
+                        style: AppFonts.displayMedium,
+                      ),
+                      SizedBox(height: context.r(8)),
+                      WordLengthSelector(
+                        value: _wordLength, 
+                        onChanged: (v) => setState(() => _wordLength = v),
+                        major: widget.major,
+                      ),
+                      SizedBox(height: context.responsive(64, 16)),
+                      context.autoText(
+                        'YEAR LEVEL',
+                        style: AppFonts.displayMedium,
+                      ),
+                      DifficultySelector(
+                        value: _difficulty, 
+                        onChanged: (v) => setState(() => _difficulty = v),
+                        major: widget.major,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-
-              SizedBox(height: context.responsive(32, 16)),
-
-              MeritPreviewBadge(
-                difficulty: _difficulty,
-                wordLength: _wordLength,
-                major: widget.major,
-              ),
-
-              SizedBox(height: 16),
-
-              PrimaryButton(
-                label: 'PLAY GAME',
-                onPressed: _play,
-                color: widget.major.color,
-                isLoading: _isLoading,
-                icon: AppIcons.play,
-                height: 64,
-                width: double.infinity,
-                resizeLabel: false,
-              ),
-            ],
+              );
+            },
           ),
         ),
-      ),
+        
+        const SizedBox(height: 16),
+        MeritPreviewBadge(
+          difficulty: _difficulty,
+          wordLength: _wordLength,
+          major: widget.major,
+        ),
+        const SizedBox(height: 16),
+        PrimaryButton(
+          label: 'PLAY GAME',
+          onPressed: _play,
+          color: widget.major.color,
+          isLoading: _isLoading,
+          icon: AppIcons.play,
+          height: 64,
+          width: double.infinity,
+          resizeLabel: false,
+        ),
+      ],
+    ),
+  ),
+),
     );
   }
 }
