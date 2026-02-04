@@ -1,4 +1,5 @@
 import 'package:uniordle/core/app_icons.dart';
+import 'package:uniordle/features/home/data/major_data.dart';
 import 'package:uniordle/shared/exports/game_exports.dart';
 import 'package:uniordle/shared/exports/profile_exports.dart';
 
@@ -49,12 +50,13 @@ class ProfileScreen extends StatelessWidget {
                   children: [
                     Expanded(
                       child: SummaryCard(
-                        label: "Major Bonus",
-                        value: dBonus > 0 ? "+$dBonus%" : "-",
-                        icon: LucideIcons.graduationCap,
-                        iconColor: dBonus > 0 ? AppColors.correctColor : AppColors.onSurfaceVariant,
+                        label: "Rank Bonus",
+                        value: "+$rBonus%",
+                        icon: LucideIcons.award,
+                        iconColor: rBonus > 0 ? Colors.orange : AppColors.onSurfaceVariant,
                       ),
                     ),
+
                     SizedBox(width: context.r(8)),
 
                     Expanded(
@@ -70,12 +72,12 @@ class ProfileScreen extends StatelessWidget {
 
                     Expanded(
                       child: SummaryCard(
-                        label: "Rank Bonus",
-                        value: rBonus > 0 ? "+$rBonus%" : "-",
-                        icon: LucideIcons.award,
-                        iconColor: rBonus > 0 ? Colors.orange : AppColors.onSurfaceVariant,
+                        label: "Abandon Cost",
+                        value: "-${stats.activePenalty}",
+                        icon: LucideIcons.skull,
+                        iconColor: AppColors.accent2,
                       ),
-                    ),
+                    ),      
                   ],
                 ),
               ),
@@ -88,30 +90,32 @@ class ProfileScreen extends StatelessWidget {
                   children: [
                     Expanded(
                       child: SummaryCard(
-                        label: "Loss Penalty",
-                        value: "-${stats.standardPenalty}",
-                        icon: LucideIcons.trendingDown,
-                        iconColor: AppColors.accent2,
+                        label: "Major Bonus",
+                        value: "+$dBonus%",
+                        icon: LucideIcons.graduationCap,
+                        iconColor: dBonus > 0 ? AppColors.correctColor : AppColors.onSurfaceVariant,
                       ),
                     ),
-                    SizedBox(width: context.r(8)),
 
-                    Expanded(
-                      child: SummaryCard(
-                        label: "Abandon Cost",
-                        value: "-${stats.activePenalty}",
-                        icon: LucideIcons.skull,
-                        iconColor: AppColors.accent2,
-                      ),
-                    ),
                     SizedBox(width: context.r(8)),
 
                     Expanded(
                       child: SummaryCard(
                         label: "Mastered",
-                        value: "${stats.masteredIds.length}",
+                        value: "${stats.masteredCount}/${MajorsData.all.length}",
                         icon: AppIcons.mastered,
                         iconColor: AppColors.accent3,
+                      ),
+                    ),
+
+                    SizedBox(width: context.r(8)),
+
+                    Expanded(
+                      child: SummaryCard(
+                        label: "Loss Penalty",
+                        value: "-${stats.standardPenalty}",
+                        icon: LucideIcons.trendingDown,
+                        iconColor: AppColors.accent2,
                       ),
                     ),
                   ],
