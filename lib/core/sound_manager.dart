@@ -14,6 +14,8 @@ enum SoundType {
   rankUp,
   tileFlip,
   gameSettings,
+  lockedMajor,
+  unlockMajor,
   menuMusic,
   gameMusic,
 }
@@ -89,6 +91,8 @@ class SoundManager {
       _sources[SoundType.tileFlip] = await SoLoud.instance.loadAsset('assets/audio/tile_flip.mp3');
       _sources[SoundType.menuMusic] = await SoLoud.instance.loadAsset('assets/audio/test_music.mp3');
       _sources[SoundType.gameMusic] = await SoLoud.instance.loadAsset('assets/audio/test_music2.mp3');
+      _sources[SoundType.lockedMajor] = await SoLoud.instance.loadAsset('assets/audio/locked_major.mp3');
+      _sources[SoundType.unlockMajor] = await SoLoud.instance.loadAsset('assets/audio/unlock_major.mp3');
 
       _isInitialized = true;
     } catch (e) {

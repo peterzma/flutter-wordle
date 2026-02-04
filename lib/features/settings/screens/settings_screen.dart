@@ -97,6 +97,7 @@ class SettingsScreen extends StatelessWidget {
                         label: 'Clear All Data',
                         onTap: () => DataResetService.showDialog(context),
                       ),
+                      const SizedBox(height: 32),
                     ],
                   );
                 }

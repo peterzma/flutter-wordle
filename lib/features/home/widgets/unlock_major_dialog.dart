@@ -25,16 +25,14 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
   final wiggleKey = GlobalKey<WiggleButtonWrapperState>();
 
   void _handleUnlock() async {
-    await statsManager.unlockMajor(widget.major.id);
     
+    await statsManager.unlockMajor(widget.major.id);
     if (mounted) {
       setState(() {
         _isUnlocked = true;
       });
     }
     
-    // TODO: change to victory
-    // SoundManager().play(SoundType.grid);
   }
 
   @override
@@ -150,7 +148,6 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
                 child: PrimaryButton(
                   onPressed: () => Navigator.pop(context),
                   label: "BACK",
-                  width: 300,
                 ),
               ),
               SizedBox(width: context.r(16)),
@@ -163,14 +160,14 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
                     onPressed: () {
                       if (canAfford) {
                         _handleUnlock();
+
+                        SoundManager().play(SoundType.unlockMajor);
                       } else {
                         wiggleKey.currentState?.wiggle();
       
-                        // TODO: change sound to negative
-                        // SoundManager().play(SoundType.grid); 
+                        SoundManager().play(SoundType.lockedMajor); 
                       }
                     },
-                    width: 300,
                   ),
                 ),
               ),

@@ -19,7 +19,7 @@ class WiggleButtonWrapperState extends State<WiggleButtonWrapper> with SingleTic
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 350),
+      duration: const Duration(milliseconds: 400),
       vsync: this,
     );
   }
