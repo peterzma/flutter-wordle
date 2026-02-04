@@ -110,3 +110,6 @@ Latest release:
 * rename stuff to be university themed
 * add game finished dialog once all majors are mastered
 * reduce merit to play game padding
+* move mastered majors below
+* make colours easier to see
+* add special effect for completed tiles

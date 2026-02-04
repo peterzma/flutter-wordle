@@ -48,19 +48,9 @@ class _MajorTileState extends State<MajorTile> {
               decoration: BoxDecoration(
                 color: AppColors.surfaceVariant,
                 borderRadius: BorderRadius.circular(16),
-                gradient: isFullyMastered
-                  ? RadialGradient(
-                      center: const Alignment(-0.6, -0.5),
-                      radius: 1.5,
-                      colors: [
-                        AppColors.accent3.withValues(alpha: 0.15),
-                        AppColors.surfaceVariant,
-                      ],
-                    )
-                  : null,
                 border: Border.all(
                   color: _hovering 
-                      ? (isFullyMastered ? AppColors.accent3 : displayColor) 
+                      ? displayColor 
                       : Colors.transparent,
                   width: 1.5,
                 ),
@@ -75,7 +65,7 @@ class _MajorTileState extends State<MajorTile> {
                           : (isFullyMastered ? 'check_circle' : sub.icon), 
                       color: widget.isLocked 
                           ? Colors.grey 
-                          : (isFullyMastered ? AppColors.accent3 : sub.color),
+                          : displayColor,
                     ),
                     const SizedBox(width: 16),
                     Expanded(
@@ -87,13 +77,13 @@ class _MajorTileState extends State<MajorTile> {
                             children: [
                               Text(
                                 sub.name, 
-                                style: AppFonts.labelLarge.copyWith(color: isFullyMastered ? AppColors.accent3 : AppColors.onSurface)
+                                style: AppFonts.labelLarge.copyWith(color: AppColors.onSurface)
                               ),
                               if (!widget.isLocked)
                                 Text(
                                   "${progressData.solved}/${sub.totalWords}",
                                   style: AppFonts.labelSmall.copyWith(
-                                    color: isFullyMastered ? AppColors.accent3 : displayColor, 
+                                    color: displayColor, 
                                     fontWeight: FontWeight.bold
                                   ),
                                 ),
@@ -107,7 +97,7 @@ class _MajorTileState extends State<MajorTile> {
                               value: progressData.percent,
                               minHeight: 4,
                               backgroundColor: displayColor.withValues(alpha: 0.1),
-                              valueColor: AlwaysStoppedAnimation<Color>(isFullyMastered ? AppColors.accent3 : displayColor),
+                              valueColor: AlwaysStoppedAnimation<Color>(displayColor),
                             ),
                           ),
                           const SizedBox(height: 2),
@@ -115,12 +105,10 @@ class _MajorTileState extends State<MajorTile> {
                             widget.isLocked 
                                 ? "LOCKED" 
                                 : (isFullyMastered 
-                                    ? "MASTERED" 
+                                    ? "COMPLETED" 
                                     : "MASTERY: ${(progressData.percent * 100).toInt()}%"), 
                             style: AppFonts.labelSmall.copyWith(
-                              color: isFullyMastered 
-                                  ? AppColors.accent3 
-                                  : displayColor.withValues(alpha: 0.7),
+                              color: displayColor,
                               fontSize: 10,
                             )
                           ),
