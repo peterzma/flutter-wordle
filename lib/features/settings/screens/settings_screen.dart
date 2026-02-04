@@ -1,6 +1,7 @@
 import 'package:uniordle/core/app_icons.dart';
 import 'package:uniordle/features/settings/data/data_reset_service.dart';
 import 'package:uniordle/features/settings/data/link_service.dart';
+import 'package:uniordle/features/settings/widgets/settings_slider_tile.dart';
 import 'package:uniordle/shared/exports/app_exports.dart';
 import 'package:uniordle/shared/exports/settings_exports.dart';
 import 'package:uniordle/shared/layout/base_header.dart';
@@ -34,18 +35,23 @@ class SettingsScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: AppLayout.pagePadding),
                     children: [
                       const SettingsHeader(title: 'PREFERENCES'),
-                      SettingsToggleTile(
-                        icon: AppIcons.volume,
-                        label: 'Sound Effects',
-                        value: state.soundsEnabled,
-                        onChanged: controller.toggleSounds,
+                      const SizedBox(height: 16),
+                      SettingsSliderTile(
+                        icon: AppIcons.backgroundMusic,
+                        muteIcon: Icons.volume_off,
+                        label: 'Background Music',
+                        value: state.musicVolume,
+                        onChanged: controller.setMusicVolume,
+                        onMuteToggle: controller.toggleMusicMute,
                       ),
                       const SizedBox(height: 8),
-                      SettingsToggleTile(
-                        icon: AppIcons.backgroundMusic,
-                        label: 'Background Music',
-                        value: state.musicEnabled,
-                        onChanged: controller.toggleMusic,
+                      SettingsSliderTile(
+                        icon: AppIcons.volume,
+                        muteIcon: Icons.volume_off,
+                        label: 'Sound Effects',
+                        value: state.soundVolume,
+                        onChanged: controller.setSoundVolume,
+                        onMuteToggle: controller.toggleSoundMute,
                       ),
                       const SettingsHeader(title: 'SOCIALS'),
                       SettingsActionTile(

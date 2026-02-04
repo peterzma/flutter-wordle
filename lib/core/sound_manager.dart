@@ -38,27 +38,33 @@ class SoundManager {
     SoundType.creditEarned: 1,
     SoundType.rankUp: 1,
     SoundType.tileFlip: 1,
-    SoundType.menuMusic: 1,
-    SoundType.gameMusic: 1,
   };
 
   bool _isInitialized = false;
+  double _musicVolume = 1.0;
+  double _soundVolume = 1.0;
   bool _enabled = true;
   set soundsEnabled(bool value) => _enabled = value;
 
   SoundHandle? _activeMusicHandle; 
   bool _musicEnabled = true;
 
+  set musicVolume(double value) {
+    _musicVolume = value;
+    if (_activeMusicHandle != null) {
+      SoLoud.instance.setVolume(_activeMusicHandle!, value);
+    }
+  }
+
+  set soundVolume(double value) => _soundVolume = value;
+
   set musicEnabled(bool value) {
     if (_musicEnabled == value) return;
     _musicEnabled = value;
-
     if (!value) {
-      fadeOutAndStop(duration: const Duration(milliseconds: 300), isMuting: true);
-    } else {
-      if (_currentlyPlayingType != null && _activeMusicHandle == null) {
-        _startMusic(_currentlyPlayingType!);
-      }
+      fadeOutAndStop(duration: const Duration(milliseconds: 500), isMuting: true);
+    } else if (_currentlyPlayingType != null) {
+      playMusic(_currentlyPlayingType!);
     }
   }
   
@@ -91,15 +97,10 @@ class SoundManager {
     }
   }
 
-  void play(SoundType type, {double? volumeOverride}) {
-    if (!_isInitialized || !_enabled) return;
-    
+  void play(SoundType type) {
     final source = _sources[type];
-    if (source != null) {
-
-      final double vol = volumeOverride ?? _volumes[type] ?? 1.0;
-
-      SoLoud.instance.play(source, volume: vol);
+    if (source != null && _isInitialized) {
+      SoLoud.instance.play(source, volume: _soundVolume);
     }
   }
 
@@ -107,41 +108,24 @@ class SoundManager {
     SoLoud.instance.deinit();
   }
 
-  void playMusic(SoundType type, {double? volumeOverride}) async {
+  void playMusic(SoundType type) async {
     if (!_isInitialized) return;
-
-    if (_currentlyPlayingType == type && _activeMusicHandle != null) {
-      return;
-    }
+    if (_currentlyPlayingType == type && _activeMusicHandle != null) return;
 
     _currentlyPlayingType = type;
-
     if (!_musicEnabled) return;
-
-    _startMusic(type, volumeOverride: volumeOverride);
-  }
-
-  void _startMusic(SoundType type, {double? volumeOverride}) async {
-    final source = _sources[type];
-    if (source == null) return;
-
-    const fadeDuration = Duration(milliseconds: 1000);
 
     if (_activeMusicHandle != null) {
       final oldHandle = _activeMusicHandle!;
-      SoLoud.instance.fadeVolume(oldHandle, 0, fadeDuration);
-      Future.delayed(fadeDuration, () => SoLoud.instance.stop(oldHandle));
+      SoLoud.instance.fadeVolume(oldHandle, 0, const Duration(seconds: 1));
+      Future.delayed(const Duration(seconds: 1), () => SoLoud.instance.stop(oldHandle));
     }
 
-    final double vol = volumeOverride ?? _volumes[type] ?? 1.0;
+    final source = _sources[type];
+    if (source == null) return;
 
-    _activeMusicHandle = await SoLoud.instance.play(
-      source,
-      volume: 0, 
-      looping: true,
-    );
-
-    SoLoud.instance.fadeVolume(_activeMusicHandle!, vol, fadeDuration);
+    _activeMusicHandle = await SoLoud.instance.play(source, volume: 0, looping: true);
+    SoLoud.instance.fadeVolume(_activeMusicHandle!, _musicVolume, const Duration(seconds: 1));
   }
 
   void fadeOutAndStop({Duration duration = const Duration(seconds: 2), bool isMuting = false}) {
