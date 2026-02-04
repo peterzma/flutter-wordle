@@ -74,7 +74,7 @@ class _GameScreenState extends State<GameScreen> {
         word: solutionWord,
       );
     } else {
-      meritChange = UserStats.penaltyAmount;
+      meritChange = statsManager.statsNotifier.value.standardPenalty;
       await statsManager.recordLoss(wordLength: rawYearLevel, maxAttempts: _maxAttempts, word: solutionWord);
     }
 

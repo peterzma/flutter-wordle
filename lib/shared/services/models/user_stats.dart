@@ -1,7 +1,6 @@
 class UserStats {
 
   static const int meritPerLevel = 100;
-  static const int penaltyAmount = 5;
 
   final int streak;
   final int maxStreak;
@@ -89,12 +88,12 @@ extension UserStatsProgress on UserStats {
 
   int get standardPenalty {
     int rank = currentLevel ~/ 10;
-    return UserStats.penaltyAmount + (rank * 2); 
+    return 5 + (rank * 5); 
   }
 
   int get activePenalty {
     int rank = currentLevel ~/ 10;
-    return UserStats.penaltyAmount + (rank * 5);
+    return 10 + (rank * 10);
   }
 }
 
