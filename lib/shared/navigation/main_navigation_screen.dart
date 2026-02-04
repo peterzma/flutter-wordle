@@ -17,7 +17,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   @override
   void initState() {
     super.initState();
-    SoundManager().playMusic(SoundType.menuMusic);
+    // SoundManager().playMusic(SoundType.menuMusic);
   }
 
   @override

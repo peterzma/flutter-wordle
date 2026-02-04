@@ -49,7 +49,7 @@ class _GameScreenState extends State<GameScreen> {
       );
 
       _controller.addListener(() => setState(() {}));
-      SoundManager().playMusic(SoundType.gameMusic);
+      // SoundManager().playMusic(SoundType.gameMusic);
       _isInitialized = true;
     }
   }

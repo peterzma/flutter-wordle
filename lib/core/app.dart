@@ -61,22 +61,29 @@ class _AppState extends State<App> with WidgetsBindingObserver {
   }
 
   Widget _getPage(RouteSettings settings) {
-    switch (settings.name) {
-      case '/':
-        return const MainNavigationScreen();
-      case '/uniordle':
-        return const GameScreen();
-      case '/setup':
-        final args = settings.arguments as Major;
-        return GameSetupScreen(major: args);
-      case '/settings':
-        return Builder(builder: (context) {
-          return SettingsScreen(
-            onClose: () => Navigator.of(context).pop(),
-          );
-        });
-      default:
-        return const HomeScreen();
-    }
+  switch (settings.name) {
+    case '/':
+      SoundManager().playMusic(SoundType.menuMusic);
+      return const MainNavigationScreen();
+      
+    case '/uniordle':
+      SoundManager().playMusic(SoundType.gameMusic);
+      return const GameScreen();
+      
+    case '/setup':
+      final args = settings.arguments as Major;
+      return GameSetupScreen(major: args);
+      
+    case '/settings':
+      return Builder(builder: (context) {
+        return SettingsScreen(
+          onClose: () => Navigator.of(context).pop(),
+        );
+      });
+      
+    default:
+      SoundManager().playMusic(SoundType.menuMusic);
+      return const HomeScreen();
   }
+}
 }
