@@ -25,6 +25,15 @@ class MeritPreviewBadge extends StatelessWidget {
         final bool isMastered = stats.masteredMajorIds.contains(major.id);
         final bool hasBonus = stats.meritMultiplier > 1.0;
 
+        String labelText;
+        if (isMastered) {
+          labelText = "REDUCED MERITS: ";
+        } else if (hasBonus) {
+          labelText = mobileMode ? "MERITS: " : "BOOSTED MERITS: ";
+        } else {
+          labelText = mobileMode ? "MERITS: " : "POTENTIAL MERITS: ";
+        }
+
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -44,13 +53,15 @@ class MeritPreviewBadge extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(
-                          isMastered ? LucideIcons.refreshCw : AppIcons.merits, 
+                          isMastered 
+                              ? LucideIcons.refreshCw 
+                              : (hasBonus ? LucideIcons.trendingUp : AppIcons.merits), 
                           size: 16, 
                           color: major.color,
                         ),
                         const SizedBox(width: 8),
                         Text(
-                          isMastered ? "REDUCED MERITS: " : (mobileMode ? "MERITS: " : "POTENTIAL MERITS: "),
+                          labelText,
                           style: AppFonts.labelLarge.copyWith(color: major.color),
                         ),
                       ],
