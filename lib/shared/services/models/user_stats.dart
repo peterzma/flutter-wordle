@@ -111,7 +111,9 @@ extension UserStatsRewards on UserStats {
     final int additionalMajors = (unlockedIds.length - 1).clamp(0, 99);
     final double majorMultiplier = additionalMajors * 0.05;
     
-    return 1.0 + majorMultiplier + rankMultiplier;
+    final double chancellorBonus = masteredCount >= MajorsData.all.length ? 0.50 : 0.0;
+    
+    return 1.0 + majorMultiplier + rankMultiplier + chancellorBonus;
   }
 
   static ({int min, int max}) _calculateMeritBounds(int yearLevel, int wordLength) {
@@ -152,9 +154,10 @@ extension UserStatsRewards on UserStats {
 
     double totalMerit = baseMerit * stats.meritMultiplier;
 
-    final isMastered = stats.masteredMajorIds.contains(majorId);
+    final bool isMastered = stats.masteredMajorIds.contains(majorId);
+    final bool hasFinishedAll = stats.masteredCount >= 14;
 
-    if (isMastered) {
+    if (isMastered && !hasFinishedAll) {
       totalMerit *= 0.5;
     }
     

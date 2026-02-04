@@ -22,16 +22,27 @@ class MeritPreviewBadge extends StatelessWidget {
       builder: (context, stats, child) {
         final ranges = UserStatsRewards.getMeritRange(stats, difficulty, wordLength);
       
+        final bool hasMasteredEverything = stats.masteredCount >= 14;
         final bool isMastered = stats.masteredMajorIds.contains(major.id);
         final bool hasBonus = stats.meritMultiplier > 1.0;
 
+        final bool showReductionUI = isMastered && !hasMasteredEverything;
+
         String labelText;
-        if (isMastered) {
+        IconData displayIcon;
+        
+        if (hasMasteredEverything) {
+          labelText = mobileMode ? "CHANCELLOR: " : "CHANCELLOR REWARDS: ";
+          displayIcon = LucideIcons.crown; // Higher tier than trendingUp
+        } else if (showReductionUI) {
           labelText = "REDUCED MERITS: ";
+          displayIcon = LucideIcons.refreshCw;
         } else if (hasBonus) {
-          labelText = mobileMode ? "MERITS: " : "BOOSTED MERITS: ";
+          labelText = mobileMode ? "BOOSTED: " : "BOOSTED MERITS: ";
+          displayIcon = LucideIcons.trendingUp;
         } else {
           labelText = mobileMode ? "MERITS: " : "POTENTIAL MERITS: ";
+          displayIcon = AppIcons.merits;
         }
 
         return Column(
@@ -53,9 +64,7 @@ class MeritPreviewBadge extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(
-                          isMastered 
-                              ? LucideIcons.refreshCw 
-                              : (hasBonus ? LucideIcons.trendingUp : AppIcons.merits), 
+                          displayIcon, 
                           size: 16, 
                           color: major.color,
                         ),
@@ -79,26 +88,21 @@ class MeritPreviewBadge extends StatelessWidget {
                           ),
                         ),
                 
-                        if (isMastered) ...[
-                          const SizedBox(width: 6),
+                        if (showReductionUI) ...[
+                          const SizedBox(width: 4),
                           Icon(LucideIcons.arrowRight, size: 14, color: major.color.withValues(alpha: 0.7)),
-                          const SizedBox(width: 6),
+                          const SizedBox(width: 4),
                           Text(
-                            // This calculates the 50% reduction for the preview text
                             UserStatsRewards.formatReducedRange(ranges.boosted),
                             style: AppFonts.labelLarge.copyWith(
                               color: major.color,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                        ] else if (hasBonus) ...[
-                          const SizedBox(width: 6),
-                          Icon(
-                            LucideIcons.arrowRight, 
-                            size: 14, 
-                            color: major.color.withValues(alpha: 0.7)
-                          ),
-                          const SizedBox(width: 6),
+                        ] else if (hasBonus || hasMasteredEverything) ...[
+                          const SizedBox(width: 4),
+                          Icon(LucideIcons.arrowRight, size: 14, color: major.color.withValues(alpha: 0.7)),
+                          const SizedBox(width: 4),
                           Text(
                             ranges.boosted,
                             style: AppFonts.labelLarge.copyWith(

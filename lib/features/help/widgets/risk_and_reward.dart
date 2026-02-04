@@ -44,8 +44,8 @@ class RiskAndReward extends StatelessWidget {
               InstructionRow(
                 leading: context.autoIcon(LucideIcons.graduationCap, color: Colors.amber, size: 24),
                 color: AppColors.surfaceVariant,
-                title: 'Graduated Credit',
-                subtitle: 'LESS MERITS FOR MASTERED MAJORS',
+                title: 'Master Majors',
+                subtitle: 'COMPLETE EVERY WORD FOR A SPECIAL PERK',
               ),
             ]
           ),
