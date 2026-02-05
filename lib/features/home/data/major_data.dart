@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:uniordle/features/game/data/word_lists/agriculture_words.dart';
+import 'package:uniordle/features/game/data/word_lists/astronomy_words.dart';
+import 'package:uniordle/features/game/data/word_lists/history_words.dart';
+import 'package:uniordle/features/game/data/word_lists/journalism_words.dart';
+import 'package:uniordle/features/game/data/word_lists/nursing_words.dart';
+import 'package:uniordle/features/game/data/word_lists/philosophy_words.dart';
 import 'package:uniordle/features/home/models/major.dart';
 import 'package:uniordle/shared/exports/word_lists_exports.dart';
 import 'package:uniordle/features/game/data/word_list.dart';
@@ -150,6 +156,54 @@ class MajorsData {
       totalWords: getWordCount(architectureWords),
       tag: '${getWordCount(architectureWords)} WORDS',
       color: Colors.indigo,
+    ),
+    Major(
+      id: 'nursing',
+      name: 'Nursing',
+      icon: 'stethoscope',
+      totalWords: getWordCount(nursingWords),
+      tag: '${getWordCount(nursingWords)} WORDS',
+      color: Colors.redAccent,
+    ),
+    Major(
+      id: 'history',
+      name: 'History',
+      icon: 'landmark',
+      totalWords: getWordCount(historyWords),
+      tag: '${getWordCount(historyWords)} WORDS',
+      color: Colors.brown,
+    ),
+    Major(
+      id: 'agriculture',
+      name: 'Agriculture',
+      icon: 'sprout',
+      totalWords: getWordCount(agricultureWords),
+      tag: '${getWordCount(agricultureWords)} WORDS',
+      color: Colors.green,
+    ),
+    Major(
+      id: 'journalism',
+      name: 'Journalism',
+      icon: 'newspaper',
+      totalWords: getWordCount(journalismWords),
+      tag: '${getWordCount(journalismWords)} WORDS',
+      color: Colors.blueGrey,
+    ),
+    Major(
+      id: 'astronomy',
+      name: 'Astronomy',
+      icon: 'telescope',
+      totalWords: getWordCount(astronomyWords),
+      tag: '${getWordCount(astronomyWords)} WORDS',
+      color: Colors.red,
+    ),
+    Major(
+      id: 'philosophy',
+      name: 'Philosophy',
+      icon: 'scroll',
+      totalWords: getWordCount(philosophyWords),
+      tag: '${getWordCount(philosophyWords)} WORDS',
+      color: Colors.yellowAccent,
     ),
   ]..sort((a, b) => a.name.compareTo(b.name));
 
