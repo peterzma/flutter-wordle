@@ -41,28 +41,16 @@ class MilestoneCelebrationDialog extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Container(
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            boxShadow: [
-              BoxShadow(
-                color: (isRank ? AppColors.accent3 : AppColors.accent).withValues(alpha: 0.1),
-                blurRadius: 40,
-                spreadRadius: 10,
-              ),
-            ],
-          ),
-          child: Icon(
+          Icon(
             isRank ? LucideIcons.graduationCap : AppIcons.credits,
             color: isRank ? AppColors.accent3 : AppColors.accent,
             size: context.r(80),
           ),
-        ),
           
-          SizedBox(height: context.r(32)),
+          SizedBox(height: context.r(16)),
       
           context.autoText(
-            isRank ? "RANK ASCENSION" : "CREDIT EARNED!",
+            isRank ? "RANK ASCENSION" : "CREDIT EARNED",
             style: AppFonts.headline,
           ),
 
