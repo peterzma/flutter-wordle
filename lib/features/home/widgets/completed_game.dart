@@ -59,7 +59,7 @@ class _CompletedGameState extends State<CompletedGame> {
                   child: Column(
                     children: [
                       context.autoText(
-                        "ORACLE'S LEGACY",
+                        "THE ORACLE'S LEGACY",
                         style: AppFonts.labelSmall.copyWith(color: Colors.amber, fontWeight: FontWeight.bold),
                       ),
                       context.autoText(

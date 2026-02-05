@@ -121,6 +121,8 @@ extension UserStatsProgress on UserStats {
 extension UserStatsRewards on UserStats {
   double get masteryBonusValue => masteredCount >= MajorsData.all.length ? 2.0 : 0.0;
 
+  double get summitBonusValue => currentLevel >= 100 ? 1.0 : 0.0;
+
   double get majorMultiplier {
     final int unlockedCount = unlockedIds.length;
     double baseMultiplier = 0.0;
@@ -149,7 +151,7 @@ extension UserStatsRewards on UserStats {
     final double majorBonus = majorMultiplier;
     
     // Base is 1.0 (100%)
-    return 1.0 + majorBonus + rankMultiplier + masteryBonusValue;
+    return 1.0 + majorBonus + rankMultiplier + summitBonusValue + masteryBonusValue;
   }
 
   static ({int min, int max}) _calculateMeritBounds(int yearLevel, int wordLength) {

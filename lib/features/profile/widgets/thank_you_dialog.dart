@@ -44,7 +44,29 @@ class _ThankYouDialogState extends State<ThankYouDialog> {
               style: AppFonts.labelMedium,
               maxLines: 4,
             ),
-            SizedBox(height: context.r(32)),
+              SizedBox(height: context.r(32)),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                decoration: BoxDecoration(
+                  color: Colors.amber.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.amber.withValues(alpha: 0.3)),
+                ),
+                child: Column(
+                  children: [
+                    context.autoText(
+                      "SUMMIT CONFERMENT",
+                      style: AppFonts.labelSmall.copyWith(color: Colors.amber, fontWeight: FontWeight.bold),
+                    ),
+                    context.autoText(
+                      "+100% PERMANENT MERIT",
+                      style: AppFonts.headline.copyWith(color: Colors.amber, fontSize: 20),
+                    ),
+                  ],
+                ),
+              ),
+        
+              SizedBox(height: context.r(32)),
             PrimaryButton(
               label: 'I am ready',
               color: Colors.orange,

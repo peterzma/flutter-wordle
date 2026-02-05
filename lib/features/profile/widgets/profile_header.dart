@@ -1,5 +1,6 @@
 import 'package:uniordle/core/app_icons.dart';
 import 'package:uniordle/core/app_layout.dart';
+import 'package:uniordle/shared/exports/home_exports.dart';
 import 'package:uniordle/shared/exports/profile_exports.dart';
 
 class ProfileHeader extends StatelessWidget {
@@ -11,8 +12,12 @@ class ProfileHeader extends StatelessWidget {
       valueListenable: statsManager.statsNotifier,
       builder: (context, stats, child) {
         final String academicTitle = stats.academicTitle;
+
         final double masteryBonus = stats.masteryBonusValue;
-        final bool hasMasteryBonus = masteryBonus > 0;
+        final double summitBonus = stats.summitBonusValue;
+
+        final bool hasMastery = masteryBonus > 0;
+        final bool hasSummit = summitBonus > 0;
 
         // TEST MODE TOGGLES
         // 1. Uncomment below to force Chancellor's List badge
@@ -61,29 +66,24 @@ class ProfileHeader extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                if (hasMasteryBonus) ...[
+                if (hasSummit) ...[
                   const SizedBox(width: 8),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                    decoration: BoxDecoration(
-                      color: Colors.amber.withValues(alpha: 0.1),
-                      borderRadius: BorderRadius.circular(6),
-                      border: Border.all(color: Colors.amber.withValues(alpha: 0.3), width: 1),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(AppIcons.completionist, color: Colors.amber, size: 14),
-                        const SizedBox(width: 4),
-                        context.autoText(
-                          "+${(masteryBonus * 100).toInt()}%",
-                          style: AppFonts.labelSmall.copyWith(
-                            color: Colors.amber,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
+                  _buildBadge(
+                    context: context,
+                    icon: LucideIcons.trophy, // Or a specific Summit icon
+                    label: "+${(summitBonus * 100).toInt()}%",
+                    color: Colors.amber,
+                  ),
+                ],
+
+                // 2. MASTERY BADGE (+200%)
+                if (hasMastery) ...[
+                  const SizedBox(width: 8),
+                  _buildBadge(
+                    context: context,
+                    icon: AppIcons.completionist,
+                    label: "+${(masteryBonus * 100).toInt()}%",
+                    color: Colors.orange, // Slightly different color to distinguish
                   ),
                 ],
               ],
@@ -91,6 +91,36 @@ class ProfileHeader extends StatelessWidget {
           ],
         );
       },
+    );
+  }
+
+  Widget _buildBadge({
+    required BuildContext context, 
+    required IconData icon, 
+    required String label, 
+    required Color color
+  }) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(6),
+        border: Border.all(color: color.withValues(alpha: 0.3), width: 1),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, color: color, size: 14),
+          const SizedBox(width: 4),
+          context.autoText(
+            label,
+            style: AppFonts.labelSmall.copyWith(
+              color: color,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
