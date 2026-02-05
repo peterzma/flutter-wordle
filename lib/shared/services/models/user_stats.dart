@@ -71,8 +71,8 @@ class UserStats {
 }
 
 extension UserStatsProgress on UserStats {
-  int get currentLevel => merit ~/ UserStats.meritPerLevel;
-  // int get currentLevel => 100;
+  // int get currentLevel => merit ~/ UserStats.meritPerLevel;
+  int get currentLevel => 100;
   int get nextLevel => currentLevel + 1;
   int get meritInCurrentLevel => merit % UserStats.meritPerLevel;
   double get levelProgress => (merit % UserStats.meritPerLevel) / UserStats.meritPerLevel.toDouble();
