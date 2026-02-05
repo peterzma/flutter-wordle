@@ -112,3 +112,4 @@ Latest release:
 * make colours easier to see
 * add indiciator of guest mode and give pop up for user to sign in to see stats
 * redo colours of majors
+* possibly add light mode?

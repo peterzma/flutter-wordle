@@ -28,7 +28,7 @@ class GameSetupHero extends StatelessWidget {
           style: AppFonts.displayLarge,
         ),
         context.autoText(
-          'GAME SETTINGS',
+          'MAJOR SETTINGS',
           style: AppFonts.labelLarge.copyWith(color: major.color),
         ),
       ],

@@ -51,7 +51,7 @@ class _UseCreditsState extends State<UseCredits> {
               borderRadius: BorderRadius.circular(20),
             ),
             child: Icon(
-              allMajorsUnlocked ? LucideIcons.sparkles : LucideIcons.lock,
+              allMajorsUnlocked ? LucideIcons.microscope : Icons.lock_outline,
               color: accentColor,
               size: context.r(60),
             ),
@@ -70,7 +70,7 @@ class _UseCreditsState extends State<UseCredits> {
           
           context.autoText(
             !allMajorsUnlocked 
-              ? "You must enroll in all available Majors before proceeding in ???"
+              ? "You must enroll in all available Majors before proceeding."
               : "Apply your extra credit toward academic research.",
             textAlign: TextAlign.center,
             style: AppFonts.labelMedium,
