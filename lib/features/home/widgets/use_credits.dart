@@ -60,7 +60,9 @@ class _UseCreditsState extends State<UseCredits> {
           SizedBox(height: context.r(8)),
           
           context.autoText(
-            "Bonus Research",
+            !allMajorsUnlocked 
+              ? "???"
+              : "Bonus Research",
             style: AppFonts.headline,
           ),
           
@@ -68,7 +70,7 @@ class _UseCreditsState extends State<UseCredits> {
           
           context.autoText(
             !allMajorsUnlocked 
-              ? "You must unlock all available Majors before beginning Bonus Research."
+              ? "You must enroll in all available Majors before proceeding in ???"
               : "Apply your extra credit toward academic research.",
             textAlign: TextAlign.center,
             style: AppFonts.labelMedium,
@@ -107,7 +109,7 @@ class _UseCreditsState extends State<UseCredits> {
           
           if (!allMajorsUnlocked) ...[
             context.autoText(
-              "Majors Unlocked: ${stats.unlockedIds.length}/${MajorsData.all.length}",
+              "Enrolled Majors: ${stats.unlockedIds.length}/${MajorsData.all.length}",
               style: AppFonts.labelMedium,
             ),
             SizedBox(height: context.r(16)),

@@ -83,7 +83,7 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
           SizedBox(height: context.r(8)),
       
           context.autoText(
-            canAfford ? "Enroll in ${widget.major.name}?" : "LOCKED",
+            canAfford ? "Enroll in ${widget.major.name}?" : "RESTRICTED",
             style: AppFonts.headline,
           ),
           SizedBox(height: context.r(16)),
@@ -91,7 +91,7 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
           context.autoText(
             canAfford 
               ? "Spend 1 Credit to unlock ${widget.major.name}?"
-              : "You don't have any credits to unlock ${widget.major.name}.",
+              : "You don't have any credits to enroll in ${widget.major.name}.",
             textAlign: TextAlign.center,
             style: AppFonts.labelMedium,
             maxLines: 2
