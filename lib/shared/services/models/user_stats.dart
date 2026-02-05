@@ -129,9 +129,12 @@ extension UserStatsRewards on UserStats {
 
   double get meritMultiplier {
     // Rank Bonus: +10% for every 10 levels
-    final double rankMultiplier = (currentLevel ~/ 10) * 0.10;
+
+    final int effectiveLevelForBonus = currentLevel.clamp(0, 100);
+
+    final double rankMultiplier = (effectiveLevelForBonus ~/ 10) * 0.10;
     
-    // Major Bonus: Using the logic defined above
+    // Major Bonus: 200%
     final double majorBonus = majorMultiplier;
     
     // Base is 1.0 (100%)
