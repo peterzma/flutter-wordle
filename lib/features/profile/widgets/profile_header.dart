@@ -1,6 +1,5 @@
 import 'package:uniordle/core/app_icons.dart';
 import 'package:uniordle/core/app_layout.dart';
-import 'package:uniordle/features/home/data/major_data.dart';
 import 'package:uniordle/shared/exports/profile_exports.dart';
 
 class ProfileHeader extends StatelessWidget {

@@ -1,4 +1,3 @@
-import 'package:uniordle/core/app_icons.dart';
 import 'package:uniordle/features/home/data/major_data.dart';
 import 'package:uniordle/shared/exports/game_exports.dart';
 import 'package:uniordle/shared/exports/help_exports.dart';
