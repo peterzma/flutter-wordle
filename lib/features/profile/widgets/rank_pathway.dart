@@ -139,8 +139,8 @@ class RankPathway extends StatelessWidget {
       children: [
         Icon(
           isLast && isAchieved
-              ? AppIcons.finalRank
-              : (isAchieved ? AppIcons.unlockedRank : (isNext ? AppIcons.nextRank : AppIcons.lockedRank)),
+              ? AppIcons.badgeOracle
+              : (isAchieved ? AppIcons.profileUnlock : (isNext ? AppIcons.profileNext : AppIcons.profileLock)),
           color: rowColor,
           size: 24,
         ),

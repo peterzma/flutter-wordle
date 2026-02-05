@@ -2,49 +2,57 @@ import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
 abstract class AppIcons {
-  // UI Menu
-  static const IconData leftArrow = LucideIcons.chevronLeft;
-  static const IconData rightArrow = LucideIcons.chevronRight;
-  static const IconData help = LucideIcons.helpCircle;
-  static const IconData settings = LucideIcons.settings;
-  
-  // Settings
-  static const IconData volume = Icons.volume_up_rounded;
-  static const IconData volumeOff = Icons.volume_off;
-  static const IconData linkedIn = Icons.person_search_rounded;
-  static const IconData gitHub = Icons.code_rounded;
-  static const IconData bugReport = Icons.bug_report_rounded;
-  static const IconData feedback = Icons.lightbulb_outline_rounded;
-  static const IconData about = Icons.info_outline_rounded;
-  static const IconData deleteData = Icons.delete_forever_rounded;
-  static const IconData inProgressDeleteData1 = Icons.warning_amber_rounded;
-  static const IconData inProgressDeleteData2 = Icons.error_outline_rounded; 
-  static const IconData settingsRightArrow = Icons.chevron_right;
-  static const IconData backgroundMusic = Icons.music_note;
-  static const IconData backgroundMusicMuted = Icons.music_off;
+  // Navigation & UI
+  static const IconData navBack = LucideIcons.chevronLeft;
+  static const IconData navForward = LucideIcons.chevronRight;
+  static const IconData navSettings = LucideIcons.settings;
+  static const IconData navHelp = LucideIcons.helpCircle;
 
   // Gameplay
-  static const IconData play = Icons.play_arrow_rounded;
-  static const IconData attempts = Icons.favorite;
-  static const IconData backspace = Icons.backspace;
+  static const IconData gameMerit = Icons.stars;
+  static const IconData gameCredit = Icons.payments;
+  static const IconData gamePlay = Icons.play_arrow_rounded;
   static const IconData gameWin = Icons.stars_rounded;
   static const IconData gameLoss = Icons.close_rounded;
-  static const IconData merits = Icons.stars;
-  static const IconData credits = Icons.payments;
-  static const IconData abandonGame = Icons.warning_amber_rounded;
+  static const IconData gameAttempts = Icons.favorite;
+  static const IconData gameAbandon = Icons.warning_amber_rounded;
+  static const IconData gameBackspace = Icons.backspace;
 
-  // Profile
-  static const IconData defaultProfile = Icons.account_circle;
-  static const IconData streak = Icons.local_fire_department;
-  static const IconData solved = Icons.check_circle_outline;
-  static const IconData unlockedRank = Icons.check_circle;
-  static const IconData nextRank = Icons.radio_button_checked;
-  static const IconData lockedRank = Icons.lock_outline;
-  static const IconData finalRank = LucideIcons.crown;
-  static const IconData thankYou = Icons.auto_stories;
-  static const IconData mastered = Icons.workspace_premium;
-  static const IconData completionist = LucideIcons.crown;
-  static const IconData ascension = LucideIcons.trophy;
+  // Progression & Badges
+  // Level 100
+  static const IconData badgeOracle = LucideIcons.crown; 
+  // The "I solved everything" reward
+  static const IconData badgeMastery = LucideIcons.trophy; 
+  static const IconData statStreak = Icons.local_fire_department;
+  static const IconData statSolved = Icons.check_circle_outline;
+  static const IconData statMastered = Icons.auto_stories;
+  static const IconData statBonus = Icons.workspace_premium;
+
+  // Profile UI
+  static const IconData profileDefault = Icons.account_circle;
+  static const IconData profileLock = Icons.lock_outline;
+  static const IconData profileUnlock = Icons.check_circle;
+  static const IconData profileNext = Icons.radio_button_checked;
+  
+  // System & Settings
+  static const IconData sysVolumeOn = Icons.volume_up_rounded;
+  static const IconData sysVolumeOff = Icons.volume_off;
+  static const IconData sysMusicOn = Icons.music_note;
+  static const IconData sysMusicOff = Icons.music_off;
+  static const IconData sysDelete = Icons.delete_forever_rounded;
+  static const IconData sysConfirmDelete = Icons.delete_forever_rounded;
+  static const IconData inProgressDeleteData1 = Icons.warning_amber_rounded;
+  static const IconData inProgressDeleteData2 = Icons.error_outline_rounded; 
+
+  // Links
+  static const IconData linkSource = Icons.code_rounded;
+  static const IconData linkProfile = Icons.person_search_rounded;
+  static const IconData linkBug = Icons.bug_report_rounded;
+  static const IconData linkIdea = Icons.lightbulb_outline_rounded;
+  static const IconData linkInfo = Icons.info_outline_rounded;
+  static const IconData linkAbout = Icons.info_outline_rounded;
+
+  // Settings
 }
 
 class IconMapper {

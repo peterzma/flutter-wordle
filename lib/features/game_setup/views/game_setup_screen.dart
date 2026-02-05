@@ -122,7 +122,7 @@ class _GameSetupScreenState extends State<GameSetupScreen> {
                 onPressed: _play,
                 color: widget.major.color,
                 isLoading: _isLoading,
-                icon: AppIcons.play,
+                icon: AppIcons.gamePlay,
                 width: double.infinity,
                 resizeLabel: false,
               ),

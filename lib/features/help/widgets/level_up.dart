@@ -29,7 +29,7 @@ class LevelUp extends StatelessWidget {
           child: Column(
             children: [
               InstructionRow(
-                leading: context.autoIcon(AppIcons.merits, color: AppColors.accent, size: 24),
+                leading: context.autoIcon(AppIcons.gameMerit, color: AppColors.accent, size: 24),
                 color: AppColors.surfaceVariant,
                 title: 'Earn Merits',
                 subtitle: 'EVERY CORRECT GUESS & LEVEL UP',
@@ -43,13 +43,13 @@ class LevelUp extends StatelessWidget {
               ),
               SizedBox(height: context.r(32)),
               InstructionRow(
-                leading: context.autoIcon(AppIcons.credits, color: AppColors.accent3, size: 24),
+                leading: context.autoIcon(AppIcons.gameCredit, color: AppColors.accent3, size: 24),
                 color: AppColors.surfaceVariant,
                 title: 'Ultimate Reward',
                 subtitle: 'MASTER EVERY MAJOR',
               ),
               // InstructionRow(
-              //   leading: context.autoIcon(AppIcons.credits, color: AppColors.accent3, size: 24),
+              //   leading: context.autoIcon(AppIcons.gameCredit, color: AppColors.accent3, size: 24),
               //   color: AppColors.surfaceVariant,
               //   title: 'Use Credits',
               //   subtitle: 'UNLOCK NEW MAJORS',

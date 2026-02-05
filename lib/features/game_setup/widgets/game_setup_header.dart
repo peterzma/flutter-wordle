@@ -13,7 +13,7 @@ class GameSetupHeader extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return BaseHeader(
       title: '',
-      leftIcon: AppIcons.leftArrow,
+      leftIcon: AppIcons.navBack,
       onLeftTap: () => Navigator.of(context).pop(),
       height: AppLayout.marginHeight,
     );

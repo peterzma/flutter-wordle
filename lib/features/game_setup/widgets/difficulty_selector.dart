@@ -27,7 +27,7 @@ class DifficultySelector extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
-              AppIcons.attempts,
+              AppIcons.gameAttempts,
               size: 12,
               color: major.color,
             ),
@@ -110,7 +110,7 @@ class DifficultySelector extends StatelessWidget {
                       ),
                       const SizedBox(width: 2),
                       Icon(
-                        AppIcons.attempts,
+                        AppIcons.gameAttempts,
                         size: 12,
                         color: active
                             ? major.color

@@ -55,7 +55,7 @@ class HomeHero extends StatelessWidget {
   Widget _buildBadge(Color statusColor) {
     return BaseBadge(
       label: "${stats.availableCredits} ${stats.availableCredits == 1 ? 'CREDIT' : 'CREDITS'}",
-      icon: AppIcons.credits,
+      icon: AppIcons.gameCredit,
       color: statusColor,
     );
   }

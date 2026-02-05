@@ -30,7 +30,7 @@ class KeyboardButton extends StatelessWidget {
         backgroundColor: AppColors.gameTiles,
         soundType: SoundType.delete,
         child: Icon(
-          AppIcons.backspace, 
+          AppIcons.gameBackspace, 
           color: Colors.white, 
           size: 22
         ),

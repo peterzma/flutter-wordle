@@ -43,7 +43,7 @@ class SettingsActionTile extends StatelessWidget {
                   Text(value!, style: AppFonts.labelSmall),
                 if (value != null) const SizedBox(width: 8),
                 Icon(
-                  AppIcons.settingsRightArrow,
+                  AppIcons.navForward,
                   color: AppColors.onSurfaceVariant,
                   size: 20,
                 ),

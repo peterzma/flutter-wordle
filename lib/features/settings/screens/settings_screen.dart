@@ -24,7 +24,7 @@ class SettingsScreen extends StatelessWidget {
           children: [
             BaseHeader(
               title: 'Settings',
-              leftIcon: AppIcons.leftArrow, 
+              leftIcon: AppIcons.navBack, 
               onLeftTap: onClose,
             ),
             Expanded(
@@ -36,8 +36,8 @@ class SettingsScreen extends StatelessWidget {
                     children: [
                       const SettingsHeader(title: 'PREFERENCES'),
                       SettingsSliderTile(
-                        icon: AppIcons.backgroundMusic,
-                        muteIcon: AppIcons.backgroundMusicMuted,
+                        icon: AppIcons.sysMusicOn,
+                        muteIcon: AppIcons.sysMusicOff,
                         label: 'Background Music',
                         value: state.musicVolume,
                         onChanged: controller.setMusicVolume,
@@ -45,8 +45,8 @@ class SettingsScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       SettingsSliderTile(
-                        icon: AppIcons.volume,
-                        muteIcon: AppIcons.volumeOff,
+                        icon: AppIcons.sysVolumeOn,
+                        muteIcon: AppIcons.sysVolumeOff,
                         label: 'Sound Effects',
                         value: state.soundVolume,
                         onChanged: controller.setSoundVolume,
@@ -54,13 +54,13 @@ class SettingsScreen extends StatelessWidget {
                       ),
                       const SettingsHeader(title: 'SOCIALS'),
                       SettingsActionTile(
-                        icon: AppIcons.linkedIn,
+                        icon: AppIcons.linkProfile,
                         label: 'LinkedIn (Let\'s connect!)',
                         onTap: () => LinkService.launch(LinkService.linkedin),
                       ),
                       const SizedBox(height: 8),
                       SettingsActionTile(
-                        icon: AppIcons.gitHub,
+                        icon: AppIcons.linkSource,
                         label: 'GitHub',
                         onTap: () => LinkService.launch(LinkService.github),
                       ),
@@ -68,19 +68,19 @@ class SettingsScreen extends StatelessWidget {
                   
                       const SettingsHeader(title: 'SUPPORT'),
                       SettingsActionTile(
-                        icon: AppIcons.bugReport,
+                        icon: AppIcons.linkBug,
                         label: 'Report a Bug',
                         onTap: () => LinkService.launch(LinkService.bugReport),
                       ),
                       const SizedBox(height: 8),
                       SettingsActionTile(
-                        icon: AppIcons.feedback,
+                        icon: AppIcons.linkIdea,
                         label: 'Feedback',
                         onTap: () => LinkService.launch(LinkService.feedback),
                       ),
                       const SizedBox(height: 8),
                       SettingsActionTile(
-                        icon: AppIcons.about,
+                        icon: AppIcons.linkAbout,
                         label: 'About Uniordle',
                         value: 'v1.0.0',
                         onTap: () {
@@ -93,7 +93,7 @@ class SettingsScreen extends StatelessWidget {
                       ),
                       const SettingsHeader(title: 'DANGER ZONE'),
                       SettingsActionTile(
-                        icon: AppIcons.deleteData,
+                        icon: AppIcons.sysDelete,
                         label: 'Clear All Data',
                         onTap: () => DataResetService.showDialog(context),
                       ),

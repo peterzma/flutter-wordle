@@ -18,7 +18,7 @@ class MainNavigationHeader extends StatelessWidget implements PreferredSizeWidge
   Widget build(BuildContext context) {
     return BaseHeader(
         title: title,
-        leftIcon: AppIcons.settings,
+        leftIcon: AppIcons.navSettings,
         onLeftTap: () {
           Navigator.of(context).pushNamed('/settings');
         },

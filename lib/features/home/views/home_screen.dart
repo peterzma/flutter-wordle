@@ -1,5 +1,5 @@
 import 'package:uniordle/features/home/data/major_data.dart';
-import 'package:uniordle/features/home/widgets/completed_game.dart';
+import 'package:uniordle/features/home/widgets/ascension.dart';
 import 'package:uniordle/features/home/widgets/unlock_major_dialog.dart';
 import 'package:uniordle/shared/buttons/pulsing_button_wrapper.dart';
 import 'package:uniordle/shared/exports/game_exports.dart';

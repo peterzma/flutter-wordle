@@ -38,7 +38,7 @@ class _AscensionState extends State<Ascension> {
             Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                context.autoIcon(AppIcons.ascension, size: 64, color: Colors.orange),
+                context.autoIcon(AppIcons.badgeMastery, size: 64, color: Colors.orange),
                 SizedBox(height: context.r(16)),
                 context.autoText("ASCENSION", style: AppFonts.headline),
                 SizedBox(height: context.r(12)),

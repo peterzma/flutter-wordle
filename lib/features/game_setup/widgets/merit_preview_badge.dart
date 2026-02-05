@@ -33,8 +33,8 @@ class MeritPreviewBadge extends StatelessWidget {
         IconData displayIcon;
         
         if (hasMasteredEverything) {
-          labelText = mobileMode ? ": " : " MERITS: ";
-          displayIcon = AppIcons.completionist; // Higher tier than trendingUp
+          labelText = mobileMode ? "ASCENSION: " : "ASCENSION MERITS: ";
+          displayIcon = AppIcons.badgeMastery; // Higher tier than trendingUp
         } else if (showReductionUI) {
           labelText = "REDUCED MERITS: ";
           displayIcon = LucideIcons.refreshCw;
@@ -43,7 +43,7 @@ class MeritPreviewBadge extends StatelessWidget {
           displayIcon = LucideIcons.trendingUp;
         } else {
           labelText = mobileMode ? "MERITS: " : "POTENTIAL MERITS: ";
-          displayIcon = AppIcons.merits;
+          displayIcon = AppIcons.gameMerit;
         }
 
         return Column(

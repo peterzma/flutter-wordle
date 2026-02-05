@@ -18,7 +18,7 @@ class GameHeader extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return BaseHeader(
       title: 'Uniordle',
-      leftIcon: AppIcons.leftArrow,
+      leftIcon: AppIcons.navBack,
       onLeftTap: onBack ?? () => Navigator.maybePop(context),
       actions: [
         // Mute Music Button
@@ -27,14 +27,14 @@ class GameHeader extends StatelessWidget implements PreferredSizeWidget {
           builder: (context, state, _) {
             final isMuted = state.musicVolume <= 0;
             return NavigationItem(
-              icon: isMuted ? AppIcons.backgroundMusicMuted : AppIcons.backgroundMusic,
+              icon: isMuted ? AppIcons.sysMusicOff : AppIcons.sysMusicOn,
               onTap: controller.toggleMusicMute,
               width: context.responsive(36, 48)
             );
           },
         ),
         NavigationItem(
-          icon: AppIcons.help,
+          icon: AppIcons.navHelp,
           onTap: () {
             showDialog(
               context: context,

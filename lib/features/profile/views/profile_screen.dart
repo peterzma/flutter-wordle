@@ -53,7 +53,7 @@ class ProfileScreen extends StatelessWidget {
                       child: SummaryCard(
                         label: "Rank Bonus",
                         value: "+$rBonus%",
-                        icon: AppIcons.mastered,
+                        icon: AppIcons.statBonus,
                         iconColor: rBonus > 0 ? Colors.orange : AppColors.onSurfaceVariant,
                       ),
                     ),
@@ -64,7 +64,7 @@ class ProfileScreen extends StatelessWidget {
                       child: SummaryCard(
                         label: "Total Merit",
                         value: '${stats.merit}',
-                        icon: AppIcons.merits,
+                        icon: AppIcons.gameMerit,
                         iconColor: AppColors.accent,
                       ),
                     ),
@@ -104,7 +104,7 @@ class ProfileScreen extends StatelessWidget {
                       child: SummaryCard(
                         label: "Mastered",
                         value: "${stats.masteredCount}/${MajorsData.all.length}",
-                        icon: AppIcons.thankYou,
+                        icon: AppIcons.statMastered,
                         iconColor: AppColors.accent3,
                       ),
                     ),

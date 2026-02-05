@@ -42,7 +42,7 @@ class MilestoneCelebrationDialog extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(
-            isRank ? LucideIcons.graduationCap : AppIcons.credits,
+            isRank ? LucideIcons.graduationCap : AppIcons.gameCredit,
             color: isRank ? AppColors.accent3 : AppColors.accent,
             size: context.r(80),
           ),

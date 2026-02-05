@@ -34,7 +34,7 @@ class _CommencementState extends State<Commencement> {
         Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            context.autoIcon(AppIcons.thankYou, size: 64, color: Colors.orange),
+            context.autoIcon(AppIcons.badgeOracle, size: 64, color: Colors.orange),
             SizedBox(height: context.r(16)),
             context.autoText("COMMENCEMENT", style: AppFonts.headline),
             SizedBox(height: context.r(12)),

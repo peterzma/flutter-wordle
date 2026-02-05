@@ -10,4 +10,4 @@ export '../../core/app_fonts.dart';
 export '../../core/app_colors.dart';
 export '../../features/profile/data/all_ranks.dart';
 export '../../features/profile/widgets/rank_pathway.dart';
-export '../../features/profile/widgets/thank_you_dialog.dart';
+export '../../features/profile/widgets/commencement.dart';

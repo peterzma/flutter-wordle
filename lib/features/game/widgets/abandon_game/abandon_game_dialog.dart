@@ -19,7 +19,7 @@ class AbandonGameDialog extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(
-            AppIcons.abandonGame,
+            AppIcons.gameAbandon,
             color: AppColors.accent2,
             size: context.r(64),
           ),

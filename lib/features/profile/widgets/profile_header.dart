@@ -46,7 +46,7 @@ class ProfileHeader extends StatelessWidget {
                       child: CircleAvatar(
                         radius: 40,
                         backgroundColor: AppColors.surfaceVariant,
-                        child: Icon(AppIcons.defaultProfile,
+                        child: Icon(AppIcons.profileDefault,
                             size: 48, color: AppColors.onSurfaceVariant),
                       ),
                     ),
@@ -72,14 +72,14 @@ class ProfileHeader extends StatelessWidget {
                 if (hasSummit)
                   _buildBadge(
                     context: context,
-                    icon: AppIcons.,
+                    icon: AppIcons.badgeOracle,
                     label: "+${(summitBonus * 100).toInt()}%",
                     color: Colors.amber,
                   ),
                 if (hasMastery)
                   _buildBadge(
                     context: context,
-                    icon: AppIcons.completionist,
+                    icon: AppIcons.badgeMastery,
                     label: "+${(masteryBonus * 100).toInt()}%",
                     color: Colors.orange,
                   ),

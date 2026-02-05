@@ -40,7 +40,7 @@ class ModeAnalyticsChart extends StatelessWidget {
                 ),
                 const SizedBox(width: 4),
                 Icon(
-                  AppIcons.attempts,
+                  AppIcons.gameAttempts,
                   size: 12,
                   color: AppColors.onSurfaceVariant,
                 ),

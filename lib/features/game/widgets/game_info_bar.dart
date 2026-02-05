@@ -32,7 +32,7 @@ class GameInfoBar extends StatelessWidget {
             Expanded(
               child: InfoTag(
                 label: _attemptsLabel, 
-                icon: context.autoIcon(AppIcons.attempts, size: 14, color: AppColors.onSurfaceVariant, reduction: 2),
+                icon: context.autoIcon(AppIcons.gameAttempts, size: 14, color: AppColors.onSurfaceVariant, reduction: 2),
               ),
             ),
           ],
