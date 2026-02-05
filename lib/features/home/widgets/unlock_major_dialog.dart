@@ -54,7 +54,7 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
 
     final String bonusText = isFirstEnrollment 
     ? "FIRST ENROLLMENT" 
-    : "PERMANENT +5% MERIT BONUS";
+    : "PERMANENT +5% MAJOR BONUS";
 
     final IconData bonusIcon = isFirstEnrollment 
         ? LucideIcons.bookOpen 

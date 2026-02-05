@@ -1,6 +1,7 @@
 import 'package:uniordle/core/app_icons.dart';
 import 'package:uniordle/features/home/widgets/use_credits.dart';
 import 'package:uniordle/shared/buttons/pulsing_button_wrapper.dart';
+import 'package:uniordle/shared/buttons/select_button_wrapper.dart';
 import 'package:uniordle/shared/exports/game_exports.dart';
 import 'package:uniordle/shared/layout/base_badge.dart';
 import 'package:uniordle/shared/layout/show_base_dialog.dart';
@@ -28,8 +29,8 @@ class HomeHero extends StatelessWidget {
           style: AppFonts.labelMedium,
         ),
         SizedBox(height: context.r(16)),
-        GestureDetector(
-          onTap: hasCredits ? () => _showUseCreditsDialog(context) : null,
+        SelectButtonWrapper(
+          onTap: () => _showUseCreditsDialog(context),
           child: hasCredits 
             ? PulsingButtonWrapper(
                 glowColor: statusColor,

@@ -45,7 +45,8 @@ class _UseCreditsState extends State<UseCredits> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            padding: const EdgeInsets.all(16),
+            width: context.responsive(60, 80),
+            height: context.responsive(60, 80),
             decoration: BoxDecoration(
               color: AppColors.surfaceVariant,
               borderRadius: BorderRadius.circular(20),
@@ -53,44 +54,47 @@ class _UseCreditsState extends State<UseCredits> {
             child: Icon(
               allMajorsUnlocked ? LucideIcons.sparkles : LucideIcons.lock,
               color: accentColor,
-              size: context.r(48),
+              size: context.r(60),
             ),
           ),
           
-          SizedBox(height: context.r(16)),
+          SizedBox(height: context.r(8)),
           
           context.autoText(
             "Bonus Research",
             style: AppFonts.headline,
           ),
           
-          SizedBox(height: context.r(12)),
+          SizedBox(height: context.r(16)),
           
           context.autoText(
             !allMajorsUnlocked 
               ? "You must unlock all available Majors before beginning Bonus Research."
-              : "Apply your extra credit toward permanent academic research to boost your Major Bonus.",
+              : "Apply your extra credit toward academic research.",
             textAlign: TextAlign.center,
             style: AppFonts.labelMedium,
-            maxLines: 3,
+            maxLines: 2,
           ),
 
-          SizedBox(height: context.r(24)),
+          SizedBox(height: context.r(16)),
           
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
               color: accentColor.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(32),
-              border: Border.all(color: accentColor.withValues(alpha: 0.2)),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(LucideIcons.trendingUp, size: 16, color: accentColor),
+                context.autoIcon(
+                  LucideIcons.trendingUp, 
+                  size: 16, 
+                  color: accentColor
+                ),
                 const SizedBox(width: 8),
                 context.autoText(
-                  "+5% PERMANENT BONUS",
+                  "PERMANENT +5% MAJOR BONUS",
                   style: AppFonts.labelSmall.copyWith(
                     color: accentColor,
                     fontWeight: FontWeight.bold,
@@ -100,21 +104,21 @@ class _UseCreditsState extends State<UseCredits> {
             ),
           ),
           
-          SizedBox(height: context.r(24)),
+          SizedBox(height: context.r(16)),
           
           if (!allMajorsUnlocked) ...[
             context.autoText(
               "Majors Unlocked: ${stats.unlockedIds.length}/${MajorsData.all.length}",
-              style: AppFonts.labelSmall.copyWith(color: AppColors.accent2),
+              style: AppFonts.labelMedium,
             ),
+            SizedBox(height: context.r(16)),
           ] else if (!canAfford) ...[
              context.autoText(
-               "Earn another credit at Level ${widget.nextLevel}",
-               style: AppFonts.labelSmall,
+               "(Credit available at Level ${widget.nextLevel})",
+               style: AppFonts.labelMedium,
              ),
+             SizedBox(height: context.r(16)),
           ],
-
-          SizedBox(height: context.r(24)),
 
           Row(
             children: [
@@ -124,7 +128,7 @@ class _UseCreditsState extends State<UseCredits> {
                   label: "BACK",
                 ),
               ),
-              SizedBox(width: context.r(12)),
+              SizedBox(width: context.r(16)),
               Expanded(
                 child: WiggleButtonWrapper(
                   key: wiggleKey,
