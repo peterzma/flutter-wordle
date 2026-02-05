@@ -85,10 +85,19 @@ extension UserStatsProgress on UserStats {
 
   String get academicTitle {
     const titles = [
-      "UNDERGRADUATE", "BACHELOR", "MASTER", "DOCTORATE", 
-      "PROFESSOR", "DEAN", "VICE CHANCELLOR", "CHANCELLOR",
-      "GRAND CHANCELLOR", "CHANCELLOR EMERITUS", "THE ORACLE",
+      "UNDERGRADUATE", // 0-9
+      "BACHELOR",      // 10-19
+      "MASTER",        // 20-29
+      "DOCTORATE",     // 30-39
+      "PROFESSOR",     // 40-49
+      "FELLOW",        // 50-59
+      "DEAN",          // 60-69
+      "PROVOST",       // 70-79
+      "RECTOR",        // 80-89
+      "CHANCELLOR",    // 90-99
+      "THE ORACLE",    // 100+
     ];
+
     int index = (currentLevel ~/ 10).clamp(0, titles.length - 1);
     return titles[index];
   }
@@ -223,7 +232,7 @@ extension UserStatsMastery on UserStats {
   List<String> get masteredMajorIds {
     // ==========================================
     // TEST MODE: Uncomment to Master All Majors
-    // return MajorsData.all.map((m) => m.id).toList();
+    return MajorsData.all.map((m) => m.id).toList();
     // ==========================================
 
     return MajorsData.all.where((major) {
