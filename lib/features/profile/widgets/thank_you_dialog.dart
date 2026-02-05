@@ -46,7 +46,7 @@ class _ThankYouDialogState extends State<ThankYouDialog> {
             ),
             SizedBox(height: context.r(32)),
             PrimaryButton(
-              label: 'The pleasure was mine',
+              label: 'I am ready',
               color: Colors.orange,
               onPressed: () => Navigator.pop(context),
             ),

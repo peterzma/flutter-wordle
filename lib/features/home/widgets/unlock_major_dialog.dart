@@ -136,11 +136,10 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
                   "(Credit available at Level ${widget.nextLevel})",
                   style: AppFonts.labelMedium,
                 ),
+                SizedBox(height: context.r(16)),
               ],
             ],
           ),
-      
-          SizedBox(height: context.r(32)),
       
           Row(
             children: [

@@ -1,4 +1,5 @@
 import 'package:uniordle/features/home/data/major_data.dart';
+import 'package:uniordle/features/home/widgets/completed_game.dart';
 import 'package:uniordle/features/home/widgets/unlock_major_dialog.dart';
 import 'package:uniordle/shared/exports/game_exports.dart';
 import 'package:uniordle/shared/exports/help_exports.dart';
@@ -45,6 +46,20 @@ Widget build(BuildContext context) {
                   unlockedIds: stats.unlockedIds,
                   onSubjectTap: (sub) => _onMajorTap(context, sub, stats),
                 ),
+
+                if (stats.masteredCount >= MajorsData.all.length) ...[
+                  SizedBox(height: context.r(32)),
+                  PrimaryButton(
+                    label: "The Oracle's Legacy",
+                    color: Colors.orange,
+                    onPressed: () {
+                      showBaseDialog(
+                        context: context,
+                        child: const CompletedGame(),
+                      );
+                    },
+                  ),
+                ],
               ],
             ),
           ),
