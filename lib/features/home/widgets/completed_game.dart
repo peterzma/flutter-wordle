@@ -65,6 +65,7 @@ class _CompletedGameState extends State<CompletedGame> {
                       context.autoText(
                         "$dynamicBonus PERMANENT MERIT",
                         style: AppFonts.headline.copyWith(color: Colors.amber, fontSize: 20),
+                        reduction: 8,
                       ),
                     ],
                   ),

@@ -61,6 +61,7 @@ class _ThankYouDialogState extends State<ThankYouDialog> {
                     context.autoText(
                       "+100% PERMANENT MERIT",
                       style: AppFonts.headline.copyWith(color: Colors.amber, fontSize: 20),
+                      reduction: 8,
                     ),
                   ],
                 ),

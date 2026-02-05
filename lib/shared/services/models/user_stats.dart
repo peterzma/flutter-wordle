@@ -107,14 +107,14 @@ extension UserStatsProgress on UserStats {
     return (oldMerit ~/ UserStats.meritPerLevel, (oldMerit % UserStats.meritPerLevel) / UserStats.meritPerLevel.toDouble());
   }
 
+  int get effectiveRank => (currentLevel ~/ 10).clamp(0, 10);
+
   int get standardPenalty {
-    int rank = currentLevel ~/ 10;
-    return (rank * 5); 
+    return (effectiveRank * 5); 
   }
 
   int get activePenalty {
-    int rank = currentLevel ~/ 10;
-    return (rank * 10);
+    return (effectiveRank * 10);
   }
 }
 
