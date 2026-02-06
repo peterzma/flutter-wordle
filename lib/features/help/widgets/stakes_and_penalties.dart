@@ -36,7 +36,7 @@ class StakesAndPenalties extends StatelessWidget {
               ),
               SizedBox(height: context.r(64)),
               InstructionRow(
-                leading: context.autoIcon(AppIcons.statAbandonCost, color: Colors.orange, size: 24),
+                leading: context.autoIcon(AppIcons.statAbandonCost, color: AppColors.accent2, size: 24),
                 color: AppColors.surfaceVariant,
                 title: 'Ghosting Penalty',
                 subtitle: 'QUITTING EARLY COSTS EXTRA',

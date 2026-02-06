@@ -24,10 +24,10 @@ enum GameGrade {
   Color get color {
     switch (this) {
       case GameGrade.fail: return AppColors.accent2;
-      case GameGrade.highDistinction: return AppColors.correctColor;
-      case GameGrade.distinction: return AppColors.accent;
-      case GameGrade.credit: return Colors.orange;
-      case GameGrade.pass: return Colors.blueGrey;
+      case GameGrade.highDistinction: return AppColors.accent4;
+      case GameGrade.distinction: return AppColors.accent3;
+      case GameGrade.credit: return AppColors.accent;
+      case GameGrade.pass: return Colors.grey;
     }
   }
 }

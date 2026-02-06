@@ -65,7 +65,7 @@ class RankPathway extends StatelessWidget {
                         width: 2,
                         decoration: BoxDecoration(
                           color: isPathwayComplete
-                              ? Colors.orange
+                              ? AppColors.accent4
                               : (isAchieved 
                                   ? AppColors.accent 
                                   : AppColors.onSurface),
@@ -85,10 +85,10 @@ class RankPathway extends StatelessWidget {
             child: ConstrainedBox(
               constraints: BoxConstraints(maxWidth: AppLayout.contentWidth(context)),
               child: PulsingButtonWrapper(
-                glowColor: Colors.orange,
+                glowColor: AppColors.accent3,
                 child: PrimaryButton(
                   label: 'A Vision from the Beyond',
-                  color: Colors.orange,
+                  color: AppColors.accent3,
                   onPressed: () {
                     showBaseDialog(
                       context: context,
@@ -120,7 +120,7 @@ class RankPathway extends StatelessWidget {
     // 4. Otherwise -> Grey (Outline)
 
     final Color rowColor = isPathwayComplete
-        ? Colors.orange
+        ? AppColors.accent4
         : (isAchieved 
             ? AppColors.accent 
             : (isNext ? Colors.white : AppColors.onSurfaceVariant));

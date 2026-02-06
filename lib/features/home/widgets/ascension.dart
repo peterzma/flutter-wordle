@@ -38,7 +38,7 @@ class _AscensionState extends State<Ascension> {
             Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                context.autoIcon(AppIcons.badgeMastery, size: 64, color: Colors.orange),
+                context.autoIcon(AppIcons.badgeMastery, size: 64, color: AppColors.accent4),
                 SizedBox(height: context.r(16)),
                 context.autoText("ASCENSION", style: AppFonts.headline),
                 SizedBox(height: context.r(12)),
@@ -52,19 +52,19 @@ class _AscensionState extends State<Ascension> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(
-                    color: Colors.amber.withValues(alpha: 0.1),
+                    color: AppColors.accent4.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.amber.withValues(alpha: 0.3)),
+                    border: Border.all(color: AppColors.accent4.withValues(alpha: 0.3)),
                   ),
                   child: Column(
                     children: [
                       context.autoText(
                         "THE ORACLE'S LEGACY",
-                        style: AppFonts.labelSmall.copyWith(color: Colors.amber, fontWeight: FontWeight.bold),
+                        style: AppFonts.labelSmall.copyWith(color: AppColors.accent4, fontWeight: FontWeight.bold),
                       ),
                       context.autoText(
                         "$dynamicBonus PERMANENT MERIT",
-                        style: AppFonts.headline.copyWith(color: Colors.amber, fontSize: 20),
+                        style: AppFonts.headline.copyWith(color: AppColors.accent4, fontSize: 20),
                         reduction: 8,
                       ),
                     ],
@@ -74,7 +74,7 @@ class _AscensionState extends State<Ascension> {
                 SizedBox(height: context.r(32)),
                 PrimaryButton(
                   label: 'So it is written',
-                  color: Colors.orange,
+                  color: AppColors.accent4,
                   onPressed: () => Navigator.pop(context),
                 ),
               ],

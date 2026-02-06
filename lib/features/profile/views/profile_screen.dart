@@ -54,7 +54,7 @@ class ProfileScreen extends StatelessWidget {
                         label: "Rank Bonus",
                         value: "+$rBonus%",
                         icon: AppIcons.statRank,
-                        iconColor: rBonus > 0 ? Colors.orange : AppColors.onSurfaceVariant,
+                        iconColor: rBonus > 0 ? AppColors.accent4 : AppColors.onSurfaceVariant,
                       ),
                     ),
 
