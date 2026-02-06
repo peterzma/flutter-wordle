@@ -65,10 +65,13 @@ class ModeAnalyticsChart extends StatelessWidget {
                 style: AppFonts.labelMedium
               ),
               SizedBox(width: context.r(4)),
-              Icon(
-                AppIcons.gameLetters,
-                size: 12,
-                color: AppColors.onSurfaceVariant,
+              Transform.translate(
+                offset: const Offset(0, 1),
+                child: Icon(
+                  AppIcons.gameLetters,
+                  size: 12,
+                  color: AppColors.onSurfaceVariant,
+                ),
               ),
             ],
           ),

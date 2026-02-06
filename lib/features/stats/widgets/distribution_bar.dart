@@ -22,7 +22,7 @@ class DistributionBar extends StatelessWidget {
       child: Row(
         children: [
           SizedBox(
-            width: 18,
+            width: 20,
             child: Text(
               label,
               style: AppFonts.labelMedium,
