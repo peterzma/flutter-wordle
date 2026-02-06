@@ -76,7 +76,7 @@ class ProfileScreen extends StatelessWidget {
                         label: "Abandon Cost",
                         value: "-${stats.activePenalty}",
                         icon: AppIcons.statAbandonCost,
-                        iconColor: stats.activePenalty > 0 ? AppColors.accent2 : AppColors.onSurfaceVariant,
+                        iconColor: stats.activePenalty > 0 ? AppColors.onSurface : AppColors.onSurfaceVariant,
                       ),
                     ),      
                   ],
@@ -113,7 +113,7 @@ class ProfileScreen extends StatelessWidget {
 
                     Expanded(
                       child: SummaryCard(
-                        label: "Loss Penalty",
+                        label: "Fail Penalty",
                         value: "-${stats.standardPenalty}",
                         icon: AppIcons.statLossPenalty,
                         iconColor: stats.standardPenalty > 0 ? AppColors.accent2 : AppColors.onSurfaceVariant,

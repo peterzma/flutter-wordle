@@ -22,7 +22,7 @@ class StakesAndPenalties extends StatelessWidget {
           ),
         ),
 
-        SizedBox(height: 32),
+        SizedBox(height: context.r(32)),
         
         Padding(
           padding: EdgeInsets.symmetric(horizontal: context.r(32)),
@@ -31,15 +31,22 @@ class StakesAndPenalties extends StatelessWidget {
               InstructionRow(
                 leading: context.autoIcon(AppIcons.statLossPenalty, color: AppColors.accent2, size: 24),
                 color: AppColors.surfaceVariant,
-                title: 'Tough Break',
+                title: 'Fail Penalty',
                 subtitle: 'LOSE MERITS ON FAILING',
               ),
-              SizedBox(height: context.r(64)),
+              SizedBox(height: context.r(32)),
               InstructionRow(
-                leading: context.autoIcon(AppIcons.statAbandonCost, color: AppColors.accent2, size: 24),
+                leading: context.autoIcon(AppIcons.statAbandonCost, color: AppColors.onSurface, size: 24),
                 color: AppColors.surfaceVariant,
-                title: 'Ghosting Penalty',
+                title: 'Abandon Cost',
                 subtitle: 'QUITTING EARLY COSTS EXTRA',
+              ),
+              SizedBox(height: context.r(32)),
+              InstructionRow(
+                leading: context.autoIcon(AppIcons.gameHistory, color: AppColors.accent, size: 24),
+                color: AppColors.surfaceVariant,
+                title: 'Transcript',
+                subtitle: 'GRADES ARE BASED ON ATTEMPTS',
               ),
             ]
           ),
