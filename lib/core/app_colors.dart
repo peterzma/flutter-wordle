@@ -17,9 +17,9 @@ abstract class AppColors {
   static const Color onSurfaceVariant = Color(0xFF94A3B8); // Medium emphasis / secondary text / inactive
   static const Color outline = Color(0xFF334155);
 
+  // UI Accents
   static const Color accent = Color(0xFF3B82F6); // Active icons/selection / Basic
   static const Color accent2 = Color(0xFFEF4444); // Negative / Loss etc
-  static const Color accent3 = Color(0xFFFFD740); // Good, Merits / Positive
-  static const Color accent4 = Color(0xFFF97316); // Very good
-
+  static const Color accent3 = Color(0xFFF4D35E); // Good, Merits / Positive
+  static const Color accent4 = Color(0xFFF18F01); // Very good
 }

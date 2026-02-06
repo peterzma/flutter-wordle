@@ -85,10 +85,10 @@ class RankPathway extends StatelessWidget {
             child: ConstrainedBox(
               constraints: BoxConstraints(maxWidth: AppLayout.contentWidth(context)),
               child: PulsingButtonWrapper(
-                glowColor: AppColors.accent3,
+                glowColor: AppColors.accent4,
                 child: PrimaryButton(
                   label: 'A Vision from the Beyond',
-                  color: AppColors.accent3,
+                  color: AppColors.accent4,
                   onPressed: () {
                     showBaseDialog(
                       context: context,
