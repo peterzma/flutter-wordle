@@ -105,10 +105,9 @@ Latest release:
 * check volumes are equalised
 * finetune sounds by cutting off silence
 * rename stuff to be university themed
-* make colours easier to see
+* make colours easier to see, colours arent individually used, too many shared
 * add indiciator of guest mode and give pop up for user to sign in to see stats
 * redo colours of majors
 * possibly add light mode?
-* ORGANISE ICONS (icons arent consistent, so look for icons with search)
 * stat for which majors played often?
 * clean export files (move extensions from usr stats into its own file)
