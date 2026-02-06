@@ -59,7 +59,7 @@ class ProfileHeader extends StatelessWidget {
             context.autoText(
               academicTitle,
               style: AppFonts.labelLarge.copyWith(
-                color: academicTitle == "THE ORACLE" ? AppColors.accent3 : AppColors.accent,
+                color: academicTitle == "THE ORACLE" ? AppColors.accent4 : AppColors.accent,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -74,14 +74,14 @@ class ProfileHeader extends StatelessWidget {
                     context: context,
                     icon: AppIcons.badgeOracle,
                     label: "+${(summitBonus * 100).toInt()}%",
-                    color: AppColors.accent3,
+                    color: AppColors.accent4,
                   ),
                 if (hasMastery)
                   _buildBadge(
                     context: context,
                     icon: AppIcons.badgeMastery,
                     label: "+${(masteryBonus * 100).toInt()}%",
-                    color: AppColors.accent4,
+                    color: AppColors.accent3,
                   ),
               ],
             ),

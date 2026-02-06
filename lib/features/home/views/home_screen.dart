@@ -51,10 +51,10 @@ Widget build(BuildContext context) {
                 if (stats.masteredCount >= MajorsData.all.length) ...[
                   SizedBox(height: context.r(32)),
                   PulsingButtonWrapper(
-                    glowColor: AppColors.accent4,
+                    glowColor: AppColors.accent3,
                     child: PrimaryButton(
                       label: "The Oracle's Legacy",
-                      color: AppColors.accent4,
+                      color: AppColors.accent3,
                       onPressed: () {
                         showBaseDialog(
                           context: context,
