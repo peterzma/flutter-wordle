@@ -1,8 +1,9 @@
 import 'package:uniordle/shared/exports/game_exports.dart';
+import 'dart:math';
 
-import '../data/possible_word/possible_5_letters.dart';
-import '../data/possible_word/possible_6_letters.dart';
-import '../data/possible_word/possible_7_letters.dart';
+import 'package:uniordle/features/game/data/possible_word/possible_5_letters.dart';
+import 'package:uniordle/features/game/data/possible_word/possible_6_letters.dart';
+import 'package:uniordle/features/game/data/possible_word/possible_7_letters.dart';
 
 class WordRepository {
   static List<String> getWordsForLength(int length) {
@@ -29,9 +30,10 @@ class WordRepository {
     required int length,
     required List<String> userSolvedWords,
   }) {
-    final Map<int, List<String>>? majorMap = categorizedWords[majorId.toLowerCase()];
+    final Map<int, List<String>>? majorMap =
+        categorizedWords[majorId.toLowerCase()];
     final List<String> allWords = majorMap?[length] ?? [];
-    
+
     if (allWords.isEmpty) return "ERROR";
 
     final List<String> unsolved = allWords
@@ -39,13 +41,13 @@ class WordRepository {
         .toList();
 
     final Random random = Random();
-    
-    final bool wantNew = random.nextDouble() < 0.8; 
+
+    final bool wantNew = random.nextDouble() < 0.8;
 
     if (wantNew && unsolved.isNotEmpty) {
       return unsolved[random.nextInt(unsolved.length)];
-    } 
-    
+    }
+
     if (userSolvedWords.isNotEmpty) {
       final List<String> reviewPool = allWords
           .where((w) => userSolvedWords.contains(w.toUpperCase()))

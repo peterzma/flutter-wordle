@@ -1,4 +1,6 @@
 import 'package:uniordle/shared/exports/core_exports.dart';
+import 'dart:math';
+import 'dart:convert';
 
 class StatsManager {
   static final StatsManager _instance = StatsManager._internal();

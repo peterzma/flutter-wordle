@@ -1,4 +1,5 @@
 import 'package:uniordle/shared/exports/game_exports.dart';
+import 'dart:async';
 
 class InvalidWordDialog {
   static void show(BuildContext context) {
