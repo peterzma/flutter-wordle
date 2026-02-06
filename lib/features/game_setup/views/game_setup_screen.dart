@@ -123,7 +123,6 @@ class _GameSetupScreenState extends State<GameSetupScreen> {
                 color: widget.major.color,
                 isLoading: _isLoading,
                 icon: AppIcons.gamePlay,
-                width: double.infinity,
                 resizeLabel: false,
               ),
               SizedBox(height: context.v(16, 32)),

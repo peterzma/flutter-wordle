@@ -110,3 +110,4 @@ Latest release:
 * redo colours of majors
 * possibly add light mode?
 * ORGANISE ICONS (icons arent consistent, so look for icons with search)
+* clean export files (move extensions from usr stats into its own file)
