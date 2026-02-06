@@ -29,8 +29,8 @@ class GameSetupHero extends StatelessWidget {
               rounding: 32,
               shadows: isFullyMastered ? [
                 Shadow(
-                  color: major.color.withValues(alpha: 0.1),
-                  blurRadius: 10,
+                  color: major.color,
+                  blurRadius: 20,
                 ),
               ] : null,
             ),
