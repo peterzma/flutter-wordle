@@ -1,5 +1,4 @@
 import 'package:uniordle/shared/exports/home_exports.dart';
-import 'package:uniordle/core/app_icons.dart';
 
 class MajorIcon extends StatelessWidget {
   final IconData icon;

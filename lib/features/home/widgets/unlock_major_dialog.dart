@@ -1,4 +1,3 @@
-import 'package:uniordle/core/app_icons.dart';
 import 'package:uniordle/features/home/widgets/unlocked_major_dialog.dart';
 import 'package:uniordle/shared/exports/game_exports.dart';
 import 'package:uniordle/shared/exports/help_exports.dart';
