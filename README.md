@@ -104,5 +104,4 @@ Latest release:
 * add indiciator of guest mode and give pop up for user to sign in to see stats
 * possibly add light mode?
 * stat for which majors played often? what grades are received most often?
-* clean export files (move extensions from user stats into its own file)
 * make variables consistent for future readability
