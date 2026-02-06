@@ -7,6 +7,7 @@ abstract class AppIcons {
   static const IconData navForward = LucideIcons.chevronRight;
   static const IconData navSettings = LucideIcons.settings;
   static const IconData navHelp = LucideIcons.helpCircle;
+  static const IconData navClose = LucideIcons.x;
 
   // Gameplay
   static const IconData gameMerit = Icons.stars;
@@ -15,11 +16,13 @@ abstract class AppIcons {
   static const IconData gameWin = Icons.stars_rounded;
   static const IconData gameLoss = Icons.close_rounded;
   static const IconData gameAttempts = Icons.favorite;
+  static const IconData gameLetters = Icons.text_fields_rounded;
   static const IconData gameAbandon = Icons.warning_amber_rounded;
   static const IconData gameBackspace = Icons.backspace;
   static const IconData gameRepeat = Icons.refresh;
   static const IconData gameMeritRange = LucideIcons.arrowRight;
   static const IconData gameBoostedMerit = LucideIcons.trendingUp;
+  static const IconData gameHistory = LucideIcons.scrollText;
 
   // Progression & Badges
   // Level 100
@@ -31,6 +34,7 @@ abstract class AppIcons {
   static const IconData statSolved = Icons.check_circle_outline;
   static const IconData statMastered = Icons.auto_stories;
   static const IconData statRank = Icons.workspace_premium;
+  static const IconData statMajor = LucideIcons.graduationCap;
   static const IconData statLossPenalty = LucideIcons.trendingDown;
   static const IconData statAbandonCost = LucideIcons.ghost;
   static const IconData firstEnrollment = LucideIcons.bookOpen;

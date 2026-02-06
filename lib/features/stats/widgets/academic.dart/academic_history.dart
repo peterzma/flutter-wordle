@@ -1,3 +1,4 @@
+import 'package:uniordle/core/app_icons.dart';
 import 'package:uniordle/features/stats/widgets/academic.dart/history_item_card.dart';
 import 'package:uniordle/features/stats/widgets/academic.dart/academic_transcript_content.dart';
 import 'package:uniordle/shared/buttons/simple_button.dart';
@@ -51,7 +52,7 @@ class AcademicHistory extends StatelessWidget {
       ),
       child: Column(
         children: [
-          context.autoIcon(LucideIcons.scrollText, color: AppColors.onSurfaceVariant, size: 32),
+          context.autoIcon(AppIcons.gameHistory, color: AppColors.onSurfaceVariant, size: 32),
           // SizedBox(height: 8),
           context.autoText(
             "No academic records found.\nComplete a game to start your transcript.",

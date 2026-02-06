@@ -93,7 +93,7 @@ class ProfileScreen extends StatelessWidget {
                       child: SummaryCard(
                         label: "Major Bonus",
                         value: "+$dBonus%",
-                        icon: LucideIcons.graduationCap,
+                        icon: AppIcons.statMajor,
                         iconColor: dBonus > 0 ? AppColors.correctColor : AppColors.onSurfaceVariant,
                       ),
                     ),

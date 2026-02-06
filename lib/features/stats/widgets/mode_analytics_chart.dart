@@ -15,17 +15,17 @@ class ModeAnalyticsChart extends StatelessWidget {
 
     return Column(
       children: [
-        _buildHeaderRow(),
-        const SizedBox(height: 8),
+        _buildHeaderRow(context),
+        SizedBox(height: context.r(8)),
         ...[5, 6, 7].map((len) => _buildDataRow(context, len, maxUsage)),
       ],
     );
   }
 
-  Widget _buildHeaderRow() {
+  Widget _buildHeaderRow(BuildContext context) {
       return Row(
         children: [
-          const SizedBox(width: 40),
+          const SizedBox(width: 24),
           ...[8, 7, 6, 5].map((tries) => Expanded(
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -38,7 +38,7 @@ class ModeAnalyticsChart extends StatelessWidget {
                     color: AppColors.onSurfaceVariant
                   ),
                 ),
-                const SizedBox(width: 4),
+                SizedBox(width: context.r(4)),
                 Icon(
                   AppIcons.gameAttempts,
                   size: 12,
@@ -56,7 +56,7 @@ class ModeAnalyticsChart extends StatelessWidget {
       children: [
         // Label Column (Word Length)
         SizedBox(
-          width: 40, 
+          width: 24, 
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -64,9 +64,9 @@ class ModeAnalyticsChart extends StatelessWidget {
                 "$length", 
                 style: AppFonts.labelMedium
               ),
-              const SizedBox(width: 4),
+              SizedBox(width: context.r(4)),
               Icon(
-                Icons.text_fields_rounded,
+                AppIcons.gameLetters,
                 size: 12,
                 color: AppColors.onSurfaceVariant,
               ),
@@ -85,7 +85,7 @@ class ModeAnalyticsChart extends StatelessWidget {
           
           return Expanded(
             child: Container(
-              height: 30,
+              height: 32,
               margin: EdgeInsets.all(context.r(4)),
               decoration: BoxDecoration(
                 color: cellColor,

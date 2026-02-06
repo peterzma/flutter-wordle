@@ -22,17 +22,17 @@ class DistributionBar extends StatelessWidget {
       child: Row(
         children: [
           SizedBox(
-            width: 16,
+            width: 18,
             child: Text(
               label,
               style: AppFonts.labelMedium,
             ),
           ),
-          const SizedBox(width: 8),
+          SizedBox(width: context.r(8)),
           Expanded(
             child: LayoutBuilder(
               builder: (context, constraints) {
-                final barWidth = (constraints.maxWidth * progress).clamp(25.0, constraints.maxWidth);
+                final barWidth = (constraints.maxWidth * progress).clamp(24.0, constraints.maxWidth);
 
                 return Stack(
                   children: [
@@ -50,7 +50,7 @@ class DistributionBar extends StatelessWidget {
                       height: 24,
                       width: barWidth,
                       alignment: count == 0 ? Alignment.center : Alignment.centerRight,
-                      padding: EdgeInsets.only(right: count == 0 ? 0 : 8),
+                      padding: EdgeInsets.only(right: count == 0 ? 0 : 12),
                       decoration: BoxDecoration(
                         color: isHighest ? AppColors.accent : AppColors.onSurfaceVariant,
                         borderRadius: BorderRadius.circular(64),
