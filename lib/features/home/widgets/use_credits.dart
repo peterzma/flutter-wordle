@@ -63,7 +63,7 @@ class _UseCreditsState extends State<UseCredits> {
           context.autoText(
             !allMajorsUnlocked 
               ? "???"
-              : "Bonus Research",
+              : "Extra Research",
             style: AppFonts.headline,
           ),
           
@@ -72,7 +72,7 @@ class _UseCreditsState extends State<UseCredits> {
           context.autoText(
             !allMajorsUnlocked 
               ? "You must enroll in all available Majors before proceeding."
-              : "Apply your extra credit toward academic research.",
+              : "Apply your extra credit towards completing more research.",
             textAlign: TextAlign.center,
             style: AppFonts.labelMedium,
             maxLines: 2,

@@ -98,7 +98,7 @@ class _LevelInfo extends StatelessWidget {
       children: [
         context.autoText(
           label,
-          style: AppFonts.labelSmall.copyWith(color: Colors.grey),
+          style: AppFonts.labelSmall.copyWith(color: AppColors.onSurfaceVariant),
         ),
         context.autoText(
           level,

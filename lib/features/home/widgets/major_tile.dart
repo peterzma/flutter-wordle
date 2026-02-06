@@ -72,7 +72,7 @@ class _MajorTileState extends State<MajorTile> {
                           ? AppIcons.profileLock
                           : sub.icon, 
                       color: widget.isLocked 
-                          ? Colors.grey 
+                          ? AppColors.onSurfaceVariant 
                           : displayColor,
                       shadows: isFullyMastered ? [
                         Shadow(

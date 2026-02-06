@@ -15,9 +15,9 @@ enum GameGrade {
 
     final double weight = (maxAttempts - attempts) / (maxAttempts - 1).toDouble();
 
-    if (weight >= 0.85) return GameGrade.highDistinction;
-    if (weight >= 0.70) return GameGrade.distinction;
-    if (weight >= 0.50) return GameGrade.credit;
+    if (weight >= 0.80) return GameGrade.highDistinction;
+    if (weight >= 0.60) return GameGrade.distinction;
+    if (weight >= 0.40) return GameGrade.credit;
     return GameGrade.pass;
   }
 
@@ -27,7 +27,7 @@ enum GameGrade {
       case GameGrade.highDistinction: return AppColors.accent4;
       case GameGrade.distinction: return AppColors.accent3;
       case GameGrade.credit: return AppColors.accent;
-      case GameGrade.pass: return Colors.grey;
+      case GameGrade.pass: return AppColors.onSurfaceVariant;
     }
   }
 }

@@ -101,9 +101,7 @@ Latest release:
 * test with emulators
 * check volumes are equalised
 * finetune sounds by cutting off silence
-* make colours easier to see, colours arent individually used, too many shared
 * add indiciator of guest mode and give pop up for user to sign in to see stats
-* redo colours of majors
 * possibly add light mode?
 * stat for which majors played often?
 * clean export files (move extensions from user stats into its own file)
