@@ -16,7 +16,7 @@ class GameSetupHero extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         MajorIcon(
-          iconName: major.icon,
+          icon: major.icon,
           color: major.color,
           dimension: 80,
           iconSize: 48,

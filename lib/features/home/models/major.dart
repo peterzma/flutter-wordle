@@ -3,7 +3,7 @@ import 'package:uniordle/shared/exports/home_exports.dart';
 class Major {
   final String id;
   final String name;
-  final String icon;
+  final IconData icon;
   final String tag;
   final Color color;
   final bool isLocked;
@@ -24,7 +24,7 @@ class Major {
     return Major(
       id: 'cs_101',
       name: 'Computer Science',
-      icon: 'laptop',
+      icon: Icons.laptop,
       tag: 'STEM',
       color: const Color(0xFF2196F3),
       totalWords: 150,

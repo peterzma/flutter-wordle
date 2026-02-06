@@ -1,3 +1,4 @@
+import 'package:uniordle/core/app_icons.dart';
 import 'package:uniordle/shared/exports/game_exports.dart';
 import 'package:uniordle/shared/exports/home_exports.dart';
 import 'package:uniordle/shared/buttons/select_button_wrapper.dart';
@@ -60,9 +61,9 @@ class _MajorTileState extends State<MajorTile> {
                 child: Row(
                   children: [
                     MajorIcon(
-                      iconName: widget.isLocked 
-                          ? 'lock' 
-                          : (isFullyMastered ? 'badgeMastery' : sub.icon), 
+                      icon: widget.isLocked 
+                          ? AppIcons.profileLock
+                          : (isFullyMastered ? AppIcons.badgeMastery : sub.icon), 
                       color: widget.isLocked 
                           ? Colors.grey 
                           : displayColor,

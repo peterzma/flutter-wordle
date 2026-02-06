@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uniordle/features/game/data/word_lists/agriculture_words.dart';
-import 'package:uniordle/features/game/data/word_lists/astronomy_words.dart';
-import 'package:uniordle/features/game/data/word_lists/history_words.dart';
-import 'package:uniordle/features/game/data/word_lists/journalism_words.dart';
-import 'package:uniordle/features/game/data/word_lists/nursing_words.dart';
-import 'package:uniordle/features/game/data/word_lists/philosophy_words.dart';
+import 'package:uniordle/core/app_icons.dart';
 import 'package:uniordle/features/home/models/major.dart';
 import 'package:uniordle/shared/exports/word_lists_exports.dart';
 import 'package:uniordle/features/game/data/word_list.dart';
@@ -48,7 +43,7 @@ class MajorsData {
     Major(
       id: 'engineering',
       name: 'Engineering',
-      icon: 'settings',
+      icon: AppIcons.majorEngineering,
       totalWords: getWordCount(engineeringWords),
       tag: '${getWordCount(engineeringWords)} WORDS', 
       color: Colors.blue,
@@ -56,7 +51,7 @@ class MajorsData {
     Major(
       id: 'cs',
       name: 'CS',
-      icon: 'code',
+      icon: AppIcons.majorCS,
       totalWords: getWordCount(csWords),
       tag: '${getWordCount(csWords)} WORDS',
       color: Colors.red,
@@ -64,7 +59,7 @@ class MajorsData {
     Major(
       id: 'medicine',
       name: 'Medicine',
-      icon: 'heart_pulse',
+      icon: AppIcons.majorMedicine,
       totalWords: getWordCount(medicineWords),
       tag: '${getWordCount(medicineWords)} WORDS',
       color: Colors.pinkAccent,
@@ -72,7 +67,7 @@ class MajorsData {
     Major(
       id: 'law',
       name: 'Law',
-      icon: 'scale',
+      icon: AppIcons.majorLaw,
       totalWords: getWordCount(lawWords),
       tag: '${getWordCount(lawWords)} WORDS',
       color: Colors.orangeAccent,
@@ -80,7 +75,7 @@ class MajorsData {
     Major(
       id: 'psychology',
       name: 'Psychology',
-      icon: 'brain',
+      icon: AppIcons.majorPsychology,
       totalWords: getWordCount(psychologyWords),
       tag: '${getWordCount(psychologyWords)} WORDS',
       color: Colors.purpleAccent,
@@ -88,7 +83,7 @@ class MajorsData {
     Major(
       id: 'arts',
       name: 'Arts',
-      icon: 'palette',
+      icon: AppIcons.majorArts,
       totalWords: getWordCount(artsWords),
       tag: '${getWordCount(artsWords)} WORDS',
       color: Colors.deepPurpleAccent,
@@ -96,7 +91,7 @@ class MajorsData {
     Major(
       id: 'business',
       name: 'Business',
-      icon: 'briefcase',
+      icon: AppIcons.majorBusiness,
       totalWords: getWordCount(businessWords),
       tag: '${getWordCount(businessWords)} WORDS',
       color: Colors.greenAccent,
@@ -104,7 +99,7 @@ class MajorsData {
     Major(
       id: 'humanities',
       name: 'Humanities',
-      icon: 'book_open',
+      icon: AppIcons.majorHumanities,
       totalWords: getWordCount(humanitiesWords),
       tag: '${getWordCount(humanitiesWords)} WORDS',
       color: Colors.amber,
@@ -112,7 +107,7 @@ class MajorsData {
     Major(
       id: 'education',
       name: 'Education',
-      icon: 'graduation_cap',
+      icon: AppIcons.majorEducation,
       totalWords: getWordCount(educationWords),
       tag: '${getWordCount(educationWords)} WORDS',
       color: Colors.lightBlueAccent,
@@ -120,7 +115,7 @@ class MajorsData {
     Major(
       id: 'maths',
       name: 'Maths',
-      icon: 'calculator',
+      icon: AppIcons.majorMaths,
       totalWords: getWordCount(mathsWords),
       tag: '${getWordCount(mathsWords)} WORDS',
       color: Colors.deepOrangeAccent,
@@ -128,7 +123,7 @@ class MajorsData {
     Major(
       id: 'music',
       name: 'Music',
-      icon: 'music',
+      icon: AppIcons.majorMusic,
       totalWords: getWordCount(musicWords),
       tag: '${getWordCount(musicWords)} WORDS',
       color: Colors.lime,
@@ -136,7 +131,7 @@ class MajorsData {
     Major(
       id: 'science',
       name: 'Science',
-      icon: 'flask_conical',
+      icon: AppIcons.majorScience,
       totalWords: getWordCount(scienceWords),
       tag: '${getWordCount(scienceWords)} WORDS',
       color: Colors.tealAccent,
@@ -144,7 +139,7 @@ class MajorsData {
     Major(
       id: 'design',
       name: 'Design',
-      icon: 'pen_tool',
+      icon: AppIcons.majorDesign,
       totalWords: getWordCount(designWords),
       tag: '${getWordCount(designWords)} WORDS',
       color: Colors.cyanAccent,
@@ -152,7 +147,7 @@ class MajorsData {
     Major(
       id: 'architecture',
       name: 'Architecture',
-      icon: 'building_2',
+      icon: AppIcons.majorArchitecture,
       totalWords: getWordCount(architectureWords),
       tag: '${getWordCount(architectureWords)} WORDS',
       color: Colors.indigo,
@@ -160,7 +155,7 @@ class MajorsData {
     Major(
       id: 'nursing',
       name: 'Nursing',
-      icon: 'stethoscope',
+      icon: AppIcons.majorNursing,
       totalWords: getWordCount(nursingWords),
       tag: '${getWordCount(nursingWords)} WORDS',
       color: Colors.redAccent,
@@ -168,7 +163,7 @@ class MajorsData {
     Major(
       id: 'history',
       name: 'History',
-      icon: 'landmark',
+      icon: AppIcons.majorHistory,
       totalWords: getWordCount(historyWords),
       tag: '${getWordCount(historyWords)} WORDS',
       color: Colors.brown,
@@ -176,7 +171,7 @@ class MajorsData {
     Major(
       id: 'agriculture',
       name: 'Agriculture',
-      icon: 'sprout',
+      icon: AppIcons.majorAgriculture,
       totalWords: getWordCount(agricultureWords),
       tag: '${getWordCount(agricultureWords)} WORDS',
       color: Colors.green,
@@ -184,7 +179,7 @@ class MajorsData {
     Major(
       id: 'journalism',
       name: 'Journalism',
-      icon: 'newspaper',
+      icon: AppIcons.majorJournalism,
       totalWords: getWordCount(journalismWords),
       tag: '${getWordCount(journalismWords)} WORDS',
       color: Colors.blueGrey,
@@ -192,7 +187,7 @@ class MajorsData {
     Major(
       id: 'astronomy',
       name: 'Astronomy',
-      icon: 'telescope',
+      icon: AppIcons.majorAstronomy,
       totalWords: getWordCount(astronomyWords),
       tag: '${getWordCount(astronomyWords)} WORDS',
       color: Colors.red,
@@ -200,7 +195,7 @@ class MajorsData {
     Major(
       id: 'philosophy',
       name: 'Philosophy',
-      icon: 'scroll',
+      icon: AppIcons.majorPhilosophy,
       totalWords: getWordCount(philosophyWords),
       tag: '${getWordCount(philosophyWords)} WORDS',
       color: Colors.yellowAccent,

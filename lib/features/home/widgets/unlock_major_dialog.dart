@@ -75,7 +75,7 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
               borderRadius: BorderRadius.circular(16),
             ),
             child: Icon(
-              IconMapper.getIcon(widget.major.icon),
+              widget.major.icon,
               color: statusColor,
               size: context.r(60),
             ),

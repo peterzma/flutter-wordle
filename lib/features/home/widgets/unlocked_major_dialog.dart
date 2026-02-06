@@ -22,7 +22,7 @@ class UnlockedMajorDialog extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
             ),
             child: Icon(
-              IconMapper.getIcon(major.icon),
+              major.icon,
               color: major.color,
               size: context.r(60),
             ),

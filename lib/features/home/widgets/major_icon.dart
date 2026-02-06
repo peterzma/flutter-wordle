@@ -2,7 +2,7 @@ import 'package:uniordle/shared/exports/home_exports.dart';
 import 'package:uniordle/core/app_icons.dart';
 
 class MajorIcon extends StatelessWidget {
-  final String iconName;
+  final IconData icon;
   final Color? color;
   final double iconSize;
   final double dimension;
@@ -10,7 +10,7 @@ class MajorIcon extends StatelessWidget {
 
   const MajorIcon({
     super.key,
-    required this.iconName,
+    required this.icon,
     required this.color,
     this.iconSize = 24,
     this.dimension = 40,
@@ -28,7 +28,7 @@ class MajorIcon extends StatelessWidget {
         borderRadius: BorderRadius.circular(rounding),
       ),
       child: Icon(
-        IconMapper.getIcon(iconName),
+        icon,
         color: color,
         size: iconSize,
       ),
