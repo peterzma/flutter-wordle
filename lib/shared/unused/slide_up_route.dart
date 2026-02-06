@@ -12,12 +12,7 @@ Route slideUpRoute(Widget page) {
       final scale = Tween<double>(
         begin: 0.95,
         end: 1.0,
-      ).animate(
-        CurvedAnimation(
-          parent: animation,
-          curve: Curves.easeOutBack,
-        ),
-      );
+      ).animate(CurvedAnimation(parent: animation, curve: Curves.easeOutBack));
 
       return Stack(
         children: [

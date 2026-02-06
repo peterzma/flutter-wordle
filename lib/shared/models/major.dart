@@ -1,4 +1,4 @@
-import 'package:uniordle/shared/exports/home_exports.dart';
+import 'package:uniordle/shared/exports/core_exports.dart';
 
 class Major {
   final String id;
@@ -8,7 +8,7 @@ class Major {
   final Color color;
   final bool isLocked;
   final int totalWords;
-  
+
   Major({
     required this.id,
     required this.name,
@@ -33,11 +33,7 @@ class Major {
   }
 
   /// Handy for state management or testing different UI states
-  Major copyWith({
-    String? name,
-    Color? color,
-    bool? isLocked,
-  }) {
+  Major copyWith({String? name, Color? color, bool? isLocked}) {
     return Major(
       id: id,
       name: name ?? this.name,

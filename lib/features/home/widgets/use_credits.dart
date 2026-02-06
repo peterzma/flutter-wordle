@@ -1,18 +1,10 @@
-import 'package:uniordle/core/app_icons.dart';
-import 'package:uniordle/features/home/data/major_data.dart';
-import 'package:uniordle/shared/exports/game_exports.dart';
-import 'package:uniordle/shared/exports/help_exports.dart';
-import 'package:uniordle/shared/buttons/wiggle_button_wrapper.dart';
+import 'package:uniordle/shared/exports/home_exports.dart';
 
 class UseCredits extends StatefulWidget {
   final int credits;
   final int nextLevel;
 
-  const UseCredits({
-    super.key,
-    required this.credits,
-    required this.nextLevel,
-  });
+  const UseCredits({super.key, required this.credits, required this.nextLevel});
 
   @override
   State<UseCredits> createState() => _UseCreditsState();
@@ -29,14 +21,15 @@ class _UseCreditsState extends State<UseCredits> {
   @override
   Widget build(BuildContext context) {
     final stats = statsManager.statsNotifier.value;
-    
-    final bool allMajorsUnlocked = stats.unlockedIds.length >= MajorsData.all.length;
+
+    final bool allMajorsUnlocked =
+        stats.unlockedIds.length >= MajorsData.all.length;
     final bool canAfford = widget.credits > 0;
-    
+
     final bool canApply = allMajorsUnlocked && canAfford;
 
-    final Color accentColor = allMajorsUnlocked 
-        ? (canAfford ? AppColors.accent3 : AppColors.onSurfaceVariant) 
+    final Color accentColor = allMajorsUnlocked
+        ? (canAfford ? AppColors.accent3 : AppColors.onSurfaceVariant)
         : AppColors.onSurfaceVariant;
 
     return SizedBox(
@@ -57,29 +50,27 @@ class _UseCreditsState extends State<UseCredits> {
               size: context.r(60),
             ),
           ),
-          
+
           SizedBox(height: context.r(8)),
-          
+
           context.autoText(
-            !allMajorsUnlocked 
-              ? "???"
-              : "Extra Research",
+            !allMajorsUnlocked ? "???" : "Extra Research",
             style: AppFonts.headline,
           ),
-          
+
           SizedBox(height: context.r(16)),
-          
+
           context.autoText(
-            !allMajorsUnlocked 
-              ? "You must enroll in all available Majors before proceeding."
-              : "Apply your extra credit towards completing more research.",
+            !allMajorsUnlocked
+                ? "You must enroll in all available Majors before proceeding."
+                : "Apply your extra credit towards completing more research.",
             textAlign: TextAlign.center,
             style: AppFonts.labelMedium,
             maxLines: 2,
           ),
 
           SizedBox(height: context.r(16)),
-          
+
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
@@ -91,8 +82,8 @@ class _UseCreditsState extends State<UseCredits> {
               children: [
                 if (allMajorsUnlocked) ...[
                   context.autoIcon(
-                    AppIcons.permanentMeritBonus, 
-                    size: 16, 
+                    AppIcons.permanentMeritBonus,
+                    size: 16,
                     color: accentColor,
                   ),
                   const SizedBox(width: 8),
@@ -107,9 +98,9 @@ class _UseCreditsState extends State<UseCredits> {
               ],
             ),
           ),
-          
+
           SizedBox(height: context.r(16)),
-          
+
           if (!allMajorsUnlocked) ...[
             context.autoText(
               "Enrolled Majors: ${stats.unlockedIds.length}/${MajorsData.all.length}",
@@ -117,11 +108,11 @@ class _UseCreditsState extends State<UseCredits> {
             ),
             SizedBox(height: context.r(16)),
           ] else if (!canAfford) ...[
-             context.autoText(
-               "(Credit available at Level ${widget.nextLevel})",
-               style: AppFonts.labelMedium,
-             ),
-             SizedBox(height: context.r(16)),
+            context.autoText(
+              "(Credit available at Level ${widget.nextLevel})",
+              style: AppFonts.labelMedium,
+            ),
+            SizedBox(height: context.r(16)),
           ],
 
           Row(
@@ -138,8 +129,8 @@ class _UseCreditsState extends State<UseCredits> {
                   key: wiggleKey,
                   child: PrimaryButton(
                     label: "APPLY",
-                    color: canApply 
-                        ? AppColors.accent3 
+                    color: canApply
+                        ? AppColors.accent3
                         : AppColors.onSurfaceVariant.withValues(alpha: 0.5),
                     onPressed: () {
                       if (canApply) {

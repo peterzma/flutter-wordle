@@ -1,27 +1,24 @@
-import 'package:uniordle/core/app_icons.dart';
-import 'package:uniordle/features/home/widgets/use_credits.dart';
-import 'package:uniordle/shared/buttons/pulsing_button_wrapper.dart';
-import 'package:uniordle/shared/buttons/select_button_wrapper.dart';
-import 'package:uniordle/shared/exports/game_exports.dart';
-import 'package:uniordle/shared/layout/base_badge.dart';
-import 'package:uniordle/shared/layout/show_base_dialog.dart';
+import 'package:uniordle/shared/exports/home_exports.dart';
 
 class HomeHero extends StatelessWidget {
   final UserStats stats;
 
-  const HomeHero({
-    super.key, 
-    required this.stats
-  });
+  const HomeHero({super.key, required this.stats});
 
   @override
-  Widget build (BuildContext context) {
+  Widget build(BuildContext context) {
     final bool hasCredits = stats.availableCredits > 0;
-    final Color statusColor = hasCredits ? AppColors.accent3 : AppColors.onSurfaceVariant.withValues(alpha: 0.5);
+    final Color statusColor = hasCredits
+        ? AppColors.accent3
+        : AppColors.onSurfaceVariant.withValues(alpha: 0.5);
 
     return Column(
       children: [
-        context.autoText('Select a Major', style: AppFonts.displayLarge, maxLines: 1,),
+        context.autoText(
+          'Select a Major',
+          style: AppFonts.displayLarge,
+          maxLines: 1,
+        ),
         SizedBox(height: context.r(4)),
         context.autoText(
           'Master your academic vocabulary.',
@@ -31,12 +28,12 @@ class HomeHero extends StatelessWidget {
         SizedBox(height: context.r(16)),
         SelectButtonWrapper(
           onTap: () => _showUseCreditsDialog(context),
-          child: hasCredits 
-            ? PulsingButtonWrapper(
-                glowColor: statusColor,
-                child: _buildBadge(statusColor),
-              )
-            : _buildBadge(statusColor),
+          child: hasCredits
+              ? PulsingButtonWrapper(
+                  glowColor: statusColor,
+                  child: _buildBadge(statusColor),
+                )
+              : _buildBadge(statusColor),
         ),
       ],
     );
@@ -54,7 +51,8 @@ class HomeHero extends StatelessWidget {
 
   Widget _buildBadge(Color statusColor) {
     return BaseBadge(
-      label: "${stats.availableCredits} ${stats.availableCredits == 1 ? 'CREDIT' : 'CREDITS'}",
+      label:
+          "${stats.availableCredits} ${stats.availableCredits == 1 ? 'CREDIT' : 'CREDITS'}",
       icon: AppIcons.gameCredit,
       color: statusColor,
     );

@@ -1,4 +1,4 @@
-import 'package:uniordle/shared/exports/game_exports.dart';
+import 'package:uniordle/shared/exports/core_exports.dart';
 
 class BaseBadge extends StatelessWidget {
   final String label;
@@ -17,7 +17,10 @@ class BaseBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: context.r(16), vertical: context.r(8)),
+      padding: EdgeInsets.symmetric(
+        horizontal: context.r(16),
+        vertical: context.r(8),
+      ),
       decoration: BoxDecoration(
         color: color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(16),

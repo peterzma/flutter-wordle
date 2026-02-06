@@ -1,9 +1,4 @@
-import 'package:uniordle/core/app_icons.dart';
-import 'package:uniordle/features/help/views/help_dialog.dart';
-import 'package:uniordle/features/settings/controller/settings_controller.dart';
 import 'package:uniordle/shared/exports/game_exports.dart';
-import 'package:uniordle/shared/layout/base_header.dart';
-import 'package:uniordle/shared/navigation/navigation_item.dart';
 
 class GameHeader extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? onBack;
@@ -29,7 +24,7 @@ class GameHeader extends StatelessWidget implements PreferredSizeWidget {
             return NavigationItem(
               icon: isMuted ? AppIcons.sysMusicOff : AppIcons.sysMusicOn,
               onTap: controller.toggleMusicMute,
-              width: context.responsive(36, 48)
+              width: context.responsive(36, 48),
             );
           },
         ),
@@ -42,7 +37,7 @@ class GameHeader extends StatelessWidget implements PreferredSizeWidget {
               builder: (context) => const HelpDialog(),
             );
           },
-          width: context.responsive(36, 48)
+          width: context.responsive(36, 48),
         ),
       ],
     );

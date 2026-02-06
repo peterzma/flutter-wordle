@@ -1,4 +1,3 @@
-import 'package:uniordle/shared/exports/game_exports.dart';
 import 'package:uniordle/shared/exports/stats_exports.dart';
 
 class StatCard extends StatelessWidget {
@@ -6,7 +5,12 @@ class StatCard extends StatelessWidget {
   final String label;
   final Color? color;
 
-  const StatCard({super.key, required this.value, required this.label, this.color});
+  const StatCard({
+    super.key,
+    required this.value,
+    required this.label,
+    this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +25,7 @@ class StatCard extends StatelessWidget {
         children: [
           context.autoText(
             value,
-            style: AppFonts.displayMedium.copyWith(
-              color: color,
-            ),
+            style: AppFonts.displayMedium.copyWith(color: color),
             reduction: 8,
           ),
           context.autoText(
@@ -32,7 +34,7 @@ class StatCard extends StatelessWidget {
             style: AppFonts.labelSmall.copyWith(
               color: AppColors.onSurfaceVariant,
             ),
-            maxLines: 2
+            maxLines: 2,
           ),
         ],
       ),

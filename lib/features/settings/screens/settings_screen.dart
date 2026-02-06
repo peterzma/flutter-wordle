@@ -1,19 +1,10 @@
-import 'package:uniordle/core/app_icons.dart';
-import 'package:uniordle/features/settings/data/data_reset_service.dart';
-import 'package:uniordle/features/settings/data/link_service.dart';
-import 'package:uniordle/features/settings/widgets/settings_slider_tile.dart';
-import 'package:uniordle/shared/exports/app_exports.dart';
 import 'package:uniordle/shared/exports/settings_exports.dart';
-import 'package:uniordle/shared/layout/base_header.dart';
-import 'package:uniordle/features/settings/widgets/about_dialog.dart';
 
 class SettingsScreen extends StatelessWidget {
   final VoidCallback onClose;
   final SettingsController controller = SettingsController();
 
-  SettingsScreen({
-    super.key, required this.onClose
-  });
+  SettingsScreen({super.key, required this.onClose});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +15,7 @@ class SettingsScreen extends StatelessWidget {
           children: [
             BaseHeader(
               title: 'Settings',
-              leftIcon: AppIcons.navBack, 
+              leftIcon: AppIcons.navBack,
               onLeftTap: onClose,
             ),
             Expanded(
@@ -32,7 +23,9 @@ class SettingsScreen extends StatelessWidget {
                 valueListenable: controller.state,
                 builder: (context, state, _) {
                   return ListView(
-                    padding: const EdgeInsets.symmetric(horizontal: AppLayout.pagePadding),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: AppLayout.pagePadding,
+                    ),
                     children: [
                       const SettingsHeader(title: 'PREFERENCES'),
                       SettingsSliderTile(
@@ -65,7 +58,7 @@ class SettingsScreen extends StatelessWidget {
                         onTap: () => LinkService.launch(LinkService.github),
                       ),
                       const SizedBox(height: 8),
-                  
+
                       const SettingsHeader(title: 'SUPPORT'),
                       SettingsActionTile(
                         icon: AppIcons.linkBug,
@@ -100,12 +93,10 @@ class SettingsScreen extends StatelessWidget {
                       const SizedBox(height: 32),
                     ],
                   );
-                }
+                },
               ),
             ),
-            SettingsSignOutButton(
-              onPressed: () {},
-            ),
+            SettingsSignOutButton(onPressed: () {}),
           ],
         ),
       ),

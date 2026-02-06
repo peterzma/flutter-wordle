@@ -1,5 +1,4 @@
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:uniordle/shared/exports/game_exports.dart';
+import 'package:uniordle/shared/exports/app_exports.dart';
 
 abstract class AppLayout {
   static const double breakpoint = 512.0;
@@ -33,16 +32,20 @@ abstract class AppLayout {
   static const int flipSpeedMs = 300;
 
   /// Returns the actual width of the window
-  static double screenWidth(BuildContext context) => MediaQuery.of(context).size.width;
+  static double screenWidth(BuildContext context) =>
+      MediaQuery.of(context).size.width;
 
   /// Returns the actual height of the window
-  static double screenHeight(BuildContext context) => MediaQuery.of(context).size.height;
+  static double screenHeight(BuildContext context) =>
+      MediaQuery.of(context).size.height;
 
   /// Global check if we are in "Mobile" mode (under 512px)
-  static bool mobileMode(BuildContext context) => screenWidth(context) < breakpoint;
+  static bool mobileMode(BuildContext context) =>
+      screenWidth(context) < breakpoint;
 
   /// Global check if we are in "Desktop" mode (exactly 512px or centered)
-  static bool desktopMode(BuildContext context) => screenWidth(context) >= breakpoint;
+  static bool desktopMode(BuildContext context) =>
+      screenWidth(context) >= breakpoint;
 
   /// Returns the width of the app content (clamped between 360 and 512)
   static double contentWidth(BuildContext context) {
@@ -85,27 +88,25 @@ extension ResponsiveLayout on BuildContext {
   /// Scales based on height, capped at my 767px sweet spot.
   /// Usage: context.v(16, 64) -> won't exceed 64 even on a giant screen.
   double v(double min, double max) => AppLayout.lerpHeight(this, min, max);
-  
+
   Widget autoText(
     String text, {
     required TextStyle style,
-    double? minSize, 
+    double? minSize,
     double? maxSize,
     double reduction = 2,
     int maxLines = 1,
     TextAlign textAlign = TextAlign.center,
   }) {
     final double effectiveMax = maxSize ?? style.fontSize ?? 14;
-    
+
     final double effectiveMin = minSize ?? (effectiveMax - reduction);
 
     return AutoSizeText(
       text,
       textAlign: textAlign,
-      style: style.copyWith(
-        fontSize: responsive(effectiveMin, effectiveMax),
-      ),
-      minFontSize: effectiveMin, 
+      style: style.copyWith(fontSize: responsive(effectiveMin, effectiveMax)),
+      minFontSize: effectiveMin,
       maxLines: maxLines,
       overflow: TextOverflow.ellipsis,
     );
@@ -117,10 +118,6 @@ extension ResponsiveLayout on BuildContext {
     double reduction = 4,
     Color? color,
   }) {
-    return Icon(
-      icon,
-      color: color,
-      size: responsive(size - reduction, size),
-    );
+    return Icon(icon, color: color, size: responsive(size - reduction, size));
   }
 }

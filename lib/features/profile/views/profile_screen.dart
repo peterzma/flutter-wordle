@@ -1,19 +1,13 @@
-import 'package:uniordle/core/app_icons.dart';
-import 'package:uniordle/features/home/data/major_data.dart';
-import 'package:uniordle/shared/exports/game_exports.dart';
 import 'package:uniordle/shared/exports/profile_exports.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({
-    super.key
-  });
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<UserStats>(
       valueListenable: statsManager.statsNotifier,
       builder: (context, stats, child) {
-
         final int dBonus = (stats.majorMultiplier * 100).toInt();
         final int effectiveLevel = stats.currentLevel.clamp(0, 100);
         final int rBonus = (effectiveLevel ~/ 10) * 10;
@@ -25,7 +19,7 @@ class ProfileScreen extends StatelessWidget {
               const ProfileHeader(),
 
               SizedBox(height: context.r(16)),
-              
+
               Align(
                 alignment: Alignment.centerLeft,
                 child: context.autoText(
@@ -33,16 +27,16 @@ class ProfileScreen extends StatelessWidget {
                   style: AppFonts.labelLarge,
                 ),
               ),
-        
+
               const SizedBox(height: 8),
-        
+
               LevelCard(
                 level: stats.currentLevel,
                 progress: stats.levelProgress,
                 nextLevel: stats.nextLevel,
                 progressLabel: stats.progressText,
               ),
-        
+
               SizedBox(height: context.r(8)),
 
               IntrinsicHeight(
@@ -54,7 +48,9 @@ class ProfileScreen extends StatelessWidget {
                         label: "Rank Bonus",
                         value: "+$rBonus%",
                         icon: AppIcons.statRank,
-                        iconColor: rBonus > 0 ? AppColors.accent4 : AppColors.onSurfaceVariant,
+                        iconColor: rBonus > 0
+                            ? AppColors.accent4
+                            : AppColors.onSurfaceVariant,
                       ),
                     ),
 
@@ -65,7 +61,9 @@ class ProfileScreen extends StatelessWidget {
                         label: "Total Merit",
                         value: '${stats.merit}',
                         icon: AppIcons.gameMerit,
-                        iconColor: stats.merit > 0 ? AppColors.accent : AppColors.onSurfaceVariant,
+                        iconColor: stats.merit > 0
+                            ? AppColors.accent
+                            : AppColors.onSurfaceVariant,
                       ),
                     ),
 
@@ -76,9 +74,11 @@ class ProfileScreen extends StatelessWidget {
                         label: "Abandon Cost",
                         value: "-${stats.activePenalty}",
                         icon: AppIcons.statAbandonCost,
-                        iconColor: stats.activePenalty > 0 ? AppColors.onSurface : AppColors.onSurfaceVariant,
+                        iconColor: stats.activePenalty > 0
+                            ? AppColors.onSurface
+                            : AppColors.onSurfaceVariant,
                       ),
-                    ),      
+                    ),
                   ],
                 ),
               ),
@@ -94,7 +94,9 @@ class ProfileScreen extends StatelessWidget {
                         label: "Major Bonus",
                         value: "+$dBonus%",
                         icon: AppIcons.statMajor,
-                        iconColor: dBonus > 0 ? AppColors.correctColor : AppColors.onSurfaceVariant,
+                        iconColor: dBonus > 0
+                            ? AppColors.correctColor
+                            : AppColors.onSurfaceVariant,
                       ),
                     ),
 
@@ -103,9 +105,12 @@ class ProfileScreen extends StatelessWidget {
                     Expanded(
                       child: SummaryCard(
                         label: "Mastered",
-                        value: "${stats.masteredCount}/${MajorsData.all.length}",
+                        value:
+                            "${stats.masteredCount}/${MajorsData.all.length}",
                         icon: AppIcons.badgeMastery,
-                        iconColor: stats.masteredCount > 0 ? AppColors.accent3 : AppColors.onSurfaceVariant,
+                        iconColor: stats.masteredCount > 0
+                            ? AppColors.accent3
+                            : AppColors.onSurfaceVariant,
                       ),
                     ),
 
@@ -116,21 +121,20 @@ class ProfileScreen extends StatelessWidget {
                         label: "Fail Penalty",
                         value: "-${stats.standardPenalty}",
                         icon: AppIcons.statLossPenalty,
-                        iconColor: stats.standardPenalty > 0 ? AppColors.accent2 : AppColors.onSurfaceVariant,
+                        iconColor: stats.standardPenalty > 0
+                            ? AppColors.accent2
+                            : AppColors.onSurfaceVariant,
                       ),
                     ),
                   ],
                 ),
               ),
-        
+
               SizedBox(height: context.r(16)),
 
               Align(
                 alignment: Alignment.centerLeft,
-                child: context.autoText(
-                  "Pathway", 
-                  style: AppFonts.labelLarge
-                )
+                child: context.autoText("Pathway", style: AppFonts.labelLarge),
               ),
 
               const SizedBox(height: 8),
@@ -139,7 +143,7 @@ class ProfileScreen extends StatelessWidget {
             ],
           ),
         );
-      }
+      },
     );
   }
 }

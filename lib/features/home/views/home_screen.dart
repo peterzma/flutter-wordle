@@ -1,10 +1,4 @@
-import 'package:uniordle/features/home/data/major_data.dart';
-import 'package:uniordle/features/home/widgets/ascension.dart';
-import 'package:uniordle/features/home/widgets/unlock_major_dialog.dart';
-import 'package:uniordle/shared/buttons/pulsing_button_wrapper.dart';
-import 'package:uniordle/shared/exports/game_exports.dart';
-import 'package:uniordle/shared/exports/help_exports.dart';
-import 'package:uniordle/shared/layout/show_base_dialog.dart';
+import 'package:uniordle/shared/exports/home_exports.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -25,51 +19,51 @@ class HomeScreen extends StatelessWidget {
   }
 
   @override
-Widget build(BuildContext context) {
-  return ValueListenableBuilder(
-    valueListenable: statsManager.statsNotifier,
-    builder: (context, stats, _) {
-      final sortedMajors = MajorsData.getSortedMajors(stats.unlockedIds);
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder(
+      valueListenable: statsManager.statsNotifier,
+      builder: (context, stats, _) {
+        final sortedMajors = MajorsData.getSortedMajors(stats.unlockedIds);
 
-      return Scaffold(
-        backgroundColor: AppColors.surface,
-        body: SafeArea(
-          child: SingleChildScrollView(
-            padding: EdgeInsets.all(AppLayout.pagePadding),
-            child: Column(
-              children: [
-                HomeHero(stats: stats),
-                
-                SizedBox(height: context.r(16)),
+        return Scaffold(
+          backgroundColor: AppColors.surface,
+          body: SafeArea(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.all(AppLayout.pagePadding),
+              child: Column(
+                children: [
+                  HomeHero(stats: stats),
 
-                MajorGrid(
-                  majors: sortedMajors,
-                  unlockedIds: stats.unlockedIds,
-                  onSubjectTap: (sub) => _onMajorTap(context, sub, stats),
-                ),
+                  SizedBox(height: context.r(16)),
 
-                if (stats.masteredCount >= MajorsData.all.length) ...[
-                  SizedBox(height: context.r(32)),
-                  PulsingButtonWrapper(
-                    glowColor: AppColors.accent3,
-                    child: PrimaryButton(
-                      label: "The Oracle's Legacy",
-                      color: AppColors.accent3,
-                      onPressed: () {
-                        showBaseDialog(
-                          context: context,
-                          child: const Ascension(),
-                        );
-                      },
-                    ),
+                  MajorGrid(
+                    majors: sortedMajors,
+                    unlockedIds: stats.unlockedIds,
+                    onSubjectTap: (sub) => _onMajorTap(context, sub, stats),
                   ),
+
+                  if (stats.masteredCount >= MajorsData.all.length) ...[
+                    SizedBox(height: context.r(32)),
+                    PulsingButtonWrapper(
+                      glowColor: AppColors.accent3,
+                      child: PrimaryButton(
+                        label: "The Oracle's Legacy",
+                        color: AppColors.accent3,
+                        onPressed: () {
+                          showBaseDialog(
+                            context: context,
+                            child: const Ascension(),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 ],
-              ],
+              ),
             ),
           ),
-        ),
-      );
-    },
-  );
-}
+        );
+      },
+    );
+  }
 }

@@ -1,9 +1,8 @@
-import 'package:uniordle/shared/exports/game_exports.dart';
 import 'package:uniordle/shared/exports/profile_exports.dart';
 
 class LevelCard extends StatelessWidget {
   final int level;
-  final double progress; 
+  final double progress;
   final int nextLevel;
   final String progressLabel;
 
@@ -20,7 +19,7 @@ class LevelCard extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(AppLayout.cardPadding),
       decoration: BoxDecoration(
-        color: AppColors.surfaceVariant, 
+        color: AppColors.surfaceVariant,
         borderRadius: BorderRadius.circular(AppLayout.cardRounding),
       ),
       child: Column(
@@ -29,12 +28,16 @@ class LevelCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _LevelInfo(label: "CURRENT", level: "Level $level"),
-              _LevelInfo(label: "NEXT", level: "Level $nextLevel", crossAlign: CrossAxisAlignment.end),
+              _LevelInfo(
+                label: "NEXT",
+                level: "Level $nextLevel",
+                crossAlign: CrossAxisAlignment.end,
+              ),
             ],
           ),
-          
+
           SizedBox(height: context.r(8)),
-          
+
           // The Progress Bar
           ClipRRect(
             borderRadius: BorderRadius.circular(64),
@@ -46,9 +49,9 @@ class LevelCard extends StatelessWidget {
               valueColor: const AlwaysStoppedAnimation<Color>(AppColors.accent),
             ),
           ),
-          
+
           SizedBox(height: context.r(8)),
-          
+
           // X/Y SOLVES TO LEVEL Z Badge
           LayoutBuilder(
             builder: (context, constraints) {
@@ -62,7 +65,10 @@ class LevelCard extends StatelessWidget {
                     child: FractionalTranslation(
                       translation: Offset(xTranslation, 0),
                       child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: context.r(8), vertical: context.r(4)),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: context.r(8),
+                          vertical: context.r(4),
+                        ),
                         decoration: BoxDecoration(
                           color: AppColors.accent,
                           borderRadius: BorderRadius.circular(16),
@@ -70,7 +76,7 @@ class LevelCard extends StatelessWidget {
                         child: context.autoText(
                           progressLabel,
                           style: AppFonts.labelSmall.copyWith(
-                            color: Colors.white, 
+                            color: Colors.white,
                           ),
                         ),
                       ),
@@ -79,7 +85,7 @@ class LevelCard extends StatelessWidget {
                 ],
               );
             },
-          )
+          ),
         ],
       ),
     );
@@ -89,7 +95,11 @@ class LevelCard extends StatelessWidget {
 class _LevelInfo extends StatelessWidget {
   final String label, level;
   final CrossAxisAlignment crossAlign;
-  const _LevelInfo({required this.label, required this.level, this.crossAlign = CrossAxisAlignment.start});
+  const _LevelInfo({
+    required this.label,
+    required this.level,
+    this.crossAlign = CrossAxisAlignment.start,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -98,13 +108,11 @@ class _LevelInfo extends StatelessWidget {
       children: [
         context.autoText(
           label,
-          style: AppFonts.labelSmall.copyWith(color: AppColors.onSurfaceVariant),
+          style: AppFonts.labelSmall.copyWith(
+            color: AppColors.onSurfaceVariant,
+          ),
         ),
-        context.autoText(
-          level,
-          style: AppFonts.headline,
-          reduction: 8,
-        ),
+        context.autoText(level, style: AppFonts.headline, reduction: 8),
       ],
     );
   }

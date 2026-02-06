@@ -1,4 +1,4 @@
-import 'package:uniordle/shared/exports/home_exports.dart';
+import 'package:uniordle/shared/exports/core_exports.dart';
 
 const Duration pumpDuration = Duration(milliseconds: 100);
 const Duration darkenDuration = Duration(milliseconds: 100);
@@ -60,9 +60,9 @@ class _PumpButtonWrapperState extends State<SelectButtonWrapper> {
     }
 
     return MouseRegion(
-      cursor: widget.onTap != null 
-        ? SystemMouseCursors.click 
-        : SystemMouseCursors.basic,
+      cursor: widget.onTap != null
+          ? SystemMouseCursors.click
+          : SystemMouseCursors.basic,
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
       child: GestureDetector(

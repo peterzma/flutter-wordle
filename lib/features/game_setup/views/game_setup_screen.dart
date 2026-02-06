@@ -1,17 +1,9 @@
-import 'package:uniordle/core/app_icons.dart';
-import 'package:uniordle/shared/exports/app_exports.dart';
-import 'package:uniordle/features/game_setup/widgets/merit_preview_badge.dart';
-import 'package:uniordle/shared/buttons/primary_button.dart';
-
-import 'package:uniordle/features/game_setup/widgets/game_setup_hero.dart';
+import 'package:uniordle/shared/exports/game_setup_exports.dart';
 
 class GameSetupScreen extends StatefulWidget {
   final Major major;
 
-  const GameSetupScreen({
-    super.key,
-    required this.major,
-  });
+  const GameSetupScreen({super.key, required this.major});
 
   @override
   State<GameSetupScreen> createState() => _GameSetupScreenState();
@@ -24,7 +16,7 @@ class _GameSetupScreenState extends State<GameSetupScreen> {
 
   void _play() async {
     setState(() => _isLoading = true);
-    
+
     await Future.delayed(const Duration(milliseconds: 250));
     if (!mounted) return;
 
@@ -82,10 +74,11 @@ class _GameSetupScreenState extends State<GameSetupScreen> {
                                 SizedBox(height: context.r(8)),
                                 WordLengthSelector(
                                   value: _wordLength,
-                                  onChanged: (v) => setState(() => _wordLength = v),
+                                  onChanged: (v) =>
+                                      setState(() => _wordLength = v),
                                   major: widget.major,
                                 ),
-                                
+
                                 SizedBox(height: context.v(16, 64)),
 
                                 context.autoText(
@@ -94,7 +87,8 @@ class _GameSetupScreenState extends State<GameSetupScreen> {
                                 ),
                                 DifficultySelector(
                                   value: _difficulty,
-                                  onChanged: (v) => setState(() => _difficulty = v),
+                                  onChanged: (v) =>
+                                      setState(() => _difficulty = v),
                                   major: widget.major,
                                 ),
                               ],

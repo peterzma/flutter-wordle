@@ -18,3 +18,5 @@ export 'package:uniordle/features/game/data/word_lists/nursing_words.dart';
 export 'package:uniordle/features/game/data/word_lists/philosophy_words.dart';
 export 'package:uniordle/features/game/data/word_lists/biology_words.dart';
 export 'package:uniordle/features/game/data/word_lists/chemistry_words.dart';
+
+export 'package:uniordle/features/game/data/word_list.dart';

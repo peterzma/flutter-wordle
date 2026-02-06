@@ -1,7 +1,4 @@
-import 'package:confetti/confetti.dart';
-import 'package:uniordle/core/app_icons.dart';
-import 'package:uniordle/shared/buttons/primary_button.dart';
-import 'package:uniordle/shared/exports/app_exports.dart';
+import 'package:uniordle/shared/exports/home_exports.dart';
 
 class Ascension extends StatefulWidget {
   const Ascension({super.key});
@@ -16,7 +13,9 @@ class _AscensionState extends State<Ascension> {
   @override
   void initState() {
     super.initState();
-    _confettiController = ConfettiController(duration: const Duration(seconds: 10));
+    _confettiController = ConfettiController(
+      duration: const Duration(seconds: 10),
+    );
     _confettiController.play();
   }
 
@@ -31,14 +30,19 @@ class _AscensionState extends State<Ascension> {
     return ValueListenableBuilder(
       valueListenable: statsManager.statsNotifier,
       builder: (context, stats, _) {
-        final String dynamicBonus = "+${(stats.masteryBonusValue * 100).toInt()}%";
+        final String dynamicBonus =
+            "+${(stats.masteryBonusValue * 100).toInt()}%";
         return Stack(
           alignment: Alignment.topCenter,
           children: [
             Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                context.autoIcon(AppIcons.badgeMastery, size: 64, color: AppColors.accent3),
+                context.autoIcon(
+                  AppIcons.badgeMastery,
+                  size: 64,
+                  color: AppColors.accent3,
+                ),
                 SizedBox(height: context.r(16)),
                 context.autoText("ASCENSION", style: AppFonts.headline),
                 SizedBox(height: context.r(12)),
@@ -50,27 +54,38 @@ class _AscensionState extends State<Ascension> {
                 ),
                 SizedBox(height: context.r(32)),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
+                  ),
                   decoration: BoxDecoration(
                     color: AppColors.accent3.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: AppColors.accent3.withValues(alpha: 0.5)),
+                    border: Border.all(
+                      color: AppColors.accent3.withValues(alpha: 0.5),
+                    ),
                   ),
                   child: Column(
                     children: [
                       context.autoText(
                         "THE ORACLE'S LEGACY",
-                        style: AppFonts.labelSmall.copyWith(color: AppColors.accent3, fontWeight: FontWeight.bold),
+                        style: AppFonts.labelSmall.copyWith(
+                          color: AppColors.accent3,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       context.autoText(
                         "$dynamicBonus PERMANENT MERIT",
-                        style: AppFonts.headline.copyWith(color: AppColors.accent3, fontSize: 20),
+                        style: AppFonts.headline.copyWith(
+                          color: AppColors.accent3,
+                          fontSize: 20,
+                        ),
                         reduction: 8,
                       ),
                     ],
                   ),
                 ),
-        
+
                 SizedBox(height: context.r(32)),
                 PrimaryButton(
                   label: 'So it is written',
@@ -79,18 +94,23 @@ class _AscensionState extends State<Ascension> {
                 ),
               ],
             ),
-        
+
             ConfettiWidget(
               confettiController: _confettiController,
               blastDirectionality: BlastDirectionality.explosive,
               shouldLoop: false,
-              colors: const [Colors.orange, AppColors.accent, Colors.white, Colors.red],
+              colors: const [
+                Colors.orange,
+                AppColors.accent,
+                Colors.white,
+                Colors.red,
+              ],
               minimumSize: const Size(5, 5),
               maximumSize: const Size(10, 10),
             ),
           ],
         );
-      }
+      },
     );
   }
 }

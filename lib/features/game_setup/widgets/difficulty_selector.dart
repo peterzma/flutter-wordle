@@ -1,8 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:uniordle/core/app_icons.dart';
-import 'package:uniordle/core/app_layout.dart';
-import 'package:uniordle/shared/services/models/difficulty_config.dart';
-import 'package:uniordle/features/home/models/major.dart';
 import 'package:uniordle/shared/exports/game_setup_exports.dart';
 
 class DifficultySelector extends StatelessWidget {
@@ -11,8 +6,8 @@ class DifficultySelector extends StatelessWidget {
   final Major major;
 
   const DifficultySelector({
-    super.key, 
-    required this.value, 
+    super.key,
+    required this.value,
     required this.onChanged,
     required this.major,
   });
@@ -26,11 +21,7 @@ class DifficultySelector extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              AppIcons.gameAttempts,
-              size: 12,
-              color: major.color,
-            ),
+            Icon(AppIcons.gameAttempts, size: 12, color: major.color),
             SizedBox(width: context.r(8)),
             Text(
               'ATTEMPTS ALLOWED',
@@ -46,7 +37,9 @@ class DifficultySelector extends StatelessWidget {
             inactiveTrackColor: AppColors.onSurfaceVariant,
             thumbColor: major.color,
             overlayColor: Colors.transparent,
-            overlayShape: RoundSliderOverlayShape(overlayRadius: mobileMode ? 40 : 60),
+            overlayShape: RoundSliderOverlayShape(
+              overlayRadius: mobileMode ? 40 : 60,
+            ),
             thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 5.0),
             tickMarkShape: const RoundSliderTickMarkShape(tickMarkRadius: 3.0),
             activeTickMarkColor: major.color,
@@ -61,10 +54,10 @@ class DifficultySelector extends StatelessWidget {
               divisions: 3,
               onChanged: (v) {
                 final newValue = v.round();
-                
+
                 if (newValue != value) {
                   SoundManager().play(SoundType.gameSettings);
-                  
+
                   onChanged(newValue);
                 }
               },
@@ -74,21 +67,21 @@ class DifficultySelector extends StatelessWidget {
         Row(
           children: levels.map((e) {
             final active = e.key == value;
-            
+
             return Expanded(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   AutoSizeText(
-                    mobileMode 
-                        ? e.value.$1.replaceAll(' Year', '').trim() 
+                    mobileMode
+                        ? e.value.$1.replaceAll(' Year', '').trim()
                         : e.value.$1,
                     textAlign: TextAlign.center,
                     minFontSize: 8,
                     maxLines: 1,
                     style: active
                         ? AppFonts.labelMedium.copyWith(
-                            color: Colors.white, 
+                            color: Colors.white,
                             fontWeight: FontWeight.bold,
                           )
                         : AppFonts.labelMedium.copyWith(
@@ -103,7 +96,7 @@ class DifficultySelector extends StatelessWidget {
                         e.value.$2.toString(),
                         style: active
                             ? AppFonts.labelMedium.copyWith(
-                                color: major.color, 
+                                color: major.color,
                                 fontWeight: FontWeight.w600,
                               )
                             : AppFonts.labelMedium,
@@ -115,14 +108,14 @@ class DifficultySelector extends StatelessWidget {
                         color: active
                             ? major.color
                             : AppColors.onSurfaceVariant,
-                      )
+                      ),
                     ],
-                  )
+                  ),
                 ],
               ),
             );
           }).toList(),
-        )
+        ),
       ],
     );
   }

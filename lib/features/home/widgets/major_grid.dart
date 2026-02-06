@@ -1,5 +1,4 @@
 import 'package:uniordle/shared/exports/home_exports.dart';
-import 'package:uniordle/core/app_layout.dart';
 
 class MajorGrid extends StatelessWidget {
   final List<Major> majors;
@@ -27,10 +26,8 @@ class MajorGrid extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: majors.length,
       separatorBuilder: (_, _) => const SizedBox(height: 12),
-      itemBuilder: (context, index) => SizedBox(
-        height: 82,
-        child: _buildTile(majors[index]),
-      ),
+      itemBuilder: (context, index) =>
+          SizedBox(height: 82, child: _buildTile(majors[index])),
     );
   }
 

@@ -1,5 +1,4 @@
-import 'package:uniordle/shared/exports/home_exports.dart';
-import 'package:uniordle/shared/buttons/select_button_wrapper.dart';
+import 'package:uniordle/shared/exports/core_exports.dart';
 
 class NavigationItem extends StatelessWidget {
   final IconData icon;
@@ -23,8 +22,8 @@ class NavigationItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color finalColor = color ?? 
-        (isActive ? AppColors.accent : AppColors.onSurfaceVariant);
+    final Color finalColor =
+        color ?? (isActive ? AppColors.accent : AppColors.onSurfaceVariant);
 
     return SelectButtonWrapper(
       borderRadius: BorderRadius.circular(16),
@@ -33,17 +32,13 @@ class NavigationItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(4),
         child: SizedBox(
-          height: 48, 
+          height: 48,
           width: width,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
-                icon,
-                size: iconSize,
-                color: finalColor,
-              ),
+              Icon(icon, size: iconSize, color: finalColor),
               if (label != null) ...[
                 const SizedBox(height: 2),
                 Text(

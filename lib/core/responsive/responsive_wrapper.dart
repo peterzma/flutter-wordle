@@ -1,5 +1,4 @@
-import 'package:uniordle/shared/exports/game_exports.dart';
-import 'package:flutter/foundation.dart';
+import 'package:uniordle/shared/exports/core_exports.dart';
 
 class ResponsiveWrapper extends StatelessWidget {
   final Widget child;
@@ -20,7 +19,7 @@ class ResponsiveWrapper extends StatelessWidget {
               Center(
                 child: OverflowBox(
                   minWidth: dynamicWidth,
-                  maxWidth: dynamicWidth, 
+                  maxWidth: dynamicWidth,
                   alignment: Alignment.center,
                   child: ConstrainedBox(
                     constraints: BoxConstraints(

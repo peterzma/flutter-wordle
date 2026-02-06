@@ -1,22 +1,17 @@
-import 'package:uniordle/core/app_icons.dart';
-import 'package:uniordle/shared/exports/home_exports.dart';
-import 'package:uniordle/shared/navigation/navigation_item.dart';
-import 'package:uniordle/shared/layout/base_footer.dart';
-
+import 'package:uniordle/shared/exports/core_exports.dart';
 
 class MainNavigationFooter extends StatelessWidget {
   final String activeTab;
   final ValueChanged<String> onTabChange;
-  
+
   const MainNavigationFooter({
-    super.key, 
-    required this.activeTab, 
-    required this.onTabChange
+    super.key,
+    required this.activeTab,
+    required this.onTabChange,
   });
 
-
   @override
-  Widget build (BuildContext context) {
+  Widget build(BuildContext context) {
     return BaseFooter(
       children: [
         NavigationItem(

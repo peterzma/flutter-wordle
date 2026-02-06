@@ -1,5 +1,4 @@
-import 'package:uniordle/shared/exports/game_exports.dart';
-import 'package:uniordle/shared/exports/help_exports.dart';
+import 'package:uniordle/shared/exports/home_exports.dart';
 
 class UnlockedMajorDialog extends StatelessWidget {
   final Major major;
@@ -20,11 +19,7 @@ class UnlockedMajorDialog extends StatelessWidget {
               color: AppColors.surfaceVariant,
               borderRadius: BorderRadius.circular(16),
             ),
-            child: Icon(
-              major.icon,
-              color: major.color,
-              size: context.r(60),
-            ),
+            child: Icon(major.icon, color: major.color, size: context.r(60)),
           ),
           SizedBox(height: context.r(8)),
           context.autoText(

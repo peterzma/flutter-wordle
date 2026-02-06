@@ -1,17 +1,9 @@
 import 'package:uniordle/shared/exports/game_exports.dart';
 
-enum LetterStatus { 
-  initial, 
-  notInWord, 
-  inWord, 
-  correct 
-}
+enum LetterStatus { initial, notInWord, inWord, correct }
 
 class Letter extends Equatable {
-  const Letter({
-    required this.val,
-    this.status = LetterStatus.initial,
-  });
+  const Letter({required this.val, this.status = LetterStatus.initial});
 
   factory Letter.empty() => const Letter(val: '');
 
@@ -32,25 +24,19 @@ class Letter extends Equatable {
     }
   }
 
-Color get borderColor {
+  Color get borderColor {
     switch (status) {
       case LetterStatus.initial:
         return val.isNotEmpty ? AppColors.outline : AppColors.surfaceVariant;
       case LetterStatus.notInWord:
       case LetterStatus.inWord:
       case LetterStatus.correct:
-        return backgroundColor; 
+        return backgroundColor;
     }
   }
 
-  Letter copyWith({
-    String? val,
-    LetterStatus? status,
-  }) {
-    return Letter(
-      val: val ?? this.val,
-      status: status ?? this.status,
-    );
+  Letter copyWith({String? val, LetterStatus? status}) {
+    return Letter(val: val ?? this.val, status: status ?? this.status);
   }
 
   @override

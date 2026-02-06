@@ -1,6 +1,3 @@
-import 'package:uniordle/core/app_icons.dart';
-import 'package:uniordle/core/app_layout.dart';
-import 'package:uniordle/shared/exports/home_exports.dart';
 import 'package:uniordle/shared/exports/profile_exports.dart';
 
 class ProfileHeader extends StatelessWidget {
@@ -16,9 +13,9 @@ class ProfileHeader extends StatelessWidget {
         final double transitionPower = (level / 100).clamp(0.0, 1.0);
 
         final Color themeColor = Color.lerp(
-          AppColors.accent, 
-          AppColors.accent4, 
-          transitionPower
+          AppColors.accent,
+          AppColors.accent4,
+          transitionPower,
         )!;
 
         final bool isOracle = level >= 100;
@@ -31,7 +28,7 @@ class ProfileHeader extends StatelessWidget {
 
         // TEST MODE TOGGLES
         // 1. Uncomment below to force Chancellor's List badge
-        // final bool unlockedAllMajors = true; 
+        // final bool unlockedAllMajors = true;
         // 2. Uncomment below to force the final rank level
         // final String academicTitle = "THE ORACLE";
 
@@ -46,13 +43,17 @@ class ProfileHeader extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: themeColor,
                       shape: BoxShape.circle,
-                      boxShadow: isOracle ? [
-                      BoxShadow(
-                        color: themeColor.withValues(alpha: 0.2 + (0.3 * transitionPower)),
-                        blurRadius: 10 + (10 * transitionPower),
-                        spreadRadius: 2 * transitionPower,
-                      )
-                    ] : null,
+                      boxShadow: isOracle
+                          ? [
+                              BoxShadow(
+                                color: themeColor.withValues(
+                                  alpha: 0.2 + (0.3 * transitionPower),
+                                ),
+                                blurRadius: 10 + (10 * transitionPower),
+                                spreadRadius: 2 * transitionPower,
+                              ),
+                            ]
+                          : null,
                     ),
                     child: Container(
                       padding: const EdgeInsets.all(4),
@@ -63,8 +64,11 @@ class ProfileHeader extends StatelessWidget {
                       child: CircleAvatar(
                         radius: 40,
                         backgroundColor: AppColors.surfaceVariant,
-                        child: Icon(AppIcons.profileDefault,
-                            size: 48, color: AppColors.onSurfaceVariant),
+                        child: Icon(
+                          AppIcons.profileDefault,
+                          size: 48,
+                          color: AppColors.onSurfaceVariant,
+                        ),
                       ),
                     ),
                   ),
@@ -72,7 +76,7 @@ class ProfileHeader extends StatelessWidget {
               ),
             ),
             context.autoText("Temp Name", style: AppFonts.displayLarge),
-            
+
             context.autoText(
               academicTitle,
               style: AppFonts.labelLarge.copyWith(
@@ -110,10 +114,10 @@ class ProfileHeader extends StatelessWidget {
   }
 
   Widget _buildBadge({
-    required BuildContext context, 
-    required IconData icon, 
-    required String label, 
-    required Color color
+    required BuildContext context,
+    required IconData icon,
+    required String label,
+    required Color color,
   }) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),

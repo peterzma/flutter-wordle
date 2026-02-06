@@ -1,5 +1,5 @@
+import 'package:uniordle/shared/exports/core_exports.dart';
 import 'dart:ui';
-import 'package:uniordle/shared/exports/game_exports.dart';
 
 class BaseDialog extends StatelessWidget {
   final Widget child;
@@ -30,7 +30,7 @@ class BaseDialog extends StatelessWidget {
         children: [
           Dialog(
             elevation: 0,
-            backgroundColor: AppColors.surfaceDialog, 
+            backgroundColor: AppColors.surfaceDialog,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(32),
             ),
@@ -39,25 +39,21 @@ class BaseDialog extends StatelessWidget {
                 maxWidth: AppLayout.maxDialogWidth,
               ),
               child: Padding(
-                padding: padding ?? EdgeInsets.all(context.responsive(24, AppLayout.dialogPadding)),
+                padding:
+                    padding ??
+                    EdgeInsets.all(
+                      context.responsive(24, AppLayout.dialogPadding),
+                    ),
                 child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [child],
-              ),
+                  mainAxisSize: MainAxisSize.min,
+                  children: [child],
+                ),
               ),
             ),
           ),
-          
-          if (leftAction != null)
-            Positioned(
-              left: 40, 
-              child: leftAction!,
-            ),
-          if (rightAction != null)
-            Positioned(
-              right: 40, 
-              child: rightAction!,
-            ),
+
+          if (leftAction != null) Positioned(left: 40, child: leftAction!),
+          if (rightAction != null) Positioned(right: 40, child: rightAction!),
         ],
       ),
     );

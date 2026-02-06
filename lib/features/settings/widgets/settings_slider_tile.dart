@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:uniordle/core/app_layout.dart';
 import 'package:uniordle/shared/exports/settings_exports.dart';
 
 class SettingsSliderTile extends StatelessWidget {
@@ -39,7 +37,9 @@ class SettingsSliderTile extends StatelessWidget {
                     onTap: onMuteToggle,
                     child: context.autoIcon(
                       value > 0 ? icon : muteIcon,
-                      color: value > 0 ? AppColors.accent : AppColors.onSurfaceVariant,
+                      color: value > 0
+                          ? AppColors.accent
+                          : AppColors.onSurfaceVariant,
                     ),
                   ),
                   const SizedBox(width: 12),
@@ -54,24 +54,19 @@ class SettingsSliderTile extends StatelessWidget {
           ),
           SliderTheme(
             data: SliderTheme.of(context).copyWith(
-            trackHeight: 4,
-            activeTrackColor: AppColors.accent,
-            inactiveTrackColor: AppColors.onSurfaceVariant,
-            thumbColor: AppColors.onSurface,
-            overlayColor: Colors.transparent,
-            thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 5.0),
-            overlayShape: const RoundSliderOverlayShape(overlayRadius: 16.0),
-            tickMarkShape: SliderTickMarkShape.noTickMark,
+              trackHeight: 4,
+              activeTrackColor: AppColors.accent,
+              inactiveTrackColor: AppColors.onSurfaceVariant,
+              thumbColor: AppColors.onSurface,
+              overlayColor: Colors.transparent,
+              thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 5.0),
+              overlayShape: const RoundSliderOverlayShape(overlayRadius: 16.0),
+              tickMarkShape: SliderTickMarkShape.noTickMark,
             ),
             child: SizedBox(
               width: double.infinity,
               height: 32,
-              child: Slider(
-                value: value,
-                min: 0,
-                max: 1,
-                onChanged: onChanged,
-              ),
+              child: Slider(value: value, min: 0, max: 1, onChanged: onChanged),
             ),
           ),
         ],

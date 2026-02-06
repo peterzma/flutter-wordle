@@ -1,4 +1,4 @@
-import 'package:uniordle/shared/exports/game_setup_exports.dart';
+import 'package:uniordle/shared/exports/core_exports.dart';
 
 class MusicNavigationObserver extends RouteObserver<PageRoute<dynamic>> {
   @override

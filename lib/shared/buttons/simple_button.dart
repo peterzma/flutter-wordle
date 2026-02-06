@@ -1,4 +1,4 @@
-import 'package:uniordle/shared/exports/game_exports.dart';
+import 'package:uniordle/shared/exports/core_exports.dart';
 
 class SimpleButton extends StatelessWidget {
   final String? text;
@@ -26,30 +26,26 @@ class SimpleButton extends StatelessWidget {
       onPressed: onTap,
       style: ButtonStyle(
         splashFactory: NoSplash.splashFactory,
-        overlayColor: WidgetStateProperty.resolveWith<Color?>(
-          (states) {
-            if (states.contains(WidgetState.pressed)) {
-              return Colors.white.withValues(alpha: 0.1);
-            }
-            return null;
-          },
-        ),
+        overlayColor: WidgetStateProperty.resolveWith<Color?>((states) {
+          if (states.contains(WidgetState.pressed)) {
+            return Colors.white.withValues(alpha: 0.1);
+          }
+          return null;
+        }),
         padding: WidgetStateProperty.all(padding ?? const EdgeInsets.all(16)),
         minimumSize: WidgetStateProperty.all(Size.zero),
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
         shape: WidgetStateProperty.all(
-          text == null ? const CircleBorder() : RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          text == null
+              ? const CircleBorder()
+              : RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         ),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           if (icon != null)
-            Icon(
-              icon,
-              color: displayColor,
-              size: iconSize ?? 18,
-            ),
+            Icon(icon, color: displayColor, size: iconSize ?? 18),
           if (icon != null && text != null) const SizedBox(width: 8),
           if (text != null)
             context.autoText(

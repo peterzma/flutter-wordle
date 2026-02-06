@@ -1,9 +1,5 @@
-import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:uniordle/core/app.dart';
-import 'package:bitsdojo_window/bitsdojo_window.dart';
-import 'package:uniordle/core/app_layout.dart';
-import 'package:uniordle/shared/services/stats_manager.dart';
-import 'package:uniordle/shared/exports/settings_exports.dart';
+import 'package:uniordle/shared/exports/core_exports.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,23 +11,19 @@ void main() async {
 
   await SoundManager().init();
 
-  runApp(
-    Phoenix(
-      child: const App(),
-    ),
-  );
+  runApp(Phoenix(child: const App()));
 
   doWhenWindowReady(() {
-    const double widthOverhead = 16.0; 
+    const double widthOverhead = 16.0;
     const double heightOverhead = 32.0;
 
     final minSize = Size(
-      AppLayout.minAppWidth + widthOverhead, 
-      AppLayout.minAppHeight + heightOverhead
+      AppLayout.minAppWidth + widthOverhead,
+      AppLayout.minAppHeight + heightOverhead,
     );
-      final startSize = Size(
-      AppLayout.maxAppWidth + widthOverhead, 
-      AppLayout.startAppHeight + heightOverhead
+    final startSize = Size(
+      AppLayout.maxAppWidth + widthOverhead,
+      AppLayout.startAppHeight + heightOverhead,
     );
 
     appWindow.minSize = minSize;

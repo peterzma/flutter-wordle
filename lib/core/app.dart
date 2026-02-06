@@ -1,21 +1,13 @@
-import 'package:flutter_soloud/flutter_soloud.dart';
 import 'package:uniordle/shared/exports/app_exports.dart';
-import 'package:uniordle/shared/navigation/instant_page_route.dart';
-import 'package:uniordle/shared/navigation/main_navigation_screen.dart';
-import 'package:uniordle/shared/navigation/music_navigation_observer.dart';
-import 'package:uniordle/shared/responsive/responsive_wrapper.dart';
 
 class App extends StatefulWidget {
-  const App({
-    super.key,
-  });
+  const App({super.key});
 
   @override
   State<App> createState() => _AppState();
 }
 
 class _AppState extends State<App> with WidgetsBindingObserver {
-
   final MusicNavigationObserver _musicObserver = MusicNavigationObserver();
 
   @override
@@ -33,8 +25,9 @@ class _AppState extends State<App> with WidgetsBindingObserver {
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
-    
-    if (state == AppLifecycleState.paused || state == AppLifecycleState.inactive) {
+
+    if (state == AppLifecycleState.paused ||
+        state == AppLifecycleState.inactive) {
       SoLoud.instance.setPause;
     } else if (state == AppLifecycleState.resumed) {
       SoLoud.instance.play;
@@ -56,10 +49,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
       initialRoute: '/',
 
       onGenerateRoute: (settings) {
-        return InstantPageRoute(
-          settings: settings,
-          page: _getPage(settings),
-        );
+        return InstantPageRoute(settings: settings, page: _getPage(settings));
       },
     );
   }
@@ -68,21 +58,21 @@ class _AppState extends State<App> with WidgetsBindingObserver {
     switch (settings.name) {
       case '/':
         return const MainNavigationScreen();
-        
+
       case '/uniordle':
         return const GameScreen();
-        
+
       case '/setup':
         final args = settings.arguments as Major;
         return GameSetupScreen(major: args);
-        
+
       case '/settings':
-        return Builder(builder: (context) {
-          return SettingsScreen(
-            onClose: () => Navigator.of(context).pop(),
-          );
-        });
-        
+        return Builder(
+          builder: (context) {
+            return SettingsScreen(onClose: () => Navigator.of(context).pop());
+          },
+        );
+
       default:
         return const HomeScreen();
     }

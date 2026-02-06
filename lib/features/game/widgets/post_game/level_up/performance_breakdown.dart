@@ -1,5 +1,4 @@
-import 'package:uniordle/shared/exports/end_game_exports.dart';
-import 'package:uniordle/shared/services/models/game_grade.dart';
+import 'package:uniordle/shared/exports/post_game_exports.dart';
 
 class PerformanceBreakdown extends StatelessWidget {
   final bool won;
@@ -31,11 +30,13 @@ class PerformanceBreakdown extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               context.autoText(
-                grade.label, 
+                grade.label,
                 style: AppFonts.labelSmall.copyWith(color: grade.color),
               ),
               context.autoText(
-                won ? "$attempts/$maxAttempts ATTEMPTS" : "X/$maxAttempts ATTEMPTS",
+                won
+                    ? "$attempts/$maxAttempts ATTEMPTS"
+                    : "X/$maxAttempts ATTEMPTS",
                 style: AppFonts.labelSmall.copyWith(color: grade.color),
               ),
             ],
@@ -44,16 +45,19 @@ class PerformanceBreakdown extends StatelessWidget {
           Builder(
             builder: (context) {
               final double baseSize = AppFonts.labelSmall.fontSize ?? 12;
-              final double responsiveSize = context.responsive(baseSize - 2, baseSize);
+              final double responsiveSize = context.responsive(
+                baseSize - 2,
+                baseSize,
+              );
 
               final bool isPositive = gainedMerit >= 0;
               final String amount = gainedMerit.toInt().abs().toString();
               final String unit = isPositive ? "merits" : "demerits";
-              
-              final Color normalColor = isPositive 
-                  ? AppColors.onSurfaceVariant 
+
+              final Color normalColor = isPositive
+                  ? AppColors.onSurfaceVariant
                   : AppColors.accent2.withValues(alpha: 0.8);
-              
+
               final Color highlightColor = grade.color;
 
               return RichText(
@@ -64,7 +68,9 @@ class PerformanceBreakdown extends StatelessWidget {
                     color: normalColor,
                   ),
                   children: [
-                    TextSpan(text: isPositive ? "You earned " : "You received "),
+                    TextSpan(
+                      text: isPositive ? "You earned " : "You received ",
+                    ),
                     TextSpan(
                       text: amount,
                       style: TextStyle(
@@ -81,15 +87,15 @@ class PerformanceBreakdown extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: isPositive 
-                        ? " based on your attempts." 
-                        : " due to failing to guess correctly."
+                      text: isPositive
+                          ? " based on your attempts."
+                          : " due to failing to guess correctly.",
                     ),
                   ],
                 ),
               );
             },
-          )
+          ),
         ],
       ),
     );

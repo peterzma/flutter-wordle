@@ -1,7 +1,6 @@
 import 'package:uniordle/features/home/data/major_data.dart';
 
 class UserStats {
-
   static const int meritPerLevel = 100;
 
   final int streak;
@@ -24,7 +23,16 @@ class UserStats {
     required this.merit,
     this.maxStreak = 0,
     this.lost = 0,
-    this.guessDistribution = const {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0},
+    this.guessDistribution = const {
+      1: 0,
+      2: 0,
+      3: 0,
+      4: 0,
+      5: 0,
+      6: 0,
+      7: 0,
+      8: 0,
+    },
     this.unlockedIds = const [],
     this.masteredIds = const [],
     this.achievedMilestones = const [],
@@ -32,9 +40,9 @@ class UserStats {
     this.solvedWords = const [],
     this.gameHistory = const [],
     int? extraBoosts,
-  }): extraBoosts = extraBoosts ?? 0;
+  }) : extraBoosts = extraBoosts ?? 0;
 
-    UserStats copyWith({
+  UserStats copyWith({
     int? streak,
     int? maxStreak,
     int? solved,
@@ -75,42 +83,49 @@ class UserStats {
 }
 
 extension UserStatsProgress on UserStats {
-  // int get currentLevel => merit ~/ UserStats.meritPerLevel;
-  int get currentLevel => 125;
+  int get currentLevel => merit ~/ UserStats.meritPerLevel;
+  // int get currentLevel => 125;
   int get nextLevel => currentLevel + 1;
   int get meritInCurrentLevel => merit % UserStats.meritPerLevel;
-  double get levelProgress => (merit % UserStats.meritPerLevel) / UserStats.meritPerLevel.toDouble();
+  double get levelProgress =>
+      (merit % UserStats.meritPerLevel) / UserStats.meritPerLevel.toDouble();
   int get progressPercentage => (levelProgress * 100).toInt();
   String get progressText => "$progressPercentage%";
 
   String get academicTitle {
     const titles = [
       "UNDERGRADUATE", // 0-9
-      "BACHELOR",      // 10-19
-      "MASTER",        // 20-29
-      "DOCTORATE",     // 30-39
-      "PROFESSOR",     // 40-49
-      "FELLOW",        // 50-59
-      "DEAN",          // 60-69
-      "PROVOST",       // 70-79
-      "RECTOR",        // 80-89
-      "CHANCELLOR",    // 90-99
-      "THE ORACLE",    // 100+
+      "BACHELOR", // 10-19
+      "MASTER", // 20-29
+      "DOCTORATE", // 30-39
+      "PROFESSOR", // 40-49
+      "FELLOW", // 50-59
+      "DEAN", // 60-69
+      "PROVOST", // 70-79
+      "RECTOR", // 80-89
+      "CHANCELLOR", // 90-99
+      "THE ORACLE", // 100+
     ];
 
     int index = (currentLevel ~/ 10).clamp(0, titles.length - 1);
     return titles[index];
   }
 
-  static (int level, double progress) getPreviousState(int totalMerit, int gainedMerit) {
+  static (int level, double progress) getPreviousState(
+    int totalMerit,
+    int gainedMerit,
+  ) {
     int oldMerit = totalMerit - gainedMerit;
-    return (oldMerit ~/ UserStats.meritPerLevel, (oldMerit % UserStats.meritPerLevel) / UserStats.meritPerLevel.toDouble());
+    return (
+      oldMerit ~/ UserStats.meritPerLevel,
+      (oldMerit % UserStats.meritPerLevel) / UserStats.meritPerLevel.toDouble(),
+    );
   }
 
   int get effectiveRank => (currentLevel ~/ 10).clamp(0, 10);
 
   int get standardPenalty {
-    return (effectiveRank * 5); 
+    return (effectiveRank * 5);
   }
 
   int get activePenalty {
@@ -119,7 +134,8 @@ extension UserStatsProgress on UserStats {
 }
 
 extension UserStatsRewards on UserStats {
-  double get masteryBonusValue => masteredCount >= MajorsData.all.length ? 2.0 : 0.0;
+  double get masteryBonusValue =>
+      masteredCount >= MajorsData.all.length ? 2.0 : 0.0;
 
   double get summitBonusValue => currentLevel >= 100 ? 1.0 : 0.0;
 
@@ -146,15 +162,22 @@ extension UserStatsRewards on UserStats {
     final int effectiveLevelForBonus = currentLevel.clamp(0, 100);
 
     final double rankMultiplier = (effectiveLevelForBonus ~/ 10) * 0.10;
-    
+
     // Major Bonus: 200%
     final double majorBonus = majorMultiplier;
-    
+
     // Base is 1.0 (100%)
-    return 1.0 + majorBonus + rankMultiplier + summitBonusValue + masteryBonusValue;
+    return 1.0 +
+        majorBonus +
+        rankMultiplier +
+        summitBonusValue +
+        masteryBonusValue;
   }
 
-  static ({int min, int max}) _calculateMeritBounds(int yearLevel, int wordLength) {
+  static ({int min, int max}) _calculateMeritBounds(
+    int yearLevel,
+    int wordLength,
+  ) {
     int minBase = 10 + (yearLevel * 5);
     int maxBase = 20 + (yearLevel * 6);
     int lengthBonus = (wordLength == 6) ? 5 : (wordLength >= 7 ? 10 : 0);
@@ -162,7 +185,11 @@ extension UserStatsRewards on UserStats {
     return (min: minBase + lengthBonus, max: maxBase + lengthBonus);
   }
 
-  static ({String original, String boosted}) getMeritRange(UserStats stats, int yearLevel, int wordLength) {
+  static ({String original, String boosted}) getMeritRange(
+    UserStats stats,
+    int yearLevel,
+    int wordLength,
+  ) {
     final bounds = _calculateMeritBounds(yearLevel, wordLength);
     final multiplier = stats.meritMultiplier;
 
@@ -171,24 +198,25 @@ extension UserStatsRewards on UserStats {
 
     return (
       original: "${bounds.min}-${bounds.max}",
-      boosted: "$boostedMin-$boostedMax"
+      boosted: "$boostedMin-$boostedMax",
     );
   }
 
   static int generateGainedMerit({
-    required UserStats stats, 
-    required int yearLevel, 
-    required int wordLength, 
+    required UserStats stats,
+    required int yearLevel,
+    required int wordLength,
     required int attempts,
     required String majorId,
   }) {
     final bounds = _calculateMeritBounds(yearLevel, wordLength);
-    
+
     double performanceWeight = (8 - attempts) / 7.0;
-    
+
     performanceWeight = performanceWeight.clamp(0.0, 1.0);
 
-    int baseMerit = bounds.min + ((bounds.max - bounds.min) * performanceWeight).round();
+    int baseMerit =
+        bounds.min + ((bounds.max - bounds.min) * performanceWeight).round();
 
     double totalMerit = baseMerit * stats.meritMultiplier;
 
@@ -198,24 +226,21 @@ extension UserStatsRewards on UserStats {
     if (isMastered && !hasFinishedAll) {
       totalMerit *= 0.5;
     }
-    
+
     return totalMerit.round();
   }
 
   static ({int min, int max}) calculateReducedBounds(int min, int max) {
-    return (
-      min: min ~/ 2,
-      max: max ~/ 2,
-    );
+    return (min: min ~/ 2, max: max ~/ 2);
   }
 
   static String formatReducedRange(String boostedRange) {
     final parts = boostedRange.split('-');
     if (parts.length != 2) return boostedRange;
-    
+
     final min = (int.tryParse(parts[0]) ?? 0) ~/ 2;
     final max = (int.tryParse(parts[1]) ?? 0) ~/ 2;
-    
+
     return "$min-$max";
   }
 }
@@ -224,10 +249,10 @@ extension UserStatsUnlocks on UserStats {
   int get totalCreditsEarned => 1 + (currentLevel ~/ 5);
   int get creditsSpent => unlockedIds.length + extraBoosts;
   int get availableCredits => totalCreditsEarned - creditsSpent;
-  
+
   bool get hasCredits => availableCredits > 0;
   bool get hasAnyUnlock => unlockedIds.isNotEmpty;
-  
+
   int get nextCreditAtLevel => (creditsSpent) * 5;
 }
 
@@ -236,28 +261,36 @@ extension UserStatsMastery on UserStats {
   List<String> get masteredMajorIds {
     // ==========================================
     // TEST MODE: Uncomment to Master All Majors
-    return MajorsData.all.map((m) => m.id).toList();
+    // return MajorsData.all.map((m) => m.id).toList();
     // ==========================================
 
-    return MajorsData.all.where((major) {
-      final List<String> library = MajorsData.getAllWordsForMajor(major.id);
-      if (library.isEmpty) return false;
-      
-      return library.every((word) => solvedWords.contains(word));
-    }).map((m) => m.id).toList();
+    return MajorsData.all
+        .where((major) {
+          final List<String> library = MajorsData.getAllWordsForMajor(major.id);
+          if (library.isEmpty) return false;
+
+          return library.every((word) => solvedWords.contains(word));
+        })
+        .map((m) => m.id)
+        .toList();
   }
 
   int get masteredCount => masteredMajorIds.length;
 
-  ({int solved, double percent}) getMajorProgress(String majorId, int totalWords) {
+  ({int solved, double percent}) getMajorProgress(
+    String majorId,
+    int totalWords,
+  ) {
     if (totalWords == 0) return (solved: 0, percent: 0.0);
-    
+
     final List<String> library = MajorsData.getAllWordsForMajor(majorId);
-    final int solvedCount = library.where((w) => solvedWords.contains(w)).length;
-    
+    final int solvedCount = library
+        .where((w) => solvedWords.contains(w))
+        .length;
+
     return (
       solved: solvedCount,
-      percent: (solvedCount / totalWords).clamp(0.0, 1.0)
+      percent: (solvedCount / totalWords).clamp(0.0, 1.0),
     );
   }
 }

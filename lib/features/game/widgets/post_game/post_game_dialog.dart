@@ -1,8 +1,6 @@
-import 'package:uniordle/core/app_icons.dart';
-import 'package:uniordle/shared/exports/end_game_exports.dart';
-import 'package:uniordle/shared/layout/show_base_dialog.dart';
+import 'package:uniordle/shared/exports/post_game_exports.dart';
 
-class EndDialog extends StatelessWidget {
+class PostGameDialog extends StatelessWidget {
   final bool won;
   final String solution;
   final int attempts;
@@ -11,7 +9,7 @@ class EndDialog extends StatelessWidget {
   final Major major;
   final int gainedMerit;
 
-  const EndDialog({
+  const PostGameDialog({
     super.key,
     required this.won,
     required this.solution,
@@ -24,12 +22,14 @@ class EndDialog extends StatelessWidget {
 
   void _handleNext(BuildContext context) {
     final currentStats = statsManager.statsNotifier.value;
-    
-    final double directedMerit = won ? gainedMerit.toDouble() : -gainedMerit.toDouble();
+
+    final double directedMerit = won
+        ? gainedMerit.toDouble()
+        : -gainedMerit.toDouble();
 
     final prevState = UserStatsProgress.getPreviousState(
-    currentStats.merit, 
-    directedMerit.toInt(),
+      currentStats.merit,
+      directedMerit.toInt(),
     );
 
     Navigator.pop(context);
@@ -44,9 +44,9 @@ class EndDialog extends StatelessWidget {
         maxAttempts: maxAttempts,
         won: won,
       ),
-);
+    );
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return BaseDialog(
@@ -56,7 +56,9 @@ class EndDialog extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(context.r(16)),
             decoration: BoxDecoration(
-              color: (won ? AppColors.correctColor : Colors.red).withValues(alpha: 0.1),
+              color: (won ? AppColors.correctColor : Colors.red).withValues(
+                alpha: 0.1,
+              ),
               shape: BoxShape.circle,
             ),
             child: Icon(
@@ -73,7 +75,11 @@ class EndDialog extends StatelessWidget {
           SizedBox(height: context.r(32)),
           SolutionBox(solution: solution),
           SizedBox(height: context.r(16)),
-          GameInfoBar(majorName: major.name, yearLevel: yearLevel, wordLength: solution.length),
+          GameInfoBar(
+            majorName: major.name,
+            yearLevel: yearLevel,
+            wordLength: solution.length,
+          ),
           SizedBox(height: context.r(32)),
           PrimaryButton(
             label: 'NEXT',

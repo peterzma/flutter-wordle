@@ -1,7 +1,4 @@
-import 'package:uniordle/core/app_icons.dart';
-import 'package:uniordle/shared/exports/game_exports.dart';
 import 'package:uniordle/shared/exports/home_exports.dart';
-import 'package:uniordle/shared/buttons/select_button_wrapper.dart';
 
 class MajorTile extends StatefulWidget {
   final Major major;
@@ -9,8 +6,8 @@ class MajorTile extends StatefulWidget {
   final bool isLocked;
 
   const MajorTile({
-    super.key, 
-    required this.major, 
+    super.key,
+    required this.major,
     required this.onTap,
     required this.isLocked,
   });
@@ -25,7 +22,9 @@ class _MajorTileState extends State<MajorTile> {
   @override
   Widget build(BuildContext context) {
     final sub = widget.major;
-    final displayColor = widget.isLocked ? AppColors.onSurfaceVariant.withValues(alpha: 0.5) : sub.color;
+    final displayColor = widget.isLocked
+        ? AppColors.onSurfaceVariant.withValues(alpha: 0.5)
+        : sub.color;
 
     return ValueListenableBuilder(
       valueListenable: statsManager.statsNotifier,
@@ -50,36 +49,31 @@ class _MajorTileState extends State<MajorTile> {
                 color: AppColors.surfaceVariant,
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
-                  color: _hovering 
-                      ? displayColor 
-                      : Colors.transparent,
+                  color: _hovering ? displayColor : Colors.transparent,
                   width: 1.5,
                 ),
-                boxShadow: isFullyMastered ? [
-                  BoxShadow(
-                    color: displayColor.withValues(alpha: 0.1),
-                    blurRadius: 10,
-                    spreadRadius: 1,
-                  )
-                ] : null,
+                boxShadow: isFullyMastered
+                    ? [
+                        BoxShadow(
+                          color: displayColor.withValues(alpha: 0.1),
+                          blurRadius: 10,
+                          spreadRadius: 1,
+                        ),
+                      ]
+                    : null,
               ),
               child: Opacity(
                 opacity: widget.isLocked ? 0.5 : 1.0,
                 child: Row(
                   children: [
                     MajorIcon(
-                      icon: widget.isLocked 
-                          ? AppIcons.profileLock
-                          : sub.icon, 
-                      color: widget.isLocked 
-                          ? AppColors.onSurfaceVariant 
+                      icon: widget.isLocked ? AppIcons.profileLock : sub.icon,
+                      color: widget.isLocked
+                          ? AppColors.onSurfaceVariant
                           : displayColor,
-                      shadows: isFullyMastered ? [
-                        Shadow(
-                          color: displayColor,
-                          blurRadius: 10.0,
-                        ),
-                      ] : null,
+                      shadows: isFullyMastered
+                          ? [Shadow(color: displayColor, blurRadius: 10.0)]
+                          : null,
                     ),
                     const SizedBox(width: 16),
                     Expanded(
@@ -90,15 +84,17 @@ class _MajorTileState extends State<MajorTile> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                sub.name, 
-                                style: AppFonts.labelLarge.copyWith(color: AppColors.onSurface)
+                                sub.name,
+                                style: AppFonts.labelLarge.copyWith(
+                                  color: AppColors.onSurface,
+                                ),
                               ),
                               if (!widget.isLocked)
                                 Text(
                                   "${progressData.solved}/${sub.totalWords}",
                                   style: AppFonts.labelSmall.copyWith(
-                                    color: displayColor, 
-                                    fontWeight: FontWeight.bold
+                                    color: displayColor,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                             ],
@@ -110,21 +106,25 @@ class _MajorTileState extends State<MajorTile> {
                             child: LinearProgressIndicator(
                               value: progressData.percent,
                               minHeight: 4,
-                              backgroundColor: displayColor.withValues(alpha: 0.1),
-                              valueColor: AlwaysStoppedAnimation<Color>(displayColor),
+                              backgroundColor: displayColor.withValues(
+                                alpha: 0.1,
+                              ),
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                displayColor,
+                              ),
                             ),
                           ),
                           const SizedBox(height: 2),
                           Text(
-                            widget.isLocked 
-                                ? "LOCKED" 
-                                : (isFullyMastered 
-                                    ? "MASTERED" 
-                                    : "MASTERY: ${(progressData.percent * 100).toInt()}%"), 
+                            widget.isLocked
+                                ? "LOCKED"
+                                : (isFullyMastered
+                                      ? "MASTERED"
+                                      : "MASTERY: ${(progressData.percent * 100).toInt()}%"),
                             style: AppFonts.labelSmall.copyWith(
                               color: displayColor,
                               fontSize: 10,
-                            )
+                            ),
                           ),
                         ],
                       ),
@@ -135,7 +135,7 @@ class _MajorTileState extends State<MajorTile> {
             ),
           ),
         );
-      }
+      },
     );
   }
 }

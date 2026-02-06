@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:lucide_icons/lucide_icons.dart';
+import 'package:uniordle/shared/exports/app_exports.dart';
 
 abstract class AppIcons {
   // Navigation & UI
@@ -29,9 +28,9 @@ abstract class AppIcons {
 
   // Progression & Badges
   // Level 100
-  static const IconData badgeOracle = LucideIcons.crown; 
+  static const IconData badgeOracle = LucideIcons.crown;
   // The "I solved everything" reward
-  static const IconData badgeMastery = LucideIcons.trophy; 
+  static const IconData badgeMastery = LucideIcons.trophy;
   static const IconData badgeResearch = LucideIcons.microscope;
   static const IconData statStreak = Icons.local_fire_department;
   static const IconData statSolved = Icons.check_circle_outline;
@@ -48,7 +47,7 @@ abstract class AppIcons {
   static const IconData profileLock = Icons.lock_outline;
   static const IconData profileUnlock = Icons.check_circle;
   static const IconData profileNext = Icons.radio_button_checked;
-  
+
   // System & Settings
   static const IconData sysVolumeOn = Icons.volume_up_rounded;
   static const IconData sysVolumeOff = Icons.volume_off;
@@ -57,7 +56,7 @@ abstract class AppIcons {
   static const IconData sysDelete = Icons.delete_forever_rounded;
   static const IconData sysConfirmDelete = Icons.delete_forever_rounded;
   static const IconData inProgressDeleteData1 = Icons.warning_amber_rounded;
-  static const IconData inProgressDeleteData2 = Icons.error_outline_rounded; 
+  static const IconData inProgressDeleteData2 = Icons.error_outline_rounded;
 
   // Links
   static const IconData linkSource = Icons.code_rounded;

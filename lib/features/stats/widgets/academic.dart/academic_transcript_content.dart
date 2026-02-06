@@ -1,7 +1,4 @@
-import 'package:uniordle/core/app_icons.dart';
-import 'package:uniordle/features/stats/widgets/academic.dart/history_item_card.dart';
-import 'package:uniordle/shared/buttons/simple_button.dart';
-import 'package:uniordle/shared/exports/game_exports.dart';
+import 'package:uniordle/shared/exports/stats_exports.dart';
 
 class AcademicTranscriptContent extends StatelessWidget {
   final UserStats stats;
@@ -22,26 +19,23 @@ class AcademicTranscriptContent extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text("Transcript", style: AppFonts.headline),
-                Text(
-                  "${allGames.length} ENTRIES",
-                  style: AppFonts.labelMedium,
-                ),
+                Text("${allGames.length} ENTRIES", style: AppFonts.labelMedium),
               ],
             ),
             // Close button inside the content
-           SimpleButton(
+            SimpleButton(
               icon: AppIcons.navClose,
               onTap: () => Navigator.pop(context),
               color: AppColors.onSurfaceVariant,
               iconSize: 16,
-            )
+            ),
           ],
         ),
 
         SizedBox(height: context.r(16)),
-        
+
         SizedBox(
-          height: context.responsive(200, 400), 
+          height: context.responsive(200, 400),
           child: ListView.builder(
             shrinkWrap: true,
             itemCount: allGames.length,
@@ -53,11 +47,8 @@ class AcademicTranscriptContent extends StatelessWidget {
         ),
 
         SizedBox(height: context.r(16)),
-        
-        Text(
-          "Only the last 50 scores are shown.",
-          style: AppFonts.labelMedium,
-        ),
+
+        Text("Only the last 50 scores are shown.", style: AppFonts.labelMedium),
       ],
     );
   }

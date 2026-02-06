@@ -1,6 +1,3 @@
-import 'package:uniordle/core/app_icons.dart';
-import 'package:uniordle/shared/buttons/select_button_wrapper.dart';
-import 'package:uniordle/shared/exports/game_exports.dart';
 import 'package:uniordle/shared/exports/settings_exports.dart';
 
 class SettingsActionTile extends StatelessWidget {
@@ -32,15 +29,18 @@ class SettingsActionTile extends StatelessWidget {
           children: [
             Row(
               children: [
-                context.autoIcon(icon, color: AppColors.onSurfaceVariant, size: 24),
+                context.autoIcon(
+                  icon,
+                  color: AppColors.onSurfaceVariant,
+                  size: 24,
+                ),
                 const SizedBox(width: 12),
                 context.autoText(label, style: AppFonts.labelLarge),
               ],
             ),
             Row(
               children: [
-                if (value != null)
-                  Text(value!, style: AppFonts.labelSmall),
+                if (value != null) Text(value!, style: AppFonts.labelSmall),
                 if (value != null) const SizedBox(width: 8),
                 Icon(
                   AppIcons.navForward,

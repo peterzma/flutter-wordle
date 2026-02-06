@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:uniordle/shared/layout/base_dialog.dart';
-
+import 'package:uniordle/shared/exports/core_exports.dart';
 
 Future<T?> showBaseDialog<T>({
   required BuildContext context,
@@ -15,8 +13,6 @@ Future<T?> showBaseDialog<T>({
     barrierLabel: '',
     barrierColor: barrierColor,
     transitionDuration: transitionDuration,
-    pageBuilder: (context, anim1, anim2) => BaseDialog(
-      child: child,
-    ),
+    pageBuilder: (context, anim1, anim2) => BaseDialog(child: child),
   );
 }

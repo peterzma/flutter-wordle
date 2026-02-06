@@ -1,5 +1,4 @@
-import 'package:uniordle/shared/buttons/select_button_wrapper.dart';
-import 'package:uniordle/shared/exports/game_exports.dart';
+import 'package:uniordle/shared/exports/core_exports.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String label;
@@ -27,11 +26,12 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double effectiveWidth = width ?? MediaQuery.of(context).size.width * 0.9;
-    
+    final double effectiveWidth =
+        width ?? MediaQuery.of(context).size.width * 0.9;
+
     final double ratioHeight = (effectiveWidth * (2 / 15)).clamp(40.0, 56.0);
     final double effectiveHeight = height ?? ratioHeight;
-    
+
     final double effectiveRadius = borderRadius ?? effectiveHeight / 2;
 
     return SelectButtonWrapper(
@@ -44,8 +44,8 @@ class PrimaryButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(effectiveRadius),
         ),
         child: Center(
-          child: isLoading 
-              ? _buildLoader(context, effectiveHeight) 
+          child: isLoading
+              ? _buildLoader(context, effectiveHeight)
               : _buildContent(context, effectiveHeight),
         ),
       ),

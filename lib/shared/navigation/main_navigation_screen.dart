@@ -1,6 +1,7 @@
+import 'package:uniordle/shared/exports/core_exports.dart';
+import 'package:uniordle/features/home/views/home_screen.dart';
 import 'package:uniordle/features/profile/views/profile_screen.dart';
 import 'package:uniordle/features/stats/views/stats_screen.dart';
-import 'package:uniordle/shared/exports/home_exports.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});

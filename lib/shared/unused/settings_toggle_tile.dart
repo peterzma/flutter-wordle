@@ -1,6 +1,5 @@
+import 'package:uniordle/shared/exports/core_exports.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:uniordle/core/app_layout.dart';
-import 'package:uniordle/shared/exports/settings_exports.dart';
 
 class SettingsToggleTile extends StatelessWidget {
   final IconData icon;
@@ -35,17 +34,17 @@ class SettingsToggleTile extends StatelessWidget {
             ],
           ),
           SizedBox(
-          height: context.responsive(20, 32),
-          child: FittedBox(
-            fit: BoxFit.contain,
-            child: CupertinoSwitch(
-              value: value,
-              onChanged: onChanged,
-              activeTrackColor: AppColors.accent,
-              inactiveTrackColor: AppColors.onSurfaceVariant,
+            height: context.responsive(20, 32),
+            child: FittedBox(
+              fit: BoxFit.contain,
+              child: CupertinoSwitch(
+                value: value,
+                onChanged: onChanged,
+                activeTrackColor: AppColors.accent,
+                inactiveTrackColor: AppColors.onSurfaceVariant,
+              ),
             ),
           ),
-        ),
         ],
       ),
     );

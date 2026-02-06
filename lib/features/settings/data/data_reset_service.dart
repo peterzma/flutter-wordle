@@ -1,8 +1,4 @@
-import 'package:flutter_phoenix/flutter_phoenix.dart';
-import 'package:uniordle/core/app_icons.dart';
-import 'package:uniordle/shared/exports/end_game_exports.dart';
-import 'package:uniordle/shared/exports/profile_exports.dart';
-import 'package:uniordle/shared/layout/show_base_dialog.dart';
+import 'package:uniordle/shared/exports/settings_exports.dart';
 
 class DataResetService {
   static Future<void> showDialog(BuildContext context) async {
@@ -11,7 +7,11 @@ class DataResetService {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(AppIcons.inProgressDeleteData1, size: context.r(64), color: AppColors.accent2),
+          Icon(
+            AppIcons.inProgressDeleteData1,
+            size: context.r(64),
+            color: AppColors.accent2,
+          ),
           SizedBox(height: context.r(8)),
           Text("RESET PROGRESS?", style: AppFonts.headline),
           SizedBox(height: context.r(8)),
@@ -43,7 +43,11 @@ class DataResetService {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(AppIcons.inProgressDeleteData2, size: context.r(64), color: AppColors.accent2),
+          Icon(
+            AppIcons.inProgressDeleteData2,
+            size: context.r(64),
+            color: AppColors.accent2,
+          ),
           SizedBox(height: context.r(8)),
           Text("ARE YOU CERTAIN?", style: AppFonts.headline),
           SizedBox(height: context.r(8)),

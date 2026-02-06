@@ -1,12 +1,11 @@
-import 'package:uniordle/core/app_layout.dart';
-import 'package:uniordle/shared/exports/home_exports.dart';
+import 'package:uniordle/shared/exports/help_exports.dart';
 
 class InstructionRow extends StatelessWidget {
   final Widget leading;
   final Color color;
   final String title;
   final String subtitle;
-  
+
   const InstructionRow({
     super.key,
     required this.leading,
@@ -35,21 +34,21 @@ class InstructionRow extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               context.autoText(
-                title, 
+                title,
                 style: AppFonts.labelLarge,
                 maxLines: 1,
-                textAlign: TextAlign.left
+                textAlign: TextAlign.left,
               ),
               context.autoText(
-                subtitle, 
-                style: AppFonts.labelMedium, 
-                maxLines: 2, 
-                textAlign: TextAlign.left
+                subtitle,
+                style: AppFonts.labelMedium,
+                maxLines: 2,
+                textAlign: TextAlign.left,
               ),
-            ]
-          )
-        )
-      ]
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

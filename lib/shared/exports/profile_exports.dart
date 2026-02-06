@@ -1,13 +1,8 @@
-export 'package:flutter/material.dart';
-export 'package:uniordle/shared/services/models/user_stats.dart';
+export 'package:uniordle/shared/exports/core_exports.dart';
+
+export 'package:uniordle/shared/models/user_stats.dart';
 export 'package:uniordle/features/profile/views/profile_screen.dart';
 export 'package:uniordle/features/profile/widgets/progress/summary_card.dart';
 export 'package:uniordle/features/profile/widgets/profile_header.dart';
-export '../services/stats_manager.dart';
-export 'package:shared_preferences/shared_preferences.dart';
-export '../../features/profile/widgets/progress/level_card.dart';
-export '../../core/app_fonts.dart';
-export '../../core/app_colors.dart';
-export '../../features/profile/data/all_ranks.dart';
-export '../../features/profile/widgets/rank_pathway.dart';
-export '../../features/profile/widgets/commencement.dart';
+export 'package:uniordle/features/profile/widgets/commencement.dart';
+export 'package:uniordle/features/profile/widgets/rank_pathway.dart';

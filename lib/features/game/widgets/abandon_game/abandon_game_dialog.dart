@@ -1,5 +1,4 @@
-import 'package:uniordle/core/app_icons.dart';
-import 'package:uniordle/shared/exports/end_game_exports.dart';
+import 'package:uniordle/shared/exports/post_game_exports.dart';
 
 class AbandonGameDialog extends StatelessWidget {
   const AbandonGameDialog({super.key});
@@ -9,7 +8,7 @@ class AbandonGameDialog extends StatelessWidget {
     final stats = statsManager.statsNotifier.value;
     final streak = stats.streak;
     final penalty = stats.activePenalty;
-    
+
     final highlightStyle = AppFonts.labelMedium.copyWith(
       color: AppColors.accent2,
     );
@@ -36,17 +35,13 @@ class AbandonGameDialog extends StatelessWidget {
             TextSpan(
               style: AppFonts.labelMedium,
               children: [
-                const TextSpan(text: "Leaving early will result in a penalty of "),
-                TextSpan(
-                  text: "$penalty demerits",
-                  style: highlightStyle,
+                const TextSpan(
+                  text: "Leaving early will result in a penalty of ",
                 ),
+                TextSpan(text: "$penalty demerits", style: highlightStyle),
                 if (streak > 0) ...[
                   const TextSpan(text: " and the loss of your "),
-                  TextSpan(
-                    text: "$streak win streak",
-                    style: highlightStyle,
-                  ),
+                  TextSpan(text: "$streak win streak", style: highlightStyle),
                 ],
                 const TextSpan(text: "."),
               ],
@@ -79,9 +74,10 @@ class AbandonGameDialog extends StatelessWidget {
 
   static Future<bool> show(BuildContext context) async {
     return await showDialog<bool>(
-      context: context,
-      barrierColor: Colors.transparent,
-      builder: (context) => const AbandonGameDialog(),
-    ) ?? false;
+          context: context,
+          barrierColor: Colors.transparent,
+          builder: (context) => const AbandonGameDialog(),
+        ) ??
+        false;
   }
 }

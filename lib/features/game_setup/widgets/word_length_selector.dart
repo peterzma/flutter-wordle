@@ -1,6 +1,4 @@
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:uniordle/shared/exports/app_exports.dart';
-import 'package:uniordle/shared/buttons/select_button_wrapper.dart';
+import 'package:uniordle/shared/exports/game_setup_exports.dart';
 
 class WordLengthSelector extends StatelessWidget {
   final int value;
@@ -8,8 +6,8 @@ class WordLengthSelector extends StatelessWidget {
   final Major major;
 
   const WordLengthSelector({
-    super.key, 
-    required this.value, 
+    super.key,
+    required this.value,
     required this.onChanged,
     required this.major,
   });
@@ -22,8 +20,8 @@ class WordLengthSelector extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [5, 6, 7].map((len) {
             final bool active = value == len;
-            final Color baseColor = active 
-                ? major.color 
+            final Color baseColor = active
+                ? major.color
                 : AppColors.surfaceVariant;
             return Expanded(
               child: Center(
@@ -43,7 +41,9 @@ class WordLengthSelector extends StatelessWidget {
                           duration: const Duration(milliseconds: 300),
                           curve: Curves.easeInOut,
                           decoration: BoxDecoration(
-                            color: active ? major.color : AppColors.surfaceVariant,
+                            color: active
+                                ? major.color
+                                : AppColors.surfaceVariant,
                             borderRadius: BorderRadius.circular(36),
                           ),
                           child: Column(
@@ -51,15 +51,20 @@ class WordLengthSelector extends StatelessWidget {
                             children: [
                               AutoSizeText(
                                 '$len',
-                                style: active 
-                                ? AppFonts.displayMedium.copyWith(fontWeight: FontWeight.w900)
-                                : AppFonts.displayMedium,
+                                style: active
+                                    ? AppFonts.displayMedium.copyWith(
+                                        fontWeight: FontWeight.w900,
+                                      )
+                                    : AppFonts.displayMedium,
                               ),
                               AutoSizeText(
                                 'LETTERS',
-                                style: active 
-                                ? AppFonts.labelMedium.copyWith(color: AppColors.onSurface, fontWeight: FontWeight.w600)
-                                : AppFonts.labelMedium,
+                                style: active
+                                    ? AppFonts.labelMedium.copyWith(
+                                        color: AppColors.onSurface,
+                                        fontWeight: FontWeight.w600,
+                                      )
+                                    : AppFonts.labelMedium,
                               ),
                             ],
                           ),

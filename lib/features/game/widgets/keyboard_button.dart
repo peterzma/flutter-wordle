@@ -1,6 +1,4 @@
-import 'package:uniordle/core/app_icons.dart';
 import 'package:uniordle/shared/exports/game_exports.dart';
-import 'package:uniordle/shared/buttons/select_button_wrapper.dart';
 
 class KeyboardButton extends StatelessWidget {
   final double height;
@@ -11,7 +9,7 @@ class KeyboardButton extends StatelessWidget {
   final Widget? child;
   final SoundType soundType;
 
-  const KeyboardButton({ 
+  const KeyboardButton({
     super.key,
     this.height = 66,
     this.width = 40,
@@ -22,32 +20,23 @@ class KeyboardButton extends StatelessWidget {
     this.soundType = SoundType.keyboard,
   });
 
-
   factory KeyboardButton.delete({required VoidCallback onTap}) =>
       KeyboardButton(
         width: 62,
         onTap: onTap,
         backgroundColor: AppColors.gameTiles,
         soundType: SoundType.delete,
-        child: Icon(
-          AppIcons.gameBackspace, 
-          color: Colors.white, 
-          size: 22
-        ),
+        child: Icon(AppIcons.gameBackspace, color: Colors.white, size: 22),
       );
 
-  factory KeyboardButton.enter({required VoidCallback onTap}) =>
-      KeyboardButton(
-        width: 62,
-        onTap: onTap,
-        backgroundColor: AppColors.gameTiles,
-        letter: 'ENTER',
-        soundType: SoundType.enter,
-        child: Text(
-          'ENTER',
-          style: AppFonts.labelLarge
-        ),
-      );
+  factory KeyboardButton.enter({required VoidCallback onTap}) => KeyboardButton(
+    width: 62,
+    onTap: onTap,
+    backgroundColor: AppColors.gameTiles,
+    letter: 'ENTER',
+    soundType: SoundType.enter,
+    child: Text('ENTER', style: AppFonts.labelLarge),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -62,13 +51,15 @@ class KeyboardButton extends StatelessWidget {
           height: height,
           width: width,
           child: Center(
-            child: child ?? Text(
-              letter ?? '',
-              style: AppFonts.displayMedium.copyWith(fontSize: 24),
-            ),
+            child:
+                child ??
+                Text(
+                  letter ?? '',
+                  style: AppFonts.displayMedium.copyWith(fontSize: 24),
+                ),
           ),
-        )
-      )
+        ),
+      ),
     );
   }
 }

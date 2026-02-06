@@ -1,5 +1,4 @@
-import 'package:uniordle/core/app_layout.dart';
-import 'package:flutter/material.dart';
+import 'package:uniordle/shared/exports/core_exports.dart';
 
 class ResponsiveLayout extends StatelessWidget {
   final Widget smallScreen;

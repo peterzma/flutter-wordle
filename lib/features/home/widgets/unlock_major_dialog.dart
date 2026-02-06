@@ -1,8 +1,4 @@
-import 'package:uniordle/core/app_icons.dart';
-import 'package:uniordle/features/home/widgets/unlocked_major_dialog.dart';
-import 'package:uniordle/shared/exports/game_exports.dart';
-import 'package:uniordle/shared/exports/help_exports.dart';
-import 'package:uniordle/shared/buttons/wiggle_button_wrapper.dart';
+import 'package:uniordle/shared/exports/home_exports.dart';
 
 class UnlockMajorDialog extends StatefulWidget {
   final Major major;
@@ -25,14 +21,12 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
   final wiggleKey = GlobalKey<WiggleButtonWrapperState>();
 
   void _handleUnlock() async {
-    
     await statsManager.unlockMajor(widget.major.id);
     if (mounted) {
       setState(() {
         _isUnlocked = true;
       });
     }
-    
   }
 
   @override
@@ -45,18 +39,18 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
     final bool isFirstEnrollment = stats.unlockedIds.isEmpty;
 
     final bool canAfford = widget.credits > 0;
-    final Color buttonColor = canAfford 
-        ? widget.major.color 
+    final Color buttonColor = canAfford
+        ? widget.major.color
         : AppColors.onSurfaceVariant.withValues(alpha: 0.5);
-    final Color statusColor = canAfford 
-        ? widget.major.color 
+    final Color statusColor = canAfford
+        ? widget.major.color
         : AppColors.onSurfaceVariant.withValues(alpha: 0.5);
 
-    final String bonusText = isFirstEnrollment 
-    ? "FIRST ENROLLMENT" 
-    : "PERMANENT +5% MAJOR BONUS";
+    final String bonusText = isFirstEnrollment
+        ? "FIRST ENROLLMENT"
+        : "PERMANENT +5% MAJOR BONUS";
 
-    final IconData bonusIcon = isFirstEnrollment 
+    final IconData bonusIcon = isFirstEnrollment
         ? AppIcons.firstEnrollment
         : AppIcons.permanentMeritBonus;
 
@@ -81,28 +75,28 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
             ),
           ),
           SizedBox(height: context.r(8)),
-      
+
           context.autoText(
             canAfford ? "Enroll in ${widget.major.name}?" : "RESTRICTED",
             style: AppFonts.headline,
           ),
           SizedBox(height: context.r(16)),
-          
+
           context.autoText(
-            canAfford 
-              ? "Spend 1 Credit to unlock ${widget.major.name}?"
-              : "You don't have any credits to enroll in ${widget.major.name}.",
+            canAfford
+                ? "Spend 1 Credit to unlock ${widget.major.name}?"
+                : "You don't have any credits to enroll in ${widget.major.name}.",
             textAlign: TextAlign.center,
             style: AppFonts.labelMedium,
-            maxLines: 2
+            maxLines: 2,
           ),
-          
+
           SizedBox(height: context.r(16)),
 
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
-              color: canAfford 
+              color: canAfford
                   ? widget.major.color.withValues(alpha: 0.1)
                   : AppColors.onSurfaceVariant.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(32),
@@ -112,14 +106,18 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
               children: [
                 context.autoIcon(
                   bonusIcon,
-                  size: 16, 
-                  color: canAfford ? widget.major.color : AppColors.onSurfaceVariant,
+                  size: 16,
+                  color: canAfford
+                      ? widget.major.color
+                      : AppColors.onSurfaceVariant,
                 ),
                 const SizedBox(width: 4),
                 context.autoText(
                   bonusText,
                   style: AppFonts.labelSmall.copyWith(
-                    color: canAfford ? widget.major.color : AppColors.onSurfaceVariant,
+                    color: canAfford
+                        ? widget.major.color
+                        : AppColors.onSurfaceVariant,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -128,7 +126,7 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
           ),
 
           SizedBox(height: context.r(16)),
-          
+
           Column(
             children: [
               if (!canAfford) ...[
@@ -140,7 +138,7 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
               ],
             ],
           ),
-      
+
           Row(
             children: [
               Expanded(
@@ -152,7 +150,7 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
               SizedBox(width: context.r(16)),
               Expanded(
                 child: WiggleButtonWrapper(
-                  key: wiggleKey, 
+                  key: wiggleKey,
                   child: PrimaryButton(
                     label: "ENROLL",
                     color: buttonColor,
@@ -163,8 +161,8 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
                         SoundManager().play(SoundType.unlockMajor);
                       } else {
                         wiggleKey.currentState?.wiggle();
-      
-                        SoundManager().play(SoundType.lockedMajor); 
+
+                        SoundManager().play(SoundType.lockedMajor);
                       }
                     },
                   ),

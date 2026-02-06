@@ -1,9 +1,4 @@
-import 'package:uniordle/core/app_icons.dart';
-import 'package:uniordle/shared/buttons/primary_button.dart';
-import 'package:uniordle/shared/buttons/pulsing_button_wrapper.dart';
-import 'package:uniordle/shared/exports/end_game_exports.dart';
 import 'package:uniordle/shared/exports/profile_exports.dart';
-import 'package:uniordle/shared/layout/show_base_dialog.dart';
 
 class RankPathway extends StatelessWidget {
   final int currentLevel;
@@ -16,7 +11,7 @@ class RankPathway extends StatelessWidget {
     );
 
     final bool isPathwayComplete = currentRankIndex == allRanks.length - 1;
- 
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -32,17 +27,18 @@ class RankPathway extends StatelessWidget {
               final bool isLast = index == allRanks.length - 1;
               final bool isAchieved = index <= currentRankIndex;
               final bool isNext = index == currentRankIndex + 1;
-              
-              // Hide middle "undiscovered" ranks
-              if (!isAchieved && !isNext && !isLast) return const SizedBox.shrink();
 
-              // Logic: Only show the title if achieved. 
+              // Hide middle "undiscovered" ranks
+              if (!isAchieved && !isNext && !isLast) {
+                return const SizedBox.shrink();
+              }
+              // Logic: Only show the title if achieved.
               // Otherwise, it's a secret (???).
               final String title = isAchieved ? rank['title'] : "???";
-              
+
               // Logic: Only show the level requirement if it's achieved or the immediate next goal.
-              final String levelRange = (isAchieved || isNext) 
-                  ? "LEVEL ${rank['minLevel']}+" 
+              final String levelRange = (isAchieved || isNext)
+                  ? "LEVEL ${rank['minLevel']}+"
                   : "LEVEL ???";
 
               return Column(
@@ -66,9 +62,9 @@ class RankPathway extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: isPathwayComplete
                               ? AppColors.accent4
-                              : (isAchieved 
-                                  ? AppColors.accent 
-                                  : AppColors.onSurface),
+                              : (isAchieved
+                                    ? AppColors.accent
+                                    : AppColors.onSurface),
                           borderRadius: BorderRadius.circular(2),
                         ),
                       ),
@@ -83,7 +79,9 @@ class RankPathway extends StatelessWidget {
           SizedBox(height: context.r(32)),
           Center(
             child: ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: AppLayout.contentWidth(context)),
+              constraints: BoxConstraints(
+                maxWidth: AppLayout.contentWidth(context),
+              ),
               child: PulsingButtonWrapper(
                 glowColor: AppColors.accent4,
                 child: PrimaryButton(
@@ -121,16 +119,18 @@ class RankPathway extends StatelessWidget {
 
     final Color rowColor = isPathwayComplete
         ? AppColors.accent4
-        : (isAchieved 
-            ? AppColors.accent 
-            : (isNext ? Colors.white : AppColors.onSurfaceVariant));
+        : (isAchieved
+              ? AppColors.accent
+              : (isNext ? Colors.white : AppColors.onSurfaceVariant));
 
     return Row(
       children: [
         Icon(
           isLast && isAchieved
               ? AppIcons.badgeOracle
-              : (isAchieved ? AppIcons.profileUnlock : (isNext ? AppIcons.profileNext : AppIcons.profileLock)),
+              : (isAchieved
+                    ? AppIcons.profileUnlock
+                    : (isNext ? AppIcons.profileNext : AppIcons.profileLock)),
           color: rowColor,
           size: 24,
         ),
@@ -140,18 +140,29 @@ class RankPathway extends StatelessWidget {
             title,
             style: AppFonts.labelMedium.copyWith(
               color: rowColor,
-              fontWeight: isAchieved || isNext ? FontWeight.bold : FontWeight.normal,
+              fontWeight: isAchieved || isNext
+                  ? FontWeight.bold
+                  : FontWeight.normal,
               letterSpacing: isSecret ? 2 : null,
             ),
           ),
         ),
-        Text(
-          levelRange,
-          style: AppFonts.labelSmall.copyWith(
-            color: rowColor,
-          ),
-        ),
+        Text(levelRange, style: AppFonts.labelSmall.copyWith(color: rowColor)),
       ],
     );
   }
 }
+
+final List<Map<String, dynamic>> allRanks = [
+  {'title': 'UNDERGRADUATE', 'minLevel': 0},
+  {'title': 'BACHELOR', 'minLevel': 10},
+  {'title': 'MASTER', 'minLevel': 20},
+  {'title': 'DOCTORATE', 'minLevel': 30},
+  {'title': 'PROFESSOR', 'minLevel': 40},
+  {'title': 'FELLOW', 'minLevel': 50},
+  {'title': 'DEAN', 'minLevel': 60},
+  {'title': 'PROVOST', 'minLevel': 70},
+  {'title': 'RECTOR', 'minLevel': 80},
+  {'title': 'CHANCELLOR', 'minLevel': 90},
+  {'title': 'THE ORACLE', 'minLevel': 100},
+];

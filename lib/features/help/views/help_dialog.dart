@@ -1,6 +1,3 @@
-import 'package:uniordle/core/app_icons.dart';
-import 'package:uniordle/features/help/widgets/stakes_and_penalties.dart';
-import 'package:uniordle/shared/exports/game_exports.dart';
 import 'package:uniordle/shared/exports/help_exports.dart';
 
 class HelpDialog extends StatefulWidget {
@@ -48,10 +45,7 @@ class _HelpDialogState extends State<HelpDialog> {
             ),
           ),
           SizedBox(height: context.responsive(4, 16)),
-          PageIndicator(
-            totalPages: _totalPages,
-            currentPage: _currentPage,
-          ),
+          PageIndicator(totalPages: _totalPages, currentPage: _currentPage),
           SizedBox(height: 16),
           PrimaryButton(
             label: 'Got it!',
@@ -68,11 +62,7 @@ class NavHitArea extends StatelessWidget {
   final bool isLeft;
   final VoidCallback onTap;
 
-  const NavHitArea({
-    super.key, 
-    required this.isLeft, 
-    required this.onTap
-  });
+  const NavHitArea({super.key, required this.isLeft, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -80,8 +70,8 @@ class NavHitArea extends StatelessWidget {
       onTap: onTap,
       behavior: HitTestBehavior.opaque,
       child: Container(
-        width: context.responsive(40, 60), 
-        height: context.responsive(220, 300), 
+        width: context.responsive(40, 60),
+        height: context.responsive(220, 300),
         // color: Colors.red,
         alignment: Alignment.center,
         child: Transform.translate(

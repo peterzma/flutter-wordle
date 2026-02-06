@@ -1,6 +1,4 @@
-import 'package:uniordle/core/app_layout.dart';
-import 'package:uniordle/shared/exports/home_exports.dart';
-import 'package:uniordle/shared/navigation/navigation_item.dart';
+import 'package:uniordle/shared/exports/core_exports.dart';
 
 class BaseHeader extends StatelessWidget {
   final String title;
@@ -30,16 +28,15 @@ class BaseHeader extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.surface,
         border: const Border(
-          bottom: BorderSide(
-            color: AppColors.outline,
-            width: 0.5,
-          ),
+          bottom: BorderSide(color: AppColors.outline, width: 0.5),
         ),
       ),
       child: SafeArea(
         bottom: false,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppLayout.pagePadding),
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppLayout.pagePadding,
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,10 +45,7 @@ class BaseHeader extends StatelessWidget {
                 flex: 2,
                 child: Align(
                   alignment: Alignment.centerLeft,
-                  child: NavigationItem(
-                    icon: leftIcon,
-                    onTap: onLeftTap,
-                  ),
+                  child: NavigationItem(icon: leftIcon, onTap: onLeftTap),
                 ),
               ),
               Flexible(
@@ -67,17 +61,14 @@ class BaseHeader extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: actions != null
-                      ? Row(
-                          mainAxisSize: MainAxisSize.min, 
-                          children: actions!,
-                        )
+                      ? Row(mainAxisSize: MainAxisSize.min, children: actions!)
                       : rightIcon != null
-                          ? NavigationItem(
-                              icon: rightIcon!,
-                              onTap: onRightTap ?? () {},
-                            )
-                          : const SizedBox.shrink(),
-                  ),
+                      ? NavigationItem(
+                          icon: rightIcon!,
+                          onTap: onRightTap ?? () {},
+                        )
+                      : const SizedBox.shrink(),
+                ),
               ),
             ],
           ),

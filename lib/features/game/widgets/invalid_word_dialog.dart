@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:uniordle/shared/exports/game_exports.dart';
 
 class InvalidWordDialog {
@@ -8,7 +7,6 @@ class InvalidWordDialog {
       barrierColor: Colors.transparent,
       barrierDismissible: false,
       builder: (dialogContext) {
-        
         Timer(const Duration(milliseconds: 700), () {
           if (dialogContext.mounted) {
             Navigator.of(dialogContext).pop();

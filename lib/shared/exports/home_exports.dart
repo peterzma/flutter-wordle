@@ -1,14 +1,13 @@
-export '../../features/home/models/major.dart';
-export '../../features/home/views/home_screen.dart';
-export '../../features/home/widgets/major_grid.dart';
-export '../../features/home/widgets/major_icon.dart';
-export '../../features/home/widgets/major_tile.dart';
-export '../navigation/main_navigation_footer.dart';
-export '../navigation/main_navigation_header.dart';
-export '../../features/home/widgets/home_hero.dart';
-export 'package:lucide_icons/lucide_icons.dart';
-export '../../core/app_fonts.dart';
-export '../../core/app_colors.dart';
-export 'package:uniordle/core/sound_manager.dart';
-export 'package:flutter/material.dart';
-export '../slide_up_route.dart';
+export 'package:uniordle/shared/exports/core_exports.dart';
+
+export 'package:uniordle/shared/models/major.dart';
+export 'package:uniordle/features/home/views/home_screen.dart';
+export 'package:uniordle/features/home/widgets/major_grid.dart';
+export 'package:uniordle/features/home/widgets/major_icon.dart';
+export 'package:uniordle/features/home/widgets/major_tile.dart';
+export 'package:uniordle/features/home/widgets/home_hero.dart';
+export 'package:uniordle/features/home/data/major_data.dart';
+export 'package:uniordle/features/home/widgets/ascension.dart';
+export 'package:uniordle/features/home/widgets/unlock_major_dialog.dart';
+export 'package:uniordle/features/home/widgets/use_credits.dart';
+export 'package:uniordle/features/home/widgets/unlocked_major_dialog.dart';

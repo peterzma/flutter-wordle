@@ -1,7 +1,4 @@
-import 'package:confetti/confetti.dart';
-import 'package:uniordle/features/game/widgets/level_up/milestone_celebration_dialog.dart';
-import 'package:uniordle/features/game/widgets/level_up/performance_breakdown.dart';
-import 'package:uniordle/shared/exports/end_game_exports.dart';
+import 'package:uniordle/shared/exports/post_game_exports.dart';
 
 enum MilestoneType { levelUp, creditEarned, rankUp }
 
@@ -29,19 +26,22 @@ class LevelUpDialog extends StatefulWidget {
   State<LevelUpDialog> createState() => _LevelUpDialogState();
 }
 
-class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProviderStateMixin {
+class _LevelUpDialogState extends State<LevelUpDialog>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
   late ConfettiController _confettiController;
-  
+
   int _lastThrottledLevel = 0;
 
   @override
   void initState() {
     super.initState();
     _lastThrottledLevel = widget.startingLevel;
-    
-    _confettiController = ConfettiController(duration: const Duration(seconds: 1));
+
+    _confettiController = ConfettiController(
+      duration: const Duration(seconds: 1),
+    );
 
     final double startTotal = widget.startingLevel + widget.startingProgress;
     final double levelChange = widget.gainedMerit / UserStats.meritPerLevel;
@@ -49,18 +49,21 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
 
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 1500 + (levelChange.abs() * 500).toInt()),
+      duration: Duration(
+        milliseconds: 1500 + (levelChange.abs() * 500).toInt(),
+      ),
     );
 
-    _animation = Tween<double>(begin: startTotal, end: endTotal)
-        .animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOutCubic));
+    _animation = Tween<double>(begin: startTotal, end: endTotal).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOutCubic),
+    );
 
     _controller.addListener(() {
       final int currentLevel = _animation.value.floor();
-      
+
       if (currentLevel > _lastThrottledLevel) {
         _lastThrottledLevel = currentLevel;
-        
+
         _confettiController.play();
 
         if (currentLevel % 10 == 0) {
@@ -75,14 +78,18 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
       }
     });
 
-    Future.delayed(const Duration(milliseconds: 400), () => _controller.forward());
+    Future.delayed(
+      const Duration(milliseconds: 400),
+      () => _controller.forward(),
+    );
   }
 
   void _showMilestoneDialog(MilestoneType type, int level) {
     showDialog(
       context: context,
-      barrierDismissible: true, 
-      builder: (context) => MilestoneCelebrationDialog(type: type, level: level),
+      barrierDismissible: true,
+      builder: (context) =>
+          MilestoneCelebrationDialog(type: type, level: level),
     );
   }
 
@@ -103,10 +110,7 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
           children: [
             FittedBox(
               fit: BoxFit.scaleDown,
-              child: Text(
-                "STUDIES REPORT",
-                style: AppFonts.displayLarge,
-              ),
+              child: Text("STUDIES REPORT", style: AppFonts.displayLarge),
             ),
             SizedBox(height: context.r(32)),
             AnimatedBuilder(
@@ -116,7 +120,7 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
                 final int displayLevel = val.floor();
                 final double displayProgress = val % 1.0;
                 final int percentage = (displayProgress * 100).round();
-                
+
                 return LevelCard(
                   level: displayLevel,
                   progress: displayProgress,
@@ -132,13 +136,15 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
               maxAttempts: widget.maxAttempts,
               gainedMerit: widget.gainedMerit,
             ),
-            SizedBox(height: context.r(32)), 
+            SizedBox(height: context.r(32)),
             Row(
               children: [
                 Expanded(
                   child: PrimaryButton(
                     label: 'HOME',
-                    onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false),
+                    onPressed: () => Navigator.of(
+                      context,
+                    ).pushNamedAndRemoveUntil('/', (route) => false),
                   ),
                 ),
                 SizedBox(width: context.r(16)),
@@ -163,7 +169,13 @@ class _LevelUpDialogState extends State<LevelUpDialog> with SingleTickerProvider
           confettiController: _confettiController,
           blastDirectionality: BlastDirectionality.explosive,
           shouldLoop: false,
-          colors: const [Colors.green, Colors.blue, Colors.pink, Colors.orange, Colors.purple],
+          colors: const [
+            Colors.green,
+            Colors.blue,
+            Colors.pink,
+            Colors.orange,
+            Colors.purple,
+          ],
           numberOfParticles: 20,
           gravity: 0.2,
         ),

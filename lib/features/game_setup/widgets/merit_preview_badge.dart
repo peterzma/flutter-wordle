@@ -1,6 +1,4 @@
-import 'package:uniordle/core/app_icons.dart';
-import 'package:uniordle/features/home/data/major_data.dart';
-import 'package:uniordle/shared/exports/game_exports.dart';
+import 'package:uniordle/shared/exports/game_setup_exports.dart';
 
 class MeritPreviewBadge extends StatelessWidget {
   final int difficulty;
@@ -21,9 +19,14 @@ class MeritPreviewBadge extends StatelessWidget {
     return ValueListenableBuilder<UserStats>(
       valueListenable: statsManager.statsNotifier,
       builder: (context, stats, child) {
-        final ranges = UserStatsRewards.getMeritRange(stats, difficulty, wordLength);
-      
-        final bool hasMasteredEverything = stats.masteredCount >= MajorsData.all.length;
+        final ranges = UserStatsRewards.getMeritRange(
+          stats,
+          difficulty,
+          wordLength,
+        );
+
+        final bool hasMasteredEverything =
+            stats.masteredCount >= MajorsData.all.length;
         final bool isMastered = stats.masteredMajorIds.contains(major.id);
         final bool hasBonus = stats.meritMultiplier > 1.0;
 
@@ -31,7 +34,7 @@ class MeritPreviewBadge extends StatelessWidget {
 
         String labelText;
         IconData displayIcon;
-        
+
         if (hasMasteredEverything) {
           labelText = mobileMode ? "ASCENSION: " : "ASCENSION MERITS: ";
           displayIcon = AppIcons.badgeMastery;
@@ -64,40 +67,51 @@ class MeritPreviewBadge extends StatelessWidget {
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(
-                          displayIcon, 
-                          size: 16, 
-                          color: major.color,
-                        ),
+                        Icon(displayIcon, size: 16, color: major.color),
                         const SizedBox(width: 8),
                         Text(
                           labelText,
-                          style: AppFonts.labelLarge.copyWith(color: major.color),
+                          style: AppFonts.labelLarge.copyWith(
+                            color: major.color,
+                          ),
                         ),
                       ],
                     ),
-                    
+
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
                           showReductionUI ? ranges.boosted : ranges.original,
                           style: AppFonts.labelLarge.copyWith(
-                            color: (showReductionUI || hasBonus || hasMasteredEverything) 
-                                ? major.color.withValues(alpha: 0.5) 
+                            color:
+                                (showReductionUI ||
+                                    hasBonus ||
+                                    hasMasteredEverything)
+                                ? major.color.withValues(alpha: 0.5)
                                 : major.color,
-                            fontWeight: (showReductionUI || hasBonus || hasMasteredEverything) 
-                                ? FontWeight.normal 
+                            fontWeight:
+                                (showReductionUI ||
+                                    hasBonus ||
+                                    hasMasteredEverything)
+                                ? FontWeight.normal
                                 : FontWeight.bold,
-                            decoration: (showReductionUI || hasBonus || hasMasteredEverything) 
-                                ? TextDecoration.lineThrough 
+                            decoration:
+                                (showReductionUI ||
+                                    hasBonus ||
+                                    hasMasteredEverything)
+                                ? TextDecoration.lineThrough
                                 : null,
                           ),
                         ),
-                
+
                         if (showReductionUI) ...[
                           const SizedBox(width: 4),
-                          Icon(AppIcons.gameMeritRange, size: 16, color: major.color.withValues(alpha: 0.5)),
+                          Icon(
+                            AppIcons.gameMeritRange,
+                            size: 16,
+                            color: major.color.withValues(alpha: 0.5),
+                          ),
                           const SizedBox(width: 4),
                           Text(
                             UserStatsRewards.formatReducedRange(ranges.boosted),
@@ -108,7 +122,11 @@ class MeritPreviewBadge extends StatelessWidget {
                           ),
                         ] else if (hasBonus || hasMasteredEverything) ...[
                           const SizedBox(width: 4),
-                          Icon(AppIcons.gameMeritRange, size: 16, color: major.color.withValues(alpha: 0.5)),
+                          Icon(
+                            AppIcons.gameMeritRange,
+                            size: 16,
+                            color: major.color.withValues(alpha: 0.5),
+                          ),
                           const SizedBox(width: 4),
                           Text(
                             ranges.boosted,

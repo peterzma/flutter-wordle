@@ -1,12 +1,8 @@
-import 'package:uniordle/shared/exports/game_exports.dart';
-import 'package:uniordle/shared/services/models/game_grade.dart';
+import 'package:uniordle/shared/exports/stats_exports.dart';
 
 class HistoryItemCard extends StatelessWidget {
   final Map<String, dynamic> game;
-  const HistoryItemCard({
-    super.key,
-    required this.game
-  });
+  const HistoryItemCard({super.key, required this.game});
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +27,18 @@ class HistoryItemCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                context.autoText(word.toUpperCase(), 
+                context.autoText(
+                  word.toUpperCase(),
                   style: AppFonts.labelLarge,
                   textAlign: TextAlign.left,
                 ),
                 context.autoText(
-                  won ? "$attempts/$maxAttempts ATTEMPTS" : "X/$maxAttempts ATTEMPTS", 
-                  style: AppFonts.labelSmall.copyWith(color: AppColors.onSurfaceVariant),
+                  won
+                      ? "$attempts/$maxAttempts ATTEMPTS"
+                      : "X/$maxAttempts ATTEMPTS",
+                  style: AppFonts.labelSmall.copyWith(
+                    color: AppColors.onSurfaceVariant,
+                  ),
                   textAlign: TextAlign.left,
                 ),
               ],
@@ -46,7 +47,8 @@ class HistoryItemCard extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              context.autoText(grade.label, 
+              context.autoText(
+                grade.label,
                 style: AppFonts.labelSmall.copyWith(color: grade.color),
               ),
               context.autoText(

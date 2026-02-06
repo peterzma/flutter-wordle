@@ -1,18 +1,16 @@
-import 'package:uniordle/shared/exports/home_exports.dart';
-import 'dart:math';
+import 'package:uniordle/shared/exports/core_exports.dart';
 
 class WiggleButtonWrapper extends StatefulWidget {
   final Widget child;
 
-  const WiggleButtonWrapper({
-    super.key, required this.child
-  });
+  const WiggleButtonWrapper({super.key, required this.child});
 
   @override
   State<WiggleButtonWrapper> createState() => WiggleButtonWrapperState();
 }
 
-class WiggleButtonWrapperState extends State<WiggleButtonWrapper> with SingleTickerProviderStateMixin {
+class WiggleButtonWrapperState extends State<WiggleButtonWrapper>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
   @override
@@ -24,7 +22,7 @@ class WiggleButtonWrapperState extends State<WiggleButtonWrapper> with SingleTic
     );
   }
 
- void wiggle() {
+  void wiggle() {
     if (!_controller.isAnimating) {
       _controller.forward(from: 0.0);
     }
@@ -41,12 +39,10 @@ class WiggleButtonWrapperState extends State<WiggleButtonWrapper> with SingleTic
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) {
-        final double offset = sin(_controller.value * 4 * pi) * 4 * (1 - _controller.value);
-        
-        return Transform.translate(
-          offset: Offset(offset, 0),
-          child: child,
-        );
+        final double offset =
+            sin(_controller.value * 4 * pi) * 4 * (1 - _controller.value);
+
+        return Transform.translate(offset: Offset(offset, 0), child: child);
       },
       child: widget.child,
     );
