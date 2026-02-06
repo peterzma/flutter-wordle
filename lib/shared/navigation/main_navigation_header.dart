@@ -22,7 +22,7 @@ class MainNavigationHeader extends StatelessWidget implements PreferredSizeWidge
         onLeftTap: () {
           Navigator.of(context).pushNamed('/settings');
         },
-        rightIcon: LucideIcons.helpCircle,
+        rightIcon: AppIcons.navHelp,
         onRightTap: () {
           showDialog(
           context: context,

@@ -8,6 +8,9 @@ abstract class AppIcons {
   static const IconData navSettings = LucideIcons.settings;
   static const IconData navHelp = LucideIcons.helpCircle;
   static const IconData navClose = LucideIcons.x;
+  static const IconData footerStats = LucideIcons.history;
+  static const IconData footerHome = LucideIcons.layoutGrid;
+  static const IconData footerProfile = LucideIcons.user;
 
   // Gameplay
   static const IconData gameMerit = Icons.stars;
