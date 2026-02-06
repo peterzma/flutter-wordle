@@ -62,7 +62,7 @@ class _MajorTileState extends State<MajorTile> {
                     MajorIcon(
                       iconName: widget.isLocked 
                           ? 'lock' 
-                          : (isFullyMastered ? 'check_circle' : sub.icon), 
+                          : (isFullyMastered ? 'badgeMastery' : sub.icon), 
                       color: widget.isLocked 
                           ? Colors.grey 
                           : displayColor,

@@ -24,7 +24,7 @@ class Major {
     return Major(
       id: 'cs_101',
       name: 'Computer Science',
-      icon: 'laptop', // Assuming your IconMapper handles strings
+      icon: 'laptop',
       tag: 'STEM',
       color: const Color(0xFF2196F3),
       totalWords: 150,
