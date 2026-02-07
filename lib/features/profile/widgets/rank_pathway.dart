@@ -28,15 +28,12 @@ class RankPathway extends StatelessWidget {
               final bool isAchieved = index <= currentRankIndex;
               final bool isNext = index == currentRankIndex + 1;
 
-              // Hide middle "undiscovered" ranks
               if (!isAchieved && !isNext && !isLast) {
                 return const SizedBox.shrink();
               }
-              // Logic: Only show the title if achieved.
-              // Otherwise, it's a secret (???).
               final String title = isAchieved ? rank['title'] : "???";
 
-              // Logic: Only show the level requirement if it's achieved or the immediate next goal.
+              // Only show the level requirement if it's achieved or the immediate next goal.
               final String levelRange = (isAchieved || isNext)
                   ? "LEVEL ${rank['minLevel']}+"
                   : "LEVEL ???";
@@ -114,9 +111,9 @@ class RankPathway extends StatelessWidget {
     required bool isPathwayComplete,
   }) {
     // COLOR LOGIC:
-    // 1. If everything is done -> All Green
-    // 2. If rank is achieved -> Blue (Standard Accent)
-    // 3. If rank is next -> White
+    // 1. If everything is done -> All Orange
+    // 2. If rank is achieved -> Blue
+    // 3. If rank is next -> Default onSurface
     // 4. Otherwise -> Grey (Outline)
 
     final Color rowColor = isPathwayComplete

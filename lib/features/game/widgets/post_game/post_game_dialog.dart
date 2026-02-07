@@ -68,6 +68,7 @@ class PostGameDialog extends StatelessWidget {
               size: context.r(64),
             ),
           ),
+          SizedBox(height: context.r(8)),
           context.autoText(
             won ? 'YOU WIN!' : 'GAME OVER',
             style: context.textTheme.displayLarge,
@@ -75,7 +76,7 @@ class PostGameDialog extends StatelessWidget {
           ),
           SizedBox(height: context.r(32)),
           SolutionBox(solution: solution),
-          SizedBox(height: context.r(16)),
+          SizedBox(height: context.r(32)),
           GameInfoBar(
             majorName: major.name,
             yearLevel: yearLevel,

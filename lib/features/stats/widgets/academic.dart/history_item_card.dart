@@ -56,9 +56,7 @@ class HistoryItemCard extends StatelessWidget {
               context.autoText(
                 won ? "+$merit MERITS" : "$merit MERITS",
                 style: context.labelSmall.copyWith(
-                  color: won
-                      ? context.gameColors.correct
-                      : context.colorScheme.error,
+                  color: context.getGradeColor(grade),
                 ),
               ),
             ],

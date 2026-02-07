@@ -40,10 +40,10 @@ class AcademicHistory extends StatelessWidget {
   Widget _buildEmptyHistory(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.all(context.r(AppLayout.cardPadding)),
+      padding: EdgeInsets.all(AppLayout.cardPadding),
       decoration: BoxDecoration(
         color: context.surfaceVariant,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(AppLayout.cardRounding),
       ),
       child: Column(
         children: [
@@ -52,7 +52,7 @@ class AcademicHistory extends StatelessWidget {
             color: context.colorScheme.onSurfaceVariant,
             size: 32,
           ),
-          // SizedBox(height: 8),
+          SizedBox(height: 8),
           context.autoText(
             "No academic records found.\nComplete a game to start your transcript.",
             textAlign: TextAlign.center,

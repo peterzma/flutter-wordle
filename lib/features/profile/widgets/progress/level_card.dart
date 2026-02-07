@@ -17,7 +17,12 @@ class LevelCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(AppLayout.cardPadding),
+      padding: EdgeInsets.only(
+        top: AppLayout.cardPadding,
+        left: AppLayout.cardPadding,
+        right: AppLayout.cardPadding,
+        bottom: AppLayout.cardPadding / 2,
+      ),
       decoration: BoxDecoration(
         color: context.surfaceVariant,
         borderRadius: BorderRadius.circular(AppLayout.cardRounding),
@@ -54,7 +59,6 @@ class LevelCard extends StatelessWidget {
 
           SizedBox(height: context.r(8)),
 
-          // X/Y SOLVES TO LEVEL Z Badge
           LayoutBuilder(
             builder: (context, constraints) {
               final double xTranslation = -progress;

@@ -117,6 +117,7 @@ class _LevelUpDialogState extends State<LevelUpDialog>
           context.autoText(
             "STUDIES REPORT",
             style: context.textTheme.displayLarge,
+            reduction: 8,
           ),
           SizedBox(height: context.r(32)),
 
@@ -136,7 +137,7 @@ class _LevelUpDialogState extends State<LevelUpDialog>
             },
           ),
 
-          SizedBox(height: context.r(8)),
+          SizedBox(height: context.r(32)),
           PerformanceBreakdown(
             won: widget.won,
             attempts: widget.attempts,
