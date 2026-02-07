@@ -38,7 +38,7 @@ class _GameSetupScreenState extends State<GameSetupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColorsDark.surface,
+      backgroundColor: context.surface,
       appBar: const GameSetupHeader(),
       body: SafeArea(
         child: Padding(

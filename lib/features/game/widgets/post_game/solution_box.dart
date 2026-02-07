@@ -2,13 +2,8 @@ import 'package:uniordle/shared/exports/post_game_exports.dart';
 
 class SolutionBox extends StatelessWidget {
   final String solution;
-  final Color backgroundColor;
 
-  const SolutionBox({
-    super.key,
-    required this.solution,
-    this.backgroundColor = AppColorsDark.surface,
-  });
+  const SolutionBox({super.key, required this.solution});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +21,6 @@ class SolutionBox extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
             decoration: BoxDecoration(
-              color: backgroundColor,
               border: Border.all(color: AppColorsDark.outline, width: 2),
               borderRadius: BorderRadius.circular(16),
             ),

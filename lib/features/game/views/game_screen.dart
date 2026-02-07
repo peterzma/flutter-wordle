@@ -132,7 +132,7 @@ class _GameScreenState extends State<GameScreen> {
         _handleBack();
       },
       child: Scaffold(
-        backgroundColor: AppColorsDark.surface,
+        backgroundColor: context.surface,
         appBar: GameHeader(onBack: _handleBack),
         body: Center(
           child: Padding(
