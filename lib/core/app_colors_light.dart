@@ -19,7 +19,7 @@ abstract class AppColorsLight {
   // UI Accents
   static const Color accent = Color(0xFF0950c3);
   static const Color accent2 = Color(0xFFbc1010);
-  static const Color accent3 = Color(0xFFa2810b);
+  static const Color accent3 = Color(0xFFFFC43D);
   static const Color accent4 = Color(0xFFEA580C);
 
   // Major Specific Colors

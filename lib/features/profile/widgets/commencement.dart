@@ -1,107 +1,77 @@
 import 'package:uniordle/shared/exports/profile_exports.dart';
+import 'package:uniordle/shared/wrappers/celebration_wrapper.dart';
 
-class Commencement extends StatefulWidget {
+class Commencement extends StatelessWidget {
   const Commencement({super.key});
 
   @override
-  State<Commencement> createState() => _CommencementState();
-}
-
-class _CommencementState extends State<Commencement> {
-  late ConfettiController _confettiController;
-
-  @override
-  void initState() {
-    super.initState();
-    _confettiController = ConfettiController(
-      duration: const Duration(seconds: 10),
-    );
-    _confettiController.play();
-  }
-
-  @override
-  void dispose() {
-    _confettiController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.topCenter,
-      children: [
-        Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            context.autoIcon(
-              AppIcons.badgeOracle,
-              size: 64,
-              color: context.colorScheme.tertiary,
-            ),
-            SizedBox(height: context.r(16)),
-            context.autoText("COMMENCEMENT", style: context.headlineMedium),
-            SizedBox(height: context.r(12)),
-            context.autoText(
-              "Congratulations, Oracle! You've reached the summit of knowledge. Level 100 is yours, but true prestige lies in the archives. Can you master every single major?",
-              textAlign: TextAlign.center,
-              style: context.labelMedium,
-              maxLines: 4,
-            ),
-            SizedBox(height: context.r(32)),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              decoration: BoxDecoration(
-                color: context.colorScheme.tertiary.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: context.colorScheme.tertiary.withValues(alpha: 0.5),
-                ),
-              ),
-              child: Column(
-                children: [
-                  context.autoText(
-                    "SUMMIT CONFERMENT",
-                    style: context.labelSmall.copyWith(
-                      color: context.colorScheme.tertiary,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  context.autoText(
-                    "+100% PERMANENT MERIT",
-                    style: context.headlineMedium.copyWith(
-                      color: context.colorScheme.tertiary,
-                      fontSize: 20,
-                    ),
-                    reduction: 8,
-                  ),
-                ],
-              ),
-            ),
+    return CelebrationWrapper(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          context.autoIcon(
+            AppIcons.badgeOracle,
+            size: 64,
+            color: context.colorScheme.tertiary,
+          ),
+          SizedBox(height: context.r(16)),
 
-            SizedBox(height: context.r(32)),
-            PrimaryButton(
-              label: 'I am ready',
-              color: context.colorScheme.tertiary,
-              onPressed: () => Navigator.pop(context),
-            ),
-          ],
-        ),
+          context.autoText("COMMENCEMENT", style: context.headlineMedium),
+          SizedBox(height: context.r(12)),
 
-        ConfettiWidget(
-          confettiController: _confettiController,
-          blastDirectionality: BlastDirectionality.explosive,
-          shouldLoop: false,
-          colors: [
-            Colors.orange,
-            context.colorScheme.primary,
-            Colors.white,
-            Colors.red,
-          ],
-          // TODO: reduce duplicated confetti
-          minimumSize: const Size(5, 5),
-          maximumSize: const Size(10, 10),
-        ),
-      ],
+          context.autoText(
+            "Congratulations, Oracle! You've reached the summit of knowledge. "
+            "Level 100 is yours, but true prestige lies in the archives. "
+            "Can you master every single major?",
+            textAlign: TextAlign.center,
+            style: context.labelMedium,
+            maxLines: 4,
+          ),
+          SizedBox(height: context.r(32)),
+
+          _buildSummitCard(context),
+
+          SizedBox(height: context.r(32)),
+          PrimaryButton(
+            label: 'I am ready',
+            color: context.colorScheme.tertiary,
+            onPressed: () => Navigator.pop(context),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSummitCard(BuildContext context) {
+    final tertiaryColor = context.colorScheme.tertiary;
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      decoration: BoxDecoration(
+        color: tertiaryColor.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: tertiaryColor.withValues(alpha: 0.5)),
+      ),
+      child: Column(
+        children: [
+          context.autoText(
+            "SUMMIT CONFERMENT",
+            style: context.labelSmall.copyWith(
+              color: tertiaryColor,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          context.autoText(
+            "+100% PERMANENT MERIT",
+            style: context.headlineMedium.copyWith(
+              color: tertiaryColor,
+              fontSize: 20,
+            ),
+            reduction: 8,
+          ),
+        ],
+      ),
     );
   }
 }
