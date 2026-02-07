@@ -18,19 +18,26 @@ class GameSetupHero extends StatelessWidget {
           children: [
             MajorIcon(
               icon: major.icon,
-              color: major.color,
+              color: context.getMajorColor(major.id),
               dimension: 80,
               iconSize: 48,
               rounding: 32,
               shadows: isFullyMastered
-                  ? [Shadow(color: major.color, blurRadius: 20)]
+                  ? [
+                      Shadow(
+                        color: context.getMajorColor(major.id),
+                        blurRadius: 20,
+                      ),
+                    ]
                   : null,
             ),
             SizedBox(height: context.r(8)),
             context.autoText(major.name, style: AppFonts.displayLarge),
             context.autoText(
               'MAJOR SETTINGS',
-              style: AppFonts.labelLarge.copyWith(color: major.color),
+              style: AppFonts.labelLarge.copyWith(
+                color: context.getMajorColor(major.id),
+              ),
             ),
           ],
         );

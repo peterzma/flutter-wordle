@@ -43,7 +43,6 @@ class MajorsData {
       icon: AppIcons.majorEngineering,
       totalWords: getWordCount(engineeringWords),
       tag: '${getWordCount(engineeringWords)} WORDS',
-      color: AppColorsDark.majorEngineering,
     ),
     Major(
       id: 'cs',
@@ -51,7 +50,6 @@ class MajorsData {
       icon: AppIcons.majorCS,
       totalWords: getWordCount(csWords),
       tag: '${getWordCount(csWords)} WORDS',
-      color: AppColorsDark.majorCS,
     ),
     Major(
       id: 'medicine',
@@ -59,7 +57,6 @@ class MajorsData {
       icon: AppIcons.majorMedicine,
       totalWords: getWordCount(medicineWords),
       tag: '${getWordCount(medicineWords)} WORDS',
-      color: AppColorsDark.majorMedicine,
     ),
     Major(
       id: 'law',
@@ -67,7 +64,6 @@ class MajorsData {
       icon: AppIcons.majorLaw,
       totalWords: getWordCount(lawWords),
       tag: '${getWordCount(lawWords)} WORDS',
-      color: AppColorsDark.majorLaw,
     ),
     Major(
       id: 'psychology',
@@ -75,7 +71,6 @@ class MajorsData {
       icon: AppIcons.majorPsychology,
       totalWords: getWordCount(psychologyWords),
       tag: '${getWordCount(psychologyWords)} WORDS',
-      color: AppColorsDark.majorPsychology,
     ),
     Major(
       id: 'arts',
@@ -83,7 +78,6 @@ class MajorsData {
       icon: AppIcons.majorArts,
       totalWords: getWordCount(artsWords),
       tag: '${getWordCount(artsWords)} WORDS',
-      color: AppColorsDark.majorArts,
     ),
     Major(
       id: 'humanities',
@@ -91,7 +85,6 @@ class MajorsData {
       icon: AppIcons.majorHumanities,
       totalWords: getWordCount(humanitiesWords),
       tag: '${getWordCount(humanitiesWords)} WORDS',
-      color: AppColorsDark.majorHumanities,
     ),
     Major(
       id: 'education',
@@ -99,7 +92,6 @@ class MajorsData {
       icon: AppIcons.majorEducation,
       totalWords: getWordCount(educationWords),
       tag: '${getWordCount(educationWords)} WORDS',
-      color: AppColorsDark.majorEducation,
     ),
     Major(
       id: 'maths',
@@ -107,7 +99,6 @@ class MajorsData {
       icon: AppIcons.majorMaths,
       totalWords: getWordCount(mathsWords),
       tag: '${getWordCount(mathsWords)} WORDS',
-      color: AppColorsDark.majorMaths,
     ),
     Major(
       id: 'music',
@@ -115,7 +106,6 @@ class MajorsData {
       icon: AppIcons.majorMusic,
       totalWords: getWordCount(musicWords),
       tag: '${getWordCount(musicWords)} WORDS',
-      color: AppColorsDark.majorMusic,
     ),
     Major(
       id: 'architecture',
@@ -123,7 +113,6 @@ class MajorsData {
       icon: AppIcons.majorArchitecture,
       totalWords: getWordCount(architectureWords),
       tag: '${getWordCount(architectureWords)} WORDS',
-      color: AppColorsDark.majorArchitecture,
     ),
     Major(
       id: 'nursing',
@@ -131,7 +120,6 @@ class MajorsData {
       icon: AppIcons.majorNursing,
       totalWords: getWordCount(nursingWords),
       tag: '${getWordCount(nursingWords)} WORDS',
-      color: AppColorsDark.majorNursing,
     ),
     Major(
       id: 'history',
@@ -139,7 +127,6 @@ class MajorsData {
       icon: AppIcons.majorHistory,
       totalWords: getWordCount(historyWords),
       tag: '${getWordCount(historyWords)} WORDS',
-      color: AppColorsDark.majorHistory,
     ),
     Major(
       id: 'journalism',
@@ -147,7 +134,6 @@ class MajorsData {
       icon: AppIcons.majorJournalism,
       totalWords: getWordCount(journalismWords),
       tag: '${getWordCount(journalismWords)} WORDS',
-      color: AppColorsDark.majorJournalism,
     ),
     Major(
       id: 'astronomy',
@@ -155,7 +141,6 @@ class MajorsData {
       icon: AppIcons.majorAstronomy,
       totalWords: getWordCount(astronomyWords),
       tag: '${getWordCount(astronomyWords)} WORDS',
-      color: AppColorsDark.majorAstronomy,
     ),
     Major(
       id: 'philosophy',
@@ -163,7 +148,6 @@ class MajorsData {
       icon: AppIcons.majorPhilosophy,
       totalWords: getWordCount(philosophyWords),
       tag: '${getWordCount(philosophyWords)} WORDS',
-      color: AppColorsDark.majorPhilosophy,
     ),
     Major(
       id: 'physics',
@@ -171,7 +155,6 @@ class MajorsData {
       icon: AppIcons.majorPhysics,
       totalWords: getWordCount(physicsWords),
       tag: '${getWordCount(physicsWords)} WORDS',
-      color: AppColorsDark.majorPhysics,
     ),
     Major(
       id: 'chemistry',
@@ -179,7 +162,6 @@ class MajorsData {
       icon: AppIcons.majorChemistry,
       totalWords: getWordCount(chemistryWords),
       tag: '${getWordCount(chemistryWords)} WORDS',
-      color: AppColorsDark.majorChemistry,
     ),
     Major(
       id: 'biology',
@@ -187,7 +169,6 @@ class MajorsData {
       icon: AppIcons.majorBiology,
       totalWords: getWordCount(biologyWords),
       tag: '${getWordCount(biologyWords)} WORDS',
-      color: AppColorsDark.majorBiology,
     ),
     Major(
       id: 'economics',
@@ -195,7 +176,6 @@ class MajorsData {
       icon: AppIcons.majorEconomics,
       totalWords: getWordCount(economicsWords),
       tag: '${getWordCount(economicsWords)} WORDS',
-      color: AppColorsDark.majorEconomics,
     ),
   ]..sort((a, b) => a.name.compareTo(b.name));
 }

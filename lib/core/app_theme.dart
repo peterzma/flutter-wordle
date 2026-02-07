@@ -1,3 +1,4 @@
+import 'package:uniordle/shared/data/major_colors.dart';
 import 'package:uniordle/shared/exports/app_exports.dart';
 
 class AppTheme {
@@ -17,6 +18,30 @@ class AppTheme {
           correct: AppColorsDark.correctColor,
           inWord: AppColorsDark.inWordColor,
           notInWord: AppColorsDark.notInWordColor,
+        ),
+        MajorColors(
+          map: {
+            'engineering': AppColorsDark.majorEngineering,
+            'cs': AppColorsDark.majorCS,
+            'medicine': AppColorsDark.majorMedicine,
+            'law': AppColorsDark.majorLaw,
+            'psychology': AppColorsDark.majorPsychology,
+            'arts': AppColorsDark.majorArts,
+            'humanities': AppColorsDark.majorHumanities,
+            'education': AppColorsDark.majorEducation,
+            'maths': AppColorsDark.majorMaths,
+            'music': AppColorsDark.majorMusic,
+            'architecture': AppColorsDark.majorArchitecture,
+            'nursing': AppColorsDark.majorNursing,
+            'history': AppColorsDark.majorHistory,
+            'journalism': AppColorsDark.majorJournalism,
+            'astronomy': AppColorsDark.majorAstronomy,
+            'philosophy': AppColorsDark.majorPhilosophy,
+            'physics': AppColorsDark.majorPhysics,
+            'chemistry': AppColorsDark.majorChemistry,
+            'biology': AppColorsDark.majorBiology,
+            'economics': AppColorsDark.majorEconomics,
+          },
         ),
       ],
       colorScheme: const ColorScheme.dark(
@@ -50,6 +75,30 @@ class AppTheme {
           correct: AppColorsLight.correctColor,
           inWord: AppColorsLight.inWordColor,
           notInWord: AppColorsLight.notInWordColor,
+        ),
+        MajorColors(
+          map: {
+            'engineering': AppColorsLight.majorEngineering,
+            'cs': AppColorsLight.majorCS,
+            'medicine': AppColorsLight.majorMedicine,
+            'law': AppColorsLight.majorLaw,
+            'psychology': AppColorsLight.majorPsychology,
+            'arts': AppColorsLight.majorArts,
+            'humanities': AppColorsLight.majorHumanities,
+            'education': AppColorsLight.majorEducation,
+            'maths': AppColorsLight.majorMaths,
+            'music': AppColorsLight.majorMusic,
+            'architecture': AppColorsLight.majorArchitecture,
+            'nursing': AppColorsLight.majorNursing,
+            'history': AppColorsLight.majorHistory,
+            'journalism': AppColorsLight.majorJournalism,
+            'astronomy': AppColorsLight.majorAstronomy,
+            'philosophy': AppColorsLight.majorPhilosophy,
+            'physics': AppColorsLight.majorPhysics,
+            'chemistry': AppColorsLight.majorChemistry,
+            'biology': AppColorsLight.majorBiology,
+            'economics': AppColorsLight.majorEconomics,
+          },
         ),
       ],
       colorScheme: const ColorScheme.light(

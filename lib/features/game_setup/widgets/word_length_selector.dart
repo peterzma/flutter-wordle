@@ -21,7 +21,7 @@ class WordLengthSelector extends StatelessWidget {
           children: [5, 6, 7].map((len) {
             final bool active = value == len;
             final Color baseColor = active
-                ? major.color
+                ? context.getMajorColor(major.id)
                 : context.surfaceVariant;
             return Expanded(
               child: Center(
@@ -42,7 +42,7 @@ class WordLengthSelector extends StatelessWidget {
                           curve: Curves.easeInOut,
                           decoration: BoxDecoration(
                             color: active
-                                ? major.color
+                                ? context.getMajorColor(major.id)
                                 : context.surfaceVariant,
                             borderRadius: BorderRadius.circular(36),
                           ),

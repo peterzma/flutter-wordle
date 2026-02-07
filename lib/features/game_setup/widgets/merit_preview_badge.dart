@@ -55,7 +55,7 @@ class MeritPreviewBadge extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               decoration: BoxDecoration(
-                color: major.color.withValues(alpha: 0.1),
+                color: context.getMajorColor(major.id).withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(16),
               ),
               child: FittedBox(
@@ -67,12 +67,16 @@ class MeritPreviewBadge extends StatelessWidget {
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(displayIcon, size: 16, color: major.color),
+                        Icon(
+                          displayIcon,
+                          size: 16,
+                          color: context.getMajorColor(major.id),
+                        ),
                         const SizedBox(width: 8),
                         Text(
                           labelText,
                           style: AppFonts.labelLarge.copyWith(
-                            color: major.color,
+                            color: context.getMajorColor(major.id),
                           ),
                         ),
                       ],
@@ -88,8 +92,10 @@ class MeritPreviewBadge extends StatelessWidget {
                                 (showReductionUI ||
                                     hasBonus ||
                                     hasMasteredEverything)
-                                ? major.color.withValues(alpha: 0.5)
-                                : major.color,
+                                ? context
+                                      .getMajorColor(major.id)
+                                      .withValues(alpha: 0.5)
+                                : context.getMajorColor(major.id),
                             fontWeight:
                                 (showReductionUI ||
                                     hasBonus ||
@@ -110,13 +116,15 @@ class MeritPreviewBadge extends StatelessWidget {
                           Icon(
                             AppIcons.gameMeritRange,
                             size: 16,
-                            color: major.color.withValues(alpha: 0.5),
+                            color: context
+                                .getMajorColor(major.id)
+                                .withValues(alpha: 0.5),
                           ),
                           const SizedBox(width: 4),
                           Text(
                             UserStatsRewards.formatReducedRange(ranges.boosted),
                             style: AppFonts.labelLarge.copyWith(
-                              color: major.color,
+                              color: context.getMajorColor(major.id),
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -125,13 +133,15 @@ class MeritPreviewBadge extends StatelessWidget {
                           Icon(
                             AppIcons.gameMeritRange,
                             size: 16,
-                            color: major.color.withValues(alpha: 0.5),
+                            color: context
+                                .getMajorColor(major.id)
+                                .withValues(alpha: 0.5),
                           ),
                           const SizedBox(width: 4),
                           Text(
                             ranges.boosted,
                             style: AppFonts.labelLarge.copyWith(
-                              color: major.color,
+                              color: context.getMajorColor(major.id),
                               fontWeight: FontWeight.bold,
                             ),
                           ),

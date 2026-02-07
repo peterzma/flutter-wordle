@@ -5,7 +5,6 @@ class Major {
   final String name;
   final IconData icon;
   final String tag;
-  final Color color;
   final bool isLocked;
   final int totalWords;
 
@@ -14,7 +13,6 @@ class Major {
     required this.name,
     required this.icon,
     required this.tag,
-    required this.color,
     required this.totalWords,
     this.isLocked = true,
   });
@@ -26,7 +24,6 @@ class Major {
       name: 'Computer Science',
       icon: Icons.laptop,
       tag: 'STEM',
-      color: const Color(0xFF2196F3),
       totalWords: 150,
       isLocked: false,
     );
@@ -39,7 +36,6 @@ class Major {
       name: name ?? this.name,
       icon: icon,
       tag: tag,
-      color: color ?? this.color,
       totalWords: totalWords,
       isLocked: isLocked ?? this.isLocked,
     );

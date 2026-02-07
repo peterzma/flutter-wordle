@@ -18,12 +18,18 @@ class UnlockedMajorDialog extends StatelessWidget {
               color: context.surfaceVariant,
               borderRadius: BorderRadius.circular(16),
             ),
-            child: Icon(major.icon, color: major.color, size: context.r(60)),
+            child: Icon(
+              major.icon,
+              color: context.getMajorColor(major.id),
+              size: context.r(60),
+            ),
           ),
           SizedBox(height: context.r(8)),
           context.autoText(
             "CONGRATULATIONS",
-            style: AppFonts.displayMedium.copyWith(color: major.color),
+            style: AppFonts.displayMedium.copyWith(
+              color: context.getMajorColor(major.id),
+            ),
             reduction: 8,
           ),
           SizedBox(height: context.r(16)),
@@ -37,7 +43,7 @@ class UnlockedMajorDialog extends StatelessWidget {
           PrimaryButton(
             onPressed: () => Navigator.pop(context),
             label: "START STUDYING",
-            color: major.color,
+            color: context.getMajorColor(major.id),
           ),
         ],
       ),

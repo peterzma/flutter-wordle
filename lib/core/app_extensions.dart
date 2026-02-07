@@ -1,3 +1,4 @@
+import 'package:uniordle/shared/data/major_colors.dart';
 import 'package:uniordle/shared/exports/app_exports.dart';
 import 'package:uniordle/features/game/models/letter_model.dart';
 
@@ -72,5 +73,10 @@ extension AppExtensions on BuildContext {
       case GameGrade.pass:
         return onSurfaceVariant; // Muted secondary text color
     }
+  }
+
+  Color getMajorColor(String id) {
+    final majorExt = theme.extension<MajorColors>();
+    return majorExt?.map[id] ?? colorScheme.primary;
   }
 }

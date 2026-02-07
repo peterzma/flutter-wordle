@@ -21,11 +21,17 @@ class DifficultySelector extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(AppIcons.gameAttempts, size: 12, color: major.color),
+            Icon(
+              AppIcons.gameAttempts,
+              size: 12,
+              color: context.getMajorColor(major.id),
+            ),
             SizedBox(width: context.r(8)),
             Text(
               'ATTEMPTS ALLOWED',
-              style: AppFonts.labelMedium.copyWith(color: major.color),
+              style: AppFonts.labelMedium.copyWith(
+                color: context.getMajorColor(major.id),
+              ),
             ),
           ],
         ),
@@ -33,16 +39,16 @@ class DifficultySelector extends StatelessWidget {
         SliderTheme(
           data: SliderTheme.of(context).copyWith(
             trackHeight: 4,
-            activeTrackColor: major.color,
+            activeTrackColor: context.getMajorColor(major.id),
             inactiveTrackColor: context.colorScheme.onSurfaceVariant,
-            thumbColor: major.color,
+            thumbColor: context.getMajorColor(major.id),
             overlayColor: Colors.transparent,
             overlayShape: RoundSliderOverlayShape(
               overlayRadius: mobileMode ? 40 : 60,
             ),
             thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 5.0),
             tickMarkShape: const RoundSliderTickMarkShape(tickMarkRadius: 3.0),
-            activeTickMarkColor: major.color,
+            activeTickMarkColor: context.getMajorColor(major.id),
             inactiveTickMarkColor: context.colorScheme.onSurfaceVariant,
           ),
           child: SizedBox(
@@ -96,7 +102,7 @@ class DifficultySelector extends StatelessWidget {
                         e.value.$2.toString(),
                         style: active
                             ? AppFonts.labelMedium.copyWith(
-                                color: major.color,
+                                color: context.getMajorColor(major.id),
                                 fontWeight: FontWeight.w600,
                               )
                             : AppFonts.labelMedium,
@@ -106,7 +112,7 @@ class DifficultySelector extends StatelessWidget {
                         AppIcons.gameAttempts,
                         size: 12,
                         color: active
-                            ? major.color
+                            ? context.getMajorColor(major.id)
                             : context.colorScheme.onSurfaceVariant,
                       ),
                     ],

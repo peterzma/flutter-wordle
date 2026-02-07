@@ -114,7 +114,7 @@ class _GameSetupScreenState extends State<GameSetupScreen> {
               PrimaryButton(
                 label: 'PLAY GAME',
                 onPressed: _play,
-                color: widget.major.color,
+                color: context.getMajorColor(widget.major.id),
                 isLoading: _isLoading,
                 icon: AppIcons.gamePlay,
                 resizeLabel: false,

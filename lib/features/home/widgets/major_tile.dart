@@ -21,15 +21,17 @@ class _MajorTileState extends State<MajorTile> {
 
   @override
   Widget build(BuildContext context) {
-    final sub = widget.major;
     final displayColor = widget.isLocked
         ? context.colorScheme.onSurfaceVariant.withValues(alpha: 0.5)
-        : sub.color;
+        : context.getMajorColor(widget.major.id);
 
     return ValueListenableBuilder(
       valueListenable: statsManager.statsNotifier,
       builder: (context, stats, _) {
-        final progressData = stats.getMajorProgress(sub.id, sub.totalWords);
+        final progressData = stats.getMajorProgress(
+          widget.major.id,
+          widget.major.totalWords,
+        );
         final bool isFullyMastered = progressData.percent >= 1.0;
 
         return SelectButtonWrapper(
@@ -67,7 +69,9 @@ class _MajorTileState extends State<MajorTile> {
                 child: Row(
                   children: [
                     MajorIcon(
-                      icon: widget.isLocked ? AppIcons.profileLock : sub.icon,
+                      icon: widget.isLocked
+                          ? AppIcons.profileLock
+                          : widget.major.icon,
                       color: widget.isLocked
                           ? context.colorScheme.onSurfaceVariant
                           : displayColor,
@@ -84,14 +88,14 @@ class _MajorTileState extends State<MajorTile> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                sub.name,
+                                widget.major.name,
                                 style: AppFonts.labelLarge.copyWith(
                                   color: context.colorScheme.onSurface,
                                 ),
                               ),
                               if (!widget.isLocked)
                                 Text(
-                                  "${progressData.solved}/${sub.totalWords}",
+                                  "${progressData.solved}/${widget.major.totalWords}",
                                   style: AppFonts.labelSmall.copyWith(
                                     color: displayColor,
                                     fontWeight: FontWeight.bold,
