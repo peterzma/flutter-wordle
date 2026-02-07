@@ -74,12 +74,14 @@ class Keyboard extends StatelessWidget {
                         orElse: () => Letter.empty(),
                       );
 
+                      final Color keyColor = letterKey.val.isNotEmpty
+                          ? context.getLetterBgColor(letterKey.status)
+                          : context.surfaceVariant;
+
                       return KeyboardButton(
                         onTap: () => onKeyTapped(letter),
                         letter: letter,
-                        backgroundColor: letterKey != Letter.empty()
-                            ? letterKey.backgroundColor
-                            : AppColorsDark.gameTiles,
+                        backgroundColor: keyColor,
                       );
                     }),
 

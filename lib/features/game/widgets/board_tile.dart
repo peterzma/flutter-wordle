@@ -1,16 +1,16 @@
 import 'package:uniordle/shared/exports/game_exports.dart';
 
 class BoardTile extends StatefulWidget {
+  final Letter letter;
+  final Color? initialBorderColor;
+  final Duration entranceDelay;
+
   const BoardTile({
     super.key,
     required this.letter,
-    this.initialBorderColor = AppColorsDark.surfaceVariant,
+    this.initialBorderColor,
     this.entranceDelay = Duration.zero,
   });
-
-  final Letter letter;
-  final Color initialBorderColor;
-  final Duration entranceDelay;
 
   @override
   State<BoardTile> createState() => _BoardTileState();
@@ -72,6 +72,10 @@ class _BoardTileState extends State<BoardTile>
   @override
   Widget build(BuildContext context) {
     final double tileSize = context.responsive(60, 64);
+    final Color backgroundColor = widget.letter.val.isEmpty
+        ? context.surfaceVariant
+        : context.getLetterBgColor(widget.letter.status);
+    // final Color borderColor = context.getLetterBorderColor(widget.letter);
     return ScaleTransition(
       scale: _scale,
       child: Container(
@@ -80,13 +84,8 @@ class _BoardTileState extends State<BoardTile>
         width: tileSize,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: widget.letter.val.isEmpty
-              ? AppColorsDark.gameTiles
-              : widget.letter.backgroundColor,
-          // border: Border.all(
-          //   color: widget.letter.borderColor,
-          //   width: 2,
-          // ),
+          color: backgroundColor,
+          // border: Border.all(color: borderColor, width: 2),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Text(

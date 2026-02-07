@@ -1,4 +1,5 @@
 import 'package:uniordle/shared/exports/app_exports.dart';
+import 'package:uniordle/features/game/models/letter_model.dart';
 
 extension ThemeHelper on BuildContext {
   // Use: context.theme
@@ -31,4 +32,30 @@ extension ThemeHelper on BuildContext {
 
   // Use: context.onSurfaceVariant
   Color get onSurfaceVariant => colorScheme.onSurfaceVariant;
+
+  // Use: context.getLetterBgColor(letter.status)
+  Color getLetterBgColor(LetterStatus status) {
+    switch (status) {
+      case LetterStatus.initial:
+        return surfaceVariant;
+      case LetterStatus.notInWord:
+        return gameColors.notInWord!;
+      case LetterStatus.inWord:
+        return gameColors.inWord!;
+      case LetterStatus.correct:
+        return gameColors.correct!;
+    }
+  }
+
+  // Use: context.getLetterBorderColor(letter)
+  Color getLetterBorderColor(Letter letter) {
+    switch (letter.status) {
+      case LetterStatus.initial:
+        return letter.val.isNotEmpty ? outline : surfaceVariant;
+      case LetterStatus.notInWord:
+      case LetterStatus.inWord:
+      case LetterStatus.correct:
+        return getLetterBgColor(letter.status);
+    }
+  }
 }
