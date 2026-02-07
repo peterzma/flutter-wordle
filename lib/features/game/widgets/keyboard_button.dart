@@ -4,7 +4,6 @@ class KeyboardButton extends StatelessWidget {
   final double height;
   final double width;
   final VoidCallback onTap;
-  final Color backgroundColor;
   final String? letter;
   final Widget? child;
   final SoundType soundType;
@@ -14,7 +13,6 @@ class KeyboardButton extends StatelessWidget {
     this.height = 66,
     this.width = 40,
     required this.onTap,
-    required this.backgroundColor,
     this.letter,
     this.child,
     this.soundType = SoundType.keyboard,
@@ -24,7 +22,6 @@ class KeyboardButton extends StatelessWidget {
       KeyboardButton(
         width: 62,
         onTap: onTap,
-        backgroundColor: AppColorsDark.gameTiles,
         soundType: SoundType.delete,
         child: Icon(AppIcons.gameBackspace, color: Colors.white, size: 22),
       );
@@ -32,10 +29,8 @@ class KeyboardButton extends StatelessWidget {
   factory KeyboardButton.enter({required VoidCallback onTap}) => KeyboardButton(
     width: 62,
     onTap: onTap,
-    backgroundColor: AppColorsDark.gameTiles,
     letter: 'ENTER',
     soundType: SoundType.enter,
-    child: Text('ENTER', style: AppFonts.labelLarge),
   );
 
   @override
@@ -45,21 +40,33 @@ class KeyboardButton extends StatelessWidget {
       child: SelectButtonWrapper(
         onTap: onTap,
         enableDarken: true,
-        baseColor: backgroundColor,
+        baseColor: context.surfaceVariant,
         soundType: soundType,
         child: SizedBox(
           height: height,
           width: width,
-          child: Center(
-            child:
-                child ??
-                Text(
-                  letter ?? '',
-                  style: AppFonts.displayMedium.copyWith(fontSize: 24),
-                ),
-          ),
+          child: Center(child: _buildContent(context, context.onSurface)),
         ),
       ),
+    );
+  }
+
+  Widget _buildContent(BuildContext context, Color color) {
+    if (child is Icon) {
+      final Icon icon = child as Icon;
+      return Icon(icon.icon, color: color, size: icon.size);
+    }
+
+    if (letter == 'ENTER') {
+      return Text(
+        'ENTER',
+        style: context.textTheme.labelLarge?.copyWith(color: color),
+      );
+    }
+
+    return Text(
+      letter ?? '',
+      style: AppFonts.displayMedium.copyWith(fontSize: 24, color: color),
     );
   }
 }
