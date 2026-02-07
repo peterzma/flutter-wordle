@@ -27,8 +27,8 @@ class BaseHeader extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         color: context.surface,
-        border: const Border(
-          bottom: BorderSide(color: AppColorsDark.outline, width: 0.5),
+        border: Border(
+          bottom: BorderSide(color: context.colorScheme.outline, width: 0.5),
         ),
       ),
       child: SafeArea(

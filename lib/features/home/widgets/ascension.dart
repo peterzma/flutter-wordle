@@ -101,9 +101,9 @@ class _AscensionState extends State<Ascension> {
               confettiController: _confettiController,
               blastDirectionality: BlastDirectionality.explosive,
               shouldLoop: false,
-              colors: const [
+              colors: [
                 Colors.orange,
-                AppColorsDark.accent,
+                context.colorScheme.primary,
                 Colors.white,
                 Colors.red,
               ],

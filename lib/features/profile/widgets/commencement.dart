@@ -91,9 +91,9 @@ class _CommencementState extends State<Commencement> {
           confettiController: _confettiController,
           blastDirectionality: BlastDirectionality.explosive,
           shouldLoop: false,
-          colors: const [
+          colors: [
             Colors.orange,
-            AppColorsDark.accent,
+            context.colorScheme.primary,
             Colors.white,
             Colors.red,
           ],

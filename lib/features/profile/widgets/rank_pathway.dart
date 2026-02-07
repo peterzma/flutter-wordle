@@ -64,7 +64,7 @@ class RankPathway extends StatelessWidget {
                           color: isPathwayComplete
                               ? context.colorScheme.tertiary
                               : (isAchieved
-                                    ? AppColorsDark.accent
+                                    ? context.colorScheme.primary
                                     : context.colorScheme.onSurface),
                           borderRadius: BorderRadius.circular(2),
                         ),
@@ -122,7 +122,7 @@ class RankPathway extends StatelessWidget {
     final Color rowColor = isPathwayComplete
         ? context.colorScheme.tertiary
         : (isAchieved
-              ? AppColorsDark.accent
+              ? context.colorScheme.primary
               : (isNext ? Colors.white : context.colorScheme.onSurfaceVariant));
 
     return Row(
