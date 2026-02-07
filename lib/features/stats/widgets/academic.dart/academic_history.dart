@@ -28,7 +28,7 @@ class AcademicHistory extends StatelessWidget {
               ),
           ],
         ),
-        SizedBox(height: context.r(8)),
+        SizedBox(height: 4),
         if (recentGames.isEmpty)
           _buildEmptyHistory(context)
         else

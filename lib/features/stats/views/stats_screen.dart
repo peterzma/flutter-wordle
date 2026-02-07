@@ -85,7 +85,7 @@ class StatsScreen extends StatelessWidget {
 
               context.autoText("Correct Guesses", style: context.labelLarge),
 
-              SizedBox(height: context.r(8)),
+              SizedBox(height: 4),
 
               GuessDistributionChart(distribution: stats.guessDistribution),
 
@@ -93,12 +93,13 @@ class StatsScreen extends StatelessWidget {
 
               context.autoText("Games Played", style: context.labelLarge),
 
-              SizedBox(height: context.r(8)),
+              SizedBox(height: 4),
 
               // This Heatmap-style grid shows Word Length vs Max Attempts
               ModeAnalyticsChart(modeFrequency: stats.modeFrequency),
 
               SizedBox(height: context.r(16)),
+
               AcademicHistory(stats: stats),
             ],
           ),
