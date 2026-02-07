@@ -31,24 +31,24 @@ abstract class AppColorsDark {
   static const Color accent4 = Color(0xFFF18F01); // Very good / Best (Ranks)
 
   // Major Specific Colors
-  static const Color majorEngineering = Color(0xFF4DD0E1); // Muted Cyan
-  static const Color majorCS = Color(0xFF7986CB); // Dusty Blue
-  static const Color majorMedicine = Color(0xFFF06292); // Soft Rose
-  static const Color majorLaw = Color(0xFFFFB74D); // Pastel Orange
-  static const Color majorPsychology = Color(0xFFBA68C8); // Soft Lavender
-  static const Color majorArts = Color(0xFFE57373); // Muted Coral
-  static const Color majorHumanities = Color(0xFFFFF176); // Soft Sand
-  static const Color majorEducation = Color(0xFF81D4FA); // Baby Blue
-  static const Color majorMaths = Color(0xFF9575CD); // Deep Petal
-  static const Color majorMusic = Color(0xFFDCE775); // Pear Green
-  static const Color majorArchitecture = Color(0xFF4DB6AC); // Sage Teal
-  static const Color majorNursing = Color(0xFFFF8A65); // Peach
-  static const Color majorHistory = Color(0xFFA1887F); // Taupe
-  static const Color majorJournalism = Color(0xFF90A4AE); // Blue Grey
-  static const Color majorAstronomy = Color(0xFF7986CB); // Twilight Blue
-  static const Color majorPhilosophy = Color(0xFFCFD8DC); // Slate White
-  static const Color majorPhysics = Color(0xFFB39DDB); // Pale Violet
-  static const Color majorChemistry = Color(0xFF81C784); // Soft Mint
-  static const Color majorBiology = Color(0xFFAED581); // Moss Green
-  static const Color majorEconomics = Color(0xFF66BB6A); // Soft Emerald
+  static const Color majorEngineering = Color(0xFF4DD0E1);
+  static const Color majorCS = Color(0xFF7986CB);
+  static const Color majorMedicine = Color(0xFFF06292);
+  static const Color majorLaw = Color(0xFFFFB74D);
+  static const Color majorPsychology = Color(0xFFBA68C8);
+  static const Color majorArts = Color(0xFFE57373);
+  static const Color majorHumanities = Color(0xFFFFF176);
+  static const Color majorEducation = Color(0xFF81D4FA);
+  static const Color majorMaths = Color(0xFF9575CD);
+  static const Color majorMusic = Color(0xFFC5E1A5);
+  static const Color majorArchitecture = Color(0xFF80CBC4);
+  static const Color majorNursing = Color(0xFFFFAB91);
+  static const Color majorHistory = Color(0xFFBCAAA4);
+  static const Color majorJournalism = Color(0xFFB0BEC5);
+  static const Color majorAstronomy = Color(0xFF9FA8DA);
+  static const Color majorPhilosophy = Color(0xFFECEFF1);
+  static const Color majorPhysics = Color(0xFFCE93D8);
+  static const Color majorChemistry = Color(0xFFA5D6A7);
+  static const Color majorBiology = Color(0xFFDCE775);
+  static const Color majorEconomics = Color(0xFF81C784);
 }
