@@ -39,11 +39,9 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
     final bool isFirstEnrollment = stats.unlockedIds.isEmpty;
 
     final bool canAfford = widget.credits > 0;
-    final Color buttonColor = canAfford
-        ? context.getMajorColor(widget.major.id)
-        : context.colorScheme.onSurfaceVariant.withValues(alpha: 0.5);
+    final Color majorColor = context.getMajorColor(widget.major.id);
     final Color statusColor = canAfford
-        ? context.getMajorColor(widget.major.id)
+        ? majorColor
         : context.colorScheme.onSurfaceVariant.withValues(alpha: 0.5);
 
     final String bonusText = isFirstEnrollment
@@ -154,7 +152,7 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
                   key: wiggleKey,
                   child: PrimaryButton(
                     label: "ENROLL",
-                    color: buttonColor,
+                    color: statusColor,
                     onPressed: () {
                       if (canAfford) {
                         _handleUnlock();
