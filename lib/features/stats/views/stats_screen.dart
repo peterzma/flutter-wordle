@@ -66,7 +66,7 @@ class StatsScreen extends StatelessWidget {
                       child: StatCard(
                         value: "${stats.streak}",
                         label: "Current\nStreak",
-                        color: AppColorsDark.accent3,
+                        color: context.colorScheme.secondary,
                       ),
                     ),
                     SizedBox(width: context.r(8)),

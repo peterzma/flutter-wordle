@@ -103,7 +103,7 @@ class ProfileHeader extends StatelessWidget {
                     context: context,
                     icon: AppIcons.badgeMastery,
                     label: "+${(masteryBonus * 100).toInt()}%",
-                    color: AppColorsDark.accent3,
+                    color: context.colorScheme.secondary,
                   ),
               ],
             ),

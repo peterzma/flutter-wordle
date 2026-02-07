@@ -110,7 +110,7 @@ class ProfileScreen extends StatelessWidget {
                             "${stats.masteredCount}/${MajorsData.all.length}",
                         icon: AppIcons.badgeMastery,
                         iconColor: stats.masteredCount > 0
-                            ? AppColorsDark.accent3
+                            ? context.colorScheme.secondary
                             : AppColorsDark.onSurfaceVariant,
                       ),
                     ),

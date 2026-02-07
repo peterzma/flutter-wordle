@@ -1,7 +1,7 @@
 import 'package:uniordle/shared/exports/app_exports.dart';
 import 'package:uniordle/features/game/models/letter_model.dart';
 
-extension ThemeHelper on BuildContext {
+extension AppExtensions on BuildContext {
   // Use: context.theme
   ThemeData get theme => Theme.of(this);
 
@@ -56,6 +56,21 @@ extension ThemeHelper on BuildContext {
       case LetterStatus.inWord:
       case LetterStatus.correct:
         return getLetterBgColor(letter.status);
+    }
+  }
+
+  Color getGradeColor(GameGrade grade) {
+    switch (grade) {
+      case GameGrade.fail:
+        return colorScheme.error; // accent2
+      case GameGrade.highDistinction:
+        return colorScheme.tertiary; // accent4
+      case GameGrade.distinction:
+        return colorScheme.secondary; // accent3
+      case GameGrade.credit:
+        return colorScheme.primary; // accent
+      case GameGrade.pass:
+        return onSurfaceVariant; // Muted secondary text color
     }
   }
 }

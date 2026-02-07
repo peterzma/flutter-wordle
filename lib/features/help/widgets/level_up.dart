@@ -57,7 +57,7 @@ class LevelUp extends StatelessWidget {
               InstructionRow(
                 leading: context.autoIcon(
                   AppIcons.statMastered,
-                  color: AppColorsDark.accent3,
+                  color: context.colorScheme.secondary,
                   size: 24,
                 ),
                 color: context.surfaceVariant,

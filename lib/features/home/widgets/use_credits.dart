@@ -29,7 +29,9 @@ class _UseCreditsState extends State<UseCredits> {
     final bool canApply = allMajorsUnlocked && canAfford;
 
     final Color accentColor = allMajorsUnlocked
-        ? (canAfford ? AppColorsDark.accent3 : AppColorsDark.onSurfaceVariant)
+        ? (canAfford
+              ? context.colorScheme.secondary
+              : AppColorsDark.onSurfaceVariant)
         : AppColorsDark.onSurfaceVariant;
 
     return SizedBox(
@@ -129,7 +131,7 @@ class _UseCreditsState extends State<UseCredits> {
                   child: PrimaryButton(
                     label: "APPLY",
                     color: canApply
-                        ? AppColorsDark.accent3
+                        ? context.colorScheme.secondary
                         : AppColorsDark.onSurfaceVariant.withValues(alpha: 0.5),
                     onPressed: () {
                       if (canApply) {

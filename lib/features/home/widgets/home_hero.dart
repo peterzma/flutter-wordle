@@ -10,7 +10,7 @@ class HomeHero extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool hasCredits = stats.availableCredits > 0;
     final Color statusColor = hasCredits
-        ? AppColorsDark.accent3
+        ? context.colorScheme.secondary
         : AppColorsDark.onSurfaceVariant.withValues(alpha: 0.5);
 
     return Column(

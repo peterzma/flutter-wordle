@@ -41,7 +41,7 @@ class _AscensionState extends State<Ascension> {
                 context.autoIcon(
                   AppIcons.badgeMastery,
                   size: 64,
-                  color: AppColorsDark.accent3,
+                  color: context.colorScheme.secondary,
                 ),
                 SizedBox(height: context.r(16)),
                 context.autoText("ASCENSION", style: AppFonts.headlineMedium),
@@ -59,10 +59,12 @@ class _AscensionState extends State<Ascension> {
                     vertical: 8,
                   ),
                   decoration: BoxDecoration(
-                    color: AppColorsDark.accent3.withValues(alpha: 0.1),
+                    color: context.colorScheme.secondary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: AppColorsDark.accent3.withValues(alpha: 0.5),
+                      color: context.colorScheme.secondary.withValues(
+                        alpha: 0.5,
+                      ),
                     ),
                   ),
                   child: Column(
@@ -70,14 +72,14 @@ class _AscensionState extends State<Ascension> {
                       context.autoText(
                         "THE ORACLE'S LEGACY",
                         style: AppFonts.labelSmall.copyWith(
-                          color: AppColorsDark.accent3,
+                          color: context.colorScheme.secondary,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       context.autoText(
                         "$dynamicBonus PERMANENT MERIT",
                         style: AppFonts.headlineMedium.copyWith(
-                          color: AppColorsDark.accent3,
+                          color: context.colorScheme.secondary,
                           fontSize: 20,
                         ),
                         reduction: 8,
@@ -89,7 +91,7 @@ class _AscensionState extends State<Ascension> {
                 SizedBox(height: context.r(32)),
                 PrimaryButton(
                   label: 'So it is written',
-                  color: AppColorsDark.accent3,
+                  color: context.colorScheme.secondary,
                   onPressed: () => Navigator.pop(context),
                 ),
               ],
