@@ -15,9 +15,9 @@ class HomeHero extends StatelessWidget {
 
     return Column(
       children: [
-        context.autoText(
+        Text(
           'Select a Major',
-          style: AppFonts.displayLarge,
+          style: context.textTheme.displayLarge,
           maxLines: 1,
         ),
         SizedBox(height: context.r(4)),

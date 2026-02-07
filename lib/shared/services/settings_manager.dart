@@ -65,4 +65,11 @@ class SettingsController {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setDouble('sound_volume', value);
   }
+
+  Future<void> setDarkMode(bool value) async {
+    _state.value = _state.value.copyWith(darkModeEnabled: value);
+
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('dark_mode_enabled', value);
+  }
 }

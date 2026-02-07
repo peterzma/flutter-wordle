@@ -55,6 +55,8 @@ abstract class AppIcons {
   static const IconData sysMusicOff = Icons.music_off;
   static const IconData sysDelete = Icons.delete_forever_rounded;
   static const IconData sysConfirmDelete = Icons.delete_forever_rounded;
+  static const IconData sysDark = Icons.dark_mode_rounded;
+  static const IconData sysLight = Icons.light_mode_rounded;
   static const IconData inProgressDeleteData1 = Icons.warning_amber_rounded;
   static const IconData inProgressDeleteData2 = Icons.error_outline_rounded;
 

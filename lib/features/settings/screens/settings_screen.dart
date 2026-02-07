@@ -8,21 +8,30 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.surface,
-      body: SafeArea(
-        child: Column(
-          children: [
-            BaseHeader(
-              title: 'Settings',
-              leftIcon: AppIcons.navBack,
-              onLeftTap: onClose,
-            ),
-            Expanded(
-              child: ValueListenableBuilder(
-                valueListenable: controller.state,
-                builder: (context, state, _) {
-                  return ListView(
+    return ValueListenableBuilder<SettingsState>(
+      valueListenable: controller.state,
+      builder: (context, state, _) {
+        return Scaffold(
+          backgroundColor: AppColors.surface,
+          body: SafeArea(
+            child: Column(
+              children: [
+                BaseHeader(
+                  title: 'Settings',
+                  leftIcon: AppIcons.navBack,
+                  onLeftTap: onClose,
+                  actions: [
+                    NavigationItem(
+                      icon: state.darkModeEnabled
+                          ? AppIcons.sysDark
+                          : AppIcons.sysLight,
+                      onTap: () =>
+                          controller.setDarkMode(!state.darkModeEnabled),
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: ListView(
                     padding: const EdgeInsets.symmetric(
                       horizontal: AppLayout.pagePadding,
                     ),
@@ -92,14 +101,14 @@ class SettingsScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 32),
                     ],
-                  );
-                },
-              ),
+                  ),
+                ),
+                SettingsSignOutButton(onPressed: () {}),
+              ],
             ),
-            SettingsSignOutButton(onPressed: () {}),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

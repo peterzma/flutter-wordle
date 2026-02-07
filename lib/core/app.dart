@@ -36,22 +36,30 @@ class _AppState extends State<App> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Uniordle',
-      navigatorObservers: [_musicObserver],
-      debugShowCheckedModeBanner: false,
+    return ValueListenableBuilder(
+      valueListenable: SettingsController().state,
+      builder: (context, state, _) {
+        return MaterialApp(
+          title: 'Uniordle',
+          navigatorObservers: [_musicObserver],
+          debugShowCheckedModeBanner: false,
 
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.system,
-      builder: (context, child) {
-        return ResponsiveWrapper(child: child!);
-      },
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: state.darkModeEnabled ? ThemeMode.dark : ThemeMode.light,
+          builder: (context, child) {
+            return ResponsiveWrapper(child: child!);
+          },
 
-      initialRoute: '/',
+          initialRoute: '/',
 
-      onGenerateRoute: (settings) {
-        return InstantPageRoute(settings: settings, page: _getPage(settings));
+          onGenerateRoute: (settings) {
+            return InstantPageRoute(
+              settings: settings,
+              page: _getPage(settings),
+            );
+          },
+        );
       },
     );
   }
