@@ -29,8 +29,8 @@ class _UseCreditsState extends State<UseCredits> {
     final bool canApply = allMajorsUnlocked && canAfford;
 
     final Color accentColor = allMajorsUnlocked
-        ? (canAfford ? AppColors.accent3 : AppColors.onSurfaceVariant)
-        : AppColors.onSurfaceVariant;
+        ? (canAfford ? AppColorsDark.accent3 : AppColorsDark.onSurfaceVariant)
+        : AppColorsDark.onSurfaceVariant;
 
     return SizedBox(
       child: Column(
@@ -40,7 +40,7 @@ class _UseCreditsState extends State<UseCredits> {
             width: context.responsive(60, 80),
             height: context.responsive(60, 80),
             decoration: BoxDecoration(
-              color: AppColors.surfaceVariant,
+              color: AppColorsDark.surfaceVariant,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Icon(
@@ -129,8 +129,8 @@ class _UseCreditsState extends State<UseCredits> {
                   child: PrimaryButton(
                     label: "APPLY",
                     color: canApply
-                        ? AppColors.accent3
-                        : AppColors.onSurfaceVariant.withValues(alpha: 0.5),
+                        ? AppColorsDark.accent3
+                        : AppColorsDark.onSurfaceVariant.withValues(alpha: 0.5),
                     onPressed: () {
                       if (canApply) {
                         _handleBonusBoost();

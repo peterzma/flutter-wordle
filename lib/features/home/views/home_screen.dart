@@ -45,10 +45,10 @@ class HomeScreen extends StatelessWidget {
                   if (stats.masteredCount >= MajorsData.all.length) ...[
                     SizedBox(height: context.r(32)),
                     PulsingButtonWrapper(
-                      glowColor: AppColors.accent3,
+                      glowColor: AppColorsDark.accent3,
                       child: PrimaryButton(
                         label: "The Oracle's Legacy",
-                        color: AppColors.accent3,
+                        color: AppColorsDark.accent3,
                         onPressed: () {
                           showBaseDialog(
                             context: context,

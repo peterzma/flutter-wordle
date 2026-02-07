@@ -56,14 +56,14 @@ class PostGameDialog extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(context.r(16)),
             decoration: BoxDecoration(
-              color: (won ? AppColors.correctColor : Colors.red).withValues(
+              color: (won ? AppColorsDark.correctColor : Colors.red).withValues(
                 alpha: 0.1,
               ),
               shape: BoxShape.circle,
             ),
             child: Icon(
               won ? AppIcons.gameWin : AppIcons.gameLoss,
-              color: won ? AppColors.correctColor : Colors.red,
+              color: won ? AppColorsDark.correctColor : Colors.red,
               size: context.r(64),
             ),
           ),
@@ -83,7 +83,7 @@ class PostGameDialog extends StatelessWidget {
           SizedBox(height: context.r(32)),
           PrimaryButton(
             label: 'NEXT',
-            color: AppColors.accent,
+            color: AppColorsDark.accent,
             onPressed: () => _handleNext(context),
           ),
         ],

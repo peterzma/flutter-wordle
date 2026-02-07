@@ -6,9 +6,9 @@ class InfoTag extends StatelessWidget {
   final Widget? icon;
 
   const InfoTag({
-    super.key, 
-    required this.label, 
-    this.backgroundColor = AppColors.surfaceVariant,
+    super.key,
+    required this.label,
+    this.backgroundColor = AppColorsDark.surfaceVariant,
     this.icon,
   });
 
@@ -17,7 +17,10 @@ class InfoTag extends StatelessWidget {
     return Container(
       width: double.infinity,
       alignment: Alignment.center,
-      padding: EdgeInsets.symmetric(vertical: context.r(4), horizontal: context.r(8)),
+      padding: EdgeInsets.symmetric(
+        vertical: context.r(4),
+        horizontal: context.r(8),
+      ),
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.circular(8),
@@ -33,10 +36,7 @@ class InfoTag extends StatelessWidget {
               style: AppFonts.labelMedium,
             ),
           ),
-          if (icon != null) ...[
-            const SizedBox(width: 4),
-            icon!,
-          ],
+          if (icon != null) ...[const SizedBox(width: 4), icon!],
         ],
       ),
     );

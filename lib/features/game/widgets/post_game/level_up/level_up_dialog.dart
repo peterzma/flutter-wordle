@@ -152,7 +152,7 @@ class _LevelUpDialogState extends State<LevelUpDialog>
                 Expanded(
                   child: PrimaryButton(
                     label: 'NEW GAME',
-                    color: AppColors.accent,
+                    color: AppColorsDark.accent,
                     onPressed: () {
                       Navigator.of(context).pushNamedAndRemoveUntil(
                         '/setup',

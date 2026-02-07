@@ -23,7 +23,8 @@ class NavigationItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color finalColor =
-        color ?? (isActive ? AppColors.accent : AppColors.onSurfaceVariant);
+        color ??
+        (isActive ? AppColorsDark.accent : AppColorsDark.onSurfaceVariant);
 
     return SelectButtonWrapper(
       borderRadius: BorderRadius.circular(16),

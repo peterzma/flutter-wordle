@@ -12,7 +12,7 @@ class SettingsScreen extends StatelessWidget {
       valueListenable: controller.state,
       builder: (context, state, _) {
         return Scaffold(
-          backgroundColor: AppColors.surface,
+          backgroundColor: AppColorsDark.surface,
           body: SafeArea(
             child: Column(
               children: [

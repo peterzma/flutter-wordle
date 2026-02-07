@@ -41,10 +41,10 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
     final bool canAfford = widget.credits > 0;
     final Color buttonColor = canAfford
         ? widget.major.color
-        : AppColors.onSurfaceVariant.withValues(alpha: 0.5);
+        : AppColorsDark.onSurfaceVariant.withValues(alpha: 0.5);
     final Color statusColor = canAfford
         ? widget.major.color
-        : AppColors.onSurfaceVariant.withValues(alpha: 0.5);
+        : AppColorsDark.onSurfaceVariant.withValues(alpha: 0.5);
 
     final String bonusText = isFirstEnrollment
         ? "FIRST ENROLLMENT"
@@ -64,7 +64,7 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
             width: context.responsive(60, 80),
             height: context.responsive(60, 80),
             decoration: BoxDecoration(
-              color: AppColors.surfaceVariant,
+              color: AppColorsDark.surfaceVariant,
               borderRadius: BorderRadius.circular(16),
             ),
             child: Icon(
@@ -97,7 +97,7 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
             decoration: BoxDecoration(
               color: canAfford
                   ? widget.major.color.withValues(alpha: 0.1)
-                  : AppColors.onSurfaceVariant.withValues(alpha: 0.1),
+                  : AppColorsDark.onSurfaceVariant.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(32),
             ),
             child: Row(
@@ -108,7 +108,7 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
                   size: 16,
                   color: canAfford
                       ? widget.major.color
-                      : AppColors.onSurfaceVariant,
+                      : AppColorsDark.onSurfaceVariant,
                 ),
                 const SizedBox(width: 4),
                 context.autoText(
@@ -116,7 +116,7 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
                   style: AppFonts.labelSmall.copyWith(
                     color: canAfford
                         ? widget.major.color
-                        : AppColors.onSurfaceVariant,
+                        : AppColorsDark.onSurfaceVariant,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

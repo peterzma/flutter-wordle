@@ -20,7 +20,7 @@ class SettingsToggleTile extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(AppLayout.settingsPadding),
       decoration: BoxDecoration(
-        color: AppColors.surfaceVariant,
+        color: AppColorsDark.surfaceVariant,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Row(
@@ -28,7 +28,7 @@ class SettingsToggleTile extends StatelessWidget {
         children: [
           Row(
             children: [
-              context.autoIcon(icon, color: AppColors.onSurfaceVariant),
+              context.autoIcon(icon, color: AppColorsDark.onSurfaceVariant),
               const SizedBox(width: 12),
               context.autoText(label, style: AppFonts.labelLarge),
             ],
@@ -40,8 +40,8 @@ class SettingsToggleTile extends StatelessWidget {
               child: CupertinoSwitch(
                 value: value,
                 onChanged: onChanged,
-                activeTrackColor: AppColors.accent,
-                inactiveTrackColor: AppColors.onSurfaceVariant,
+                activeTrackColor: AppColorsDark.accent,
+                inactiveTrackColor: AppColorsDark.onSurfaceVariant,
               ),
             ),
           ),

@@ -17,7 +17,7 @@ class StatCard extends StatelessWidget {
     return Container(
       height: context.responsive(80, 120),
       decoration: BoxDecoration(
-        color: AppColors.surfaceVariant,
+        color: AppColorsDark.surfaceVariant,
         borderRadius: BorderRadius.circular(AppLayout.cardRounding),
       ),
       child: Column(
@@ -32,7 +32,7 @@ class StatCard extends StatelessWidget {
             label.toUpperCase(),
             textAlign: TextAlign.center,
             style: AppFonts.labelSmall.copyWith(
-              color: AppColors.onSurfaceVariant,
+              color: AppColorsDark.onSurfaceVariant,
             ),
             maxLines: 2,
           ),

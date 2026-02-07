@@ -15,7 +15,7 @@ class PrimaryButton extends StatelessWidget {
     super.key,
     required this.label,
     required this.onPressed,
-    this.color = AppColors.surfaceVariant,
+    this.color = AppColorsDark.surfaceVariant,
     this.isLoading = false,
     this.icon,
     this.height,
@@ -59,7 +59,7 @@ class PrimaryButton extends StatelessWidget {
       width: loaderSize,
       child: const CircularProgressIndicator(
         strokeWidth: 3,
-        color: AppColors.onSurface,
+        color: AppColorsDark.onSurface,
       ),
     );
   }

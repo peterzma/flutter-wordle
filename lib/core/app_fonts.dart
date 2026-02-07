@@ -14,7 +14,7 @@ abstract class AppFonts {
     fontFamily: displayFont,
     fontSize: 24,
     fontWeight: FontWeight.w800,
-    color: AppColors.onSurface,
+    color: AppColorsDark.onSurface,
   );
 
   // Titles / Tiles
@@ -22,7 +22,7 @@ abstract class AppFonts {
     fontFamily: displayFont,
     fontSize: 20,
     fontWeight: FontWeight.w700,
-    color: AppColors.onSurface,
+    color: AppColorsDark.onSurface,
   );
 
   // UI / Labels (Buttons, Captions)
@@ -30,20 +30,20 @@ abstract class AppFonts {
     fontFamily: displayFont,
     fontSize: 16,
     fontWeight: FontWeight.w600,
-    color: AppColors.onSurface,
+    color: AppColorsDark.onSurface,
   );
 
   static TextStyle get labelMedium => const TextStyle(
     fontFamily: displayFont,
     fontSize: 12,
     fontWeight: FontWeight.w500,
-    color: AppColors.onSurfaceVariant,
+    color: AppColorsDark.onSurfaceVariant,
   );
 
   static TextStyle get labelSmall => const TextStyle(
     fontFamily: displayFont,
     fontSize: 10,
     fontWeight: FontWeight.w600,
-    color: AppColors.accent,
+    color: AppColorsDark.accent,
   );
 }

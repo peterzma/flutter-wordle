@@ -20,7 +20,7 @@ class SimpleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final displayColor = color ?? AppColors.accent;
+    final displayColor = color ?? AppColorsDark.accent;
 
     return TextButton(
       onPressed: onTap,

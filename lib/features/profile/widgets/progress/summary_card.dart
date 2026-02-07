@@ -18,7 +18,7 @@ class SummaryCard extends StatelessWidget {
     return Container(
       height: 100,
       decoration: BoxDecoration(
-        color: AppColors.surfaceVariant,
+        color: AppColorsDark.surfaceVariant,
         borderRadius: BorderRadius.circular(AppLayout.cardRounding),
       ),
       child: Column(

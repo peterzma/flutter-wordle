@@ -25,15 +25,10 @@ class MajorIcon extends StatelessWidget {
       height: dimension,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: AppColors.surfaceVariant,
+        color: AppColorsDark.surfaceVariant,
         borderRadius: BorderRadius.circular(rounding),
       ),
-      child: Icon(
-        icon,
-        color: color,
-        size: iconSize,
-        shadows: shadows,
-      ),
+      child: Icon(icon, color: color, size: iconSize, shadows: shadows),
     );
   }
 }

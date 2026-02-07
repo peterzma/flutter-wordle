@@ -23,7 +23,7 @@ class SettingsSliderTile extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(AppLayout.settingsPadding),
       decoration: BoxDecoration(
-        color: AppColors.surfaceVariant,
+        color: AppColorsDark.surfaceVariant,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
@@ -38,8 +38,8 @@ class SettingsSliderTile extends StatelessWidget {
                     child: context.autoIcon(
                       value > 0 ? icon : muteIcon,
                       color: value > 0
-                          ? AppColors.accent
-                          : AppColors.onSurfaceVariant,
+                          ? AppColorsDark.accent
+                          : AppColorsDark.onSurfaceVariant,
                     ),
                   ),
                   const SizedBox(width: 12),
@@ -55,9 +55,9 @@ class SettingsSliderTile extends StatelessWidget {
           SliderTheme(
             data: SliderTheme.of(context).copyWith(
               trackHeight: 4,
-              activeTrackColor: AppColors.accent,
-              inactiveTrackColor: AppColors.onSurfaceVariant,
-              thumbColor: AppColors.onSurface,
+              activeTrackColor: AppColorsDark.accent,
+              inactiveTrackColor: AppColorsDark.onSurfaceVariant,
+              thumbColor: AppColorsDark.onSurface,
               overlayColor: Colors.transparent,
               thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 5.0),
               overlayShape: const RoundSliderOverlayShape(overlayRadius: 16.0),

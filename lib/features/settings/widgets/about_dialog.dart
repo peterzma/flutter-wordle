@@ -23,7 +23,7 @@ class AboutGameDialog extends StatelessWidget {
           PrimaryButton(
             onPressed: () => showLicensePage(context: context),
             label: "LICENSES",
-            color: AppColors.accent,
+            color: AppColorsDark.accent,
           ),
           SizedBox(height: context.r(16)),
           PrimaryButton(
@@ -37,7 +37,7 @@ class AboutGameDialog extends StatelessWidget {
 
   Widget _buildAppIcon(BuildContext context) => CircleAvatar(
     radius: context.r(60),
-    backgroundColor: AppColors.surfaceVariant,
+    backgroundColor: AppColorsDark.surfaceVariant,
     child: Image.asset(
       'assets/images/white_on_blue/favicon.png',
       fit: BoxFit.contain,

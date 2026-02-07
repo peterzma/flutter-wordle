@@ -34,7 +34,7 @@ class DifficultySelector extends StatelessWidget {
           data: SliderTheme.of(context).copyWith(
             trackHeight: 4,
             activeTrackColor: major.color,
-            inactiveTrackColor: AppColors.onSurfaceVariant,
+            inactiveTrackColor: AppColorsDark.onSurfaceVariant,
             thumbColor: major.color,
             overlayColor: Colors.transparent,
             overlayShape: RoundSliderOverlayShape(
@@ -43,7 +43,7 @@ class DifficultySelector extends StatelessWidget {
             thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 5.0),
             tickMarkShape: const RoundSliderTickMarkShape(tickMarkRadius: 3.0),
             activeTickMarkColor: major.color,
-            inactiveTickMarkColor: AppColors.onSurfaceVariant,
+            inactiveTickMarkColor: AppColorsDark.onSurfaceVariant,
           ),
           child: SizedBox(
             height: 20,
@@ -85,7 +85,7 @@ class DifficultySelector extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           )
                         : AppFonts.labelMedium.copyWith(
-                            color: AppColors.onSurfaceVariant,
+                            color: AppColorsDark.onSurfaceVariant,
                           ),
                   ),
                   Row(
@@ -107,7 +107,7 @@ class DifficultySelector extends StatelessWidget {
                         size: 12,
                         color: active
                             ? major.color
-                            : AppColors.onSurfaceVariant,
+                            : AppColorsDark.onSurfaceVariant,
                       ),
                     ],
                   ),

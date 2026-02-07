@@ -37,7 +37,7 @@ class HistoryItemCard extends StatelessWidget {
                       ? "$attempts/$maxAttempts ATTEMPTS"
                       : "X/$maxAttempts ATTEMPTS",
                   style: AppFonts.labelSmall.copyWith(
-                    color: AppColors.onSurfaceVariant,
+                    color: AppColorsDark.onSurfaceVariant,
                   ),
                   textAlign: TextAlign.left,
                 ),
@@ -54,7 +54,9 @@ class HistoryItemCard extends StatelessWidget {
               context.autoText(
                 won ? "+$merit MERITS" : "$merit MERITS",
                 style: AppFonts.labelSmall.copyWith(
-                  color: won ? AppColors.correctColor : AppColors.accent2,
+                  color: won
+                      ? AppColorsDark.correctColor
+                      : AppColorsDark.accent2,
                 ),
               ),
             ],

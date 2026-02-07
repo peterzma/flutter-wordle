@@ -41,7 +41,7 @@ class _AscensionState extends State<Ascension> {
                 context.autoIcon(
                   AppIcons.badgeMastery,
                   size: 64,
-                  color: AppColors.accent3,
+                  color: AppColorsDark.accent3,
                 ),
                 SizedBox(height: context.r(16)),
                 context.autoText("ASCENSION", style: AppFonts.headlineMedium),
@@ -59,10 +59,10 @@ class _AscensionState extends State<Ascension> {
                     vertical: 8,
                   ),
                   decoration: BoxDecoration(
-                    color: AppColors.accent3.withValues(alpha: 0.1),
+                    color: AppColorsDark.accent3.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: AppColors.accent3.withValues(alpha: 0.5),
+                      color: AppColorsDark.accent3.withValues(alpha: 0.5),
                     ),
                   ),
                   child: Column(
@@ -70,14 +70,14 @@ class _AscensionState extends State<Ascension> {
                       context.autoText(
                         "THE ORACLE'S LEGACY",
                         style: AppFonts.labelSmall.copyWith(
-                          color: AppColors.accent3,
+                          color: AppColorsDark.accent3,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       context.autoText(
                         "$dynamicBonus PERMANENT MERIT",
                         style: AppFonts.headlineMedium.copyWith(
-                          color: AppColors.accent3,
+                          color: AppColorsDark.accent3,
                           fontSize: 20,
                         ),
                         reduction: 8,
@@ -89,7 +89,7 @@ class _AscensionState extends State<Ascension> {
                 SizedBox(height: context.r(32)),
                 PrimaryButton(
                   label: 'So it is written',
-                  color: AppColors.accent3,
+                  color: AppColorsDark.accent3,
                   onPressed: () => Navigator.pop(context),
                 ),
               ],
@@ -101,7 +101,7 @@ class _AscensionState extends State<Ascension> {
               shouldLoop: false,
               colors: const [
                 Colors.orange,
-                AppColors.accent,
+                AppColorsDark.accent,
                 Colors.white,
                 Colors.red,
               ],

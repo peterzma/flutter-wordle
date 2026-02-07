@@ -22,7 +22,7 @@ class WordLengthSelector extends StatelessWidget {
             final bool active = value == len;
             final Color baseColor = active
                 ? major.color
-                : AppColors.surfaceVariant;
+                : AppColorsDark.surfaceVariant;
             return Expanded(
               child: Center(
                 child: ConstrainedBox(
@@ -43,7 +43,7 @@ class WordLengthSelector extends StatelessWidget {
                           decoration: BoxDecoration(
                             color: active
                                 ? major.color
-                                : AppColors.surfaceVariant,
+                                : AppColorsDark.surfaceVariant,
                             borderRadius: BorderRadius.circular(36),
                           ),
                           child: Column(
@@ -61,7 +61,7 @@ class WordLengthSelector extends StatelessWidget {
                                 'LETTERS',
                                 style: active
                                     ? AppFonts.labelMedium.copyWith(
-                                        color: AppColors.onSurface,
+                                        color: AppColorsDark.onSurface,
                                         fontWeight: FontWeight.w600,
                                       )
                                     : AppFonts.labelMedium,

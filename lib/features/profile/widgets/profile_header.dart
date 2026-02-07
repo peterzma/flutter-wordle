@@ -13,8 +13,8 @@ class ProfileHeader extends StatelessWidget {
         final double transitionPower = (level / 100).clamp(0.0, 1.0);
 
         final Color themeColor = Color.lerp(
-          AppColors.accent,
-          AppColors.accent4,
+          AppColorsDark.accent,
+          AppColorsDark.accent4,
           transitionPower,
         )!;
 
@@ -58,16 +58,16 @@ class ProfileHeader extends StatelessWidget {
                     child: Container(
                       padding: const EdgeInsets.all(4),
                       decoration: BoxDecoration(
-                        color: AppColors.surface,
+                        color: AppColorsDark.surface,
                         shape: BoxShape.circle,
                       ),
                       child: CircleAvatar(
                         radius: 40,
-                        backgroundColor: AppColors.surfaceVariant,
+                        backgroundColor: AppColorsDark.surfaceVariant,
                         child: Icon(
                           AppIcons.profileDefault,
                           size: 48,
-                          color: AppColors.onSurfaceVariant,
+                          color: AppColorsDark.onSurfaceVariant,
                         ),
                       ),
                     ),
@@ -96,14 +96,14 @@ class ProfileHeader extends StatelessWidget {
                     context: context,
                     icon: AppIcons.badgeOracle,
                     label: "+${(summitBonus * 100).toInt()}%",
-                    color: AppColors.accent4,
+                    color: AppColorsDark.accent4,
                   ),
                 if (hasMastery)
                   _buildBadge(
                     context: context,
                     icon: AppIcons.badgeMastery,
                     label: "+${(masteryBonus * 100).toInt()}%",
-                    color: AppColors.accent3,
+                    color: AppColorsDark.accent3,
                   ),
               ],
             ),

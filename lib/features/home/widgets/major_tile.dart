@@ -23,7 +23,7 @@ class _MajorTileState extends State<MajorTile> {
   Widget build(BuildContext context) {
     final sub = widget.major;
     final displayColor = widget.isLocked
-        ? AppColors.onSurfaceVariant.withValues(alpha: 0.5)
+        ? AppColorsDark.onSurfaceVariant.withValues(alpha: 0.5)
         : sub.color;
 
     return ValueListenableBuilder(
@@ -46,7 +46,7 @@ class _MajorTileState extends State<MajorTile> {
               duration: const Duration(milliseconds: 80),
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: AppColors.surfaceVariant,
+                color: AppColorsDark.surfaceVariant,
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
                   color: _hovering ? displayColor : Colors.transparent,
@@ -69,7 +69,7 @@ class _MajorTileState extends State<MajorTile> {
                     MajorIcon(
                       icon: widget.isLocked ? AppIcons.profileLock : sub.icon,
                       color: widget.isLocked
-                          ? AppColors.onSurfaceVariant
+                          ? AppColorsDark.onSurfaceVariant
                           : displayColor,
                       shadows: isFullyMastered
                           ? [Shadow(color: displayColor, blurRadius: 10.0)]
@@ -86,7 +86,7 @@ class _MajorTileState extends State<MajorTile> {
                               Text(
                                 sub.name,
                                 style: AppFonts.labelLarge.copyWith(
-                                  color: AppColors.onSurface,
+                                  color: AppColorsDark.onSurface,
                                 ),
                               ),
                               if (!widget.isLocked)

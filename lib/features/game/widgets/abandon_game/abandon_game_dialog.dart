@@ -10,7 +10,7 @@ class AbandonGameDialog extends StatelessWidget {
     final penalty = stats.activePenalty;
 
     final highlightStyle = AppFonts.labelMedium.copyWith(
-      color: AppColors.accent2,
+      color: AppColorsDark.accent2,
     );
 
     return BaseDialog(
@@ -19,7 +19,7 @@ class AbandonGameDialog extends StatelessWidget {
         children: [
           Icon(
             AppIcons.gameAbandon,
-            color: AppColors.accent2,
+            color: AppColorsDark.accent2,
             size: context.r(64),
           ),
           SizedBox(height: context.r(8)),
@@ -61,7 +61,7 @@ class AbandonGameDialog extends StatelessWidget {
               Expanded(
                 child: PrimaryButton(
                   label: 'LEAVE',
-                  color: AppColors.accent2,
+                  color: AppColorsDark.accent2,
                   onPressed: () => Navigator.pop(context, true),
                 ),
               ),

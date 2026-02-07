@@ -4,7 +4,7 @@ class BoardTile extends StatefulWidget {
   const BoardTile({
     super.key,
     required this.letter,
-    this.initialBorderColor = AppColors.surfaceVariant,
+    this.initialBorderColor = AppColorsDark.surfaceVariant,
     this.entranceDelay = Duration.zero,
   });
 
@@ -16,13 +16,13 @@ class BoardTile extends StatefulWidget {
   State<BoardTile> createState() => _BoardTileState();
 }
 
-class _BoardTileState extends State<BoardTile> with SingleTickerProviderStateMixin{
+class _BoardTileState extends State<BoardTile>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _scale;
 
   static const Duration _typingDuration = Duration(milliseconds: 80);
   static const Duration _entranceDuration = Duration(milliseconds: 160);
-
 
   @override
   void initState() {
@@ -34,17 +34,12 @@ class _BoardTileState extends State<BoardTile> with SingleTickerProviderStateMix
       }
     });
 
-    _controller = AnimationController(
-      duration: _typingDuration,
-      vsync: this,
-    );
+    _controller = AnimationController(duration: _typingDuration, vsync: this);
 
     _scale = Tween<double>(
       begin: 1.0,
       end: 1.05,
-    ).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeOut),
-    );
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
 
     _controller.addStatusListener((status) {
       if (status == AnimationStatus.completed) _controller.reverse();
@@ -86,7 +81,7 @@ class _BoardTileState extends State<BoardTile> with SingleTickerProviderStateMix
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: widget.letter.val.isEmpty
-              ? AppColors.gameTiles
+              ? AppColorsDark.gameTiles
               : widget.letter.backgroundColor,
           // border: Border.all(
           //   color: widget.letter.borderColor,

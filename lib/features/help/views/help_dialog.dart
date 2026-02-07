@@ -49,7 +49,7 @@ class _HelpDialogState extends State<HelpDialog> {
           SizedBox(height: 16),
           PrimaryButton(
             label: 'Got it!',
-            color: AppColors.accent,
+            color: AppColorsDark.accent,
             onPressed: () => Navigator.pop(context),
           ),
         ],
@@ -78,7 +78,7 @@ class NavHitArea extends StatelessWidget {
           offset: Offset(0, context.responsive(-4, -6)),
           child: Icon(
             isLeft ? AppIcons.navBack : AppIcons.navForward,
-            color: AppColors.onSurfaceVariant,
+            color: AppColorsDark.onSurfaceVariant,
             size: context.r(32),
           ),
         ),

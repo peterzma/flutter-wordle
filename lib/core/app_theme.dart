@@ -6,12 +6,12 @@ class AppTheme {
       useMaterial3: true,
       brightness: Brightness.dark,
       fontFamily: AppFonts.displayFont,
-      scaffoldBackgroundColor: AppColors.surface,
+      scaffoldBackgroundColor: AppColorsDark.surface,
       textTheme: _buildTextTheme(Brightness.dark),
       colorScheme: const ColorScheme.dark(
-        surface: AppColors.surface,
-        onSurface: AppColors.onSurface,
-        primary: AppColors.accent,
+        surface: AppColorsDark.surface,
+        onSurface: AppColorsDark.onSurface,
+        primary: AppColorsDark.accent,
       ),
     );
   }
@@ -25,7 +25,7 @@ class AppTheme {
       colorScheme: const ColorScheme.light(
         surface: Color(0xFFF8FAFC),
         onSurface: Color(0xFF0F172A),
-        primary: AppColors.accent,
+        primary: AppColorsDark.accent,
       ),
     );
   }
@@ -34,12 +34,12 @@ class AppTheme {
     final bool isDark = brightness == Brightness.dark;
 
     final Color primaryText = isDark
-        ? AppColors.onSurface
+        ? AppColorsDark.onSurface
         : const Color(0xFF0F172A);
     final Color secondaryText = isDark
-        ? AppColors.onSurfaceVariant
+        ? AppColorsDark.onSurfaceVariant
         : const Color(0xFF64748B);
-    final Color accentText = AppColors.accent;
+    final Color accentText = AppColorsDark.accent;
 
     return TextTheme(
       displayLarge: AppFonts.displayLarge.copyWith(color: primaryText),

@@ -34,14 +34,14 @@ class ModeAnalyticsChart extends StatelessWidget {
                   "$tries",
                   textAlign: TextAlign.center,
                   style: AppFonts.labelMedium.copyWith(
-                    color: AppColors.onSurfaceVariant,
+                    color: AppColorsDark.onSurfaceVariant,
                   ),
                 ),
                 SizedBox(width: context.r(4)),
                 Icon(
                   AppIcons.gameAttempts,
                   size: 12,
-                  color: AppColors.onSurfaceVariant,
+                  color: AppColorsDark.onSurfaceVariant,
                 ),
               ],
             ),
@@ -67,7 +67,7 @@ class ModeAnalyticsChart extends StatelessWidget {
                 child: Icon(
                   AppIcons.gameLetters,
                   size: 12,
-                  color: AppColors.onSurfaceVariant,
+                  color: AppColorsDark.onSurfaceVariant,
                 ),
               ),
             ],
@@ -80,8 +80,8 @@ class ModeAnalyticsChart extends StatelessWidget {
           final bool isEmpty = count == 0;
 
           final Color cellColor = isEmpty
-              ? AppColors.surfaceVariant
-              : AppColors.accent.withValues(
+              ? AppColorsDark.surfaceVariant
+              : AppColorsDark.accent.withValues(
                   alpha: (count / maxUsage).clamp(0.1, 1.0),
                 );
 
@@ -98,8 +98,8 @@ class ModeAnalyticsChart extends StatelessWidget {
                   count > 0 ? "$count" : "-",
                   style: AppFonts.labelSmall.copyWith(
                     color: !isEmpty && (count / maxUsage > 0.5)
-                        ? AppColors.onSurface
-                        : AppColors.onSurfaceVariant,
+                        ? AppColorsDark.onSurface
+                        : AppColorsDark.onSurfaceVariant,
                   ),
                 ),
               ),

@@ -12,8 +12,8 @@ class StatsScreen extends StatelessWidget {
             double.tryParse(stats.winPercentage.replaceAll('%', '')) ?? 0;
         final double normalizedValue = (winValue / 100).clamp(0.0, 1.0);
         final Color winColor = Color.lerp(
-          AppColors.accent2,
-          AppColors.correctColor,
+          AppColorsDark.accent2,
+          AppColorsDark.correctColor,
           normalizedValue,
         )!;
 
@@ -66,7 +66,7 @@ class StatsScreen extends StatelessWidget {
                       child: StatCard(
                         value: "${stats.streak}",
                         label: "Current\nStreak",
-                        color: AppColors.accent3,
+                        color: AppColorsDark.accent3,
                       ),
                     ),
                     SizedBox(width: context.r(8)),
@@ -74,7 +74,7 @@ class StatsScreen extends StatelessWidget {
                       child: StatCard(
                         value: "${stats.maxStreak}",
                         label: "Best\nStreak",
-                        color: AppColors.accent4,
+                        color: AppColorsDark.accent4,
                       ),
                     ),
                   ],

@@ -13,7 +13,7 @@ class GameInfoBar extends StatelessWidget {
   });
 
   String get _attemptsLabel {
-  return DifficultyConfig.getAttemptsByLabel(yearLevel);
+    return DifficultyConfig.getAttemptsByLabel(yearLevel);
   }
 
   @override
@@ -29,12 +29,17 @@ class GameInfoBar extends StatelessWidget {
             SizedBox(width: context.r(8)),
             Expanded(
               child: InfoTag(
-                label: _attemptsLabel, 
-                icon: context.autoIcon(AppIcons.gameAttempts, size: 14, color: AppColors.onSurfaceVariant, reduction: 2),
+                label: _attemptsLabel,
+                icon: context.autoIcon(
+                  AppIcons.gameAttempts,
+                  size: 14,
+                  color: AppColorsDark.onSurfaceVariant,
+                  reduction: 2,
+                ),
               ),
             ),
           ],
-        )
+        ),
       ),
     );
   }

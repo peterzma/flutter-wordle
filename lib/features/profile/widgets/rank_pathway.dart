@@ -18,7 +18,7 @@ class RankPathway extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(AppLayout.cardPadding),
           decoration: BoxDecoration(
-            color: AppColors.surfaceVariant,
+            color: AppColorsDark.surfaceVariant,
             borderRadius: BorderRadius.circular(AppLayout.cardRounding),
           ),
           child: Column(
@@ -61,10 +61,10 @@ class RankPathway extends StatelessWidget {
                         width: 2,
                         decoration: BoxDecoration(
                           color: isPathwayComplete
-                              ? AppColors.accent4
+                              ? AppColorsDark.accent4
                               : (isAchieved
-                                    ? AppColors.accent
-                                    : AppColors.onSurface),
+                                    ? AppColorsDark.accent
+                                    : AppColorsDark.onSurface),
                           borderRadius: BorderRadius.circular(2),
                         ),
                       ),
@@ -83,10 +83,10 @@ class RankPathway extends StatelessWidget {
                 maxWidth: AppLayout.contentWidth(context),
               ),
               child: PulsingButtonWrapper(
-                glowColor: AppColors.accent4,
+                glowColor: AppColorsDark.accent4,
                 child: PrimaryButton(
                   label: 'A Vision from the Beyond',
-                  color: AppColors.accent4,
+                  color: AppColorsDark.accent4,
                   onPressed: () {
                     showBaseDialog(
                       context: context,
@@ -118,10 +118,10 @@ class RankPathway extends StatelessWidget {
     // 4. Otherwise -> Grey (Outline)
 
     final Color rowColor = isPathwayComplete
-        ? AppColors.accent4
+        ? AppColorsDark.accent4
         : (isAchieved
-              ? AppColors.accent
-              : (isNext ? Colors.white : AppColors.onSurfaceVariant));
+              ? AppColorsDark.accent
+              : (isNext ? Colors.white : AppColorsDark.onSurfaceVariant));
 
     return Row(
       children: [

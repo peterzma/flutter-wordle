@@ -35,7 +35,7 @@ class DistributionBar extends StatelessWidget {
                     Container(
                       height: 24,
                       decoration: BoxDecoration(
-                        color: AppColors.surfaceVariant,
+                        color: AppColorsDark.surfaceVariant,
                         borderRadius: BorderRadius.circular(64),
                       ),
                     ),
@@ -51,14 +51,14 @@ class DistributionBar extends StatelessWidget {
                       padding: EdgeInsets.only(right: count == 0 ? 0 : 12),
                       decoration: BoxDecoration(
                         color: isHighest
-                            ? AppColors.accent
-                            : AppColors.onSurfaceVariant,
+                            ? AppColorsDark.accent
+                            : AppColorsDark.onSurfaceVariant,
                         borderRadius: BorderRadius.circular(64),
                       ),
                       child: Text(
                         "$count",
                         style: AppFonts.labelSmall.copyWith(
-                          color: AppColors.onSurface,
+                          color: AppColorsDark.onSurface,
                         ),
                       ),
                     ),

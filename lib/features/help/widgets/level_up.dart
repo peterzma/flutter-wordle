@@ -19,7 +19,7 @@ class LevelUp extends StatelessWidget {
           child: context.autoText(
             'Guess words to earn merits. Level up with merits, and gain credits.',
             style: AppFonts.labelMedium.copyWith(
-              color: AppColors.onSurfaceVariant,
+              color: AppColorsDark.onSurfaceVariant,
             ),
             textAlign: TextAlign.center,
             maxLines: 2,
@@ -35,10 +35,10 @@ class LevelUp extends StatelessWidget {
               InstructionRow(
                 leading: context.autoIcon(
                   AppIcons.gameMerit,
-                  color: AppColors.accent,
+                  color: AppColorsDark.accent,
                   size: 24,
                 ),
-                color: AppColors.surfaceVariant,
+                color: AppColorsDark.surfaceVariant,
                 title: 'Earn Merits',
                 subtitle: 'EVERY CORRECT GUESS & LEVEL UP',
               ),
@@ -46,10 +46,10 @@ class LevelUp extends StatelessWidget {
               InstructionRow(
                 leading: context.autoIcon(
                   AppIcons.gameCredit,
-                  color: AppColors.correctColor,
+                  color: AppColorsDark.correctColor,
                   size: 24,
                 ),
-                color: AppColors.surfaceVariant,
+                color: AppColorsDark.surfaceVariant,
                 title: 'Earn Credits',
                 subtitle: 'EVERY 5 LVLS TO UNLOCK MAJORS',
               ),
@@ -57,10 +57,10 @@ class LevelUp extends StatelessWidget {
               InstructionRow(
                 leading: context.autoIcon(
                   AppIcons.statMastered,
-                  color: AppColors.accent3,
+                  color: AppColorsDark.accent3,
                   size: 24,
                 ),
-                color: AppColors.surfaceVariant,
+                color: AppColorsDark.surfaceVariant,
                 title: 'Ultimate Reward',
                 subtitle: 'MASTER EVERY MAJOR',
               ),

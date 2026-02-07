@@ -7,7 +7,7 @@ class SolutionBox extends StatelessWidget {
   const SolutionBox({
     super.key,
     required this.solution,
-    this.backgroundColor = AppColors.surface,
+    this.backgroundColor = AppColorsDark.surface,
   });
 
   @override
@@ -19,7 +19,7 @@ class SolutionBox extends StatelessWidget {
           Text(
             'THE WORD WAS',
             style: AppFonts.labelLarge.copyWith(
-              color: AppColors.onSurfaceVariant,
+              color: AppColorsDark.onSurfaceVariant,
             ),
           ),
           SizedBox(height: context.r(8)),
@@ -27,7 +27,7 @@ class SolutionBox extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
             decoration: BoxDecoration(
               color: backgroundColor,
-              border: Border.all(color: AppColors.outline, width: 2),
+              border: Border.all(color: AppColorsDark.outline, width: 2),
               borderRadius: BorderRadius.circular(16),
             ),
             child: FittedBox(

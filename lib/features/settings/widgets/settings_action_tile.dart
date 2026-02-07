@@ -21,7 +21,7 @@ class SettingsActionTile extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(AppLayout.settingsPadding),
         decoration: BoxDecoration(
-          color: AppColors.surfaceVariant,
+          color: AppColorsDark.surfaceVariant,
           borderRadius: BorderRadius.circular(16),
         ),
         child: Row(
@@ -31,7 +31,7 @@ class SettingsActionTile extends StatelessWidget {
               children: [
                 context.autoIcon(
                   icon,
-                  color: AppColors.onSurfaceVariant,
+                  color: AppColorsDark.onSurfaceVariant,
                   size: 24,
                 ),
                 const SizedBox(width: 12),
@@ -44,7 +44,7 @@ class SettingsActionTile extends StatelessWidget {
                 if (value != null) const SizedBox(width: 8),
                 Icon(
                   AppIcons.navForward,
-                  color: AppColors.onSurfaceVariant,
+                  color: AppColorsDark.onSurfaceVariant,
                   size: 20,
                 ),
               ],

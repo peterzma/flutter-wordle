@@ -19,7 +19,7 @@ class HowToPlay extends StatelessWidget {
           child: context.autoText(
             'Choose a starting major, customise your game settings and then guess the word!',
             style: AppFonts.labelMedium.copyWith(
-              color: AppColors.onSurfaceVariant,
+              color: AppColorsDark.onSurfaceVariant,
             ),
             textAlign: TextAlign.center,
             maxLines: 2,
@@ -34,21 +34,21 @@ class HowToPlay extends StatelessWidget {
             children: [
               InstructionRow(
                 leading: Text('U', style: AppFonts.displayMedium),
-                color: AppColors.correctColor,
+                color: AppColorsDark.correctColor,
                 title: 'Correct Letter',
                 subtitle: 'RIGHT SPOT',
               ),
               SizedBox(height: context.r(32)),
               InstructionRow(
                 leading: Text('N', style: AppFonts.displayMedium),
-                color: AppColors.inWordColor,
+                color: AppColorsDark.inWordColor,
                 title: 'Correct Letter',
                 subtitle: 'WRONG SPOT',
               ),
               SizedBox(height: context.r(32)),
               InstructionRow(
                 leading: Text('I', style: AppFonts.displayMedium),
-                color: AppColors.notInWordColor,
+                color: AppColorsDark.notInWordColor,
                 title: 'Wrong Letter',
                 subtitle: 'NO SPOT',
               ),

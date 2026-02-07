@@ -19,7 +19,7 @@ class StakesAndPenalties extends StatelessWidget {
           child: context.autoText(
             'Higher ranks bring bigger challenges. \n Don\'t give up!',
             style: AppFonts.labelMedium.copyWith(
-              color: AppColors.onSurfaceVariant,
+              color: AppColorsDark.onSurfaceVariant,
             ),
             textAlign: TextAlign.center,
             maxLines: 2,
@@ -35,10 +35,10 @@ class StakesAndPenalties extends StatelessWidget {
               InstructionRow(
                 leading: context.autoIcon(
                   AppIcons.statLossPenalty,
-                  color: AppColors.accent2,
+                  color: AppColorsDark.accent2,
                   size: 24,
                 ),
-                color: AppColors.surfaceVariant,
+                color: AppColorsDark.surfaceVariant,
                 title: 'Fail Penalty',
                 subtitle: 'LOSE MERITS ON FAILING',
               ),
@@ -46,10 +46,10 @@ class StakesAndPenalties extends StatelessWidget {
               InstructionRow(
                 leading: context.autoIcon(
                   AppIcons.statAbandonCost,
-                  color: AppColors.onSurface,
+                  color: AppColorsDark.onSurface,
                   size: 24,
                 ),
-                color: AppColors.surfaceVariant,
+                color: AppColorsDark.surfaceVariant,
                 title: 'Abandon Cost',
                 subtitle: 'QUITTING EARLY COSTS EXTRA',
               ),
@@ -57,10 +57,10 @@ class StakesAndPenalties extends StatelessWidget {
               InstructionRow(
                 leading: context.autoIcon(
                   AppIcons.gameHistory,
-                  color: AppColors.accent,
+                  color: AppColorsDark.accent,
                   size: 24,
                 ),
-                color: AppColors.surfaceVariant,
+                color: AppColorsDark.surfaceVariant,
                 title: 'Transcript',
                 subtitle: 'GRADES ARE BASED ON ATTEMPTS',
               ),

@@ -19,7 +19,7 @@ class LevelCard extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(AppLayout.cardPadding),
       decoration: BoxDecoration(
-        color: AppColors.surfaceVariant,
+        color: AppColorsDark.surfaceVariant,
         borderRadius: BorderRadius.circular(AppLayout.cardRounding),
       ),
       child: Column(
@@ -44,9 +44,11 @@ class LevelCard extends StatelessWidget {
             child: LinearProgressIndicator(
               value: progress,
               minHeight: context.r(16),
-              backgroundColor: AppColors.onSurfaceVariant,
+              backgroundColor: AppColorsDark.onSurfaceVariant,
               borderRadius: BorderRadius.circular(64),
-              valueColor: const AlwaysStoppedAnimation<Color>(AppColors.accent),
+              valueColor: const AlwaysStoppedAnimation<Color>(
+                AppColorsDark.accent,
+              ),
             ),
           ),
 
@@ -70,7 +72,7 @@ class LevelCard extends StatelessWidget {
                           vertical: context.r(4),
                         ),
                         decoration: BoxDecoration(
-                          color: AppColors.accent,
+                          color: AppColorsDark.accent,
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: context.autoText(
@@ -109,7 +111,7 @@ class _LevelInfo extends StatelessWidget {
         context.autoText(
           label,
           style: AppFonts.labelSmall.copyWith(
-            color: AppColors.onSurfaceVariant,
+            color: AppColorsDark.onSurfaceVariant,
           ),
         ),
         context.autoText(level, style: AppFonts.headlineMedium, reduction: 8),

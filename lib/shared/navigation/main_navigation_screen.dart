@@ -37,7 +37,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     }
 
     return Scaffold(
-      backgroundColor: AppColors.surface,
+      backgroundColor: AppColorsDark.surface,
       appBar: MainNavigationHeader(title: activeTitle),
       body: activeBody,
       bottomNavigationBar: MainNavigationFooter(

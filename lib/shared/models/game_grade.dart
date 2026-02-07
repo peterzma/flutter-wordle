@@ -25,15 +25,15 @@ enum GameGrade {
   Color get color {
     switch (this) {
       case GameGrade.fail:
-        return AppColors.accent2;
+        return AppColorsDark.accent2;
       case GameGrade.highDistinction:
-        return AppColors.accent4;
+        return AppColorsDark.accent4;
       case GameGrade.distinction:
-        return AppColors.accent3;
+        return AppColorsDark.accent3;
       case GameGrade.credit:
-        return AppColors.accent;
+        return AppColorsDark.accent;
       case GameGrade.pass:
-        return AppColors.onSurfaceVariant;
+        return AppColorsDark.onSurfaceVariant;
     }
   }
 }

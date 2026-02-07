@@ -42,14 +42,14 @@ class AcademicHistory extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.all(context.r(AppLayout.cardPadding)),
       decoration: BoxDecoration(
-        color: AppColors.surfaceVariant,
+        color: AppColorsDark.surfaceVariant,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
         children: [
           context.autoIcon(
             AppIcons.gameHistory,
-            color: AppColors.onSurfaceVariant,
+            color: AppColorsDark.onSurfaceVariant,
             size: 32,
           ),
           // SizedBox(height: 8),
