@@ -2,7 +2,6 @@ part of 'user_stats.dart';
 
 extension UserStatsProgress on UserStats {
   int get currentLevel => merit ~/ UserStats.meritPerLevel;
-  // int get currentLevel => 125;
   int get nextLevel => currentLevel + 1;
   int get meritInCurrentLevel => merit % UserStats.meritPerLevel;
   double get levelProgress =>

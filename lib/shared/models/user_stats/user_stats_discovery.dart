@@ -14,11 +14,8 @@ extension UserStatsUnlocks on UserStats {
 extension UserStatsMastery on UserStats {
   /// Returns a list of IDs for majors that are 100% complete
   List<String> get masteredMajorIds {
-    // ==========================================
-    // TEST MODE: Uncomment to Master All Majors
-    // return MajorsData.all.map((m) => m.id).toList();
-    // ==========================================
-
+    // TEST MODE TO MASTER ALL MAJORS
+    return MajorsData.all.map((m) => m.id).toList();
     return MajorsData.all
         .where((major) {
           final List<String> library = MajorsData.getAllWordsForMajor(major.id);
@@ -42,6 +39,9 @@ extension UserStatsMastery on UserStats {
     final int solvedCount = library
         .where((w) => solvedWords.contains(w))
         .length;
+
+    // TEST MODE FORCE 100% PROGRESS FOR TESTING
+    return (solved: totalWords, percent: 1.0);
 
     return (
       solved: solvedCount,

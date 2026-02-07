@@ -1,5 +1,6 @@
 import 'package:uniordle/shared/exports/post_game_exports.dart';
 import 'package:uniordle/features/profile/widgets/progress/level_card.dart';
+import 'package:uniordle/shared/wrappers/celebration_wrapper.dart';
 
 enum MilestoneType { levelUp, creditEarned, rankUp }
 
@@ -31,18 +32,12 @@ class _LevelUpDialogState extends State<LevelUpDialog>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
-  late ConfettiController _confettiController;
-
   int _lastThrottledLevel = 0;
 
   @override
   void initState() {
     super.initState();
     _lastThrottledLevel = widget.startingLevel;
-
-    _confettiController = ConfettiController(
-      duration: const Duration(seconds: 1),
-    );
 
     final double startTotal = widget.startingLevel + widget.startingProgress;
     final double levelChange = widget.gainedMerit / UserStats.meritPerLevel;
@@ -57,27 +52,7 @@ class _LevelUpDialogState extends State<LevelUpDialog>
 
     _animation = Tween<double>(begin: startTotal, end: endTotal).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOutCubic),
-    );
-
-    _controller.addListener(() {
-      final int currentLevel = _animation.value.floor();
-
-      if (currentLevel > _lastThrottledLevel) {
-        _lastThrottledLevel = currentLevel;
-
-        _confettiController.play();
-
-        if (currentLevel % 10 == 0) {
-          SoundManager().play(SoundType.rankUp);
-          _showMilestoneDialog(MilestoneType.rankUp, currentLevel);
-        } else if (currentLevel % 5 == 0) {
-          SoundManager().play(SoundType.creditEarned);
-          _showMilestoneDialog(MilestoneType.creditEarned, currentLevel);
-        } else {
-          SoundManager().play(SoundType.levelUp);
-        }
-      }
-    });
+    )..addListener(_onAnimationTick);
 
     Future.delayed(
       const Duration(milliseconds: 400),
@@ -85,10 +60,30 @@ class _LevelUpDialogState extends State<LevelUpDialog>
     );
   }
 
-  void _showMilestoneDialog(MilestoneType type, int level) {
+  void _onAnimationTick() {
+    final int currentLevel = _animation.value.floor();
+
+    if (currentLevel > _lastThrottledLevel) {
+      _lastThrottledLevel = currentLevel;
+      _triggerMilestoneEffects(currentLevel);
+    }
+  }
+
+  void _triggerMilestoneEffects(int level) {
+    if (level % 10 == 0) {
+      SoundManager().play(SoundType.rankUp);
+      _showMilestone(MilestoneType.rankUp, level);
+    } else if (level % 5 == 0) {
+      SoundManager().play(SoundType.creditEarned);
+      _showMilestone(MilestoneType.creditEarned, level);
+    } else {
+      SoundManager().play(SoundType.levelUp);
+    }
+  }
+
+  void _showMilestone(MilestoneType type, int level) {
     showDialog(
       context: context,
-      barrierDismissible: true,
       builder: (context) =>
           MilestoneCelebrationDialog(type: type, level: level),
     );
@@ -97,91 +92,74 @@ class _LevelUpDialogState extends State<LevelUpDialog>
   @override
   void dispose() {
     _controller.dispose();
-    _confettiController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.topCenter,
-      children: [
-        Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Text(
-                "STUDIES REPORT",
-                style: context.textTheme.displayLarge,
-              ),
-            ),
-            SizedBox(height: context.r(32)),
-            AnimatedBuilder(
-              animation: _animation,
-              builder: (context, _) {
-                final double val = _animation.value;
-                final int displayLevel = val.floor();
-                final double displayProgress = val % 1.0;
-                final int percentage = (displayProgress * 100).round();
+    return CelebrationWrapper(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          context.autoText(
+            "STUDIES REPORT",
+            style: context.textTheme.displayLarge,
+          ),
+          SizedBox(height: context.r(32)),
 
-                return LevelCard(
-                  level: displayLevel,
-                  progress: displayProgress,
-                  nextLevel: displayLevel + 1,
-                  progressLabel: "$percentage%",
-                );
-              },
-            ),
-            SizedBox(height: context.r(8)),
-            PerformanceBreakdown(
-              won: widget.won,
-              attempts: widget.attempts,
-              maxAttempts: widget.maxAttempts,
-              gainedMerit: widget.gainedMerit,
-            ),
-            SizedBox(height: context.r(32)),
-            Row(
-              children: [
-                Expanded(
-                  child: PrimaryButton(
-                    label: 'HOME',
-                    onPressed: () => Navigator.of(
-                      context,
-                    ).pushNamedAndRemoveUntil('/', (route) => false),
-                  ),
-                ),
-                SizedBox(width: context.r(16)),
-                Expanded(
-                  child: PrimaryButton(
-                    label: 'NEW GAME',
-                    color: context.colorScheme.primary,
-                    onPressed: () {
-                      Navigator.of(context).pushNamedAndRemoveUntil(
-                        '/setup',
-                        (route) => route.isFirst,
-                        arguments: widget.major,
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ],
+          AnimatedBuilder(
+            animation: _animation,
+            builder: (context, _) {
+              final double val = _animation.value;
+              final int displayLevel = val.floor();
+              final double progress = val % 1.0;
+
+              return LevelCard(
+                level: displayLevel,
+                progress: progress,
+                nextLevel: displayLevel + 1,
+                progressLabel: "${(progress * 100).round()}%",
+              );
+            },
+          ),
+
+          SizedBox(height: context.r(8)),
+          PerformanceBreakdown(
+            won: widget.won,
+            attempts: widget.attempts,
+            maxAttempts: widget.maxAttempts,
+            gainedMerit: widget.gainedMerit,
+          ),
+
+          SizedBox(height: context.r(32)),
+          _buildActionButtons(context),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildActionButtons(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: PrimaryButton(
+            label: 'HOME',
+            onPressed: () => Navigator.of(
+              context,
+            ).pushNamedAndRemoveUntil('/', (_) => false),
+          ),
         ),
-        ConfettiWidget(
-          confettiController: _confettiController,
-          blastDirectionality: BlastDirectionality.explosive,
-          shouldLoop: false,
-          colors: const [
-            Colors.green,
-            Colors.blue,
-            Colors.pink,
-            Colors.orange,
-            Colors.purple,
-          ],
-          numberOfParticles: 20,
-          gravity: 0.2,
+        SizedBox(width: context.r(16)),
+        Expanded(
+          child: PrimaryButton(
+            label: 'NEW GAME',
+            color: context.colorScheme.primary,
+            onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil(
+              '/setup',
+              (route) => route.isFirst,
+              arguments: widget.major,
+            ),
+          ),
         ),
       ],
     );

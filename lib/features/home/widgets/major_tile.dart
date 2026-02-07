@@ -59,7 +59,7 @@ class _MajorTileState extends State<MajorTile> {
                         BoxShadow(
                           color: displayColor.withValues(alpha: 0.1),
                           blurRadius: 10,
-                          spreadRadius: 1,
+                          spreadRadius: 10,
                         ),
                       ]
                     : null,

@@ -25,7 +25,7 @@ export 'package:uniordle/core/sound_manager.dart';
 
 // Shared Data & Logic
 export 'package:uniordle/shared/models/difficulty_config.dart';
-export 'package:uniordle/shared/models/user_stats.dart';
+export 'package:uniordle/shared/models/user_stats/user_stats.dart';
 export 'package:uniordle/shared/models/game_grade.dart';
 export 'package:uniordle/shared/models/major.dart';
 export 'package:uniordle/shared/services/stats_manager.dart';
