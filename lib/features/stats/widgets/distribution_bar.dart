@@ -30,6 +30,8 @@ class DistributionBar extends StatelessWidget {
                   constraints.maxWidth,
                 );
 
+                final isWideEnough = barWidth > 48;
+
                 return Stack(
                   children: [
                     Container(
@@ -45,10 +47,10 @@ class DistributionBar extends StatelessWidget {
                       curve: Curves.easeOutQuart,
                       height: 24,
                       width: barWidth,
-                      alignment: count == 0
-                          ? Alignment.center
-                          : Alignment.centerRight,
-                      padding: EdgeInsets.only(right: count == 0 ? 0 : 12),
+                      alignment: isWideEnough
+                          ? Alignment.centerRight
+                          : Alignment.center,
+                      padding: EdgeInsets.only(right: isWideEnough ? 12 : 0),
                       decoration: BoxDecoration(
                         color: isHighest
                             ? context.colorScheme.primary

@@ -12,6 +12,13 @@ class MajorsData {
         .toList();
   }
 
+  static Major getById(String id) {
+    return all.firstWhere(
+      (m) => m.id.toLowerCase() == id.toLowerCase(),
+      orElse: () => all.first,
+    );
+  }
+
   static int getWordCount(Map<int, List<String>> wordMap) {
     return wordMap.values.fold(0, (sum, list) => sum + list.length);
   }

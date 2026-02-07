@@ -34,7 +34,7 @@ class StatsScreen extends StatelessWidget {
                     context.autoText(
                       "Your learning journey analytics",
                       textAlign: TextAlign.center,
-                      style: context.labelMedium,
+                      style: AppFonts.labelMedium,
                     ),
                     SizedBox(height: context.r(8)),
                   ],
