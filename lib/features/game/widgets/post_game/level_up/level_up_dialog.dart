@@ -36,6 +36,9 @@ class _LevelUpDialogState extends State<LevelUpDialog>
   late ConfettiController _confettiController;
   int _lastThrottledLevel = 0;
 
+  static const int _baseDurationMs = 1500;
+  static const int _msPerLevel = 300;
+
   @override
   void initState() {
     super.initState();
@@ -52,7 +55,8 @@ class _LevelUpDialogState extends State<LevelUpDialog>
     _controller = AnimationController(
       vsync: this,
       duration: Duration(
-        milliseconds: 1500 + (levelChange.abs() * 500).toInt(),
+        milliseconds:
+            _baseDurationMs + (levelChange.abs() * _msPerLevel).toInt(),
       ),
     );
 

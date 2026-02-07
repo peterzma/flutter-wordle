@@ -13,7 +13,7 @@ class _GameScreenState extends State<GameScreen> {
   bool _isInitialized = false;
 
   String _majorName = '';
-  String _yearLevel = '';
+  String _yearLevelLabel = '';
   int _wordLength = 5;
   int _maxAttempts = 6;
 
@@ -24,18 +24,18 @@ class _GameScreenState extends State<GameScreen> {
     if (!_isInitialized) {
       final args =
           ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
-      final major = args?['major'] as Major?;
 
+      final major = args?['major'] as Major?;
       final dynamic rawDifficulty = args?['yearLevel'] ?? 1;
       final int yearLevel = rawDifficulty is double
           ? rawDifficulty.round()
           : rawDifficulty as int;
 
       final config = DifficultyConfig.getByLevel(yearLevel);
-      _yearLevel = config.$1;
+      _yearLevelLabel = config.$1;
       _maxAttempts = config.$2;
 
-      _wordLength = args?['wordLength'] ?? 5;
+      _wordLength = args?['wordLength'];
       _majorName = major?.name ?? 'Engineering';
 
       _controller = GameController(
@@ -48,7 +48,6 @@ class _GameScreenState extends State<GameScreen> {
       );
 
       _controller.addListener(() => setState(() {}));
-      // SoundManager().playMusic(SoundType.gameMusic);
       _isInitialized = true;
     }
   }
@@ -62,14 +61,14 @@ class _GameScreenState extends State<GameScreen> {
     final int rawYearLevel = args?['yearLevel'] ?? 1;
 
     int meritChange = 0;
-
     final String solutionWord = _controller.solution.wordString;
+    final int actualAttempts = _controller.currentWordIndex + 1;
 
     if (won) {
       meritChange = await statsManager.recordWin(
         yearLevel: rawYearLevel,
-        wordLength: _controller.solution.wordString.length,
-        attempts: _controller.currentWordIndex + 1,
+        wordLength: solutionWord.length,
+        attempts: actualAttempts,
         maxAttempts: _maxAttempts,
         word: solutionWord,
         majorId: major.id,
@@ -92,11 +91,11 @@ class _GameScreenState extends State<GameScreen> {
       builder: (context) {
         return PostGameDialog(
           won: won,
-          solution: _controller.solution.wordString,
-          attempts: _controller.currentWordIndex + 1,
+          solution: solutionWord,
+          attempts: actualAttempts,
           maxAttempts: _maxAttempts,
           major: major,
-          yearLevel: _yearLevel,
+          yearLevel: _yearLevelLabel,
           gainedMerit: meritChange,
         );
       },
@@ -154,7 +153,7 @@ class _GameScreenState extends State<GameScreen> {
                       SizedBox(height: context.r(16)),
                       GameInfoBar(
                         majorName: _majorName,
-                        yearLevel: _yearLevel,
+                        yearLevel: _yearLevelLabel,
                         wordLength: _wordLength,
                       ),
                       SizedBox(height: context.r(8)),

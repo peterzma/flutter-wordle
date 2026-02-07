@@ -15,8 +15,8 @@ class MilestoneCelebrationDialog extends StatelessWidget {
     final stats = statsManager.statsNotifier.value;
     final bool isRank = type == MilestoneType.rankUp;
 
-    final bool hasMoreMajors = stats.unlockedIds.length < MajorsData.all.length;
-    final bool isUnderBonusCap = level <= 100;
+    final bool hasMajorsLeft = stats.unlockedIds.length < MajorsData.all.length;
+    final bool hasRanksLeft = level <= 100;
 
     final String currentTitle = UserStats(
       streak: 0,
@@ -26,18 +26,18 @@ class MilestoneCelebrationDialog extends StatelessWidget {
 
     String rankTitle;
     if (isRank) {
-      rankTitle = isUnderBonusCap ? "RANK UP" : "ARCHIVAL MASTERY";
+      rankTitle = hasRanksLeft ? "RANK UP" : "ARCHIVAL MASTERY";
     } else {
       rankTitle = "CREDIT EARNED";
     }
 
     String description = "";
     if (isRank) {
-      description = isUnderBonusCap
+      description = hasRanksLeft
           ? "You've reached Level $level and gained a permanent +10% Rank Bonus!"
           : "You've reached Level $level! Your prestige as $currentTitle grows across the archives.";
     } else {
-      description = hasMoreMajors
+      description = hasMajorsLeft
           ? "Level $level reached! You've earned a Credit to enroll in a new Major."
           : "Level $level reached! Use your extra Credit for Bonus Research.";
     }
@@ -49,7 +49,7 @@ class MilestoneCelebrationDialog extends StatelessWidget {
         children: [
           Icon(
             isRank
-                ? (isUnderBonusCap ? AppIcons.statRank : AppIcons.badgeOracle)
+                ? (hasRanksLeft ? AppIcons.statRank : AppIcons.badgeOracle)
                 : AppIcons.gameCredit,
             color: isRank
                 ? context.colorScheme.tertiary

@@ -59,7 +59,7 @@ extension AppExtensions on BuildContext {
       case GameGrade.credit:
         return colorScheme.primary; // accent
       case GameGrade.pass:
-        return onSurfaceVariant; // Muted secondary text color
+        return onSurfaceVariant;
     }
   }
 

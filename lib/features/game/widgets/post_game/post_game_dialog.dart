@@ -49,6 +49,9 @@ class PostGameDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Color statusColor = won
+        ? context.gameColors.correct!
+        : context.colorScheme.error;
     return BaseDialog(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -56,18 +59,12 @@ class PostGameDialog extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(context.r(16)),
             decoration: BoxDecoration(
-              color:
-                  (won
-                          ? context.gameColors.correct
-                          : context.colorScheme.error)!
-                      .withValues(alpha: 0.1),
+              color: statusColor.withValues(alpha: 0.1),
               shape: BoxShape.circle,
             ),
             child: Icon(
               won ? AppIcons.gameWin : AppIcons.gameLoss,
-              color: won
-                  ? context.gameColors.correct
-                  : context.colorScheme.error,
+              color: statusColor,
               size: context.r(64),
             ),
           ),
