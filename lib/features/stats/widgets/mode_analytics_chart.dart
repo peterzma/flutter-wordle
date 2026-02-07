@@ -81,7 +81,7 @@ class ModeAnalyticsChart extends StatelessWidget {
 
           final Color cellColor = isEmpty
               ? context.surfaceVariant
-              : AppColorsDark.accent.withValues(
+              : context.colorScheme.primary.withValues(
                   alpha: (count / maxUsage).clamp(0.1, 1.0),
                 );
 

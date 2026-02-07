@@ -23,7 +23,7 @@ class AboutGameDialog extends StatelessWidget {
           PrimaryButton(
             onPressed: () => showLicensePage(context: context),
             label: "LICENSES",
-            color: AppColorsDark.accent,
+            color: context.colorScheme.primary,
           ),
           SizedBox(height: context.r(16)),
           PrimaryButton(

@@ -49,7 +49,7 @@ class _HelpDialogState extends State<HelpDialog> {
           SizedBox(height: 16),
           PrimaryButton(
             label: 'Got it!',
-            color: AppColorsDark.accent,
+            color: context.colorScheme.primary,
             onPressed: () => Navigator.pop(context),
           ),
         ],

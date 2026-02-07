@@ -32,7 +32,11 @@ class RiseAndReach extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: context.r(32)),
           child: Column(
             children: [
-              _buildRankRow(context, ranks[0], color: AppColorsDark.accent),
+              _buildRankRow(
+                context,
+                ranks[0],
+                color: context.colorScheme.primary,
+              ),
               const Divider(color: AppColorsDark.outline, height: 1),
 
               _buildRankRow(context, ranks[1], color: AppColorsDark.onSurface),

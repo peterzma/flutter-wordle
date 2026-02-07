@@ -38,7 +38,7 @@ class SettingsSliderTile extends StatelessWidget {
                     child: context.autoIcon(
                       value > 0 ? icon : muteIcon,
                       color: value > 0
-                          ? AppColorsDark.accent
+                          ? context.colorScheme.primary
                           : AppColorsDark.onSurfaceVariant,
                     ),
                   ),
@@ -55,7 +55,7 @@ class SettingsSliderTile extends StatelessWidget {
           SliderTheme(
             data: SliderTheme.of(context).copyWith(
               trackHeight: 4,
-              activeTrackColor: AppColorsDark.accent,
+              activeTrackColor: context.colorScheme.primary,
               inactiveTrackColor: AppColorsDark.onSurfaceVariant,
               thumbColor: AppColorsDark.onSurface,
               overlayColor: Colors.transparent,

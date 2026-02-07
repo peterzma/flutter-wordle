@@ -63,7 +63,7 @@ class ProfileScreen extends StatelessWidget {
                         value: '${stats.merit}',
                         icon: AppIcons.gameMerit,
                         iconColor: stats.merit > 0
-                            ? AppColorsDark.accent
+                            ? context.colorScheme.primary
                             : AppColorsDark.onSurfaceVariant,
                       ),
                     ),
@@ -123,7 +123,7 @@ class ProfileScreen extends StatelessWidget {
                         value: "-${stats.standardPenalty}",
                         icon: AppIcons.statLossPenalty,
                         iconColor: stats.standardPenalty > 0
-                            ? context.colorScheme.error
+                            ? AppColorsDark.accent2
                             : AppColorsDark.onSurfaceVariant,
                       ),
                     ),

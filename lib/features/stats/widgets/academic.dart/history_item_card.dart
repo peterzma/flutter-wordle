@@ -18,7 +18,7 @@ class HistoryItemCard extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: context.r(4)),
       padding: EdgeInsets.all(context.r(AppLayout.cardPadding)),
       decoration: BoxDecoration(
-        color: grade.color.withValues(alpha: 0.1),
+        color: context.getGradeColor(grade).withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(context.r(12)),
       ),
       child: Row(
@@ -49,14 +49,16 @@ class HistoryItemCard extends StatelessWidget {
             children: [
               context.autoText(
                 grade.label,
-                style: AppFonts.labelSmall.copyWith(color: grade.color),
+                style: AppFonts.labelSmall.copyWith(
+                  color: context.getGradeColor(grade),
+                ),
               ),
               context.autoText(
                 won ? "+$merit MERITS" : "$merit MERITS",
                 style: AppFonts.labelSmall.copyWith(
                   color: won
                       ? AppColorsDark.correctColor
-                      : context.colorScheme.error,
+                      : AppColorsDark.accent2,
                 ),
               ),
             ],

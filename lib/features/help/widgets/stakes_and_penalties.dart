@@ -35,7 +35,7 @@ class StakesAndPenalties extends StatelessWidget {
               InstructionRow(
                 leading: context.autoIcon(
                   AppIcons.statLossPenalty,
-                  color: context.colorScheme.error,
+                  color: AppColorsDark.accent2,
                   size: 24,
                 ),
                 color: context.surfaceVariant,
@@ -57,7 +57,7 @@ class StakesAndPenalties extends StatelessWidget {
               InstructionRow(
                 leading: context.autoIcon(
                   AppIcons.gameHistory,
-                  color: AppColorsDark.accent,
+                  color: context.colorScheme.primary,
                   size: 24,
                 ),
                 color: context.surfaceVariant,

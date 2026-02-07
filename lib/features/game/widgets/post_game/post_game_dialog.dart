@@ -83,7 +83,7 @@ class PostGameDialog extends StatelessWidget {
           SizedBox(height: context.r(32)),
           PrimaryButton(
             label: 'NEXT',
-            color: AppColorsDark.accent,
+            color: context.colorScheme.primary,
             onPressed: () => _handleNext(context),
           ),
         ],

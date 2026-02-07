@@ -97,6 +97,7 @@ class _CommencementState extends State<Commencement> {
             Colors.white,
             Colors.red,
           ],
+          // TODO: reduce duplicated confetti
           minimumSize: const Size(5, 5),
           maximumSize: const Size(10, 10),
         ),

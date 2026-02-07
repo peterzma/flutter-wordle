@@ -21,7 +21,7 @@ class PerformanceBreakdown extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(AppLayout.cardPadding),
       decoration: BoxDecoration(
-        color: grade.color.withValues(alpha: 0.1),
+        color: context.getGradeColor(grade).withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(AppLayout.cardRounding),
       ),
       child: Column(
@@ -31,13 +31,17 @@ class PerformanceBreakdown extends StatelessWidget {
             children: [
               context.autoText(
                 grade.label,
-                style: AppFonts.labelSmall.copyWith(color: grade.color),
+                style: AppFonts.labelSmall.copyWith(
+                  color: context.getGradeColor(grade),
+                ),
               ),
               context.autoText(
                 won
                     ? "$attempts/$maxAttempts ATTEMPTS"
                     : "X/$maxAttempts ATTEMPTS",
-                style: AppFonts.labelSmall.copyWith(color: grade.color),
+                style: AppFonts.labelSmall.copyWith(
+                  color: context.getGradeColor(grade),
+                ),
               ),
             ],
           ),
@@ -56,9 +60,7 @@ class PerformanceBreakdown extends StatelessWidget {
 
               final Color normalColor = isPositive
                   ? AppColorsDark.onSurfaceVariant
-                  : context.colorScheme.error.withValues(alpha: 0.8);
-
-              final Color highlightColor = grade.color;
+                  : AppColorsDark.accent2.withValues(alpha: 0.8);
 
               return RichText(
                 textAlign: TextAlign.center,
@@ -75,7 +77,7 @@ class PerformanceBreakdown extends StatelessWidget {
                       text: amount,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: highlightColor,
+                        color: context.getGradeColor(grade),
                       ),
                     ),
                     const TextSpan(text: " "),
@@ -83,7 +85,7 @@ class PerformanceBreakdown extends StatelessWidget {
                       text: unit,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: highlightColor,
+                        color: context.getGradeColor(grade),
                       ),
                     ),
                     TextSpan(

@@ -51,7 +51,7 @@ class DistributionBar extends StatelessWidget {
                       padding: EdgeInsets.only(right: count == 0 ? 0 : 12),
                       decoration: BoxDecoration(
                         color: isHighest
-                            ? AppColorsDark.accent
+                            ? context.colorScheme.primary
                             : AppColorsDark.onSurfaceVariant,
                         borderRadius: BorderRadius.circular(64),
                       ),

@@ -61,7 +61,7 @@ class AbandonGameDialog extends StatelessWidget {
               Expanded(
                 child: PrimaryButton(
                   label: 'LEAVE',
-                  color: context.colorScheme.error,
+                  color: AppColorsDark.accent2,
                   onPressed: () => Navigator.pop(context, true),
                 ),
               ),

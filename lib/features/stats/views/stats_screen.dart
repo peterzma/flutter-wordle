@@ -12,7 +12,7 @@ class StatsScreen extends StatelessWidget {
             double.tryParse(stats.winPercentage.replaceAll('%', '')) ?? 0;
         final double normalizedValue = (winValue / 100).clamp(0.0, 1.0);
         final Color winColor = Color.lerp(
-          context.colorScheme.error,
+          AppColorsDark.accent2,
           AppColorsDark.correctColor,
           normalizedValue,
         )!;

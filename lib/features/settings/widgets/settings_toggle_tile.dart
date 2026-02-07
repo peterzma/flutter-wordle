@@ -40,7 +40,7 @@ class SettingsToggleTile extends StatelessWidget {
               child: CupertinoSwitch(
                 value: value,
                 onChanged: onChanged,
-                activeTrackColor: AppColorsDark.accent,
+                activeTrackColor: context.colorScheme.primary,
                 inactiveTrackColor: AppColorsDark.onSurfaceVariant,
               ),
             ),

@@ -1,5 +1,3 @@
-import 'package:uniordle/shared/exports/core_exports.dart';
-
 enum GameGrade {
   highDistinction("HIGH DISTINCTION"),
   distinction("DISTINCTION"),
@@ -20,20 +18,5 @@ enum GameGrade {
     if (weight >= 0.60) return GameGrade.distinction;
     if (weight >= 0.40) return GameGrade.credit;
     return GameGrade.pass;
-  }
-
-  Color get color {
-    switch (this) {
-      case GameGrade.fail:
-        return context.colorScheme.error;
-      case GameGrade.highDistinction:
-        return AppColorsDark.accent4;
-      case GameGrade.distinction:
-        return AppColorsDark.accent3;
-      case GameGrade.credit:
-        return AppColorsDark.accent;
-      case GameGrade.pass:
-        return AppColorsDark.onSurfaceVariant;
-    }
   }
 }

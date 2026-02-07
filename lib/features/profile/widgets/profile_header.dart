@@ -13,7 +13,7 @@ class ProfileHeader extends StatelessWidget {
         final double transitionPower = (level / 100).clamp(0.0, 1.0);
 
         final Color themeColor = Color.lerp(
-          AppColorsDark.accent,
+          context.colorScheme.primary,
           AppColorsDark.accent4,
           transitionPower,
         )!;

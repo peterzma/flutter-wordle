@@ -46,8 +46,8 @@ class LevelCard extends StatelessWidget {
               minHeight: context.r(16),
               backgroundColor: AppColorsDark.onSurfaceVariant,
               borderRadius: BorderRadius.circular(64),
-              valueColor: const AlwaysStoppedAnimation<Color>(
-                AppColorsDark.accent,
+              valueColor: AlwaysStoppedAnimation<Color>(
+                context.colorScheme.primary,
               ),
             ),
           ),
@@ -72,7 +72,7 @@ class LevelCard extends StatelessWidget {
                           vertical: context.r(4),
                         ),
                         decoration: BoxDecoration(
-                          color: AppColorsDark.accent,
+                          color: context.colorScheme.primary,
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: context.autoText(
