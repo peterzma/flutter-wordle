@@ -16,7 +16,7 @@ class AcademicHistory extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            context.autoText("Transcript", style: AppFonts.labelLarge),
+            context.autoText("Transcript", style: context.labelLarge),
             if (stats.gameHistory.length > 3)
               SimpleButton(
                 text: "VIEW ALL",
@@ -56,7 +56,7 @@ class AcademicHistory extends StatelessWidget {
           context.autoText(
             "No academic records found.\nComplete a game to start your transcript.",
             textAlign: TextAlign.center,
-            style: AppFonts.labelMedium,
+            style: context.labelMedium,
             maxLines: 2,
           ),
         ],

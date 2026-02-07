@@ -35,13 +35,13 @@ class InstructionRow extends StatelessWidget {
             children: [
               context.autoText(
                 title,
-                style: AppFonts.labelLarge,
+                style: context.labelLarge,
                 maxLines: 1,
                 textAlign: TextAlign.left,
               ),
               context.autoText(
                 subtitle,
-                style: AppFonts.labelMedium,
+                style: context.labelMedium,
                 maxLines: 2,
                 textAlign: TextAlign.left,
               ),

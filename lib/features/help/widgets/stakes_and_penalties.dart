@@ -10,7 +10,7 @@ class StakesAndPenalties extends StatelessWidget {
       children: [
         context.autoText(
           'STAKES & PENALTIES',
-          style: AppFonts.headlineMedium,
+          style: context.headlineMedium,
           textAlign: TextAlign.center,
         ),
         SizedBox(height: context.r(8)),
@@ -18,7 +18,7 @@ class StakesAndPenalties extends StatelessWidget {
           constraints: const BoxConstraints(maxWidth: 360),
           child: context.autoText(
             'Higher ranks bring bigger challenges. \n Don\'t give up!',
-            style: AppFonts.labelMedium.copyWith(
+            style: context.labelMedium.copyWith(
               color: context.colorScheme.onSurfaceVariant,
             ),
             textAlign: TextAlign.center,

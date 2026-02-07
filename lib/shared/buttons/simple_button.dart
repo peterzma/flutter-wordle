@@ -50,7 +50,7 @@ class SimpleButton extends StatelessWidget {
           if (text != null)
             context.autoText(
               text!,
-              style: AppFonts.labelSmall.copyWith(
+              style: context.labelSmall.copyWith(
                 color: displayColor,
                 fontWeight: FontWeight.bold,
               ),

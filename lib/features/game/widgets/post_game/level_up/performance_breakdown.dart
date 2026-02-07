@@ -31,7 +31,7 @@ class PerformanceBreakdown extends StatelessWidget {
             children: [
               context.autoText(
                 grade.label,
-                style: AppFonts.labelSmall.copyWith(
+                style: context.labelSmall.copyWith(
                   color: context.getGradeColor(grade),
                 ),
               ),
@@ -39,7 +39,7 @@ class PerformanceBreakdown extends StatelessWidget {
                 won
                     ? "$attempts/$maxAttempts ATTEMPTS"
                     : "X/$maxAttempts ATTEMPTS",
-                style: AppFonts.labelSmall.copyWith(
+                style: context.labelSmall.copyWith(
                   color: context.getGradeColor(grade),
                 ),
               ),
@@ -48,7 +48,7 @@ class PerformanceBreakdown extends StatelessWidget {
           SizedBox(height: context.r(8)),
           Builder(
             builder: (context) {
-              final double baseSize = AppFonts.labelSmall.fontSize ?? 12;
+              final double baseSize = context.labelSmall.fontSize ?? 12;
               final double responsiveSize = context.responsive(
                 baseSize - 2,
                 baseSize,
@@ -65,7 +65,7 @@ class PerformanceBreakdown extends StatelessWidget {
               return RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(
-                  style: AppFonts.labelSmall.copyWith(
+                  style: context.labelSmall.copyWith(
                     fontSize: responsiveSize,
                     color: normalColor,
                   ),

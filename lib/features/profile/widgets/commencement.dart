@@ -39,12 +39,12 @@ class _CommencementState extends State<Commencement> {
               color: context.colorScheme.tertiary,
             ),
             SizedBox(height: context.r(16)),
-            context.autoText("COMMENCEMENT", style: AppFonts.headlineMedium),
+            context.autoText("COMMENCEMENT", style: context.headlineMedium),
             SizedBox(height: context.r(12)),
             context.autoText(
               "Congratulations, Oracle! You've reached the summit of knowledge. Level 100 is yours, but true prestige lies in the archives. Can you master every single major?",
               textAlign: TextAlign.center,
-              style: AppFonts.labelMedium,
+              style: context.labelMedium,
               maxLines: 4,
             ),
             SizedBox(height: context.r(32)),
@@ -61,14 +61,14 @@ class _CommencementState extends State<Commencement> {
                 children: [
                   context.autoText(
                     "SUMMIT CONFERMENT",
-                    style: AppFonts.labelSmall.copyWith(
+                    style: context.labelSmall.copyWith(
                       color: context.colorScheme.tertiary,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   context.autoText(
                     "+100% PERMANENT MERIT",
-                    style: AppFonts.headlineMedium.copyWith(
+                    style: context.headlineMedium.copyWith(
                       color: context.colorScheme.tertiary,
                       fontSize: 20,
                     ),

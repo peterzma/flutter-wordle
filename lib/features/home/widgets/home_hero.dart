@@ -24,7 +24,7 @@ class HomeHero extends StatelessWidget {
         context.autoText(
           'Master your academic vocabulary.',
           textAlign: TextAlign.center,
-          style: AppFonts.labelMedium,
+          style: context.labelMedium,
         ),
         SizedBox(height: context.r(16)),
         SelectButtonWrapper(

@@ -34,7 +34,7 @@ class StatsScreen extends StatelessWidget {
                     context.autoText(
                       "Your learning journey analytics",
                       textAlign: TextAlign.center,
-                      style: AppFonts.labelMedium,
+                      style: context.labelMedium,
                     ),
                     SizedBox(height: context.r(8)),
                   ],
@@ -83,7 +83,7 @@ class StatsScreen extends StatelessWidget {
 
               SizedBox(height: context.r(16)),
 
-              context.autoText("Correct Guesses", style: AppFonts.labelLarge),
+              context.autoText("Correct Guesses", style: context.labelLarge),
 
               SizedBox(height: context.r(8)),
 
@@ -91,7 +91,7 @@ class StatsScreen extends StatelessWidget {
 
               SizedBox(height: context.r(16)),
 
-              context.autoText("Games Played", style: AppFonts.labelLarge),
+              context.autoText("Games Played", style: context.labelLarge),
 
               SizedBox(height: context.r(8)),
 

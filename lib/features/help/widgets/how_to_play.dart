@@ -10,7 +10,7 @@ class HowToPlay extends StatelessWidget {
       children: [
         context.autoText(
           'HOW TO PLAY',
-          style: AppFonts.headlineMedium,
+          style: context.headlineMedium,
           textAlign: TextAlign.center,
         ),
         SizedBox(height: context.r(8)),
@@ -18,7 +18,7 @@ class HowToPlay extends StatelessWidget {
           constraints: const BoxConstraints(maxWidth: AppLayout.minAppWidth),
           child: context.autoText(
             'Choose a starting major, customise your game settings and then guess the word!',
-            style: AppFonts.labelMedium.copyWith(
+            style: context.labelMedium.copyWith(
               color: context.colorScheme.onSurfaceVariant,
             ),
             textAlign: TextAlign.center,

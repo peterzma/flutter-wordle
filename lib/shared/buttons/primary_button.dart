@@ -82,13 +82,13 @@ class PrimaryButton extends StatelessWidget {
             child: resizeLabel
                 ? context.autoText(
                     label.toUpperCase(),
-                    style: AppFonts.labelLarge,
+                    style: context.labelLarge,
                     minSize: 12,
                     maxSize: 18,
                   )
                 : Text(
                     label.toUpperCase(),
-                    style: AppFonts.labelLarge,
+                    style: context.labelLarge,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),

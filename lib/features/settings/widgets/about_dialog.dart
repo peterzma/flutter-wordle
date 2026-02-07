@@ -13,11 +13,11 @@ class AboutGameDialog extends StatelessWidget {
           SizedBox(height: context.r(32)),
           context.autoText("Uniordle", style: context.textTheme.displayLarge),
           SizedBox(height: context.r(16)),
-          context.autoText("Made by Peter", style: AppFonts.labelLarge),
+          context.autoText("Made by Peter", style: context.labelLarge),
           SizedBox(height: context.r(8)),
           context.autoText(
             "Software Engineering Student @ UQ",
-            style: AppFonts.labelMedium,
+            style: context.labelMedium,
           ),
           SizedBox(height: context.r(32)),
           PrimaryButton(

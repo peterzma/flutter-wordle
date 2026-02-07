@@ -33,7 +33,7 @@ class SettingsToggleTile extends StatelessWidget {
                 color: context.colorScheme.onSurfaceVariant,
               ),
               const SizedBox(width: 12),
-              context.autoText(label, style: AppFonts.labelLarge),
+              context.autoText(label, style: context.labelLarge),
             ],
           ),
           SizedBox(

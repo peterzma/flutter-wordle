@@ -25,7 +25,7 @@ class ProfileScreen extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: context.autoText(
                   "Studies Report",
-                  style: AppFonts.labelLarge,
+                  style: context.labelLarge,
                 ),
               ),
 
@@ -135,7 +135,7 @@ class ProfileScreen extends StatelessWidget {
 
               Align(
                 alignment: Alignment.centerLeft,
-                child: context.autoText("Pathway", style: AppFonts.labelLarge),
+                child: context.autoText("Pathway", style: context.labelLarge),
               ),
 
               const SizedBox(height: 8),

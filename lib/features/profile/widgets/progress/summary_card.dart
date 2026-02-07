@@ -29,11 +29,11 @@ class SummaryCard extends StatelessWidget {
           Center(
             child: context.autoText(
               label.toUpperCase(),
-              style: AppFonts.labelMedium,
+              style: context.labelMedium,
               textAlign: TextAlign.center,
             ),
           ),
-          context.autoText(value, style: AppFonts.headlineMedium, reduction: 4),
+          context.autoText(value, style: context.headlineMedium, reduction: 4),
         ],
       ),
     );

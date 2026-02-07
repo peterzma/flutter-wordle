@@ -35,7 +35,7 @@ class InfoTag extends StatelessWidget {
               label.toUpperCase(),
               textAlign: TextAlign.center,
               overflow: TextOverflow.ellipsis,
-              style: AppFonts.labelMedium,
+              style: context.labelMedium,
             ),
           ),
           if (icon != null) ...[const SizedBox(width: 4), icon!],

@@ -82,7 +82,7 @@ class ProfileHeader extends StatelessWidget {
 
             context.autoText(
               academicTitle,
-              style: AppFonts.labelLarge.copyWith(
+              style: context.labelLarge.copyWith(
                 color: themeColor,
                 fontWeight: FontWeight.bold,
                 letterSpacing: 1.5,
@@ -136,7 +136,7 @@ class ProfileHeader extends StatelessWidget {
           const SizedBox(width: 4),
           context.autoText(
             label,
-            style: AppFonts.labelSmall.copyWith(
+            style: context.labelSmall.copyWith(
               color: color,
               fontWeight: FontWeight.bold,
             ),

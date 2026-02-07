@@ -36,7 +36,7 @@ class UnlockedMajorDialog extends StatelessWidget {
           context.autoText(
             "You have officially enrolled in the ${major.name} Department.",
             textAlign: TextAlign.center,
-            style: AppFonts.labelLarge,
+            style: context.labelLarge,
             maxLines: 2,
           ),
           SizedBox(height: context.r(32)),

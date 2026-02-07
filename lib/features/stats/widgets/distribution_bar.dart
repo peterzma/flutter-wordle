@@ -20,7 +20,7 @@ class DistributionBar extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: context.r(4)),
       child: Row(
         children: [
-          SizedBox(width: 20, child: Text(label, style: AppFonts.labelMedium)),
+          SizedBox(width: 20, child: Text(label, style: context.labelMedium)),
           SizedBox(width: context.r(8)),
           Expanded(
             child: LayoutBuilder(
@@ -57,7 +57,7 @@ class DistributionBar extends StatelessWidget {
                       ),
                       child: Text(
                         "$count",
-                        style: AppFonts.labelSmall.copyWith(
+                        style: context.labelSmall.copyWith(
                           color: context.colorScheme.onSurface,
                         ),
                       ),

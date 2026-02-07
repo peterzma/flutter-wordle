@@ -29,7 +29,7 @@ class DifficultySelector extends StatelessWidget {
             SizedBox(width: context.r(8)),
             Text(
               'ATTEMPTS ALLOWED',
-              style: AppFonts.labelMedium.copyWith(
+              style: context.labelMedium.copyWith(
                 color: context.getMajorColor(major.id),
               ),
             ),
@@ -86,11 +86,11 @@ class DifficultySelector extends StatelessWidget {
                     minFontSize: 8,
                     maxLines: 1,
                     style: active
-                        ? AppFonts.labelMedium.copyWith(
+                        ? context.labelMedium.copyWith(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                           )
-                        : AppFonts.labelMedium.copyWith(
+                        : context.labelMedium.copyWith(
                             color: context.colorScheme.onSurfaceVariant,
                           ),
                   ),
@@ -101,11 +101,11 @@ class DifficultySelector extends StatelessWidget {
                       Text(
                         e.value.$2.toString(),
                         style: active
-                            ? AppFonts.labelMedium.copyWith(
+                            ? context.labelMedium.copyWith(
                                 color: context.getMajorColor(major.id),
                                 fontWeight: FontWeight.w600,
                               )
-                            : AppFonts.labelMedium,
+                            : context.labelMedium,
                       ),
                       const SizedBox(width: 2),
                       Icon(

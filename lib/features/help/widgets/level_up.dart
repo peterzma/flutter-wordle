@@ -10,7 +10,7 @@ class LevelUp extends StatelessWidget {
       children: [
         context.autoText(
           'LEVEL UP & UNLOCK',
-          style: AppFonts.headlineMedium,
+          style: context.headlineMedium,
           textAlign: TextAlign.center,
         ),
         SizedBox(height: context.r(8)),
@@ -18,7 +18,7 @@ class LevelUp extends StatelessWidget {
           constraints: const BoxConstraints(maxWidth: 360),
           child: context.autoText(
             'Guess words to earn merits. Level up with merits, and gain credits.',
-            style: AppFonts.labelMedium.copyWith(
+            style: context.labelMedium.copyWith(
               color: context.colorScheme.onSurfaceVariant,
             ),
             textAlign: TextAlign.center,

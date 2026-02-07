@@ -29,14 +29,14 @@ class HistoryItemCard extends StatelessWidget {
               children: [
                 context.autoText(
                   word.toUpperCase(),
-                  style: AppFonts.labelLarge,
+                  style: context.labelLarge,
                   textAlign: TextAlign.left,
                 ),
                 context.autoText(
                   won
                       ? "$attempts/$maxAttempts ATTEMPTS"
                       : "X/$maxAttempts ATTEMPTS",
-                  style: AppFonts.labelSmall.copyWith(
+                  style: context.labelSmall.copyWith(
                     color: context.colorScheme.onSurfaceVariant,
                   ),
                   textAlign: TextAlign.left,
@@ -49,13 +49,13 @@ class HistoryItemCard extends StatelessWidget {
             children: [
               context.autoText(
                 grade.label,
-                style: AppFonts.labelSmall.copyWith(
+                style: context.labelSmall.copyWith(
                   color: context.getGradeColor(grade),
                 ),
               ),
               context.autoText(
                 won ? "+$merit MERITS" : "$merit MERITS",
-                style: AppFonts.labelSmall.copyWith(
+                style: context.labelSmall.copyWith(
                   color: won
                       ? context.gameColors.correct
                       : context.colorScheme.error,

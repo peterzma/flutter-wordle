@@ -75,7 +75,7 @@ class MeritPreviewBadge extends StatelessWidget {
                         const SizedBox(width: 8),
                         Text(
                           labelText,
-                          style: AppFonts.labelLarge.copyWith(
+                          style: context.labelLarge.copyWith(
                             color: context.getMajorColor(major.id),
                           ),
                         ),
@@ -87,7 +87,7 @@ class MeritPreviewBadge extends StatelessWidget {
                       children: [
                         Text(
                           showReductionUI ? ranges.boosted : ranges.original,
-                          style: AppFonts.labelLarge.copyWith(
+                          style: context.labelLarge.copyWith(
                             color:
                                 (showReductionUI ||
                                     hasBonus ||
@@ -123,7 +123,7 @@ class MeritPreviewBadge extends StatelessWidget {
                           const SizedBox(width: 4),
                           Text(
                             UserStatsRewards.formatReducedRange(ranges.boosted),
-                            style: AppFonts.labelLarge.copyWith(
+                            style: context.labelLarge.copyWith(
                               color: context.getMajorColor(major.id),
                               fontWeight: FontWeight.bold,
                             ),
@@ -140,7 +140,7 @@ class MeritPreviewBadge extends StatelessWidget {
                           const SizedBox(width: 4),
                           Text(
                             ranges.boosted,
-                            style: AppFonts.labelLarge.copyWith(
+                            style: context.labelLarge.copyWith(
                               color: context.getMajorColor(major.id),
                               fontWeight: FontWeight.bold,
                             ),

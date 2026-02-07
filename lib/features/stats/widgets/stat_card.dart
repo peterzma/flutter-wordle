@@ -31,7 +31,7 @@ class StatCard extends StatelessWidget {
           context.autoText(
             label.toUpperCase(),
             textAlign: TextAlign.center,
-            style: AppFonts.labelSmall.copyWith(
+            style: context.labelSmall.copyWith(
               color: context.colorScheme.onSurfaceVariant,
             ),
             maxLines: 2,

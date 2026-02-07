@@ -77,7 +77,7 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
 
           context.autoText(
             canAfford ? "Enroll in ${widget.major.name}?" : "RESTRICTED",
-            style: AppFonts.headlineMedium,
+            style: context.headlineMedium,
           ),
           SizedBox(height: context.r(16)),
 
@@ -86,7 +86,7 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
                 ? "Spend 1 Credit to unlock ${widget.major.name}?"
                 : "You don't have any credits to enroll in ${widget.major.name}.",
             textAlign: TextAlign.center,
-            style: AppFonts.labelMedium,
+            style: context.labelMedium,
             maxLines: 2,
           ),
 
@@ -115,7 +115,7 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
                 const SizedBox(width: 4),
                 context.autoText(
                   bonusText,
-                  style: AppFonts.labelSmall.copyWith(
+                  style: context.labelSmall.copyWith(
                     color: canAfford
                         ? context.getMajorColor(widget.major.id)
                         : context.colorScheme.onSurfaceVariant,
@@ -133,7 +133,7 @@ class _UnlockMajorDialogState extends State<UnlockMajorDialog> {
               if (!canAfford) ...[
                 context.autoText(
                   "(Credit available at Level ${widget.nextLevel})",
-                  style: AppFonts.labelMedium,
+                  style: context.labelMedium,
                 ),
                 SizedBox(height: context.r(16)),
               ],

@@ -59,12 +59,12 @@ class MilestoneCelebrationDialog extends StatelessWidget {
 
           SizedBox(height: context.r(16)),
 
-          context.autoText(rankTitle, style: AppFonts.headlineMedium),
+          context.autoText(rankTitle, style: context.headlineMedium),
 
           if (isRank) ...[
             context.autoText(
               currentTitle,
-              style: AppFonts.headlineMedium.copyWith(
+              style: context.headlineMedium.copyWith(
                 color: context.colorScheme.tertiary,
                 fontWeight: FontWeight.bold,
               ),
@@ -76,7 +76,7 @@ class MilestoneCelebrationDialog extends StatelessWidget {
           context.autoText(
             description,
             textAlign: TextAlign.center,
-            style: AppFonts.labelMedium,
+            style: context.labelMedium,
             maxLines: 3,
           ),
 

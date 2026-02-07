@@ -16,13 +16,13 @@ class RiseAndReach extends StatelessWidget {
       children: [
         context.autoText(
           'RISE & REACH',
-          style: AppFonts.headlineMedium,
+          style: context.headlineMedium,
           textAlign: TextAlign.center,
         ),
         SizedBox(height: context.r(8)),
         context.autoText(
           'Earn new academic ranks every 10 levels and unlock prestigious titles to become ???',
-          style: AppFonts.labelMedium,
+          style: context.labelMedium,
           textAlign: TextAlign.center,
           maxLines: 2,
         ),
@@ -52,7 +52,7 @@ class RiseAndReach extends StatelessWidget {
                 ),
                 child: context.autoText(
                   '.\n.\n.',
-                  style: AppFonts.headlineMedium.copyWith(
+                  style: context.headlineMedium.copyWith(
                     color: context.colorScheme.outline,
                     height: 1,
                   ),
@@ -88,11 +88,11 @@ class RiseAndReach extends StatelessWidget {
         children: [
           context.autoText(
             rank['title']!,
-            style: AppFonts.labelMedium.copyWith(color: color),
+            style: context.labelMedium.copyWith(color: color),
           ),
           context.autoText(
             rank['level']!,
-            style: AppFonts.labelSmall.copyWith(color: color),
+            style: context.labelSmall.copyWith(color: color),
           ),
         ],
       ),

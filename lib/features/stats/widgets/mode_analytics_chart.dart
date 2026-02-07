@@ -33,7 +33,7 @@ class ModeAnalyticsChart extends StatelessWidget {
                 Text(
                   "$tries",
                   textAlign: TextAlign.center,
-                  style: AppFonts.labelMedium.copyWith(
+                  style: context.labelMedium.copyWith(
                     color: context.colorScheme.onSurfaceVariant,
                   ),
                 ),
@@ -60,7 +60,7 @@ class ModeAnalyticsChart extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text("$length", style: AppFonts.labelMedium),
+              Text("$length", style: context.labelMedium),
               SizedBox(width: context.r(4)),
               Transform.translate(
                 offset: const Offset(0, 1),
@@ -96,7 +96,7 @@ class ModeAnalyticsChart extends StatelessWidget {
               child: Center(
                 child: Text(
                   count > 0 ? "$count" : "-",
-                  style: AppFonts.labelSmall.copyWith(
+                  style: context.labelSmall.copyWith(
                     color: !isEmpty && (count / maxUsage > 0.5)
                         ? context.colorScheme.onSurface
                         : context.colorScheme.onSurfaceVariant,

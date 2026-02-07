@@ -9,7 +9,7 @@ class SettingsHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: context.r(16), bottom: context.r(8)),
-      child: Text(title.toUpperCase(), style: AppFonts.labelMedium),
+      child: Text(title.toUpperCase(), style: context.labelMedium),
     );
   }
 }

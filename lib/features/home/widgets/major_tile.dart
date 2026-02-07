@@ -89,14 +89,14 @@ class _MajorTileState extends State<MajorTile> {
                             children: [
                               Text(
                                 widget.major.name,
-                                style: AppFonts.labelLarge.copyWith(
+                                style: context.labelLarge.copyWith(
                                   color: context.colorScheme.onSurface,
                                 ),
                               ),
                               if (!widget.isLocked)
                                 Text(
                                   "${progressData.solved}/${widget.major.totalWords}",
-                                  style: AppFonts.labelSmall.copyWith(
+                                  style: context.labelSmall.copyWith(
                                     color: displayColor,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -125,7 +125,7 @@ class _MajorTileState extends State<MajorTile> {
                                 : (isFullyMastered
                                       ? "MASTERED"
                                       : "MASTERY: ${(progressData.percent * 100).toInt()}%"),
-                            style: AppFonts.labelSmall.copyWith(
+                            style: context.labelSmall.copyWith(
                               color: displayColor,
                               fontSize: 10,
                             ),

@@ -140,7 +140,7 @@ class RankPathway extends StatelessWidget {
         Expanded(
           child: Text(
             title,
-            style: AppFonts.labelMedium.copyWith(
+            style: context.labelMedium.copyWith(
               color: rowColor,
               fontWeight: isAchieved || isNext
                   ? FontWeight.bold
@@ -149,7 +149,7 @@ class RankPathway extends StatelessWidget {
             ),
           ),
         ),
-        Text(levelRange, style: AppFonts.labelSmall.copyWith(color: rowColor)),
+        Text(levelRange, style: context.labelSmall.copyWith(color: rowColor)),
       ],
     );
   }

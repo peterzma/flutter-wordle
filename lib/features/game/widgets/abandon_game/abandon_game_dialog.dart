@@ -9,7 +9,7 @@ class AbandonGameDialog extends StatelessWidget {
     final streak = stats.streak;
     final penalty = stats.activePenalty;
 
-    final highlightStyle = AppFonts.labelMedium.copyWith(
+    final highlightStyle = context.labelMedium.copyWith(
       color: context.colorScheme.error,
     );
 
@@ -33,7 +33,7 @@ class AbandonGameDialog extends StatelessWidget {
           SizedBox(height: context.r(16)),
           Text.rich(
             TextSpan(
-              style: AppFonts.labelMedium,
+              style: context.labelMedium,
               children: [
                 const TextSpan(
                   text: "Leaving early will result in a penalty of ",

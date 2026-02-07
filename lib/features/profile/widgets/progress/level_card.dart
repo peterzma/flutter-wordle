@@ -77,7 +77,7 @@ class LevelCard extends StatelessWidget {
                         ),
                         child: context.autoText(
                           progressLabel,
-                          style: AppFonts.labelSmall.copyWith(
+                          style: context.labelSmall.copyWith(
                             color: Colors.white,
                           ),
                         ),
@@ -110,11 +110,11 @@ class _LevelInfo extends StatelessWidget {
       children: [
         context.autoText(
           label,
-          style: AppFonts.labelSmall.copyWith(
+          style: context.labelSmall.copyWith(
             color: context.colorScheme.onSurfaceVariant,
           ),
         ),
-        context.autoText(level, style: AppFonts.headlineMedium, reduction: 8),
+        context.autoText(level, style: context.headlineMedium, reduction: 8),
       ],
     );
   }

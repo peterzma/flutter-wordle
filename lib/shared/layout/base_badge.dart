@@ -32,7 +32,7 @@ class BaseBadge extends StatelessWidget {
           SizedBox(width: context.r(8)),
           context.autoText(
             label.toUpperCase(),
-            style: AppFonts.labelMedium.copyWith(
+            style: context.labelMedium.copyWith(
               color: color,
               fontWeight: FontWeight.bold,
             ),

@@ -13,7 +13,7 @@ class SolutionBox extends StatelessWidget {
         children: [
           Text(
             'THE WORD WAS',
-            style: AppFonts.labelLarge.copyWith(
+            style: context.labelLarge.copyWith(
               color: context.colorScheme.onSurfaceVariant,
             ),
           ),

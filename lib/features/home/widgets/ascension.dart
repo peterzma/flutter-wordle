@@ -44,12 +44,12 @@ class _AscensionState extends State<Ascension> {
                   color: context.colorScheme.secondary,
                 ),
                 SizedBox(height: context.r(16)),
-                context.autoText("ASCENSION", style: AppFonts.headlineMedium),
+                context.autoText("ASCENSION", style: context.headlineMedium),
                 SizedBox(height: context.r(12)),
                 context.autoText(
                   "You have done it, Oracle. Every major mastered, every archive opened. You have transcended the university and reached the end of the path. Well Done.",
                   textAlign: TextAlign.center,
-                  style: AppFonts.labelMedium,
+                  style: context.labelMedium,
                   maxLines: 4,
                 ),
                 SizedBox(height: context.r(32)),
@@ -71,14 +71,14 @@ class _AscensionState extends State<Ascension> {
                     children: [
                       context.autoText(
                         "THE ORACLE'S LEGACY",
-                        style: AppFonts.labelSmall.copyWith(
+                        style: context.labelSmall.copyWith(
                           color: context.colorScheme.secondary,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       context.autoText(
                         "$dynamicBonus PERMANENT MERIT",
-                        style: AppFonts.headlineMedium.copyWith(
+                        style: context.headlineMedium.copyWith(
                           color: context.colorScheme.secondary,
                           fontSize: 20,
                         ),

@@ -35,12 +35,12 @@ class SettingsActionTile extends StatelessWidget {
                   size: 24,
                 ),
                 const SizedBox(width: 12),
-                context.autoText(label, style: AppFonts.labelLarge),
+                context.autoText(label, style: context.labelLarge),
               ],
             ),
             Row(
               children: [
-                if (value != null) Text(value!, style: AppFonts.labelSmall),
+                if (value != null) Text(value!, style: context.labelSmall),
                 if (value != null) const SizedBox(width: 8),
                 Icon(
                   AppIcons.navForward,

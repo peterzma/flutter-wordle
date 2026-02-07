@@ -56,7 +56,7 @@ class _UseCreditsState extends State<UseCredits> {
 
           context.autoText(
             !allMajorsUnlocked ? "???" : "Extra Research",
-            style: AppFonts.headlineMedium,
+            style: context.headlineMedium,
           ),
 
           SizedBox(height: context.r(16)),
@@ -66,7 +66,7 @@ class _UseCreditsState extends State<UseCredits> {
                 ? "You must enroll in all available Majors before proceeding."
                 : "Apply your extra credit towards completing more research.",
             textAlign: TextAlign.center,
-            style: AppFonts.labelMedium,
+            style: context.labelMedium,
             maxLines: 2,
           ),
 
@@ -91,7 +91,7 @@ class _UseCreditsState extends State<UseCredits> {
                 ],
                 context.autoText(
                   !allMajorsUnlocked ? "???" : "PERMANENT +10% MAJOR BONUS",
-                  style: AppFonts.labelSmall.copyWith(
+                  style: context.labelSmall.copyWith(
                     color: accentColor,
                     fontWeight: FontWeight.bold,
                   ),
@@ -105,13 +105,13 @@ class _UseCreditsState extends State<UseCredits> {
           if (!allMajorsUnlocked) ...[
             context.autoText(
               "Enrolled Majors: ${stats.unlockedIds.length}/${MajorsData.all.length}",
-              style: AppFonts.labelMedium,
+              style: context.labelMedium,
             ),
             SizedBox(height: context.r(16)),
           ] else if (!canAfford) ...[
             context.autoText(
               "(Credit available at Level ${widget.nextLevel})",
-              style: AppFonts.labelMedium,
+              style: context.labelMedium,
             ),
             SizedBox(height: context.r(16)),
           ],

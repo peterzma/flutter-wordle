@@ -60,11 +60,11 @@ class WordLengthSelector extends StatelessWidget {
                               AutoSizeText(
                                 'LETTERS',
                                 style: active
-                                    ? AppFonts.labelMedium.copyWith(
+                                    ? context.labelMedium.copyWith(
                                         color: context.colorScheme.onSurface,
                                         fontWeight: FontWeight.w600,
                                       )
-                                    : AppFonts.labelMedium,
+                                    : context.labelMedium,
                               ),
                             ],
                           ),
