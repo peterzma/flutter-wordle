@@ -103,3 +103,5 @@ Latest release:
 * finetune sounds by cutting off silence
 * add indiciator of guest mode and give pop up for user to sign in to see stats
 * stat for which majors played often? what grades are received most often?
+* colors in unlock menu? keep or dont keep?
+* color as the major text in transcript? yes or no?

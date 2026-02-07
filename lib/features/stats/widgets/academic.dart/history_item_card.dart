@@ -22,7 +22,10 @@ class HistoryItemCard extends StatelessWidget {
 
     return Container(
       margin: EdgeInsets.symmetric(vertical: context.r(4)),
-      padding: EdgeInsets.all(context.r(AppLayout.cardPadding)),
+      padding: EdgeInsets.symmetric(
+        vertical: context.r(AppLayout.cardPadding),
+        horizontal: context.responsive(12, AppLayout.cardPadding),
+      ),
       decoration: BoxDecoration(
         color: context.getGradeColor(grade).withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(AppLayout.cardRounding),
@@ -30,7 +33,7 @@ class HistoryItemCard extends StatelessWidget {
       child: Row(
         children: [
           context.autoIcon(major.icon, size: 24, color: majorColor),
-          SizedBox(width: context.r(8)),
+          SizedBox(width: context.r(16)),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,12 +42,11 @@ class HistoryItemCard extends StatelessWidget {
                   word.toUpperCase(),
                   style: context.labelLarge,
                   textAlign: TextAlign.left,
+                  reduction: 4,
                 ),
                 context.autoText(
                   "${major.name.toUpperCase()} - ${won ? '$attempts/$maxAttempts' : 'X/$maxAttempts'} ATTEMPTS",
-                  style: context.labelSmall.copyWith(
-                    color: context.colorScheme.onSurfaceVariant,
-                  ),
+                  style: context.labelSmall.copyWith(color: majorColor),
                   textAlign: TextAlign.left,
                 ),
               ],

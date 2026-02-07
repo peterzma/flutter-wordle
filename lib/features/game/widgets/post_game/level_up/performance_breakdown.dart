@@ -48,26 +48,33 @@ class PerformanceBreakdown extends StatelessWidget {
           SizedBox(height: context.r(8)),
           Builder(
             builder: (context) {
-              final double baseSize = context.labelSmall.fontSize ?? 12;
+              final double baseSize = context.labelSmall.fontSize!;
               final double responsiveSize = context.responsive(
                 baseSize - 2,
                 baseSize,
               );
 
-              final bool isPositive = gainedMerit >= 0;
+              if (gainedMerit == 0) {
+                return context.autoText(
+                  "No demerits were applied for Level 0. Keep practicing!",
+                  textAlign: TextAlign.center,
+                  style: context.labelSmall.copyWith(
+                    fontSize: responsiveSize,
+                    color: context.colorScheme.onSurfaceVariant,
+                  ),
+                );
+              }
+
+              final bool isPositive = gainedMerit > 0;
               final String amount = gainedMerit.toInt().abs().toString();
               final String unit = isPositive ? "merits" : "demerits";
-
-              final Color normalColor = isPositive
-                  ? context.colorScheme.onSurfaceVariant
-                  : context.colorScheme.error.withValues(alpha: 0.8);
 
               return RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(
                   style: context.labelSmall.copyWith(
                     fontSize: responsiveSize,
-                    color: normalColor,
+                    color: context.colorScheme.onSurfaceVariant,
                   ),
                   children: [
                     TextSpan(
