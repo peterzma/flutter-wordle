@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
         final sortedMajors = MajorsData.getSortedMajors(stats.unlockedIds);
 
         return Scaffold(
-          backgroundColor: AppColors.surface,
+          backgroundColor: context.colorScheme.surface,
           body: SafeArea(
             child: SingleChildScrollView(
               padding: EdgeInsets.all(AppLayout.pagePadding),

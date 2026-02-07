@@ -8,7 +8,6 @@ abstract class AppFonts {
     fontFamily: displayFont,
     fontSize: 32,
     fontWeight: FontWeight.w900,
-    color: AppColors.onSurface,
   );
 
   static TextStyle get displayMedium => const TextStyle(
