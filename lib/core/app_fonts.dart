@@ -39,6 +39,6 @@ abstract class AppFonts {
   static TextStyle get labelSmall => const TextStyle(
     fontFamily: displayFont,
     fontSize: 10,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w700,
   );
 }

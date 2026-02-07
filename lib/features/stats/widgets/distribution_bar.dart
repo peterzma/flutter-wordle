@@ -52,7 +52,7 @@ class DistributionBar extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: isHighest
                             ? context.colorScheme.primary
-                            : context.colorScheme.onSurfaceVariant,
+                            : context.colorScheme.outline,
                         borderRadius: BorderRadius.circular(64),
                       ),
                       child: Text(

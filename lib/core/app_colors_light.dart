@@ -2,7 +2,7 @@ import 'package:uniordle/shared/exports/app_exports.dart';
 
 abstract class AppColorsLight {
   // Game Logic
-  static const Color correctColor = Color(0xFF51b355);
+  static const Color correctColor = Color(0xFF2D7D32);
   static const Color inWordColor = Color(0XFFc6b215);
   static const Color notInWordColor = Color(0xFF95a3b7);
 
@@ -13,7 +13,7 @@ abstract class AppColorsLight {
 
   // Content (Text/Icons)
   static const Color onSurface = Color(0xFF030507);
-  static const Color onSurfaceVariant = Color(0x801A1F2E);
+  static const Color onSurfaceVariant = Color(0xFF475569);
   static const Color outline = Color(0xFFCBD5E1);
 
   // UI Accents
